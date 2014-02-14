@@ -22,8 +22,8 @@
     "node": "0.8.x"
   },
   "scripts": {
-    "start": "node app.js",
-    "debug": "node debug app.js"
+    "start": "node .app.js",
+    "debug": "node .debug app.js"
   },
   "main": ".app.js",
   "repository": {
