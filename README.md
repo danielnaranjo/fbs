@@ -1,0 +1,2 @@
+# fbs
+### a Sails application

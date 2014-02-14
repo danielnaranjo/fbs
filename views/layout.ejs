@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FindBY</title>
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Our values: Easy to use, Easy to publish, Easy to buy. Verified user (Your security is our priority), Geolocation ads (No more typing where you are), Categories? No way! Your search is our categories!, Share, Call, Comments and all you need before your transation (More Social connections)">
+    <meta name="author" content="Daniel Naranjo">
+    <link rel="icon" href="/img/favicon.ico">    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/linker/styles/normalize.css">
+    <link rel="stylesheet" href="/linker/styles/bootstrap.css">
+    <link rel="stylesheet" href="/linker/styles/bootstrap-theme.css">
+    <link rel="stylesheet" href="/linker/styles/animate-custom.css">
+    <link rel="stylesheet" href="/linker/styles/bootstrap-social.css">
+    <link rel="stylesheet" href="/linker/styles/estilos.css">
+    <link rel="stylesheet" href="/linker/styles/font-awesome.css">
+    <link rel="stylesheet" href="/linker/styles/style.css">
+    <!--STYLES END-->
+  </head>
+
+  <body>
+    <div id="wrap">
+      <div class="navbar-fixed-top">
+        <header>
+          <div id="logo">beta*</div>
+          <div id="busqueda"><span aria-hidden="true" title="Search" class="icon-search"></span></div>
+          <div id="ubicacion"><span aria-hidden="true" title="Nearby" class="icon-location"></span></div>
+          <div id="elmenu"><span aria-hidden="true" title="Menu" class="icon-profile"></span></div>
+          <div id="dondeestoy"></div>
+          <div id="quiensoy">
+            <span aria-hidden="true" title="User" class="icon-user"></span>
+            <% if( loggedUser ) { %>
+            <a href="/user/<%= loggedUser.id %>"><%= loggedUser.username %></a>
+            <% } %>
+          </div>
+        </header>
+        <div id="buscador">
+          <div id="lacaja">
+            <form action="/">
+              <div>
+                <input id="w" type="type">
+                <p><%= __('SearchPlaceHolder') %></p>
+              </div>
+            </form>
+          </div>
+          <div id="tags">
+            <ul>
+              <li class="tag1"><a href="#">Lorem ipsum</a></li>
+              <li class="tag2"><a href="#">Dolor sit amet</a></li>
+              <li class="tag3"><a href="#">Consectetur adipiscing elit</a></li>
+              <li class="tag2"><a href="#">Proin </a></li>
+              <li class="tag4"><a href="#">Proin </a></li>
+              <li class="tag1"><a href="#">Lorem ipsum</a></li>
+              <li class="tag2"><a href="#">Dolor sit amet</a></li>
+              <li class="tag3"><a href="#">Consectetur adipiscing elit</a></li>
+              <li class="tag2"><a href="#">Proin </a></li>
+              <li class="tag4"><a href="#">Proin </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- content -->
+      <%- body %>
+      <!-- content -->      
+
+      <footer id="footer" class="smooth-style slideOut-option navbar-fixed-bottom"><!--  -->
+        <div class="container">
+          <div>2013 &copy  <a href="http://www.danielnaranjo.info">Daniel Naranjo</a></div>
+          <div><a href="#">Privacy</a> | <a href="#">Legal</a></div>
+        </div>
+      </footer>
+    </div>
+
+    <div id="opciones">
+      <ul>
+      <% if( loggedUser ) { %>
+          <li><a href="/user/<%= loggedUser.id %>"><%= __('Profile') %></a></li>
+      <% } else { %>
+        <li><a href="/user/new"><span class="glyphicon glyphicon-edit"></span> <%= __('SignUp') %></a></li>
+        <li><a href="/user/auth"><span class="glyphicon glyphicon-log-in"></span> <%= __('LogIn') %></a></li>
+      <% } %>        
+        <% if( loggedUser ) { %>
+        <li><a href="/post/new"><%= __('PostNew') %></a></li>
+        <% } else { %>
+        <li><a href="/post"><%= __('AllPost') %></a></li>
+        <% } %>
+        <li><a href="/explorer"><%= __('Explorer')%></a></li>
+        <li><a href="/user"><%= __('AllUsers')%></a></li>
+        <li><a href="#"><%= __('About')%></a></li>
+        <li><a href="#"><%= __('Faq')%></a></li>
+        <li><a href="#"><%= __('Privacy')%></a></li>
+        <li><a href="/contact"><%= __('Contact')%></a></li>
+        <% if( loggedUser ) { %>
+        <li>&nbsp;</li>
+        <li>
+          <a href="/user/logout"><%= __('SignOut')%> <span class="glyphicon glyphicon-log-out"></span></a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+    <!--menu-->
+
+    <!--
+        Client-side Templates
+        ========================
+
+    		HTML templates are important prerequisites of modern, rich client applications.
+        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
+        that you load these templates client-side.
+
+        By default, your Gruntfile is configured to automatically load and precompile
+        client-side JST templates in your `assets/linker/templates` folder, then
+        include them here automatically.
+        
+        To customize this behavior to fit your needs, just edit your Gruntfile.
+        For example, here are a few things you could do:
+
+            + Import templates from other directories
+            + Use a different template engine (handlebars, jade, dust, etc.)
+            + Internationalize your templates using a server-side stringfile
+              before they're served.
+    -->
+
+    <!--TEMPLATES-->
+    
+    <!--TEMPLATES END-->
+
+    <!--SCRIPTS-->
+    <script src="/linker/js/socket.io.js"></script>
+    <script src="/linker/js/sails.io.js"></script>
+    <script src="/linker/js/app.js"></script>
+    <script src="/linker/js/jquery.js"></script>
+    <script src="/linker/js/bootstrap.js"></script>
+    <script src="/linker/js/ga.js"></script>
+    <script src="/linker/js/init.js"></script>
+    <script src="/linker/js/jquery-ui.min.js"></script>
+    <script src="/linker/js/jquery.qtip.min.js"></script>
+    <script src="/linker/js/masonry.pkgd.min.js"></script>
+    <script src="/linker/js/rlsmooth.js"></script>
+    <script src="/linker/js/tags.js"></script>
+    <!--SCRIPTS END-->
+
+    <script>
+    socket.on("connect", function(){ console.log("Client Connected"); });
+    </script>
+  </body>
+</html>

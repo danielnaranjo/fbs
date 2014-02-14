@@ -1,0 +1,874 @@
+body
+	margin 0
+	padding 0
+
+img
+	border 0
+
+a
+	text-decoration none
+
+a:underline
+	text-decoration underline
+
+#wrap
+	height auto
+	margin 0
+	padding 0
+	width 100%
+
+header
+	background-color #3CAEE1
+	color #fff
+	height 100px
+	margin 0 0 5px 0
+	width 100%
+	top 0
+
+	div
+		display inline-block
+		vertical-align top
+
+	#logo
+		background-image url('../img/logo.png') 
+		background-position top left
+		background-repeat no-repeat 
+		background-size 166px 73px
+		cursor pointer
+		font-size 0.8em
+		height 73px
+		margin 18px 0 0 30px
+		padding 60px 0 0 100px
+		width 166px
+
+		@media screen and (max-width: 480px)
+			background-size 120px 53px
+			height 53px
+			margin 15px 0 0 20px
+			padding 45px 0 0 60px
+			width 120px
+
+
+#ubicacion
+	background-color #37A6D7
+	border-radius 3px
+	cursor pointer
+	height auto
+	padding 10px
+	position absolute
+	right 60px
+	top 20px
+	width auto
+
+#ubicacion:hover
+	background-color #2a83ab
+
+#elmenu
+	background-color #37A6D7
+	border-radius 3px
+	cursor pointer
+	height auto
+	padding 10px
+	position absolute
+	right 20px
+	top 20px
+	width auto
+
+#elmenu:hover
+	background-color #2a83ab
+
+#busqueda
+	background-color #37A6D7
+	border-radius 3px
+	cursor pointer
+	height auto
+	padding 10px
+	position absolute
+	right 100px
+	top 20px
+	width auto
+
+	@media screen and (max-width: 480px)
+		display none
+
+#busqueda:hover
+	background-color #2a83ab
+
+#quiensoy
+	background-color #37A6D7
+	border-radius 3px
+	cursor pointer
+	height auto
+	padding 10px
+	position absolute
+	right 140px
+	top 20px
+	width auto
+
+	@media screen and (max-width: 480px)
+		display none
+
+	a
+		color #FFF
+
+#quiensoy:hover
+	background-color #2a83ab
+	
+footer
+	background-color #3CAEE1
+	color #fff
+	font-size 0.8em
+	height auto
+	margin 10px 0 0 0
+	width 100%
+
+	div
+		display inline-block
+		padding 10px
+		vertical-align top
+
+	.timer
+		display inline-block
+		margin 0 auto
+		text-align left
+		vertical-align top
+		width auto
+
+	a
+		color #FFF
+		text-decoration none
+
+	a:hover
+		text-decoration underline
+
+/* Principal con contenido */
+#principal
+	height auto
+	margin 0 auto
+	padding 5px 0 0 20px
+	width auto
+
+	div
+		display inline-block
+		height auto
+		margin 0 5px 5px 0
+		vertical-align top
+		width auto
+	
+.box
+	background-color #FFF
+	border 1px solid #e3e3e3
+	border-radius 3px
+	height auto
+	padding 10px
+	width auto
+
+.box:hover
+	box-shadow 5px 5px 5px #CCC
+
+	h3, p
+		margin 0
+		padding 0
+
+/* Masory */
+#contenido 
+	color #818181
+	display inline-block 
+	font-size .9em
+	margin 5px // header fixed  105px 0 0 5px
+	text-align left 
+	vertical-align top 
+	width 99% 
+ 
+	ul  
+		padding 0
+		margin 0 
+
+	li 
+		height auto
+		list-style none
+		margin 0 5px 5px 0
+		padding 10px 
+		width 280px /* Ancho imagen */
+
+	a
+		color #3CAEE1
+
+	h1, h3
+		margin 0
+		padding 0
+
+	img 
+		height auto 
+		width 280px
+
+	@media screen and (max-width: 480px)
+		img
+			display none
+
+		li
+			width 90% /* Ancho imagen */
+
+/* Caja de busqueda */
+#buscador
+	//background-color #FFF
+	border-bottom 1px solid #e7e7e7
+	//cursor hand
+	display none
+	height 100px
+	margin 0 //header fixed 100px 5px 5px 5px
+	padding 20px 0 10px 5px // Margenes laterales
+	vertical-align top
+	width auto // 100%
+	z-index 1
+
+	form
+		margin 0
+		padding 0
+
+	div
+		display inline-block 
+		vertical-align top
+
+		p
+			color #bdbdbd
+			font-size .8em
+			margin -15px 0
+			padding 0
+			text-align right
+
+	input
+		border 1px solid #fefefe
+		//border-radius 5px
+		height auto
+		//padding 5px
+		width 100%
+
+	button
+		border 1px solid #fefefe
+		border-radius 3px
+		color #fff
+		height auto
+		margin auto 0
+		padding 5px 10px
+		width auto
+
+	@media screen and (max-width: 480px)
+		border 0
+		display inline
+		margin 0 0 20px 0
+
+/* Buscador */
+#lacaja
+	//background-color #e1dc36
+	display inline-block
+	height auto
+	margin -20px 0 // header fixed -20px
+	vertical-align top
+	width 50%
+
+	@media screen and (max-width: 480px)
+		margin 5px 0 20px 0
+		width 95%
+
+/* Caja de tags */
+#tags
+	//background-color #e18450
+	display inline-block
+	height auto
+	margin -20px 0 0 0
+	overflow hidden
+	vertical-align top
+	width 45%
+
+	@media screen and (max-width: 480px)
+		display none
+
+/* Notificacion */
+#dondeestoy 
+	background #2a83ab
+	border-radius 5px 
+	color #fff 
+	display none 
+	font-weight bold 
+	height auto
+	margin 0 auto 
+	padding 20px 10px 
+	position absolute 
+	text-align center 
+	top 20px 
+	width auto 
+	z-index 10 	
+	-webkit-mask-image: -webkit-linear-gradient(#000, rgba(0,0,0,.9)) 
+	-webkit-backface-visibility: hidden 
+	-moz-backface-visibility: hidden 
+	-ms-backface-visibility: hidden 
+	-o-backface-visibility: hidden 
+	backface-visibility: hidden 
+	-webkit-animation-duration: 1s 
+	-webkit-animation-delay: .2s 
+	-webkit-animation-timing-function: ease 
+	-webkit-animation-fill-mode: both 
+	-moz-animation-duration: 1s 
+	-moz-animation-delay: .2s 
+	-moz-animation-timing-function: ease 
+	-moz-animation-fill-mode: both 
+	-ms-animation-duration: 1s 
+	-ms-animation-delay: .2s 
+	-ms-animation-timing-function: ease 
+	-ms-animation-fill-mode: both 
+	-o-animation-duration: 1s 
+	-o-animation-delay: .2s 
+	-o-animation-timing-function: ease 
+	-o-animation-fill-mode: both 
+	animation-duration: 1s 
+	animation-delay: .2s 
+	animation-timing-function: ease 
+	animation-fill-mode: both 
+
+	p 
+		margin 0
+
+	@media screen and (max-width: 480px)
+		margin 0 5px
+
+/* Iconos de fonts */
+.fs1
+	font-size 2em
+
+.glyph 
+	//border-radius .25em
+	color #bebebe
+	cursor pointer
+	font-size 16px
+	float left
+	text-align center
+	padding 10px
+	//margin .75em 1.5em .75em 0
+	width auto
+
+	a
+		color #bebebe
+
+	a:hover
+		color #a8a8a8
+	
+.glyph:hover 
+	color #a4a4a4
+
+/* Tags Mas visto */
+#tags ul
+	margin 1em 0
+	padding .5em 10px
+	text-align center
+	
+#tags li
+	margin 0
+	padding 0
+	list-style none
+	display inline
+	
+#tags li a
+	text-decoration none
+	color #3CAEE1
+	padding 0 2px	
+	
+#tags li a:hover	
+	color #2f8fbb
+		
+.tag1 
+	font-size 100%
+.tag2
+	font-size 120%
+.tag3
+	font-size 140%
+.tag4
+	font-size 160%
+.tag5
+	font-size 180%
+
+/* Tags de buscador */
+
+/* Viene de jquery.tagit.css */
+ul.tagit
+	padding 1px 5px
+	overflow auto
+	margin-left inherit
+	margin-right inherit
+
+ul.tagit li
+	display inline-block
+	margin 2px 5px
+	vertical-align top
+
+ul.tagit li.tagit-choice
+	position relative
+	line-height inherit
+
+ul.tagit li.tagit-choice-editable
+	padding .2em 18px .2em .5em
+
+ul.tagit li.tagit-new
+	padding .25em 4px .25em 0
+
+ul.tagit li.tagit-choice a.tagit-label
+	cursor pointer
+	text-decoration none
+
+ul.tagit li.tagit-choice .tagit-close
+	cursor pointer
+	position: absolute
+	right .1em
+	top 50%
+	margin-top -8px
+	line-height 17px
+
+/* Viene de tagit.ui-zendesk.css */
+ul.tagit
+	border 1px solid #C6C6C6
+
+ul.tagit li.tagit-choice
+	-moz-border-radius 6px
+	border-radius 6px
+	-webkit-border-radius 6px
+	background-color #DEE7F8
+
+ul.tagit li.tagit-choice .tagit-label:not(a)
+	color #555
+
+ul.tagit li.tagit-choice a.tagit-close
+	text-decoration none
+
+ul.tagit li.tagit-choice .tagit-close
+	right .4em
+
+ul.tagit li.tagit-choice .ui-icon
+	display none
+
+ul.tagit li.tagit-choice .tagit-close .text-icon
+	display inline
+
+ul.tagit li.tagit-choice:hover, ul.tagit li.tagit-choice.remove
+	background-color #bbcef1
+
+ul.tagit li.tagit-choice a.tagLabel:hover, ul.tagit li.tagit-choice a.tagit-close .text-icon:hover
+	color #222
+
+/* perfil de usuario */
+#uno, #dos, #tres, #cuatro, #cinco // , #compartir, #contactar
+	display inline-block
+	vertical-align top
+
+#perfil
+	height auto
+	margin 5px // 100px 5px 5px 5px
+	padding 0
+	width auto
+
+	#uno, #dos, #tres
+		//background-color #b4b4b4
+		border 1px solid #e3e3e3
+		border-radius 3px
+		color #818181
+		height auto
+		margin 0
+		padding 5px
+		width 400px
+
+		h3, p
+			margin 0
+			padding 0
+
+			span
+				color #dbdbdb
+				margin 0 0 0 10px 
+
+			span:hover
+				color #c1c1c1
+
+	#uno:hover, #dos:hover, #tres:hover
+		box-shadow 5px 5px 5px #CCC
+
+	#cuatro
+		height auto
+		width 70%
+
+		@media screen and (max-width: 480px)
+			width 99%
+
+	#cinco
+		height auto
+		width 25%
+		//background-color #fde5f4
+
+		@media screen and (max-width: 480px)
+			width 99%
+
+	#anuncio, #descripcion, #compartir, #contactar
+		border 1px solid #e3e3e3
+		border-radius 3px
+		color #818181
+		margin 5px
+		padding 10px
+
+	#anuncio:hover, #descripcion:hover //, #compartir:hover, #contactar:hover
+		box-shadow 5px 5px 5px #CCC
+
+	#contactar, #compartir
+		float right
+		height auto
+		width 90%
+
+		@media screen and (max-width: 480px)
+			display none
+
+.gris
+	color #818181
+	margin 0 0 10px 0
+
+#anuncio
+	text-align center
+
+	img 
+		max-width 90%
+		width auto
+
+	@media screen and (max-width: 480px)
+		img
+			max-width 99%
+			width auto
+
+.vermas
+	height auto
+	padding 10px 0 10px 0
+	text-align center
+	width 100%
+	//background-color #fde5f4
+
+//	@media screen and (max-width: 480px)
+//		display none
+
+.similar
+	height auto
+	padding 10px 0 10px 0
+	text-align center
+	width 100%
+	//background-color #fde5f4
+
+	@media screen and (max-width: 480px)
+		display none
+
+#discuss
+	//display none
+	height auto
+	margin 10px
+	padding 0
+	width 98%
+
+	@media screen and (max-width: 480px)
+		display none
+
+/* Masory */
+#contenido2
+	color #818181
+	display inline-block 
+	font-size .9em
+	height auto
+	margin 0 0 0 5px
+	text-align left 
+	vertical-align top 
+	width 99% 
+ 
+	ul  
+		padding 0
+		margin 0 
+
+	li 
+		height auto
+		list-style none
+		margin 0 5px 5px 0
+		padding 10px 
+		width 280px /* Ancho imagen */
+
+	@media screen and (max-width: 480px)
+		display none
+
+
+.azul
+	color #3CAEE1
+
+#publicidadmovil
+	display inline-block
+	height auto
+	margin 5px
+	padding 10px
+	width 90%
+
+	@media screen and (max-width: 480px)
+		display inline
+
+#publicidad
+	border 1px solid #e3e3e3
+	border-radius 3px
+	color #818181
+	display inline-block
+	height auto
+	margin 5px
+	padding 10px
+	width 90%
+
+	p
+		margin 0 0 5px 0
+		padding 0
+
+	@media screen and (max-width: 480px)
+		display none
+
+// Menu lateral
+#opciones
+	background-color #3CAEE1 
+	color #FFF 
+	display none 
+	height 100% 
+	//left 40% 
+	opacity .9 
+	position fixed //absolute 
+	right 0
+	top 100px 
+	width 30% 
+	z-index 4 
+	-webkit-backface-visibility hidden 
+	-moz-backface-visibility hidden 
+	-ms-backface-visibility hidden 
+	-o-backface-visibility hidden 
+	backface-visibility hidden 
+	-webkit-animation-duration 1s 
+	-webkit-animation-delay .2s 
+	-webkit-animation-timing-function ease 
+	-webkit-animation-fill-mode both 
+	-moz-animation-duration 1s 
+	-moz-animation-delay .2s 
+	-moz-animation-timing-function ease 
+	-moz-animation-fill-mode both 
+	-ms-animation-duration 1s 
+	-ms-animation-delay .2s 
+	-ms-animation-timing-function ease 
+	-ms-animation-fill-mode both 
+	-o-animation-duration 1s 
+	-o-animation-delay .2s 
+	-o-animation-timing-function ease 
+	-o-animation-fill-mode both 
+	animation-duration 1s 
+	animation-delay .2s 
+	animation-timing-function ease 
+	animation-fill-mode both 
+
+	@media screen and (max-width: 480px)
+		width 100% 			
+
+	ul 
+		margin 0 
+		padding 0 
+
+	li 
+		border-bottom  1px dotted #FFF 
+		color #FFF 
+		font-size 1em 
+		list-style none 
+		padding 10px 
+		width auto 
+
+	a 
+		color #FFF 
+		text-decoration none 
+
+	li:hover 
+		opacity  .9 
+
+#opciones:hover
+	background-color #36a2d4
+
+	@media screen and (max-width: 480px)
+		width 100% 
+
+#mapa 
+	height auto //100%
+	margin -5px 0 -5px 0 //header fixed 100px 0 0 0 
+	min-height 565px
+	padding 0
+	width 100%
+
+	h3
+		color #3CAEE1
+		padding 10px
+		margin 50px auto
+
+#map-canvas
+	background-color #eaeaea
+	height 100%
+	margin 0
+	padding 0
+	width 100%
+
+#login, #newone
+	//background-color #bf8d0b
+	color #818181
+	height auto
+	margin 0 auto // header fixed 105px
+	padding 10px
+	width auto
+
+	ul
+		margin 0
+		padding 0
+
+		li
+			background-color #89bf44
+			border 1px solid #e4e4e4
+			border-radius 5px
+			color #FFF
+			display inline-block
+			list-style-type: none
+			margin 0
+			padding 5px
+			vertical-align top
+
+	input, textarea
+		border 1px solid #bfbfbf
+		border-radius 5px
+		height auto
+		margin 7px 20px 7px 0
+		padding 10px
+		width 90%
+
+	textarea
+		height 255px
+
+	button
+		border 1px solid #bfbfbf
+		border-radius 3px
+		color #fff
+		height auto
+		margin 10px 0
+		padding 10px 20px
+		text-align left
+		width 300px
+
+	button:hover
+		background-color #bdbdbd
+		border 1px solid #acacac
+
+#drag
+	border 2px dashed #bfbfbf
+	border-radius 3px
+	height 100px
+	margin 10px 0
+	padding 10px
+	width 90%
+
+#loginL, #loginR
+	display inline-block
+	height auto
+	margin 0 20px 5px 0
+	padding 10px
+	vertical-align top
+	width 45%
+
+	@media screen and (max-width: 480px)
+		width 90%
+
+
+//#loginL:hover, #loginR:hover
+//	border 1px solid #e3e3e3
+//	border-radius 3px
+//	box-shadow 5px 5px 5px #CCC
+
+
+.findby-responsive 
+	width 320px 
+	height 50px
+
+	@media screen and (max-width: 480px)
+		width 468px 
+		height 60px
+
+	@media(min-width: 800px) 
+		width 728px
+		height 90px
+
+// Paginas de errores
+#error400
+	background-color #3CAEE1
+	color #fff
+	font-family Verdana, Arial, Helvetica, sans-serif
+	font-size .8em
+	margin 300px 100px 0 0
+	padding 10px
+	text-align right
+	a
+		color #FFF
+		text-decoration none
+		
+#broken
+	background-image url('../img/broken.png') 
+	background-position top left
+	background-repeat no-repeat
+	height 375px
+	left 100px
+	position absolute
+	top 150px
+	width 500px
+
+#seconds
+	color #818181
+	height auto
+	margin 20px auto
+	padding 10px
+	width auto
+
+	ul
+		margin 0
+		padding 0
+
+		li
+			list-style-type: none
+			margin 0
+			padding 5px
+
+	input, textarea
+		border 1px solid #bfbfbf
+		border-radius 5px
+		height auto
+		margin 7px 20px 7px 0
+		padding 10px
+		width 90%
+
+	textarea
+		height 255px
+
+	button
+		border 1px solid #bfbfbf
+		border-radius 3px
+		color #fff
+		height auto
+		margin 10px 0
+		padding 10px 20px
+		text-align left
+		width 99% // Default: 300px
+
+	button:hover
+		background-color #bdbdbd
+		border 1px solid #acacac	
+
+#div1, #div2, #div3
+	display inline-block
+	height auto
+	margin 0 20px 5px 0
+	padding 10px
+	vertical-align top
+	width 29%
+
+	@media screen and (max-width: 480px)
+		width 90%
+
+

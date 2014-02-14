@@ -1,0 +1,119 @@
+<section>
+	<div id="contenido" class="container">
+
+<%
+if ( typeof users === 'undefined' ) {
+// There are only one user.
+%>
+
+<div class="row">
+	<div class="col-md-12">
+	<h2><%= __('Hello') %> <%= user.username %></h2>
+	<% if ( session.canAdminUser ) { %>
+	<p>
+		Registered with <%= user.email %> 
+		<a href="/user/edit/<%= user.id %>">
+			<i class="glyphicon glyphicon-pencil"></i> 
+			<%= __('Edit') %>
+		</a>
+	</p>
+	<% } %>
+</div>
+</div>
+
+
+	<% if ( session.canAdminUser ) {
+	// There logged user and showed user is the same.
+	%>
+
+<div class="row" style="margin-top:30px">
+	<div class="col-md-6">
+		<% if ( sails.config.providers ) { %>
+		<div>
+			<h3><%= __('Profiles') %></h3>
+			<p>Easy sign in with your social networks. For security you can link/unlink whenever you want.</p>
+		</div>
+			
+		<div>
+		<% _.each(sails.config.providers, function(provider, provider_id){ %>
+			<div class="row">
+				<% if( _.find(
+					user.profiles,
+					function(profile) {
+						return profile.provider == provider_id;
+					}
+				) ) { %>
+				
+				<form action="/user/logout/<%= provider_id %>" method="POST" class="col-xs-6">
+					<p>
+						<button type="submit" class="btn btn-social btn-<%= provider_id %> btn-block">
+							<i class="fa fa-<%= __(provider_id) %>"></i> Unlink with <%= __(provider_id) %>
+						</button>
+					</p>
+					<!-- <input type="submit" class="btn btn-danger btn-<%= provider_id %>" value="<%= __('Unlink with %s', __(provider_id) ) %>"/> -->
+				</form>
+
+				<% } else { %>
+				
+				<form action="/user/login/<%= provider_id %>" method="POST" class="col-xs-6">
+					<p>
+						<button type="submit" class="btn btn-social btn-<%= provider_id %> btn-block">
+							<i class="fa fa-<%= __(provider_id) %>"></i> Link with <%= __(provider_id) %>
+						</button>
+					</p>
+				</form>
+
+				<% } %>
+	
+			</div>
+		<% }); %>
+		</div>
+		<% } %>
+
+		<div style="margin-top:100px">
+			<form action="/user/destroy/<%= user.id %>" method="POST">
+				<h3><%= __('Delete your account') %></h3>
+				<p><%= __('You can undo this action. Press the button if you are completely sure.') %></p>
+				<input type="hidden" name="_method" value="delete"/>
+				<p>
+					<button type="submit" class="btn btn-social btn-danger">
+						<i class="glyphicon glyphicon-remove"></i> <%= __('Delete') %>
+					</button>
+				</p>
+			</form>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div>
+			<h3>Show all posts or create a <a href="/post/new">new one</a></h3>
+		</div>
+		<div>
+			<p>[List] a[href="#"]URL</p>
+			<p>[List] a[href="#"]URL</p>
+			<p>[List] a[href="#"]URL</p>
+			<p>[List] a[href="#"]URL</p>
+			<p>[List] a[href="#"]URL</p>
+			<p>[List] a[href="#"]URL</p>
+		</div>		
+	</div>
+</div>
+
+	
+		<% } %>
+	<%
+	} else {
+	// There are multiple one user.
+	%> 
+
+
+		<h2>Users</h2>
+		<ul>
+		<% _.each(users, function(user){ %>
+			<li><a href="/user/<%= user.id %>"><%= user.username %></a></li>
+		<% }); %>
+		</ul>
+
+
+<% } %>
+</div>
+</section>
