@@ -15,17 +15,11 @@
 module.exports.adapters = {
 
 	'default': 'mongo',
-	
+
 	mongo: {
 		module: 'sails-mongo',
-		// Config by parts. Sails will generate the connection uri
-		//host: 'localhost',
-		//user: '',
-		//password: '',
-		//database: 'building-realtime-webapp',
-		//schema: true
-		// Config by connection URI.
-		url: DB_URL
+		schema: true,
+		url: process.env.DB_URL
 	}
 
 };
