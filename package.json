@@ -22,10 +22,10 @@
     "node": "0.8.x"
   },
   "scripts": {
-    "start": "node .app.js",
-    "debug": "node .debug app.js"
+    "start": "node app.js",
+    "debug": "node debug app.js"
   },
-  "main": ".app.js",
+  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/chadn/heroku-sails.git"
