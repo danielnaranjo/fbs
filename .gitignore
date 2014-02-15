@@ -23,7 +23,7 @@ pids
 logs
 results
 
-node_modules
+#Snode_modules
 
 npm-debug.log
 
@@ -42,4 +42,4 @@ nbproject
 ########################
 # local config
 ########################
-config/local.js
+#config/local.js
