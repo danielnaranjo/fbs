@@ -14,39 +14,18 @@
 
 module.exports.adapters = {
 
-	// If you leave the adapter config unspecified 
-	// in a model definition, 'default' will be used.
-/*
-	'default': 'disk',
-*/
-
-	// Persistent adapter for DEVELOPMENT ONLY
-	// (data is preserved when the server shuts down)
-
-/*
-	disk: {
-		module: 'sails-disk'
-	},
-*/
-
-/*
-	// MySQL is the world's most popular relational database.
-	// Learn more: http://en.wikipedia.org/wiki/MySQL
-	myLocalMySQLDatabase: {
-
-		module: 'sails-mysql',
-		host: 'YOUR_MYSQL_SERVER_HOSTNAME_OR_IP_ADDRESS',
-		user: 'YOUR_MYSQL_USER',
-		// Psst.. You can put your password in config/local.js instead
-		// so you don't inadvertently push it up if you're using version control
-		password: 'YOUR_MYSQL_PASSWORD', 
-		database: 'YOUR_MYSQL_DB'
-	},
-*/
+	'default': 'mongo',
 	
 	mongo: {
 		module: 'sails-mongo',
-		url: process.env.DB_URL,
-		schema: true
-	},
+		// Config by parts. Sails will generate the connection uri
+		//host: 'localhost',
+		//user: '',
+		//password: '',
+		//database: 'building-realtime-webapp',
+		//schema: true
+		// Config by connection URI.
+		url: DB_URL
+	}
+
 };
