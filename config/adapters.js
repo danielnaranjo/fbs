@@ -13,13 +13,14 @@
  */
 
 module.exports.adapters = {
-
+/*
 	'default': 'mongo',
 
 	mongo: {
 		module: 'sails-mongo',
 		schema: true,
-		url: "mongodb://findbyco:DN14093487v@ds053168.mongolab.com:53168/post"
+		//url: "mongodb://findbyco:DN14093487v@ds053168.mongolab.com:53168/post"
+		url: DB_URL
 	}
-
+*/
 };

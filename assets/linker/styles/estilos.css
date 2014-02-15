@@ -266,6 +266,7 @@ footer a:hover {
 @media screen and (max-width: 480px) {
   #buscador {
     border: 0;
+    box-shadow: 0 0 0 #ccc;
     display: inline;
     margin: 0 0 20px 0;
   }
@@ -286,6 +287,7 @@ footer a:hover {
 }
 /* Caja de tags */
 #tags {
+  background-color: #bc2425;
   display: inline-block;
   height: auto;
   margin: -20px 0 0 0;
@@ -293,9 +295,10 @@ footer a:hover {
   vertical-align: top;
   width: 45%;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 400px) {
   #tags {
     display: none;
+    width: 99%;
   }
 }
 /* Notificacion */
@@ -865,21 +868,21 @@ ul.tagit li.tagit-choice a.tagit-close .text-icon:hover {
     height: 90px;
   }
 }
-#error400 {
+.error400 {
   background-color: #3caee1;
   color: #fff;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 0.8em;
-  margin: 300px 100px 0 0;
+  margin: 0;
   padding: 10px;
   text-align: right;
 }
-#error400 a {
+.error400 a {
   color: #fff;
   text-decoration: none;
 }
 #broken {
-  background-image: url("../linker/img/broken.png");
+  background-image: url("/img/broken.png");
   background-position: top left;
   background-repeat: no-repeat;
   height: 375px;
@@ -1236,4 +1239,14 @@ http://lipis.github.io/bootstrap-social/
 .btn-social-icon {
   margin-bottom:4px;
   color: #FFF;
+}
+
+/* Nueva clase responsive para publicidad */
+.adresponsive {
+  background-color: #fff;
+  border: 1px solid #e3e3e3;
+  border-radius: 3px;
+  height: auto;
+  padding: 10px;
+  width: auto;
 }
