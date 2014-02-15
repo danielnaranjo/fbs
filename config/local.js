@@ -53,7 +53,7 @@ module.exports = {
 	// If NODE_ENV is not set, Sails will run in the 'development' environment.
 
 	environment: process.env.NODE_ENV || 'development',
-
+/*
 	adapters: {
 		'default': 'mongo',
 		mongo: {
@@ -69,6 +69,7 @@ module.exports = {
 			url: DB_URL
 		}
 	},
+*/
 	providers: {
 		'facebook': {
 			clientID: process.env.FACEBOOK_CLIENT_ID || 'FACEBOOK_CLIENT_ID',
