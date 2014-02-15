@@ -28,7 +28,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/chadn/heroku-sails.git"
+    "url": "git://github.com/danielnaranjo/fbs.git"
   },
   "author": "Daniel Naranjo",
   "license": "No license"
