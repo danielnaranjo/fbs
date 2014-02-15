@@ -46,7 +46,7 @@ module.exports.session = {
   //
   // # Note: url will override other connection settings
   // url: 'mongodb://user:pass@host:port/database/collection',
-  url: 'mongodb://findbyco:DN14093487v@ds053168.mongolab.com:53168/post'
+  url: process.env.DB_URL
   //
   // username: '',
   // password: '',
