@@ -15,7 +15,7 @@ module.exports.session = {
   // Session secret is automatically generated when your new app is created
   // Replace at your own risk in production-- you will invalidate the cookies of your users,
   // forcing them to log in again. 
-  secret: '52f7e431cdc5c0af28c1a5044eb358c3'
+  secret: '52f7e431cdc5c0af28c1a5044eb358c3',
 
 
   // In production, uncomment the following lines to set up a shared redis session store
@@ -46,7 +46,7 @@ module.exports.session = {
   //
   // # Note: url will override other connection settings
   // url: 'mongodb://user:pass@host:port/database/collection',
-  url: "mongodb://findbyco:DN14093487v@ds053168.mongolab.com:53168/post",
+  url: "mongodb://findbyco:DN14093487v@ds053168.mongolab.com:53168/post"
   //
   // username: '',
   // password: '',
