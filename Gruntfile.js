@@ -138,6 +138,7 @@ module.exports = function (grunt) {
   grunt.loadTasks(depsPath + '/grunt-contrib-cssmin/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-less/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-coffee/tasks');
+  grunt.loadNpmTasks('grunt-contrib-stylus');
 
   // Project configuration.
   grunt.initConfig({
@@ -223,6 +224,27 @@ module.exports = function (grunt) {
         ]
       }
     },
+
+    // add stylus
+    stylus: {
+      dev: {
+        files: [
+          {
+          expand: true,
+          cwd: 'assets/styles/',
+          src: ['*.styl'],
+          dest: '.tmp/public/styles/',
+          ext: '.css'
+        }, {
+          expand: true,
+          cwd: 'assets/linker/styles/',
+          src: ['*.styl'],
+          dest: '.tmp/public/linker/styles/',
+          ext: '.css'
+        }
+        ]
+      }
+    },    
     
     coffee: {
       dev: {
@@ -445,7 +467,8 @@ module.exports = function (grunt) {
     'clean:dev',
     'jst:dev',
     'less:dev',
-    'copy:dev',    
+    'stylus:dev',
+    'copy:dev',
     'coffee:dev'
   ]);
 
@@ -475,6 +498,7 @@ module.exports = function (grunt) {
     'clean:dev',
     'jst:dev',
     'less:dev',
+    'stylus:dev',
     'copy:dev',
     'coffee:dev',
     'concat',
@@ -486,6 +510,7 @@ module.exports = function (grunt) {
     'sails-linker:prodJsJADE',
     'sails-linker:prodStylesJADE',
     'sails-linker:devTplJADE'
+
   ]);
 
   // When API files are changed:
