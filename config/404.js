@@ -32,9 +32,9 @@ module.exports[404] = function pageNotFound(req, res) {
     if (err) { return res.json(result, result.status); }
 
     // Otherwise, serve the `views/404.*` page
-    // res.render(viewFilePath);
+     res.render(viewFilePath);
     //res.view('views/404');
-    res.redirect('views/404');
+    //res.redirect('404');
   });
 
 };
