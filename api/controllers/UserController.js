@@ -15,6 +15,11 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
+// multiples queries
+var async = require('async'),
+		_ = require('lodash');
+
+
 module.exports = {
 	
 	/*
@@ -40,8 +45,7 @@ module.exports = {
 			});
 		}
 		// Otherwise, we will retun an user array.
-		else {
-			
+		else {			
 			// If we have a where param we will pase it as JSON.
 			var where = req.param('where');
 			if( _.isString(where)) {
@@ -68,6 +72,7 @@ module.exports = {
 					return res.view({ users: users });
 				}
 			});
+
 		}
 		function isShortcut(id){
 			return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' );
