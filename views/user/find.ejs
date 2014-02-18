@@ -8,17 +8,24 @@ if ( typeof users === 'undefined' ) {
 
 <div class="row">
 	<div class="col-md-12">
-	<h2><%= __('Hello') %> <%= user.username %></h2>
-	<% if ( session.canAdminUser ) { %>
-	<p>
-		Registered with <%= user.email %> 
-		<a href="/user/edit/<%= user.id %>">
-			<i class="glyphicon glyphicon-pencil"></i> 
-			<%= __('Edit') %>
+		<h2>
+			<%= __('Hello') %> <%= user.username %>
+		</h2> 
+		<a href="/user/logout">
+			<i class="glyphicon glyphicon-log-out"></i> 
+			<%= __('SignOut')%>
 		</a>
-	</p>
-	<% } %>
-</div>
+		
+		<% if ( session.canAdminUser ) { %>
+		<p>
+			Registered with <%= user.email %> 
+			<a href="/user/edit/<%= user.id %>">
+				<i class="glyphicon glyphicon-pencil"></i> 
+				<%= __('Edit') %>
+			</a>
+		</p>
+		<% } %>
+	</div>
 </div>
 
 
@@ -88,12 +95,9 @@ if ( typeof users === 'undefined' ) {
 			<h3>Show all posts or create a <a href="/post/new">new one</a></h3>
 		</div>
 		<div>
+			<% // _.each(post, function(posts){ %>
 			<p>[List] a[href="#"]URL</p>
-			<p>[List] a[href="#"]URL</p>
-			<p>[List] a[href="#"]URL</p>
-			<p>[List] a[href="#"]URL</p>
-			<p>[List] a[href="#"]URL</p>
-			<p>[List] a[href="#"]URL</p>
+			<% // }); %>
 		</div>		
 	</div>
 </div>

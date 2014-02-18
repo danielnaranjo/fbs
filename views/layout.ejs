@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
   <head>
     <title>FindBY</title>
+    <meta charset='utf-8'>
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta name="description" content="Our values: Easy to use, Easy to publish, Easy to buy. Verified user (Your security is our priority), Geolocation ads (No more typing where you are), Categories? No way! Your search is our categories!, Share, Call, Comments and all you need before your transation (More Social connections)">
+    <meta name="description" content="A Geolocation Classified Ads for products and services around the world">
     <meta name="author" content="Daniel Naranjo">
     <link rel="icon" href="/favicon.ico">    
     <!--STYLES-->
@@ -29,14 +30,11 @@
           <div id="elmenu"><span aria-hidden="true" title="Menu" class="icon-profile"></span></div>
           <div id="dondeestoy"></div>
           <div id="quiensoy">
-            <span aria-hidden="true" title="User" class="icon-user"></span>
-            <% if( loggedUser ) { %>
-            <a href="/user/<%= loggedUser.id %>"><%= loggedUser.username %></a>
-            <% } %>
+            <span aria-hidden="true" title="User" class="icon-user"></span><% if( loggedUser ) { %><a href="/user/<%= loggedUser.id %>"><%= loggedUser.username %></a><% } %>
           </div>
         </header>
-        <div id="buscador">
-          <div id="lacaja">
+        <div id="buscador" class="row">
+          <div id="lacaja" class="col-md-6">
             <form action="/">
               <div>
                 <input id="w" type="type">
@@ -44,7 +42,7 @@
               </div>
             </form>
           </div>
-          <div id="tags">
+          <div id="popular" class="col-md-6">
             <ul>
               <li class="tag1"><a href="#">Lorem ipsum</a></li>
               <li class="tag2"><a href="#">Dolor sit amet</a></li>
@@ -75,18 +73,12 @@
 
     <div id="opciones">
       <ul>
-      <% if( loggedUser ) { %>
-          <li><a href="/user/<%= loggedUser.id %>"><%= __('Profile') %></a></li>
-      <% } else { %>
+        <% if( loggedUser ) { %><li><a href="/user/<%= loggedUser.id %>"><%= __('Profile') %></a></li><% } else { %>
         <li><a href="/user/new"><span class="glyphicon glyphicon-edit"></span> <%= __('SignUp') %></a></li>
         <li><a href="/user/auth"><span class="glyphicon glyphicon-log-in"></span> <%= __('LogIn') %></a></li>
       <% } %>        
-        <% if( loggedUser ) { %>
-        <li><a href="/post/new"><%= __('PostNew') %></a></li>
-        <% } else { %>
-        <li><a href="/post"><%= __('AllPost') %></a></li>
-        <% } %>
-        <li><a href="/explorer"><%= __('Explorer')%></a></li>
+        <% if( loggedUser ) { %><li><a href="/post/new"><%= __('PostNew') %></a></li><% } else { %><li><a href="/post"><%= __('AllPost') %></a></li><% } %>
+        <li><a href="/map/all"><%= __('Explorer')%></a></li>
         <li><a href="/user"><%= __('AllUsers')%></a></li>
         <li><a href="#"><%= __('About')%></a></li>
         <li><a href="#"><%= __('Faq')%></a></li>
@@ -94,10 +86,7 @@
         <li><a href="/contact"><%= __('Contact')%></a></li>
         <% if( loggedUser ) { %>
         <li>&nbsp;</li>
-        <li>
-          <a href="/user/logout"><%= __('SignOut')%> <span class="glyphicon glyphicon-log-out"></span></a>
-        </li>
-        <% } %>
+        <li><a href="/user/logout"><%= __('SignOut')%> <span class="glyphicon glyphicon-log-out"></span></a></li><% } %>
       </ul>
     </div>
     <!--menu-->
@@ -139,7 +128,6 @@
     <script src="/linker/js/jquery.qtip.min.js"></script>
     <script src="/linker/js/masonry.pkgd.min.js"></script>
     <script src="/linker/js/rlsmooth.js"></script>
-    <script src="/linker/js/tags.js"></script>
     <!--SCRIPTS END-->
 
     <script>
