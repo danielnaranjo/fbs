@@ -15,8 +15,10 @@
     "passport-github": "~0.1.5",
     "passport-facebook": "~1.0.2",
     "passport-twitter": "~1.0.2",
-    "request":"*",
-    "newrelic" : "*"
+    "request": "*",
+    "newrelic": "*",
+    "async": "*",
+    "lodash": "*"
   },
   "engines": {
     "node": "0.8.x"
@@ -25,11 +27,13 @@
     "start": "node app.js",
     "debug": "node debug app.js"
   },
-
   "repository": {
     "type": "git",
     "url": "git://github.com/danielnaranjo/fbs.git"
   },
   "author": "Daniel Naranjo",
-  "license": "No license"
+  "license": "No license",
+  "devDependencies": {
+    "grunt-contrib-stylus": "~0.12.0"
+  }
 }
