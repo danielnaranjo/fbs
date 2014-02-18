@@ -24,6 +24,7 @@
 		}
 	}
 //
+
 $(document).ready(function(e) {
 //	
 	if (navigator.geolocation) {
@@ -47,20 +48,23 @@ $(document).ready(function(e) {
 	$("#contenido").masonry({ itemSelector: 'li' });
 	$("#contenido2").masonry({ itemSelector: 'li' });
 	/* Cuadro de busqueda */
+
 	$('#busqueda').on('click', function() { $('#buscador').toggle().removeClass().addClass("fadeInDown"); });
 	/* Contador de anuncios */
     $(".timer").append('10K');
+
 	/* Menu y derivado */
 	$("#elmenu").on('click', function() { $('#opciones').toggle().removeClass().addClass("fadeInRight");});
 	$("#opciones").on('mouseleave', function(){ setTimeout(function() { $('#opciones').hide(); },3000);});
+
     /* Tooltip */
     $('.fs1').qtip({ style: { classes: 'qtip-light qtip-shadow' } });
     $('header div').qtip({ style: { classes: 'qtip-light qtip-shadow' } });
+
 	/* ET Go Home! */
 	$("#logo").on('click', function(){ window.location = "/"; });
 	/* Login desde Menu */
 	$("#quiensoy").on('click', function(){ window.location = "/user/auth"; });
-
 	$("#ubicacion").on('click', function() {
 		$('#dondeestoy').html('');
 		$("#dondeestoy").append('<p>Maybe you\'re nearby '+miubicacion[0]+','+miubicacion[1]+'</p>');
@@ -68,42 +72,16 @@ $(document).ready(function(e) {
 		$("#dondeestoy").removeClass().addClass("fadeInDown");
 		setTimeout(function() { $('#dondeestoy').removeClass().addClass("fadeOutDown");},3000);
 	});
-// Parallax Effects
-  $(".slide-option").rlSmooth();
-
-  $(".slideOut-option").rlSmooth('slideOut',{
-  	y: 500,
-  	on: 550,
-  	off: 800
-  });
-
-  $(".slideHide-option").rlSmooth('slideHide',{
-  	y: 1900
-  });
-
-  $(".fade-option").rlSmooth('fade',{
-    y: 500
-  });
-
-  $(".fadeUp-option").rlSmooth('fadeUp',{
-    y: 700
-  });
-
-  $(".fadeHide-option").rlSmooth('fadeHide',{
-    y: 900
-  });
-
-  $(".showHide-option").rlSmooth('showHide',{
-    y: 1100
-  });
-
-  $(".showUp-option").rlSmooth('showUp',{
-    y: 1300
-  });
-
-  $(".showOut-option").rlSmooth('showOut',{
-    y: 1500
-  });
+	/* Parallax Effects */
+	$(".slide-option").rlSmooth();
+	$(".slideOut-option").rlSmooth('slideOut',{ y: 500, on: 550, off: 800 });
+	$(".slideHide-option").rlSmooth('slideHide',{ y: 1900 });
+	$(".fade-option").rlSmooth('fade',{ y: 500 });
+	$(".fadeUp-option").rlSmooth('fadeUp',{ y: 700 });
+	$(".fadeHide-option").rlSmooth('fadeHide',{ y: 900 });
+	$(".showHide-option").rlSmooth('showHide',{ y: 1100 });
+	$(".showUp-option").rlSmooth('showUp',{ y: 1300 });
+	$(".showOut-option").rlSmooth('showOut',{ y: 1500 });
 
 
 //
