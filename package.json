@@ -2,7 +2,7 @@
   "name": "fbs",
   "version": "0.0.1",
   "description": "Webapp",
-  "main": "app.js",
+  "main": ".app.js",
   "dependencies": {
     "sails": "0.9.7",
     "grunt": "0.4.1",
@@ -23,8 +23,8 @@
     "node": "0.8.x"
   },
   "scripts": {
-    "start": "node app.js",
-    "debug": "node debug app.js"
+    "start": "node .app.js",
+    "debug": "node debug .app.js"
   },
   "repository": {
     "type": "git",
