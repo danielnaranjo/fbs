@@ -224,8 +224,7 @@ module.exports = function (grunt) {
         ]
       }
     },
-
-    // add stylus
+    
     stylus: {
       dev: {
         files: [
@@ -244,7 +243,7 @@ module.exports = function (grunt) {
         }
         ]
       }
-    },    
+    },
     
     coffee: {
       dev: {
