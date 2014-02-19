@@ -79,11 +79,10 @@
       <% } %>        
         <% if( loggedUser ) { %><li><a href="/post/new"><%= __('PostNew') %></a></li><% } else { %><li><a href="/post"><%= __('AllPost') %></a></li><% } %>
         <li><a href="/map/all"><%= __('Explorer')%></a></li>
-        <li><a href="/user"><%= __('AllUsers')%></a></li>
         <li><a href="#"><%= __('About')%></a></li>
         <li><a href="#"><%= __('Faq')%></a></li>
         <li><a href="#"><%= __('Privacy')%></a></li>
-        <li><a href="/contact"><%= __('Contact')%></a></li>
+        <li><a href="#"><%= __('Contact')%></a></li>
         <% if( loggedUser ) { %>
         <li>&nbsp;</li>
         <li><a href="/user/logout"><%= __('SignOut')%> <span class="glyphicon glyphicon-log-out"></span></a></li><% } %>
