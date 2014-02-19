@@ -8,7 +8,7 @@ img {
 a {
   text-decoration: none;
 }
-a:underline {
+a:hover {
   text-decoration: underline;
 }
 #wrap {
