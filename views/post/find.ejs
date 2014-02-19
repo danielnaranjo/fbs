@@ -42,12 +42,11 @@ if ( typeof posts === 'undefined' ) {
       </p>
       <p><%= post.text %></p>          
       <p class="text-right">
-          <i class="icon-tags"></i> Tags: 
-          <a href="#">Sun</a>, 
-          <a href="#">Sunrise</a>, 
-          <a href="#">Dawn</a>, 
-          <a href="#">Morning</a>, 
-          <a href="#">Landscape</a>
+          <p>
+              <i class="icon-tags"></i> Tags: 
+<% var str = post.title; var arr = str.split(' '); for(var i=0;i<arr.length;i++) { %>
+<a href="post/tags/<%= arr[i] %>"><%= arr[i] %></a><% } %>
+          </p>
       </p>
       <p>
       	Reference: <%= post.id %>.  
