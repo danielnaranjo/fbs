@@ -56,51 +56,53 @@ if ( typeof posts === 'undefined' ) {
     </div>
     <!--discuss-->
     <div id="discuss">
-    <div id="disqus_thread"></div>
-      <script type="text/javascript">
-          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-          var disqus_shortname = 'findby'; // required: replace example with your forum shortname
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'findby'; // required: replace example with your forum shortname
 
-          /* * * DON'T EDIT BELOW THIS LINE * * */
-          (function() {
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </div>
 
     <div id="anuncio">
-  	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  	<!-- findby-responsive -->
-  	<ins class="adsbygoogle"
-  	     style="display:block"
-  	     data-ad-client="ca-pub-3074485176185204"
-  	     data-ad-slot="7849882013"
-  	     data-ad-format="auto"></ins>
-  	<script>
-  	(adsbygoogle = window.adsbygoogle || []).push({});
-  	</script>
+    	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    	<!-- findby-responsive -->
+    	<ins class="adsbygoogle"
+    	     style="display:block"
+    	     data-ad-client="ca-pub-3074485176185204"
+    	     data-ad-slot="7849882013"
+    	     data-ad-format="auto"></ins>
+    	<script>
+    	(adsbygoogle = window.adsbygoogle || []).push({});
+    	</script>
     </div>
   </div>
+
   <div class="col-md-4">
     <div id="contactar">
       <div class="gris">Make a question</div>
         <div class="glyph">
-          <a href="tel:<%= post.phoneNumber %>"><span class="glyphicon glyphicon-phone btn-lg"></span></a> Call
+          <a href="tel:<%= post.phoneNumber %>"><i class="fa-phone-square"></i></a> Call
         </div>
         <div class="glyph">
-          <a href="mailto:<%= post.contactMail %>"><span class="glyphicon glyphicon-phone btn-lg"></span></a> Escribir
+          <a href="mailto:<%= post.contactMail %>"><i class="fa fa-envelope-o"></i></a> Escribir
         </div>
-
-      <div class="glyph"><a href="http://www.facebook.com/" target="_blank">
-          <div aria-hidden="true" data-icon="" class="fs1"></div></a></div>
-
-      <div class="glyph"><a href="http://www.twitter.com/" target="_blank">
-          <div aria-hidden="true" data-icon="" class="fs1"></div></a></div>
+        <div class="glyph">
+          <a href="#"><i class="fa-twitter-square"></i></a> Twitter
+        </div>
+        <div class="glyph">
+          <a href="#"><i class="fa fa-facebook-square"></i></a> Facebook
+        </div>
     </div>
+
     <div id="compartir">
       <div class="gris">Share</div>
       <div class="addthis_toolbox addthis_default_style addthis_32x32_style"><a class="addthis_button_preferred_1"></a><a class="addthis_button_preferred_2"></a><a class="addthis_button_preferred_3"></a><a class="addthis_button_preferred_4"></a><a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a></div>
@@ -180,13 +182,11 @@ if ( typeof posts === 'undefined' ) {
               <i class="glyphicon glyphicon-star"></i>    <span> 2 </span>
               <i class="glyphicon glyphicon-flag"></i>    <span> 20 </span>
           </p>
+
           <p>
               <i class="icon-tags"></i> Tags: 
-              <a href="#">Sun</a>, 
-              <a href="#">Sunrise</a>, 
-              <a href="#">Dawn</a>, 
-              <a href="#">Morning</a>, 
-              <a href="#">Landscape</a>
+<% var str = post.title; var arr = str.split(' '); for(var i=0;i<arr.length;i++) { %>
+<a href="post/tags/<%= arr[i] %>"><%= arr[i] %></a><% } %>
           </p>
 	    </li>
 	    <% }); %>

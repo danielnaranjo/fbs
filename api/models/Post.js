@@ -14,7 +14,7 @@ module.exports = {
 		title:'STRING',
 		summary:'STRING',
 		text:'STRING',
-		phoneNumber:'STRING',
+		tags:'array',
 		contactMail:'STRING',
 		city:'STRING',
 		country:'STRING',
