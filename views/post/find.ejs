@@ -45,7 +45,7 @@ if ( typeof posts === 'undefined' ) {
           <p>
               <i class="icon-tags"></i> Tags: 
 <% var str = post.title; var arr = str.split(' '); for(var i=0;i<arr.length;i++) { %>
-<a href="post/tags/<%= arr[i] %>"><%= arr[i] %></a><% } %>
+<a class="tagsbypost" href="post/tags/<%= arr[i] %>"><%= arr[i] %></a><% } %>
           </p>
       </p>
       <p>
@@ -111,16 +111,7 @@ if ( typeof posts === 'undefined' ) {
       <script src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51fbdcf40ea81860"></script>
     </div>
     <div id="compartir" class="text-center">
-  	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  	<!-- findbyco-250x250-230913 -->
-  	<ins class="adsbygoogle"
-  	     style="display:inline-block;width:250px;height:250px"
-  	     data-ad-client="ca-pub-3074485176185204"
-  	     data-ad-slot="5370019667"></ins>
-  	<script>
-  	(adsbygoogle = window.adsbygoogle || []).push({});
-  	</script>
-      <!-- Google AdSense-->
+      <iframe src="http://rcm-na.amazon-adsystem.com/e/cm?t=loultimoenlaw-20&o=1&p=12&l=ur1&category=amazonhomepage&f=ifr" width="300" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
     </div>
   </div>
 </div>
@@ -185,7 +176,7 @@ if ( typeof posts === 'undefined' ) {
           <p>
               <i class="icon-tags"></i> Tags: 
 <% var str = post.title; var arr = str.split(' '); for(var i=0;i<arr.length;i++) { %>
-<a href="post/tags/<%= arr[i] %>"><%= arr[i] %></a><% } %>
+<a class="tagsbypost" href="post/tags/<%= arr[i] %>"><%= arr[i] %></a><% } %>
           </p>
 	    </li>
 	    <% }); %>
