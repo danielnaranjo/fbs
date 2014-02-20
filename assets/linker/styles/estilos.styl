@@ -87,9 +87,6 @@ header
 	top: 20px
 	width: auto
 
-	@media screen and (max-width: 480px)
-		display: none
-
 #busqueda:hover
 	background-color: #2a83ab
 
@@ -183,6 +180,9 @@ footer
 		padding: 10px
 		width: 280px
 
+		@media screen and (max-width: 480px)
+			width: 98%
+
 	a
 		color: #3caee1
 
@@ -201,17 +201,13 @@ footer
 	background-color: #FFF
 	border-bottom: 1px solid #e7e7e7
 	box-shadow: 5px 5px 5px #ccc
-	display: none
+	display none
 	height: 100px
 	margin: 0
 	padding: 5px 0 10px 5px
 	vertical-align: top
-	width: auto
+	width: 100%
 	z-index: 1
-
-	form
-		margin: 0
-		padding: 0
 
 	div
 		display: inline-block
@@ -224,38 +220,36 @@ footer
 		padding: 0
 		text-align: right
 
-	input
-		border: 1px solid #fefefe
-		height: auto
-		width: 100%
-
-	button
-		border: 1px solid #fefefe
-		border-radius: 3px
-		color: #fff
-		height: auto
-		margin: auto 0
-		padding: 5px 10px
-		width: auto
-
 	@media screen and (max-width: 480px)
 		border: 0
-		box-shadow: 0 0 0 #ccc
-		display: inline
-		margin: 0 0 20px 0
+		height: 50px
 
 #lacaja
 	height: auto
-	vertical-align: top
-
-#popular
-	background-color: #FFF
-	height: auto
-	overflow: hidden
+	margin 0 0 5px 0
 	vertical-align: top
 
 	@media screen and (max-width: 480px)
-		display: none
+		display none
+
+	form
+		margin: 0
+		padding: 0
+		width: auto
+
+		input
+			border: 1px solid #fefefe
+			height: auto
+			width: 100%
+
+#popular
+	height: 90px
+	margin 0
+	vertical-align: top
+
+	@media screen and (max-width: 480px)
+		display none
+		visibility hidden
 
 	ul
 		margin: 0
@@ -267,6 +261,9 @@ footer
 		padding: 0
 		list-style: none
 		display: inline
+	
+		@media screen and (max-width: 480px)
+			display none
 
 		a
 			text-decoration: none
@@ -416,13 +413,17 @@ footer
 	padding: 10px
 	width: 100%
 
+	@media screen and (max-width: 480px)
+		margin: 0 5px 5px 0
+		width: 98%
+
 #contactar, #compartir
 	float: right
 	height: auto
 	width: 100%
 
-@media screen and (max-width: 480px)
-	display: none
+	@media screen and (max-width: 480px)
+		width: 98%
 
 .gris
 	color: #818181
@@ -1000,3 +1001,10 @@ footer
 	height: auto
 	padding: 10px
 	width: auto
+
+a.tagsbypost
+	color #37a6d7
+	text-decoration underline important
+
+.box i, #descripcion i
+	color #37a6d7
