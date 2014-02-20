@@ -18,7 +18,6 @@ module.exports = {
 		contactMail:'STRING',
 		city:'STRING',
 		country:'STRING',
-		photos:'array',
 		chat:'INTEGER',
 		map:'INTEGER',
 		longitude:'STRING',
