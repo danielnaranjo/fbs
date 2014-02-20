@@ -138,7 +138,7 @@ module.exports = function (grunt) {
   grunt.loadTasks(depsPath + '/grunt-contrib-cssmin/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-less/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-coffee/tasks');
-  grunt.loadNpmTasks('grunt-contrib-stylus');
+  //grunt.loadNpmTasks('grunt-contrib-stylus');
 
   // Project configuration.
   grunt.initConfig({
@@ -224,7 +224,7 @@ module.exports = function (grunt) {
         ]
       }
     },
-    
+/*    
     stylus: {
       dev: {
         files: [
@@ -244,7 +244,7 @@ module.exports = function (grunt) {
         ]
       }
     },
-    
+ */   
     coffee: {
       dev: {
         options:{
@@ -466,7 +466,7 @@ module.exports = function (grunt) {
     'clean:dev',
     'jst:dev',
     'less:dev',
-    'stylus:dev',
+//    'stylus:dev',
     'copy:dev',
     'coffee:dev'
   ]);
@@ -497,7 +497,7 @@ module.exports = function (grunt) {
     'clean:dev',
     'jst:dev',
     'less:dev',
-    'stylus:dev',
+//    'stylus:dev',
     'copy:dev',
     'coffee:dev',
     'concat',
