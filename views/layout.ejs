@@ -25,12 +25,12 @@
       <div class="navbar-fixed-top">
         <header>
           <div id="logo">beta*</div>
-          <div id="busqueda"><span aria-hidden="true" title="Search" class="icon-search"></span></div>
-          <div id="ubicacion"><span aria-hidden="true" title="Nearby" class="icon-location"></span></div>
-          <div id="elmenu"><span aria-hidden="true" title="Menu" class="icon-profile"></span></div>
+          <div id="busqueda"><i class="icon-search"></i></div>
+          <div id="ubicacion"><i class="icon-location"></i></div>
+          <div id="elmenu"><i class="icon-profile"></i></div>
           <div id="dondeestoy"></div>
           <div id="quiensoy">
-            <span aria-hidden="true" title="User" class="icon-user"></span><% if( loggedUser ) { %><a href="/user/<%= loggedUser.id %>"><%= loggedUser.username %></a><% } %>
+            <i class="icon-user"></i> <% if( loggedUser ) { %><a href="/user/<%= loggedUser.id %>"><%= loggedUser.username %></a><% } %>
           </div>
         </header>
         <div id="buscador" class="row">
