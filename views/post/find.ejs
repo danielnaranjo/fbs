@@ -27,7 +27,11 @@ if ( typeof posts === 'undefined' ) {
     <% } %>
 
     <div id="descripcion">
-    	<h3><%= post.title %></h3>
+    	<h3>
+        <%= post.title %>
+        <!-- 
+        <% if ( session.canAdminUser ) { %><a href="/post/edit/<%= post.id %>"><i class="glyphicon glyphicon-pencil"></i></a><% } %> -->
+      </h3>
       <p>
         <% if ( post.summary=== 'undefined' ) { %>
         <em><%= post.summary %></em>.

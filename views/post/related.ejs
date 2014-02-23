@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<section class="js-masonry">
+<section  <% if(loggedUser.id===post.publisher) { %>class="js-masonry"<% } %>>
 	<div id="relacionado">
 <%
 if ( typeof posts === 'undefined' ) {
@@ -21,13 +21,15 @@ if ( typeof posts === 'undefined' ) {
 <div id="container">
 	<ul>
 	    <% _.each(post, function(post){ %>
-	    <li class="box">
+	    <li <% if(loggedUser.id==post.publisher) { %>class="box" <% } %>>
 	    	<% if ( post.photos === 'undefined' ) { %>
-	    	<a href="/post/<%= post.id %>">
+	    	<a href="/post/<%= post.id %>" target="_parent">
 	    		<img src="<%=post.photos %>" alt="<%= post.title %>">
 	    	<% } %>
 	    	</a>
-	    	<h4><a href="/post/<%= post.id %>"><%= post.title %></a></h4>
+	    	<h4>
+	    		<a href="/post/<%= post.id %>" target="_parent"><%= post.title %></a>
+	    	</h4>
 	      	<p><%= post.summary %></p>
           <p>
               <i class="glyphicon glyphicon-heart"></i>   <span> 5 </span>

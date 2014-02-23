@@ -66,7 +66,7 @@ module.exports = {
       });
     }
     function isShortcut(id){
-      return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' || id=== 'related');
+      return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' || id=== 'related' || id=== 'tags');
     }
   },
   create: function(req, res, next) {
@@ -128,6 +128,17 @@ module.exports = {
       if ( err ) return next(err);
       //else return res.json(201, post); 
       else return res.view({ post: post, layout: null });
+    });
+
+  },
+  tags: function(req, res) {
+    var id = req.param('id');
+    if( !id ) return res.notFound();
+
+    Post.find({ title: { contains: id } }).done(function relatedPost(err, post){
+      if ( err ) return next(err);
+      //else return res.json(201, post); 
+      else return res.view({ post: post});
     });
 
   },
