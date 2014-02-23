@@ -46,7 +46,7 @@ module.exports = {
       var filters = {
         limit: req.param('limit') || undefined,
         skip: req.param('skip')  || undefined,
-        sort: req.param('sort') || undefined,
+        sort: req.param('sort') || 'createdAt DESC',
         where: where || undefined
       };
       // Find users according with filters
@@ -66,7 +66,7 @@ module.exports = {
       });
     }
     function isShortcut(id){
-      return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' );
+      return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' || id=== 'related');
     }
   },
   create: function(req, res, next) {
@@ -116,9 +116,21 @@ module.exports = {
         if (req.wantsJSON) return res.json(200);
         // Redirect to the users page.
         else return res.redirect('/');
-      })
+      });
     });
-  }, 
+  },
+  // Solo via iframe
+  related: function(req, res) {
+    var id = req.param('id');
+    if( !id ) return res.notFound();
+
+    Post.find({ "patron_id": id }).limit(4).done(function relatedPost(err, post){
+      if ( err ) return next(err);
+      //else return res.json(201, post); 
+      else return res.view({ post: post, layout: null });
+    });
+
+  },
 
   /*
    * Actions to render a view.

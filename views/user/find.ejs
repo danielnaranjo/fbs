@@ -95,9 +95,7 @@ if ( typeof users === 'undefined' ) {
 			<h3>Show all posts or create a <a href="/post/new">new one</a></h3>
 		</div>
 		<div>
-			<% // _.each(post, function(posts){ %>
-			<p>[List] a[href="#"]URL</p>
-			<% // }); %>
+			<iframe src="/post/related/<%= user.id %>" frameborder="0" width="100%" height="300px" scrolling="no"></iframe>
 		</div>		
 	</div>
 </div>
@@ -111,11 +109,11 @@ if ( typeof users === 'undefined' ) {
 
 
 		<h2>Users</h2>
-		<ul>
+		<div>
 		<% _.each(users, function(user){ %>
-			<li><a href="/user/<%= user.id %>"><%= user.username %></a></li>
+			<p><a href="/user/<%= user.id %>"><%= user.username %></a></p>
 		<% }); %>
-		</ul>
+		</div>
 
 
 <% } %>

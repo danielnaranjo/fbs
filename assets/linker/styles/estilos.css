@@ -82,9 +82,6 @@ footer a:hover{text-decoration:underline}
 #anuncio{text-align:center;}
 #anuncio img{max-width:90%;width:auto}
 @media screen and (max-width: 480px){#anuncio{max-width:99%;width:auto}
-}.vermas{height:auto;padding:10px 0 10px 0;text-align:center;width:100%}
-.similar{height:auto;padding:10px 0 10px 0;text-align:center;width:100%;}
-@media screen and (max-width: 480px){.similar{display:none}
 }#discuss{height:auto;margin:10px;padding:0;width:98%;}
 @media screen and (max-width: 480px){#discuss{display:none}
 }#contenido2{color:#818181;display:inline-block;font-size:.9em;height:auto;margin:0 0 0 5px;text-align:left;vertical-align:top;width:99%;}
@@ -208,3 +205,15 @@ footer a:hover{text-decoration:underline}
 .adresponsive{background-color:#fff;border:1px solid #e3e3e3;border-radius:3px;height:auto;padding:10px;width:auto}
 a.tagsbypost{color:#37a6d7;text-decoration:underline important}
 .box i,#descripcion i{color:#37a6d7}
+#relacionado{color:#818181;display:inline-block;font-size:.9em;margin:10px 0 60px 5px;vertical-align:top;width:99%;}
+#relacionado ul{padding:0;margin:0}
+#relacionado li{height:auto;list-style:none;margin:0 5px 5px 0;padding:10px;width:280px;}
+@media screen and (max-width: 480px){#relacionado li{width:98%}
+}#relacionado a{color:#3caee1}
+#relacionado h1,#relacionado h3{margin:0;padding:0}
+#relacionado img{height:auto;width:280px;}
+@media screen and (max-width: 480px){#relacionado img{display:none}
+}.vermas{height:auto;padding:10px 0 10px 0;text-align:center;width:100%}
+.similar{height:auto;padding:10px 0 10px 0;text-align:center;width:100%;}
+@media screen and (max-width: 480px){.similar{display:none}
+}

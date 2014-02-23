@@ -14,7 +14,7 @@ module.exports = {
 		title:'STRING',
 		summary:'STRING',
 		text:'STRING',
-		tags:'array',
+		populars:'STRING',
 		contactMail:'STRING',
 		city:'STRING',
 		country:'STRING',
@@ -24,6 +24,16 @@ module.exports = {
 		latitude:'STRING',
 		url:'STRING',
 		dip:'STRING'
+	},
+	beforeCreate: function (values, next) {
+		if (!values.title) {
+			return next({err: ["Error: Must have a title!"]});
+		}
+		if (!values.text) {
+			return next({err: ["Error: Must have a large description!"]});
+		}
+		values.slug = values.populars.replace(/\s+/g, '').toLowerCase();
+		next();
 	}
 
 };

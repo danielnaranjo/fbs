@@ -117,13 +117,16 @@ if ( typeof posts === 'undefined' ) {
 </div>
 </section>
 
-<!-- 
+
 <section class="vermas">
 	<div>
-		More posts from <a href="/related/<%= post.patron_id %>" class="azul">USUARIO</a>
+		More posts from <a href="/related/<%= post.patron_id %>" class="azul"><%= post.publisher %></a>
 	</div>
+  <div>
+    <iframe src="/post/related/<%= post.patron_id %>" frameborder="0" width="100%" height="300px" scrolling="no"></iframe>
+  </div>    
 </section>
-
+<!-- 
 <section class="js-masonry">
 	<div>Loading content, please hold on..</div>
 </section>
