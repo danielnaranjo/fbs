@@ -55,8 +55,8 @@ module.exports = {
 			var obj = this.toObject();
 			// If there are a callback, compare async.
 			if (callback) {
-				 //callback (err, res)
-				 return bcrypt.compare(password, obj.password, callback);
+				//callback (err, res)
+				return bcrypt.compare(password, obj.password, callback);
 			}
 			// Otherwise, compare sync.
 			return bcrypt.compareSync(password, obj.password);
@@ -67,6 +67,15 @@ module.exports = {
 	},
 	// Lifecycle Callbacks.
 	beforeCreate: function(values, next) {
+		// ALL fields are required!
+		if (!values.username) return next({err: ["Error: Must have a username!"]});
+		if (!values.email) return next({err: ["Error: Must have a valid e-mail!"]});
+		if (!values.password) return next({err: ["Error: Must have a password!"]});
+		
+		// ALL to lower case!
+		values.populars = values.populars.replace(/\s+/g, '').toLowerCase();
+
+		// Changed to cryp the old password..
 		if( values.password) hashPassword(values, next);
 		else next();
 	},
@@ -128,19 +137,5 @@ function hashPassword(values, next) {
 			values.password = hash;
 			next();
 		});
-	 });
-}
-
-function whereareyou(values, next) {
-	if(user.ip) {
-		request({ url: 'https://mejorando.la/locateme?ip='+req.ip },
-		function (err, response, body) {
-			if(err) return next();
-			req.user.pip = req.ip;
-			req.user.pais = body;
-			req.user.save();
-			console.log(body);
-			next();
-		});
-	}
+	});
 }

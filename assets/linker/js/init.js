@@ -37,7 +37,7 @@ $(document).ready(function(e) {
 			setTimeout(function() {
 				$('#dondeestoy').html('We\'re ready!  :) ');
 				$('#dondeestoy').removeClass().addClass("fadeOut");
-				console.log(miubicacion[0]+','+miubicacion[1]);
+				// console.log(miubicacion[0]+','+miubicacion[1]);
 			}, 3000);
 			// Mostrar datos en la caja de busqueda
 			//$("#w").val('Estas cerca de '+miubicacion[0]+','+miubicacion[1]);
@@ -47,6 +47,7 @@ $(document).ready(function(e) {
 	/* masonry */
 	$("#contenido").masonry({ itemSelector: 'li' });
 	$("#contenido2").masonry({ itemSelector: 'li' });
+	$("#relacionado").masonry({ itemSelector: 'li' });
 	/* Cuadro de busqueda */
 
 	$('#busqueda').on('click', function() { $('#buscador').toggle().removeClass().addClass("fadeInDown"); });
