@@ -30,8 +30,5 @@
     "url": "git://github.com/danielnaranjo/fbs.git"
   },
   "author": "Daniel Naranjo",
-  "license": "No license",
-  "devDependencies": {
-    "grunt-contrib-stylus": "~0.12.0"
-  }
+  "license": "No license"
 }
