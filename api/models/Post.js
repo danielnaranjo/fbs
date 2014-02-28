@@ -32,7 +32,9 @@ module.exports = {
 		if (!values.text) {
 			return next({err: ["Error: Must have a large description!"]});
 		}
-		values.slug = values.populars.replace(/\s+/g, '').toLowerCase();
+		// ALL to lower case! 
+		values.populars = values.populars.replace(/\s+/g, '').toLowerCase();
+		// Keep Going!
 		next();
 	}
 

@@ -71,9 +71,6 @@ module.exports = {
 		if (!values.username) return next({err: ["Error: Must have a username!"]});
 		if (!values.email) return next({err: ["Error: Must have a valid e-mail!"]});
 		if (!values.password) return next({err: ["Error: Must have a password!"]});
-		
-		// ALL to lower case!
-		values.populars = values.populars.replace(/\s+/g, '').toLowerCase();
 
 		// Changed to cryp the old password..
 		if( values.password) hashPassword(values, next);
