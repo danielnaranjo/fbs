@@ -9,21 +9,61 @@
 module.exports = {
 
 	attributes: {
-		patron_id:'STRING',
-		publisher:'STRING',
-		title:'STRING',
-		summary:'STRING',
-		text:'STRING',
-		populars:'STRING',
-		contactMail:'STRING',
-		city:'STRING',
-		country:'STRING',
-		chat:'INTEGER',
-		map:'INTEGER',
-		longitude:'STRING',
-		latitude:'STRING',
-		url:'STRING',
-		dip:'STRING'
+		patron_id: {
+			type: 'string',
+			required: true
+		},
+		publisher: {
+			type: 'string',
+			required: true
+		},
+		contactMail: {
+			type: 'string',
+			required: true,
+			email: true,
+		},
+		title: {
+			type: 'string',
+			required: true
+		},
+		summary: {
+			type: 'string',
+		},
+		text: {
+			type: 'string',
+			required: true
+		},
+		populars: {
+			type: 'string'
+		},
+		city: {
+			type: 'string'
+		},
+		country: {
+			type: 'string'
+		},
+		chat: {
+			type: 'integer'
+		},
+		map: {
+			type: 'integer'
+		},
+		longitude: {
+			type: 'string'
+		},
+		latitude: {
+			type: 'string'
+		},
+		url: {
+			type: 'string'
+		},
+		dip: {
+			type: 'ip'
+		},
+		photos: {
+			type: 'array',
+			defaultsTo: []
+		}
 	},
 	beforeCreate: function (values, next) {
 		if (!values.title) {
