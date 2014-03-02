@@ -20,9 +20,9 @@ if ( typeof posts === 'undefined' ) {
   	</script>
     </div>
 
-    <% if ( post.photos=== 'undefined' ) { %>
+    <% if(post.photos) { %>
   	<div id="anuncio">
-  		<img src="<%=post.photos%>" alt="<%= post.title %>">
+  		<img src="<%=post.photos %>" alt="<%= post.title %>">
   	</div>
     <% } %>
 
@@ -48,8 +48,13 @@ if ( typeof posts === 'undefined' ) {
       <p class="text-right">
           <p>
               <i class="icon-tags"></i> Tags: 
-<% var str = post.title; var arr = str.split(' '); for(var i=0;i<arr.length;i++) { %>
-<a class="tagsbypost" href="post/tags/<%= arr[i] %>"><%= arr[i] %></a><% } %>
+              <%
+              if(post.populars) { var str = post.populars; } else { var str = post.title; }
+              var arr = str.replace(/,/g," ").split(' ');
+              for(var i=0;i<arr.length;i++) { 
+              %>
+              <a class="tagsbypost" href="/post/tags/<%= arr[i] %>"><%= arr[i] %></a>
+              <% } %>
           </p>
       </p>
       <p>
@@ -121,13 +126,12 @@ if ( typeof posts === 'undefined' ) {
 </div>
 </section>
 
-
 <section class="vermas">
 	<div>
 		More posts from <a href="/related/<%= post.patron_id %>" class="azul"><%= post.publisher %></a>
 	</div>
   <div>
-    <iframe src="/post/related/<%= post.patron_id %>" frameborder="0" width="100%" height="300px" scrolling="no"></iframe>
+    <iframe src="/post/related/<%= post.patron_id %>" frameborder="0" width="95%" height="300px" scrolling="no"></iframe>
   </div>    
 </section>
 <!-- 
@@ -166,12 +170,29 @@ if ( typeof posts === 'undefined' ) {
 
 	    <% _.each(posts, function(post){ %>
 	    <li class="box">
-	    	<% if ( post.photos === 'undefined' ) { %>
-	    	<a href="/post/<%= post.id %>">
-	    		<img src="<%=post.photos %>" alt="<%= post.title %>">
+        <!-- Habemus Photos -->
+        <% if(post.photos) { %>	  
+          <a href="/post/<%= post.id %>">  	
+	    		 <img src="<%= post.photos %>" alt="<%= post.title %>" class="pic" />
+          </a>
+          <!--
+          <div class="roll">
+            <div class="wrapcaption">
+              <a href="#">
+                <i class="glyphicon glyphicon-zoom-in"></i>
+              </a>
+              <a data-gal="prettyPhoto[gallery1]" href="<%=post.photos %>" title="<%= post.title %>">
+                <i class="glyphicon glyphicon-thumbs-up"></i>
+              </a>
+            </div>
+          </div>
+        -->
+        <!-- Habemus Photos -->
 	    	<% } %>
-	    	</a>
-	    	<h4><a href="/post/<%= post.id %>"><%= post.title %></a></h4>
+	    	
+	    	<h4>
+          <a href="/post/<%= post.id %>"><%= post.title %></a> 
+        </h4>
 	      	<p><%= post.summary %></p>
           <p>
               <i class="glyphicon glyphicon-heart"></i>   <span> 5 </span>
@@ -179,11 +200,17 @@ if ( typeof posts === 'undefined' ) {
               <i class="glyphicon glyphicon-star"></i>    <span> 2 </span>
               <i class="glyphicon glyphicon-flag"></i>    <span> 20 </span>
           </p>
-
           <p>
               <i class="icon-tags"></i> Tags: 
-<% var str = post.title; var arr = str.split(' '); for(var i=0;i<arr.length;i++) { %>
-<a class="tagsbypost" href="post/tags/<%= arr[i] %>"><%= arr[i] %></a><% } %>
+              <%
+              if(post.populars) { var str = post.populars; } else { var str = post.title; }
+              var arr = str.replace(/,/g," ").split(' ');
+              for(var i=0;i<arr.length;i++) { 
+              %>
+              <a class="tagsbypost" href="/post/tags/<%= arr[i] %>">
+                <%= arr[i] %>
+              </a>
+              <% } %>
           </p>
 	    </li>
 	    <% }); %>

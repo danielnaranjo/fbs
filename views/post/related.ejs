@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<section  <% if(loggedUser.id===post.publisher) { %>class="js-masonry"<% } %>>
+<section class="js-masonry">
 	<div id="relacionado">
 <%
 if ( typeof posts === 'undefined' ) {
@@ -21,8 +21,8 @@ if ( typeof posts === 'undefined' ) {
 <div id="container">
 	<ul>
 	    <% _.each(post, function(post){ %>
-	    <li <% if(loggedUser.id==post.publisher) { %>class="box" <% } %>>
-	    	<% if ( post.photos === 'undefined' ) { %>
+	    <li class="box" >
+	    	<% if ( post.photos) { %>
 	    	<a href="/post/<%= post.id %>" target="_parent">
 	    		<img src="<%=post.photos %>" alt="<%= post.title %>">
 	    	<% } %>
@@ -40,8 +40,15 @@ if ( typeof posts === 'undefined' ) {
 
           <p>
               <i class="icon-tags"></i> Tags: 
-<% var str = post.title; var arr = str.split(' '); for(var i=0;i<arr.length;i++) { %>
-<a class="tagsbypost" href="post/tags/<%= arr[i] %>"><%= arr[i] %></a><% } %>
+              <%
+              if(post.populars) { var str = post.populars; } else { var str = post.title; }
+              var arr = str.replace(/,/g," ").split(' ');
+              for(var i=0;i<arr.length;i++) { 
+              %>
+              <a class="tagsbypost" href="/post/tags/<%= arr[i] %>">
+                <%= arr[i] %>
+              </a>
+              <% } %>
           </p>
 	    </li>
 	    <% }); %>
@@ -49,8 +56,6 @@ if ( typeof posts === 'undefined' ) {
 
 </div>
 
-<% } else { %>
- <h4>No hay avisos relacionados</h4>
 <% } %>
 	</div>
 </section>

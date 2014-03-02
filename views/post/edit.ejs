@@ -5,29 +5,34 @@
 			<h2 class="form-signin-heading"><%= __('NewPostf') %></h2>
 			<div class="form-group">
 				<label for="title"><%= __('Titlef') %></label>
-				<input type="text" class="form-control" placeholder="<%= __('Titlef') %>" name="title" id="title" required/>
+				<input type="text" class="form-control" placeholder="<%= __('Titlef') %>" name="title" id="title" required value="<%= post.title %>" />
 			</div>
 			<div class="form-group">
 				<label for="summary"><%= __('Summaryf') %></label>
-				<input type="text" class="form-control" placeholder="<%= __('Summaryf') %>" name="summary" id="summary"/>
+				<input type="text" class="form-control" placeholder="<%= __('Summaryf') %>" name="summary" id="summary" value="<%= post.summary %>" />
 			</div>
 			<div class="form-group">
 				<label for="text"><%= __('Textf') %></label>
-				<textarea class="form-control" placeholder="<%= __('Textf') %>" name="text" id="text" required minlength="6"></textarea>
+				<textarea class="form-control" placeholder="<%= __('Textf') %>" name="text" id="text" required minlength="6"><%= post.text %></textarea>
 			</div>
 			<div class="form-group">
-				<label for="phoneNumber"><%= __('Phonef') %></label>
-				<input type="text" class="form-control" placeholder="<%= __('Phonef') %>" name="phoneNumber" id="phoneNumber"/>
+				<label for="populars"><%= __('Tags') %></label>
+				<input type="text" class="form-control" placeholder="<%= __('Tags') %>" name="populars" id="populars" value="<%= post.populars %>" />
 			</div>
 			<div class="form-group">
 				<label for="city"><%= __('Cityf') %></label>
-				<input type="text" class="form-control" placeholder="<%= __('Cityf') %>" name="city" id="city"/>
+				<input type="text" class="form-control" placeholder="<%= __('Cityf') %>" name="city" id="city" value="<%= post.city %>"/>
 			</div>
 			<div class="form-group">
 				<label for="country"><%= __('Countryf') %></label>
-				<input type="text" name="country" id="country" placeholder="<%= __('Countryf') %>" value="" />
+				<input type="text" class="form-control"name="country" id="country" placeholder="<%= __('Countryf') %>" value="<%= post.country %>" />
+			</div>
+			<div class="form-group">
+				<label for="tags"><%= __('Location') %></label>
+				<input type="text" class="form-control" placeholder="<%= __('Location') %>" name="location" id="location" value="<%= post.latitude %>,<%= post.longitude %>" disabled />
 			</div>
 		</div>
+
 		<div class="col-md-6" style="backgroung-color:#CCC; opacity:.5;" id="premium">
 			<h2 class="form-signin-heading"><%= __('Premiumf') %></h2>
 			<div><%= __('Explication') %></div>
@@ -65,27 +70,12 @@
 			<input type="hidden" name="patron_id" id="patron_id" value="<%= loggedUser.id %>"/>
 			<input type="hidden" name="publisher" id="publisher" value="<%= loggedUser.username %>"/>
 			<input type="hidden" name="contactMail" id="contactMail" value="<%= loggedUser.email %>"/>
-			<input type="hidden" name="longitude" id="longitude" value=""/>
-			<input type="hidden" name="latitude" id="latitude" value=""/>
+			<input type="hidden" name="longitude" id="longitude" value="<%= post.longitude %>"/>
+			<input type="hidden" name="latitude" id="latitude" value="<%= post.latitude %>"/>
 			<input type="hidden" name="dip" id="dip" value="<%= req.ip %>"/>
+
 			<input type="submit" class="btn btn-primary btn-block" value="<%= __('SendButton') %>" />
 		</div>
 		</form>
 	</div>
 </section>
-
-<script src="/linker/js/jquery.js"></script>
-<script>
-$(document).ready(function(e) {
-// geolocalization
-	jQuery.getJSON('http://freegeoip.net/json/', function(location) {
-		jQuery('#city').attr('value',location.city);
-		jQuery('#country').attr('value',location.country_name);
-		setTimeout(function() {
-			jQuery('#longitude').attr('value',miubicacion[0]);
-			jQuery('#latitude').attr('value',miubicacion[1]);
-		}, 5000);
-	});
-
-});
-</script>
