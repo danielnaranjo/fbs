@@ -161,6 +161,10 @@ footer
 .box:hover
 	box-shadow: 5px 5px 5px #ccc
 
+.pic
+	height auto
+	width 250px
+
 #contenido
 	color: #818181
 	display: inline-block
@@ -189,13 +193,6 @@ footer
 	h1, h3
 		margin: 0
 		padding: 0
-
-	img
-		height: auto
-		width: 280px
-
-		@media screen and (max-width: 480px)
-			display: none
 
 #buscador
 	background-color: #FFF
@@ -273,7 +270,7 @@ footer
 		a:hover
 			color: #2f8fbb
 
-#dondeestoy, #opciones
+#dondeestoy, #opciones, #nogeo
 	-webkit-mask-image: -webkit-linear-gradient(#000, rgba(0,0,0,0.9))
 	-webkit-backface-visibility: hidden
 	-moz-backface-visibility: hidden
@@ -321,6 +318,21 @@ footer
 
 		@media screen and (max-width: 480px)
 			margin: 0 5px
+
+#nogeo
+	background: #2a83ab
+	border-radius: 5px
+	color: #fff
+	font-weight: bold
+	height: auto
+	left 100px
+	margin: 0 auto
+	padding: 20px 10px
+	position: fixed
+	text-align: center
+	top: 0px
+	width: auto
+	z-index: 101
 
 .fs1
 	font-size: 2em
@@ -1043,3 +1055,43 @@ a.tagsbypost
 
 	@media screen and (max-width: 480px)
 		display: none
+
+.wrapcaption 
+	position: absolute
+	font-size: 30px
+	background: transparent
+	width: 100%
+	margin: 0px auto
+	display: table-cell
+	vertical-align: middle
+	top: 55%
+
+.captionicons 
+	font-size: 20px
+	padding: 10px
+	background: #ff6666
+	margin-right: 0px
+	border-radius: 1px
+	color: #fff
+	position: relative
+	text-align: center
+	top: 55%
+	vertical-align: middle
+	margin-top: 0px
+	margin: 0 auto
+
+.captionicons:hover 
+	opacity: 0.5
+
+.roll 
+	position: absolute
+	font-size: 30px
+	width: 90%
+	margin: 0px auto
+	height: 100%
+	top: -87.0px
+	display: table-cell
+	vertical-align: middle	
+	background: #DDD
+	z-index: 13
+	zoom: 1

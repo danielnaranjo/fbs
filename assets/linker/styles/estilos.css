@@ -26,15 +26,14 @@ footer a:hover{text-decoration:underline}
 #principal div{display:inline-block;height:auto;margin:0 5px 5px 0;vertical-align:top;width:auto}
 .box{background-color:#fff;border:1px solid #e3e3e3;border-radius:3px;height:auto;padding:10px;width:auto}
 .box:hover{box-shadow:5px 5px 5px #ccc}
+.pic{height:auto;width:250px}
 #contenido{color:#818181;display:inline-block;font-size:.9em;margin:105px 0 60px 5px;vertical-align:top;width:99%;}
 #contenido ul{padding:0;margin:0}
 #contenido li{height:auto;list-style:none;margin:0 5px 5px 0;padding:10px;width:280px;}
 @media screen and (max-width: 480px){#contenido li{width:98%}
 }#contenido a{color:#3caee1}
 #contenido h1,#contenido h3{margin:0;padding:0}
-#contenido img{height:auto;width:280px;}
-@media screen and (max-width: 480px){#contenido img{display:none}
-}#buscador{background-color:#fff;border-bottom:1px solid #e7e7e7;box-shadow:5px 5px 5px #ccc;display:none;height:100px;margin:0;padding:5px 0 10px 5px;vertical-align:top;width:100%;z-index:1;}
+#buscador{background-color:#fff;border-bottom:1px solid #e7e7e7;box-shadow:5px 5px 5px #ccc;display:none;height:100px;margin:0;padding:5px 0 10px 5px;vertical-align:top;width:100%;z-index:1;}
 #buscador div{display:inline-block;vertical-align:top}
 #buscador p{color:#bdbdbd;font-size:.8em;margin:-15px 0;padding:0;text-align:right}
 @media screen and (max-width: 480px){#buscador{border:0;height:50px}
@@ -49,11 +48,12 @@ footer a:hover{text-decoration:underline}
 @media screen and (max-width: 480px){#popular li{display:none}
 }#popular li a{text-decoration:none;color:#3caee1;padding:0 2px}
 #popular li a:hover{color:#2f8fbb}
-#dondeestoy,#opciones{-webkit-mask-image:-webkit-linear-gradient(#000,rgba(0,0,0,0.9));-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;-o-backface-visibility:hidden;-webkit-animation-duration:1s;-webkit-animation-delay:.2s;-webkit-animation-timing-function:ease;-webkit-animation-fill-mode:both;-moz-animation-duration:1s;-moz-animation-delay:.2s;-moz-animation-timing-function:ease;-moz-animation-fill-mode:both;-ms-animation-duration:1s;-ms-animation-delay:.2s;-ms-animation-timing-function:ease;-ms-animation-fill-mode:both;-o-animation-duration:1s;-o-animation-delay:.2s;-o-animation-timing-function:ease;-o-animation-fill-mode:both;backface-visibility:hidden;animation-duration:1s;animation-delay:.2s;animation-timing-function:ease;animation-fill-mode:both}
+#dondeestoy,#opciones,#nogeo{-webkit-mask-image:-webkit-linear-gradient(#000,rgba(0,0,0,0.9));-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;-o-backface-visibility:hidden;-webkit-animation-duration:1s;-webkit-animation-delay:.2s;-webkit-animation-timing-function:ease;-webkit-animation-fill-mode:both;-moz-animation-duration:1s;-moz-animation-delay:.2s;-moz-animation-timing-function:ease;-moz-animation-fill-mode:both;-ms-animation-duration:1s;-ms-animation-delay:.2s;-ms-animation-timing-function:ease;-ms-animation-fill-mode:both;-o-animation-duration:1s;-o-animation-delay:.2s;-o-animation-timing-function:ease;-o-animation-fill-mode:both;backface-visibility:hidden;animation-duration:1s;animation-delay:.2s;animation-timing-function:ease;animation-fill-mode:both}
 #dondeestoy{background:#2a83ab;border-radius:5px;color:#fff;display:none;font-weight:bold;height:auto;margin:0 auto;padding:20px 10px;position:absolute;text-align:center;top:20px;width:auto;z-index:10;}
 #dondeestoy p{margin:0;}
 @media screen and (max-width: 480px){#dondeestoy p{margin:0 5px}
-}.fs1{font-size:2em}
+}#nogeo{background:#2a83ab;border-radius:5px;color:#fff;font-weight:bold;height:auto;left:100px;margin:0 auto;padding:20px 10px;position:fixed;text-align:center;top:0;width:auto;z-index:101}
+.fs1{font-size:2em}
 .glyph{color:#bebebe;cursor:pointer;font-size:16px;float:left;text-align:center;padding:10px;width:auto;}
 .glyph a{color:#bebebe}
 .glyph a:hover{color:#a8a8a8}
@@ -216,4 +216,7 @@ a.tagsbypost{color:#37a6d7;text-decoration:underline important}
 }.vermas{height:auto;padding:10px 0 10px 0;text-align:center;width:100%}
 .similar{height:auto;padding:10px 0 10px 0;text-align:center;width:100%;}
 @media screen and (max-width: 480px){.similar{display:none}
-}
+}.wrapcaption{position:absolute;font-size:30px;background:transparent;width:100%;margin:0 auto;display:table-cell;vertical-align:middle;top:55%}
+.captionicons{font-size:20px;padding:10px;background:#f66;margin-right:0;border-radius:1px;color:#fff;position:relative;text-align:center;top:55%;vertical-align:middle;margin-top:0;margin:0 auto}
+.captionicons:hover{opacity:.5}
+.roll{position:absolute;font-size:30px;width:90%;margin:0 auto;height:100%;top:-87px;display:table-cell;vertical-align:middle;background:#ddd;z-index:13;zoom:1}
