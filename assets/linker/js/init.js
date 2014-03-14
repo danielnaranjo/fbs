@@ -52,7 +52,7 @@
 	// Admin //
 	var avisos = function() {
 		$('#avisos').html('<ul></ul>');
-        $.getJSON( "http://localhost:1337/post?sort=DESC&limit=10", function(data) {
+        $.getJSON( "/post?sort=DESC&limit=10", function(data) {
         //$('#avisos').prepend('<h3>Active post: '+data.length+'</h3>');
           var items = [];
           $.each( data, function( key, val ) {
@@ -63,7 +63,7 @@
     }
 	var usuarios = function() {
 		$('#usuarios').html('<ul></ul>');
-        $.getJSON( "http://localhost:1337/user?sort=DESC&limit=10", function(data) {
+        $.getJSON( "/user?sort=DESC&limit=10", function(data) {
         //$('#usuarios').prepend('<h3>Active users: '+data.length+'</h3>');
           var items = [];
           $.each( data, function( key, val ) {
