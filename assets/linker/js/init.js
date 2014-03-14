@@ -84,7 +84,39 @@
 		});
 		console.log('Counting users');
 	}
+	var mapa = function(){
+		$('#mapa').html('');
+		var map = L.map('mapa').setView([miubicacion[0], miubicacion[1]], 5);
+		L.tileLayer('http://{s}.tile.cloudmade.com/2aa8946815814d3ea0bb70bd8e8a8ea5/997/256/{z}/{x}/{y}.png', {
+		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'}).addTo(map);
+		var popup = L.popup();
+		L.marker([miubicacion[0], miubicacion[1]])
+			.addTo(map)
+			.bindPopup("<strong>You are here</strong>: "+ miubicacion[0]+","+ miubicacion[1])
+			.openPopup();
 
+		var LeafIcon = L.Icon.extend({ 
+			options: {
+				shadowUrl: '/img/marker-shadow.png'
+			} 
+		});
+		var Icon = new LeafIcon({
+			iconUrl: '/img/marker-yellow.png'
+		});
+
+		$.getJSON( "/post", function(data) {
+		var items = [];
+		$.each( data, function( key, val ) {
+			var locacion = val.location;
+			var marcador = locacion.split(",");
+			L.marker([parseInt(marcador[0]), parseInt(marcador[1])], {icon: Icon})
+				.addTo(map)
+				.bindPopup("<strong>"+val.title+"</strong>");
+			});
+		});
+	}
+
+	
 //ROLL ON HOVER
 /*
 	$(function() {

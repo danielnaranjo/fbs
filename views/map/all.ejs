@@ -9,23 +9,9 @@
   </div>
   <!-- map-->
   <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
   <script>
     setTimeout(function() { 
-     $('#mapa').html('');
-     
-     var map = L.map('mapa').setView([miubicacion[0], miubicacion[1]], 5);
-     L.tileLayer('http://{s}.tile.cloudmade.com/2aa8946815814d3ea0bb70bd8e8a8ea5/997/256/{z}/{x}/{y}.png', {
-      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
-     }).addTo(map);
-     var popup = L.popup();
-     L.marker([miubicacion[0], miubicacion[1]]).addTo(map).bindPopup("<strong>You are here</strong>: "+ miubicacion[0]+","+ miubicacion[1]).openPopup();
-     // Some samples
-     L.marker([51.5, -0.09]).addTo(map).bindPopup("<strong>London</strong>");
-     L.marker([48.3675000, -118.1166]).addTo(map).bindPopup("<strong>Waterloo</strong>");
-     L.marker([60, 105]).addTo(map).bindPopup("<strong>Siberia</strong>");
-     L.marker([40.69847032728747, -73.9514422416687]).addTo(map).bindPopup("<strong>New York</strong>");
-     
+      mapa(); 
     }, 5000);
   </script>
   <!-- leafletjs.com  -->
