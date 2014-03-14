@@ -170,7 +170,7 @@ if ( typeof posts === 'undefined' ) {
     <% _.each(posts, function(post){ %>
     <div class="box col-xs-6 col-sm-4">
       <% if ( post.photos) { %>
-      <a href="/post/<%= post.id %>"><img src="<%= post.photos %>" alt="<%= post.title %>" class="img-responsive"></a>
+      <a href="/post/<%= post.id %>"><img src="<%=post.photos %>" alt="<%= post.title %>" class="img-responsive"></a>
       <% } %>
       <h4><a href="/post/<%= post.id %>"><%= post.title %></a></h4>
       <p><%= post.summary %></p>

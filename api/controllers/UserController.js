@@ -37,6 +37,7 @@ module.exports = {
 				if (req.wantsJSON) return res.json(user);
 				// Else response view with results 
 				else return res.view({ user: user });
+				// else return res.json(user);
 			});
 		}
 		// Otherwise, we will retun an user array.
@@ -65,6 +66,7 @@ module.exports = {
 				// Otherwise, response view with results 
 				} else {
 					return res.view({ users: users });
+					// return res.json(users);
 				}
 			});
 
@@ -83,7 +85,10 @@ module.exports = {
 		// Schema is true, then we will save that we need.
 		var params = _.extend({}, req.session.tempUser, req.params.all());
 		User.create( params, function createdUser(err, user){
-			if (err) return next(err);
+			
+			//if (err) return next(err);
+			if (err) return res.redirect('/user/auth'); 
+
 			req.login(user, function(err){
 				if (err) return res.redirect('/user/auth');
 				// Redirect to the user page.

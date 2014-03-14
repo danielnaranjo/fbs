@@ -24,12 +24,15 @@ footer a{color:#fff;text-decoration:none}
 footer a:hover{text-decoration:underline}
 #principal{height:auto;margin:0 auto;padding:5px 0 0 20px;width:auto;}
 #principal div{display:inline-block;height:auto;margin:0 5px 5px 0;vertical-align:top;width:auto}
-.box{background-color:#fff;border:1px solid #e3e3e3;border-radius:3px;height:auto;padding:10px;width:auto}
-.box:hover{box-shadow:5px 5px 5px #ccc}
+.box{background-color:#fff;border:1px solid #e3e3e3;border-radius:3px;display:inline-block;height:auto;margin:0 5px 5px 0;padding:10px;vertical-align:top;}
+@media screen and (max-width: 480px){.box{width:98%}
+}@media screen and (min-width: 481px) and (max-width: 980px){.box{width:49%}
+}@media screen and (min-width: 981px){.box{width:24.5%}
+}.box:hover{box-shadow:5px 5px 5px #ccc}
 .pic{height:auto;width:250px}
 #contenido{color:#818181;display:inline-block;font-size:.9em;margin:105px 0 60px 5px;vertical-align:top;width:99%;}
 #contenido ul{padding:0;margin:0}
-#contenido li{height:auto;list-style:none;margin:0 5px 5px 0;padding:10px;width:280px;}
+#contenido li{height:auto;list-style:none;margin:0 5px 5px 0;padding:10px;width:24.5%;}
 @media screen and (max-width: 480px){#contenido li{width:98%}
 }#contenido a{color:#3caee1}
 #contenido h1,#contenido h3{margin:0;padding:0}
@@ -52,7 +55,7 @@ footer a:hover{text-decoration:underline}
 #dondeestoy{background:#2a83ab;border-radius:5px;color:#fff;display:none;font-weight:bold;height:auto;margin:0 auto;padding:20px 10px;position:absolute;text-align:center;top:20px;width:auto;z-index:10;}
 #dondeestoy p{margin:0;}
 @media screen and (max-width: 480px){#dondeestoy p{margin:0 5px}
-}#nogeo{background:#2a83ab;border-radius:5px;color:#fff;font-weight:bold;height:auto;left:100px;margin:0 auto;padding:20px 10px;position:fixed;text-align:center;top:0;width:auto;z-index:101}
+}#nogeo{background:#2e96c4;border-radius:5px;box-shadow:5px 5px 5px #ccc;color:#fff;display:none;font-weight:bold;height:auto;left:100px;margin:0 auto;padding:20px;position:fixed;text-align:left;top:200px;width:auto;z-index:101}
 .fs1{font-size:2em}
 .glyph{color:#bebebe;cursor:pointer;font-size:16px;float:left;text-align:center;padding:10px;width:auto;}
 .glyph a{color:#bebebe}
@@ -220,3 +223,17 @@ a.tagsbypost{color:#37a6d7;text-decoration:underline important}
 .captionicons{font-size:20px;padding:10px;background:#f66;margin-right:0;border-radius:1px;color:#fff;position:relative;text-align:center;top:55%;vertical-align:middle;margin-top:0;margin:0 auto}
 .captionicons:hover{opacity:.5}
 .roll{position:absolute;font-size:30px;width:90%;margin:0 auto;height:100%;top:-87px;display:table-cell;vertical-align:middle;background:#ddd;z-index:13;zoom:1}
+.bootstrap-tagsinput{background-color:#fff;border:1px solid #ccc;box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);display:inline-block;padding:4px 6px;margin-bottom:10px;color:#555;vertical-align:middle;border-radius:4px;max-width:100%;line-height:22px}
+.bootstrap-tagsinput input{border:none;box-shadow:none;outline:none;background-color:transparent;padding:0;margin:0;width:auto !important;max-width:inherit}
+.bootstrap-tagsinput input:focus{border:none;box-shadow:none}
+.bootstrap-tagsinput .tag{margin-right:2px;color:#fff}
+.bootstrap-tagsinput .tag [data-role="remove"]{margin-left:8px;cursor:pointer}
+.bootstrap-tagsinput .tag [data-role="remove"]:after{content:"x";padding:0 2px}
+.bootstrap-tagsinput .tag [data-role="remove"]:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05)}
+.bootstrap-tagsinput .tag [data-role="remove"]:hover:active{box-shadow:inset 0 3px 5px rgba(0,0,0,0.125)}
+html,body{height:100%}
+#wrap{min-height:100%;height:auto;margin:0 auto -60px;padding:0 0 60px}
+#wrap > .container{padding:60px 15px 0}
+.container .text-muted{margin:20px 0}
+.form-center{max-width:330px;margin:0 auto}
+.realStats,.bigChart{background-color:#fff;border:1px solid #e3e3e3;border-radius:3px;display:inline-block;height:auto;margin:0 5px 5px 0;padding:10px;vertical-align:top;width:49%}

@@ -2,30 +2,30 @@
 	<div id="contenido">
 		<form role="form" action="/post/create" method="POST" class="form-left" id="sign-up-form">
 		<div class="col-md-6">
-			<h2 class="form-signin-heading"><%= __('NewPostf') %></h2>
+			<h2 class="form-signin-heading"><%= __('New post') %></h2>
 			<div class="form-group">
-				<label for="title"><%= __('Titlef') %></label>
-				<input type="text" class="form-control" placeholder="<%= __('Titlef') %>" name="title" id="title" required/>
+				<label for="title"><%= __('Title of your product or service') %></label>
+				<input type="text" class="form-control" placeholder="<%= __('Title of your product or service') %>" name="title" id="title" required/>
 			</div>
 			<div class="form-group">
-				<label for="summary"><%= __('Summaryf') %></label>
-				<input type="text" class="form-control" placeholder="<%= __('Summaryf') %>" name="summary" id="summary"/>
+				<label for="summary"><%= __('Brief description') %></label>
+				<input type="text" class="form-control" placeholder="<%= __('Brief description') %>" name="summary" id="summary"/>
 			</div>
 			<div class="form-group">
-				<label for="text"><%= __('Textf') %></label>
-				<textarea class="form-control" placeholder="<%= __('Textf') %>" name="text" id="text" required minlength="6"></textarea>
+				<label for="text"><%= __('Large description (You can include your address, telephones, email)') %></label>
+				<textarea class="form-control" placeholder="<%= __('Large description (You can include your address, telephones, email)') %>" name="text" id="text" required minlength="6"></textarea>
 			</div>
 			<div class="form-group">
 				<label for="populars"><%= __('Tags') %></label>
-				<input type="text" class="form-control" placeholder="<%= __('Tags') %>" name="populars" id="populars"/>
+				<input type="text" class="form-control" name="populars" id="populars" />
 			</div>
 			<div class="form-group">
-				<label for="city"><%= __('Cityf') %></label>
-				<input type="text" class="form-control" placeholder="<%= __('Cityf') %>" name="city" id="city"/>
+				<label for="city"><%= __('City') %></label>
+				<input type="text" class="form-control" placeholder="<%= __('City') %>" name="city" id="city"/>
 			</div>
 			<div class="form-group">
-				<label for="country"><%= __('Countryf') %></label>
-				<input type="text" class="form-control"name="country" id="country" placeholder="<%= __('Countryf') %>" />
+				<label for="country"><%= __('Country') %></label>
+				<input type="text" class="form-control"name="country" id="country" placeholder="<%= __('Country') %>" />
 			</div>
 			<div class="form-group">
 				<label for="tags"><%= __('Location') %></label>
@@ -34,25 +34,25 @@
 		</div>
 
 		<div class="col-md-6" style="backgroung-color:#CCC; opacity:.5;" id="premium">
-			<h2 class="form-signin-heading"><%= __('Premiumf') %></h2>
-			<div><%= __('Explication') %></div>
+			<h2 class="form-signin-heading"><%= __('Premium features') %></h2>
+			<div><%= __('Some features require a small pay') %></div>
 			<div class="checkbox">
-				<label><%= __('Chat') %> (Add USD $1)</label>
+				<label><%= __('Chat') %> (<%= __('Paid') %>)</label>
 				<input type="checkbox" name="chat" id="chat" value="1" disabled/>
 			</div>
 			<div class="checkbox">
-				<label><%= __('ShowMe') %> (Add USD $1)</label>
+				<label><%= __('Show me on Map') %> (<%= __('Paid') %>)</label>
 				<input type="checkbox" name="map" id="map" value="1" disabled/>
 			</div>
 			<div class="form-group">
-				<label for="photos"><%= __('Pictures') %> (Add USD $1/picture)</label>
+				<label for="photos"><%= __('Pictures') %> (<%= __('Paid') %>)</label>
 				<input type="file" name="photos1" id="photos1" disabled/>
 				<input type="file" name="photos2" id="photos2" disabled/>
 				<input type="file" name="photos3" id="photos3" disabled/>
 				<input type="file" name="photos4" id="photos4" disabled/>
 				<input type="file" name="photos5" id="photos5" disabled/>
 				<p class="help-block">
-					<a href="#"><%= __('MorePic') %>?</a>
+					<a href="#"><%= __('Need more pictures?') %></a>
 				</p>
 			</div>
 			<div class="form-group" id="paid">
@@ -62,7 +62,7 @@
 			</div>
 			<div class="form-group" id="paid">
 				<p class="help-block">
-					<div><%= __('BetaTester') %></div>
+					<div><%= __('Some features are in beta') %></div>
 				</p>
 			</div>
 		</div>
@@ -70,11 +70,9 @@
 			<input type="hidden" name="patron_id" id="patron_id" value="<%= loggedUser.id %>"/>
 			<input type="hidden" name="publisher" id="publisher" value="<%= loggedUser.username %>"/>
 			<input type="hidden" name="contactMail" id="contactMail" value="<%= loggedUser.email %>"/>
-			<input type="hidden" name="longitude" id="longitude"/>
-			<input type="hidden" name="latitude" id="latitude"/>
 			<input type="hidden" name="dip" id="dip" value="<%= req.ip %>"/>
 			<input type="hidden" name="_csrf" value="<%= _csrf %>">
-			<input type="submit" class="btn btn-primary btn-block" value="<%= __('SendButton') %>" />
+			<input type="submit" class="btn btn-primary btn-block" value="<%= __('Send') %>" />
 		</div>
 		</form>
 	</div>
@@ -88,14 +86,13 @@ $(document).ready(function(e) {
 		$('#city').attr('value',location.city);
 		$('#country').attr('value',location.country_name);
 		setTimeout(function() {
-			$('#longitude').attr('value',miubicacion[0]);
-			$('#latitude').attr('value',miubicacion[1]);
 			$('#location').attr('value',miubicacion[0]+','+miubicacion[1]);
 		}, 5000);
 	});
 	// Copy Title to Populars' tags and split to insert into DB
-	$('#title').change(function() {
+	$('#title').on('change',function() {
     	$('#populars').val($(this).val().split(' ').join(', '));
+    	$('#populars').tagsinput('add', $("#populars").val());
 	});
 });
 </script>

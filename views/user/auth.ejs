@@ -4,7 +4,7 @@
 		<form role="form" action="/user/login" method="POST" class="form-center">
 			<h2 class="form-signin-heading"><%= __('Sign In') %></h2>
 			<div class="form-group">
-				<label for="username"><%= __('%s or %s', __('Username'), __('Email')) %></label>
+				<label for="username"><%= __('Username') %></label>
 				<input type="text" class="form-control" placeholder="<%= __('someone@somewhere.com') %>" name="username" id="username" required />
 			</div>
 			<div class="form-group">
@@ -22,7 +22,7 @@
 				<form role="form" action="/user/login/<%= provider_id %>" method="POST" class="form-center">
 					<p>
 						<button type="submit" class="btn btn-social btn-<%= provider_id %> btn-block">
-							<i class="fa fa-<%= __(provider_id) %>"></i> Sign in with <%= __(provider_id) %>
+							<i class="fa fa-<%= __(provider_id) %>"></i> <%= __('Sign in with') %> <%= __(provider_id) %>
 						</button>
 					</p>
 				</form>
@@ -32,7 +32,7 @@
 		</div>
 		<% } %>
 		<p class="text-center">
-			or Create a <a href="/user/new"><%= __('new account') %></a>
+			<%= __('or Create a') %> <a href="/user/new"><%= __('new account') %></a>
 		</p>
 		</div>
 	</div>

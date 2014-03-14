@@ -48,10 +48,7 @@ module.exports = {
 		map: {
 			type: 'integer'
 		},
-		longitude: {
-			type: 'string'
-		},
-		latitude: {
+		location: {
 			type: 'string'
 		},
 		url: {

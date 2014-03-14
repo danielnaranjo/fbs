@@ -1,8 +1,10 @@
-<!DOCTYPE html>
-<html lang='en'>
+<!doctype html>
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>FindBY</title>
-    <meta charset='utf-8'>
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="description" content="A Geolocation Classified Ads for products and services around the world">
@@ -16,15 +18,18 @@
     <link rel="stylesheet" href="/linker/styles/bootstrap-social.css">
     <link rel="stylesheet" href="/linker/styles/estilos.css">
     <link rel="stylesheet" href="/linker/styles/font-awesome.css">
-    <link rel="stylesheet" href="/linker/styles/style.css">
+    <link rel="stylesheet" href="/linker/styles/styles.css">
     <!--STYLES END-->
   </head>
 
   <body>
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->    
     <div id="wrap">
       <div class="navbar-fixed-top">
         <header>
-          <div id="logo">beta*</div>
+          <div id="logo"></div>
           <div id="busqueda"><i class="icon-search"></i></div>
           <div id="ubicacion"><i class="icon-location"></i></div>
           <div id="elmenu"><i class="icon-profile"></i></div>
@@ -74,10 +79,10 @@
     <div id="opciones">
       <ul>
         <% if( loggedUser ) { %><li><a href="/user/<%= loggedUser.id %>"><%= __('Profile') %></a></li><% } else { %>
-        <li><a href="/user/new"><span class="glyphicon glyphicon-edit"></span> <%= __('SignUp') %></a></li>
-        <li><a href="/user/auth"><span class="glyphicon glyphicon-log-in"></span> <%= __('LogIn') %></a></li>
+        <li><a href="/user/new"><span class="glyphicon glyphicon-edit"></span> <%= __('Sign Up') %></a></li>
+        <li><a href="/user/auth"><span class="glyphicon glyphicon-log-in"></span> <%= __('Log In') %></a></li>
       <% } %>        
-        <% if( loggedUser ) { %><li><a href="/post/new"><%= __('PostNew') %></a></li><% } else { %><li><a href="/post"><%= __('AllPost') %></a></li><% } %>
+        <% if( loggedUser ) { %><li><a href="/post/new"><%= __('Create a new post') %></a></li><% } else { %><li><a href="/post"><%= __('All Posts') %></a></li><% } %>
         <li><a href="/map/all"><%= __('Explorer')%></a></li>
         <li><a href="#"><%= __('About')%></a></li>
         <li><a href="#"><%= __('Faq')%></a></li>
@@ -85,32 +90,11 @@
         <li><a href="#"><%= __('Contact')%></a></li>
         <% if( loggedUser ) { %>
         <li>&nbsp;</li>
-        <li><a href="/user/logout"><%= __('SignOut')%> <span class="glyphicon glyphicon-log-out"></span></a></li><% } %>
+        <li><a href="/user/logout"><%= __('Sign Out')%> <span class="glyphicon glyphicon-log-out"></span></a></li><% } %>
       </ul>
     </div>
 
-    <div="nogeo"></div>
-
-    <!--
-        Client-side Templates
-        ========================
-
-    		HTML templates are important prerequisites of modern, rich client applications.
-        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
-        that you load these templates client-side.
-
-        By default, your Gruntfile is configured to automatically load and precompile
-        client-side JST templates in your `assets/linker/templates` folder, then
-        include them here automatically.
-        
-        To customize this behavior to fit your needs, just edit your Gruntfile.
-        For example, here are a few things you could do:
-
-            + Import templates from other directories
-            + Use a different template engine (handlebars, jade, dust, etc.)
-            + Internationalize your templates using a server-side stringfile
-              before they're served.
-    -->
+    <div id="nogeo"></div>
 
     <!--TEMPLATES-->
     
@@ -122,10 +106,10 @@
     <script src="/linker/js/app.js"></script>
     <script src="/linker/js/jquery.js"></script>
     <script src="/linker/js/bootstrap.js"></script>
+    <script src="/linker/js/bootstrap-tagsinput.min.js"></script>
     <script src="/linker/js/ga.js"></script>
     <script src="/linker/js/init.js"></script>
     <script src="/linker/js/jquery-ui.min.js"></script>
-    <script src="/linker/js/jquery.qtip.min.js"></script>
     <script src="/linker/js/masonry.pkgd.min.js"></script>
     <script src="/linker/js/rlsmooth.js"></script>
     <!--SCRIPTS END-->
@@ -133,5 +117,6 @@
     <script>
     socket.on("connect", function(){ console.log("Client Connected"); });
     </script>
+   
   </body>
 </html>

@@ -17,7 +17,7 @@
 
 module.exports = {
     
-    find: function(req, res, next) {
+  find: function(req, res, next) {
     var id = req.param('id');
     // If id is a shortcut we don't have to find.
     if ( isShortcut(id) ) return next();
@@ -32,6 +32,8 @@ module.exports = {
         if (req.wantsJSON) return res.json(post);
         // Else response view with results 
         else return res.view({ post: post });
+        // Si cambias a AngularJS para mostrar JSON
+        // else return res.json(post);
       });
     }
     // Otherwise, we will retun an user array.
@@ -61,12 +63,13 @@ module.exports = {
         // Otherwise, response view with results 
         } else {
           return res.view({ posts: posts });
+          // Si cambias a AngularJS para mostrar JSON
+          // return res.json(posts);
         }
-        console.log("Posts found:", posts);
       });
     }
     function isShortcut(id){
-      return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' || id=== 'related' || id=== 'tags');
+      return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' || id=== 'related' || id=== 'tags' || id=== 'nearby');
     }
   },
   create: function(req, res, next) {
@@ -136,6 +139,17 @@ module.exports = {
     if( !id ) return res.notFound();
 
     Post.find({ title: { contains: id } }).done(function relatedPost(err, post){
+      if ( err ) return next(err);
+      //else return res.json(201, post);
+      else return res.view({ post: post});
+    });
+
+  },
+  nearby: function(req, res) {
+    var id = req.param('id');
+    if( !id ) return res.notFound();
+
+    Post.find({"location":{"$near":[10.96,-63.851],"$maxDistance":1000}}).done(function relatedPost(err, post){
       if ( err ) return next(err);
       //else return res.json(201, post);
       else return res.view({ post: post});
