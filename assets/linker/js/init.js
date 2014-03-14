@@ -73,13 +73,13 @@
         console.log('Loading users');
     }
     var totalPosts = function() {
-		$.getJSON( "http://localhost:1337/post", function(data) {
+		$.getJSON( "/post", function(data) {
 			$('#avisos').prepend('<h3>Active: '+data.length+' posts</h3>');
 		});
 		console.log('Counting posts');
 	}
     var totalUsers = function() {
-		$.getJSON( "http://localhost:1337/user", function(data) {
+		$.getJSON( "/user", function(data) {
 			$('#usuarios').prepend('<h3>Active: '+data.length+' users</h3>');
 		});
 		console.log('Counting users');
