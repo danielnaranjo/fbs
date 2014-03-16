@@ -1,6 +1,6 @@
 /* Generales */
 	var miubicacion = [];
-	
+	// Carga la GEO de HTML5
 	function showPosition(position) {
 		var lat = position.coords.latitude;
 		var lng = position.coords.longitude;
@@ -20,6 +20,7 @@
 			//$("#w").val('Estas cerca de '+miubicacion[0]+','+miubicacion[1]);
 		}, 2000);
 	}
+	// Mensajes de Errores de GEO
 	function onError() {
 		$('#nogeo').css('display', 'inline');
 		$('#nogeo').html('');
@@ -42,6 +43,7 @@
 			}, 7000);
 		}
 	}
+	// Muestra Geo segun IP
 	function WhereAmI() {
 		$.getJSON('http://freegeoip.net/json/', function(location) {
 			window.location.replace("/?city="+location.city+"&country="+location.country_name);
@@ -49,7 +51,7 @@
 			miubicacion[1]=location.longitude;
 		});
 	}
-	// Admin //
+	// Cargar todos los avisos
 	var avisos = function() {
 		$('#avisos').html('<ul></ul>');
         $.getJSON( "/post?sort=DESC&limit=10", function(data) {
@@ -61,6 +63,7 @@
         });
         console.log('Loading posts');
     }
+    // Cargar usuarios
 	var usuarios = function() {
 		$('#usuarios').html('<ul></ul>');
         $.getJSON( "/user?sort=DESC&limit=10", function(data) {
@@ -72,18 +75,21 @@
         });
         console.log('Loading users');
     }
+    // Total posts
     var totalPosts = function() {
 		$.getJSON( "/post", function(data) {
 			$('#avisos').prepend('<h3>Active: '+data.length+' posts</h3>');
 		});
 		console.log('Counting posts');
 	}
+	// Total usuarios
     var totalUsers = function() {
 		$.getJSON( "/user", function(data) {
 			$('#usuarios').prepend('<h3>Active: '+data.length+' users</h3>');
 		});
 		console.log('Counting users');
 	}
+	// Mapa total
 	var mapa = function(){
 		$('#mapa').html('');
 		var map = L.map('mapa').setView([miubicacion[0], miubicacion[1]], 5);
@@ -115,8 +121,20 @@
 			});
 		});
 	}
+	// Avisos relacionados
+	var relacionados = function() {
+		$('#showList').html('<ul></ul>');
+		var pathname = window.location.pathname; 
+		var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
+        $.getJSON( "/post/related/"+last, function(data) {
+        $('#showList').prepend('<br><h4>Active post: '+data.length+'</h4>');
+          var items = [];
+          $.each( data, function( key, val ) {
+            $('#showList ul').append("<li><a href='/post/" + val.id + "' target=\"_blank\">" + val.title + "</a></li>");
+          });
+        });
+	}
 
-	
 //ROLL ON HOVER
 /*
 	$(function() {

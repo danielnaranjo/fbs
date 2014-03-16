@@ -90,12 +90,17 @@ if ( typeof users === 'undefined' ) {
 		<div>
 			<h3><%= __('Show all posts or create a') %> <a href="/post/new"><%= __('New one') %></a></h3>
 		</div>
-		<div>
-			<iframe src="/post/related/<%= user.id %>" frameborder="0" width="100%" height="300px" scrolling="no"></iframe>
+		<div id="showList">
+			<h3>Loading users..</h3>
+			<!--<iframe src="/post/related/<%= user.id %>" frameborder="0" width="100%" height="300px" scrolling="no"></iframe>-->
 		</div>		
 	</div>
 </div>
-
+<script>
+	$(document).ready(function(e){
+		relacionados();
+	});
+</script>
 	
 		<% } %>
 	<%
@@ -115,3 +120,4 @@ if ( typeof users === 'undefined' ) {
 <% } %>
 </div>
 </section>
+

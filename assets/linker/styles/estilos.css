@@ -31,10 +31,7 @@ footer a:hover{text-decoration:underline}
 }.box:hover{box-shadow:5px 5px 5px #ccc}
 .pic{height:auto;width:250px}
 #contenido{color:#818181;display:inline-block;font-size:.9em;margin:105px 0 60px 5px;vertical-align:top;width:99%;}
-#contenido ul{padding:0;margin:0}
-#contenido li{height:auto;list-style:none;margin:0 5px 5px 0;padding:10px;width:24.5%;}
-@media screen and (max-width: 480px){#contenido li{width:98%}
-}#contenido a{color:#3caee1}
+#contenido a{color:#3caee1}
 #contenido h1,#contenido h3{margin:0;padding:0}
 #buscador{background-color:#fff;border-bottom:1px solid #e7e7e7;box-shadow:5px 5px 5px #ccc;display:none;height:100px;margin:0;padding:5px 0 10px 5px;vertical-align:top;width:100%;z-index:1;}
 #buscador div{display:inline-block;vertical-align:top}

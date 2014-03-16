@@ -129,7 +129,8 @@ module.exports = {
 
     Post.find({ "patron_id": id }).limit(4).done(function relatedPost(err, post){
       if ( err ) return next(err);
-      //else return res.json(201, post); 
+
+      if (req.wantsJSON) return res.json(post);
       else return res.view({ post: post, layout: null });
     });
 
@@ -151,7 +152,8 @@ module.exports = {
 
     Post.find({"location":{"$near":[10.96,-63.851],"$maxDistance":1000}}).done(function relatedPost(err, post){
       if ( err ) return next(err);
-      //else return res.json(201, post);
+      
+      if (req.wantsJSON) return res.json(post);
       else return res.view({ post: post});
     });
 

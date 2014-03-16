@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/linker/styles/font-awesome.css">
     <link rel="stylesheet" href="/linker/styles/styles.css">
     <!--STYLES END-->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   </head>
 
   <body>
@@ -71,7 +72,7 @@
       <footer id="footer" class="smooth-style slideOut-option navbar-fixed-bottom"><!--  -->
         <div class="container">
           <div>2013 &copy  <a href="http://www.danielnaranjo.info">Daniel Naranjo</a></div>
-          <div><a href="#">Privacy</a> | <a href="#">Legal</a></div>
+          <div><a href="/about/privacy">Privacy</a> | <a href="/about/legal">Legal</a></div>
         </div>
       </footer>
     </div>
@@ -86,8 +87,8 @@
         <li><a href="/map/all"><%= __('Explorer')%></a></li>
         <li><a href="#"><%= __('About')%></a></li>
         <li><a href="#"><%= __('Faq')%></a></li>
-        <li><a href="#"><%= __('Privacy')%></a></li>
-        <li><a href="#"><%= __('Contact')%></a></li>
+        <li><a href="/about/privacy"><%= __('Privacy')%></a></li>
+        <li><a href="/about/contact"><%= __('Contact')%></a></li>
         <% if( loggedUser ) { %>
         <li>&nbsp;</li>
         <li><a href="/user/logout"><%= __('Sign Out')%> <span class="glyphicon glyphicon-log-out"></span></a></li><% } %>
@@ -97,14 +98,13 @@
     <div id="nogeo"></div>
 
     <!--TEMPLATES-->
-    
+    <script type="text/javascript" src="/jst.js"></script>
     <!--TEMPLATES END-->
 
     <!--SCRIPTS-->
     <script src="/linker/js/socket.io.js"></script>
     <script src="/linker/js/sails.io.js"></script>
     <script src="/linker/js/app.js"></script>
-    <script src="/linker/js/jquery.js"></script>
     <script src="/linker/js/bootstrap.js"></script>
     <script src="/linker/js/bootstrap-tagsinput.min.js"></script>
     <script src="/linker/js/ga.js"></script>
