@@ -143,27 +143,10 @@
           });
         });
 	}
-
+	/* Confirmo eliminar TODO */
 	var confirmDelete = function() {
 		return confirm('Are you sure you want to delete?');
 	}
-
-//ROLL ON HOVER
-/*
-	$(function() {
-		$(".roll").css("opacity","0");
-		$(".roll").hover(function () {
-			$(this).stop().animate({
-			opacity: .8
-			}, "slow");
-		},
-		function () {
-			$(this).stop().animate({
-				opacity: 0
-			}, "slow");
-		});
-	});
-*/
 
 $(document).ready(function(e) {
 //	
