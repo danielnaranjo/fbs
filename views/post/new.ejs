@@ -42,7 +42,7 @@
 			</div>
 			<div class="checkbox">
 				<label><%= __('Show me on Map') %> (<%= __('Paid') %>)</label>
-				<input type="checkbox" name="map" id="map" value="1" disabled/>
+				<input type="checkbox" name="map" id="map" value="1" checked disabled/>
 			</div>
 			<div class="form-group">
 				<label for="photos"><%= __('Pictures') %> (<%= __('Paid') %>)</label>
@@ -73,6 +73,7 @@
 			<input type="hidden" name="dip" id="dip" value="<%= req.ip %>"/>
 			<input type="hidden" name="_csrf" value="<%= _csrf %>">
 			<input type="submit" class="btn btn-primary btn-block" value="<%= __('Send') %>" />
+			<p>&nbsp;</p>
 		</div>
 		</form>
 	</div>

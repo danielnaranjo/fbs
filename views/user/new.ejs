@@ -1,6 +1,7 @@
 <section>
 	<div id="contenido" class="container">
 		<form role="form" action="/user/create" method="POST" class="form-center" id="sign-up-form">
+			<input type="hidden" name="_csrf" value="<%= _csrf %>">
 			<h2 class="form-signin-heading"><%= __('Create user') %></h2>
 			<div class="form-group">
 				<label for="username"><%= __('Username') %></label>

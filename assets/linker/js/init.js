@@ -123,16 +123,29 @@
 	}
 	// Avisos relacionados
 	var relacionados = function() {
-		$('#showList').html('<ul></ul>');
+		$('#showList').html('<h3>Loading..</h3>');
+		$('#showList').html('');
 		var pathname = window.location.pathname; 
 		var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
         $.getJSON( "/post/related/"+last, function(data) {
-        $('#showList').prepend('<br><h4>Active post: '+data.length+'</h4>');
+        if(data.length) {
+        	$('#showList').prepend('<br><h4>Active post: '+data.length+'</h4>');
+        } else {
+        	$('#showList').prepend('<br><h4>No post? Be may guest and create one!</h4>');
+        }
           var items = [];
           $.each( data, function( key, val ) {
-            $('#showList ul').append("<li><a href='/post/" + val.id + "' target=\"_blank\">" + val.title + "</a></li>");
+          	$('#showList').append("<div>");
+            $('#showList').append("<a href='/post/" + val.id + "' target=\"_blank\">" + val.title + "</a> ");
+            $('#showList').append("<a href='/post/edit/"+val.id+"'><i class='glyphicon glyphicon-pencil text-success'></i></a> ");
+            $('#showList').append("<a href='/post/destroy/"+val.id+"' OnClick='confirmDelete();'><i class='glyphicon glyphicon-remove text-danger'></i></a> ");
+            $('#showList').append("</div>");
           });
         });
+	}
+
+	var confirmDelete = function() {
+		return confirm('Are you sure you want to delete?');
 	}
 
 //ROLL ON HOVER

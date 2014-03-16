@@ -234,3 +234,5 @@ html,body{height:100%}
 .container .text-muted{margin:20px 0}
 .form-center{max-width:330px;margin:0 auto}
 .realStats,.bigChart{background-color:#fff;border:1px solid #e3e3e3;border-radius:3px;display:inline-block;height:auto;margin:0 5px 5px 0;padding:10px;vertical-align:top;width:49%}
+#showList{margin:0 0 50px 0;}
+#showList div{padding:5px 0 5px 0}
