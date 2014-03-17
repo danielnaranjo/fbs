@@ -19,9 +19,9 @@ if ( typeof posts === 'undefined' ) {
   	</script>
     </div>
 
-    <% if(post.photos) { %>
+    <% if(post.photos[0]) { %>
   	<div id="anuncio">
-  		<img src="<%=post.photos %>" alt="<%= post.title %>" class="img-responsive">
+  		<img src="<%=post.photos[0] %>" alt="<%= post.title %>" class="img-responsive">
   	</div>
     <% } %>
 
@@ -35,7 +35,7 @@ if ( typeof posts === 'undefined' ) {
         <% if ( post.summary=== 'undefined' ) { %>
         <em><%= post.summary %></em>.
         <% } %>
-        <%= __('Publisher') %> <a href="/user/<%= post.patron_id %>"><%= post.publisher %></a>
+        <%= __('Publisher by') %> <a href="/post/related/<%= post.publisher %>"><%= post.publisher %></a>
       </p>
       <p>
         <i class="glyphicon glyphicon-heart"></i>   <span> 5 </span>
@@ -59,7 +59,7 @@ if ( typeof posts === 'undefined' ) {
       <p>
       	<%= __('Reference') %>: <%= post.id %>.  
       <!--
-      	<%= __('PermanentLink') %>: <a href="http://bit.ly/XXXXX">http://bit.ly/XXXXX</a>
+      	<%= __('Permanent link') %>: <a href="http://bit.ly/XXXXX">http://bit.ly/XXXXX</a>
       -->
       </p>
     </div>
@@ -97,12 +97,12 @@ if ( typeof posts === 'undefined' ) {
 
   <div class="col-md-4">
     <div id="contactar">
-      <div class="gris"><%= __('Question') %></div>
+      <div class="gris"><%= __('Make a question') %></div>
         <div class="glyph">
-          <a href="tel:<%= post.phoneNumber %>"><i class="fa-phone-square"></i></a> <%= __('CallThem') %>
+          <a href="tel:<%= post.phoneNumber %>"><i class="fa-phone-square"></i></a> <%= __('Call') %>
         </div>
         <div class="glyph">
-          <a href="mailto:<%= post.contactMail %>"><i class="fa fa-envelope-o"></i></a> <%= __('WriteThem') %>
+          <a href="mailto:<%= post.contactMail %>"><i class="fa fa-envelope-o"></i></a> <%= __('Write') %>
         </div>
         <div class="glyph">
           <a href="#"><i class="fa-twitter-square"></i></a> Twitter
@@ -113,7 +113,7 @@ if ( typeof posts === 'undefined' ) {
     </div>
 
     <div id="compartir">
-      <div class="gris"><%= __('ShareThem') %></div>
+      <div class="gris"><%= __('Share') %></div>
       <div class="addthis_toolbox addthis_default_style addthis_32x32_style"><a class="addthis_button_preferred_1"></a><a class="addthis_button_preferred_2"></a><a class="addthis_button_preferred_3"></a><a class="addthis_button_preferred_4"></a><a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a></div>
       <script>
         <var>addthis_config = {"data_track_addressbar":true};</var>
@@ -129,11 +129,9 @@ if ( typeof posts === 'undefined' ) {
 
 <section class="vermas">
 	<div>
-		<%= __('MorePost') %> <a href="/related/<%= post.patron_id %>" class="azul"><%= post.publisher %></a>
+		<%= __('More ads by') %> <a href="/post/related/<%= post.id %>" class="azul"><%= post.publisher %></a>
 	</div>
-  <div>
-    <iframe src="/post/related/<%= post.patron_id %>" frameborder="0" width="95%" height="300px" scrolling="no"></iframe>
-  </div>    
+  <div id="showRelated">Loading..</div>    
 </section>
 <!-- 
 <section class="js-masonry">
@@ -148,7 +146,11 @@ if ( typeof posts === 'undefined' ) {
 </section>
 -->
 
-
+<script>
+setTimeout(function() { 
+  related();
+}, 3000);
+</script>
 
 <%
 } else {
@@ -169,8 +171,8 @@ if ( typeof posts === 'undefined' ) {
 
     <% _.each(posts, function(post){ %>
     <div class="box col-xs-6 col-sm-4">
-      <% if ( post.photos) { %>
-      <a href="/post/<%= post.id %>"><img src="<%= post.photos %>" alt="<%= post.title %>" class="img-responsive"></a>
+      <% if ( post.photos[0]) { %>
+      <a href="/post/<%= post.id %>"><img src="<%= post.photos[0] %>" alt="<%= post.title %>" class="img-responsive"></a>
       <% } %>
       <h4><a href="/post/<%= post.id %>"><%= post.title %></a></h4>
       <p><%= post.summary %></p>

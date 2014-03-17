@@ -1,7 +1,8 @@
 <section>
 	<div id="contenido" class="container">
 		<form role="form" action="/user/create" method="POST" class="form-center" id="sign-up-form">
-			<input type="hidden" name="_csrf" value="<%= _csrf %>">
+			<input type="hidden" name="country" id="country">
+			<input type="hidden" name="dip" id="dip" value="<%= req.ip %>"/>
 			<h2 class="form-signin-heading"><%= __('Create user') %></h2>
 			<div class="form-group">
 				<label for="username"><%= __('Username') %></label>
@@ -27,29 +28,8 @@
 	</div>
 </section>
 <script>
-	var miubicacion = new Array();
-	function showPosition(position) {
-		var lat = position.coords.latitude;
-		var lng = position.coords.longitude;
-		miubicacion[0]=lat.toFixed(3);
-		miubicacion[1]=lng.toFixed(3);
-	}
-			
-	function onError() {
-		if (navigator.geolocation) {
-			//
-		} else {
-			console.log("Error: Your browser doesn't support geolocation. Are you in Siberia?");
-		}
-	}
-	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(showPosition, onError);
-		setTimeout(function() { 
-			console.log(miubicacion);
-			$("#sign-up-form").append('<input type="hidden" id="geo" name="geo" value="'+miubicacion+'">');
-		}, 5000);
-	 } else {
-		onError();
-	 }
-
+$(document).ready(function(e) {
+	// geolocalization
+	WhereIP();
+});
 </script>

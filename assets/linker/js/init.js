@@ -1,24 +1,32 @@
-/* Generales */
-	var miubicacion = [];
+	/* Variables globales */
+	var miubicacion=[],
+		ciudad="",
+		pais="",
+		Lat="",
+		Lon="";
+
 	// Carga la GEO de HTML5
 	function showPosition(position) {
 		var lat = position.coords.latitude;
 		var lng = position.coords.longitude;
 		miubicacion[0]=lat.toFixed(3);
 		miubicacion[1]=lng.toFixed(3);
-		setTimeout(function() {
-			$('#dondeestoy').html('');
-			$('#dondeestoy').css('display', 'inline');
-			$('#dondeestoy').css('background-color', 'transparent');
-			$('#dondeestoy').html('<img src="/img/486.GIF" height="20px" />');
+		// Compruebo que hay contenido?
+		if(!miubicacion) {
 			setTimeout(function() {
-				$('#dondeestoy').html('We\'re ready!  :) ');
-				$('#dondeestoy').removeClass().addClass("fadeOut");
-				// console.log(miubicacion[0]+','+miubicacion[1]);
-			}, 3000);
-			// Mostrar datos en la caja de busqueda
-			//$("#w").val('Estas cerca de '+miubicacion[0]+','+miubicacion[1]);
-		}, 2000);
+				$('#dondeestoy').html('');
+				$('#dondeestoy').css('display', 'inline');
+				$('#dondeestoy').css('background-color', 'transparent');
+				$('#dondeestoy').html('<img src="/img/486.GIF" height="20px" />');
+				setTimeout(function() {
+					$('#dondeestoy').html('We\'re ready!  :) ');
+					$('#dondeestoy').removeClass().addClass("fadeOut");
+					// console.log(miubicacion[0]+','+miubicacion[1]);
+				}, 3000);
+				// Mostrar datos en la caja de busqueda
+				//$("#w").val('Estas cerca de '+miubicacion[0]+','+miubicacion[1]);
+			}, 2000);
+		}
 	}
 	// Mensajes de Errores de GEO
 	function onError() {
@@ -42,14 +50,6 @@
 				//WhereAmI();
 			}, 7000);
 		}
-	}
-	// Muestra Geo segun IP
-	function WhereAmI() {
-		$.getJSON('http://freegeoip.net/json/', function(location) {
-			window.location.replace("/?city="+location.city+"&country="+location.country_name);
-			miubicacion[0]=location.latitude;
-			miubicacion[1]=location.longitude;
-		});
 	}
 	// Cargar todos los avisos
 	var avisos = function() {
@@ -111,8 +111,9 @@
 		});
 
 		$.getJSON( "/post", function(data) {
-		var items = [];
+		var locacion=[], marcador=[];
 		$.each( data, function( key, val ) {
+			console.log(val.title+">"+val.location); 
 			var locacion = val.location;
 			var marcador = locacion.split(",");
 			L.marker([parseInt(marcador[0]), parseInt(marcador[1])], {icon: Icon})
@@ -143,13 +144,54 @@
           });
         });
 	}
+	var related = function() {
+		$('#showRelated').html('<h3>Loading..</h3>');
+		$('#showRelated').html('');
+		var pathname = window.location.pathname; 
+		var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
+        $.getJSON( "/post/related/"+last, function(data) {
+//	        if(data.length==0) {
+//	        	$('#vermas').hide();
+//	        }
+          var items = [];
+          $.each( data, function( key, val ) {
+          	$('#showRelated').append('<div class="box col-xs-6 col-sm-4">');
+            $('#showRelated').append('<h4><a href="/post/'+val.id+'">'+val.title+'</a></h4>');
+            $('#showRelated').append('<p>'+val.summary+'</p>');
+            $('#showRelated').append('<p>'+val.populars+'</p>');
+            $('#showRelated').append('</div>');
+          });
+        });
+	}
 	/* Confirmo eliminar TODO */
 	var confirmDelete = function() {
 		return confirm('Are you sure you want to delete?');
 	}
 
+	// Muestra Geo segun IP
+	function WhereAmI() {
+		$.getJSON('http://freegeoip.net/json/', function(location) {
+			// window.location.replace("/?city="+location.city+"&country="+location.country_name);
+			Lat=location.latitude;
+			Lon=location.longitude;
+			ciudad=location.city;
+			pais=location.country_name;
+			dip=location.ip;
+		});
+	}
+	// Llenar formularios
+	var WhereIP = function() {
+		setTimeout(function() {
+			$('#city').attr('value',ciudad);
+			$('#country').attr('value',pais);
+			$('#location').attr('value',miubicacion[0]+','+miubicacion[1]);
+		},3000);
+	}
+
 $(document).ready(function(e) {
 //	
+	console.log('OK!');
+	WhereAmI();
 	/* Geolocalization HTML5 */
 	if (navigator.geolocation) { navigator.geolocation.getCurrentPosition(showPosition, onError); } else { onError();}
 	/* masonry */
@@ -172,7 +214,7 @@ $(document).ready(function(e) {
 	$("#quiensoy").on('click', function(){ window.location = "/user/auth"; });
 	$("#ubicacion").on('click', function() {
 		$('#dondeestoy').html('');
-		$("#dondeestoy").append('<p>Maybe you\'re nearby '+miubicacion[0]+','+miubicacion[1]+'</p>');
+		$("#dondeestoy").append('<p>Maybe you\'re nearby '+ciudad +' '+pais+'</p>');
 		$('#dondeestoy').css('display','inline');
 		$("#dondeestoy").removeClass().addClass("fadeInDown");
 		setTimeout(function() { $('#dondeestoy').removeClass().addClass("fadeOutDown");},3000);

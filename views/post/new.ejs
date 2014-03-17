@@ -79,17 +79,10 @@
 	</div>
 </section>
 
-<script src="/linker/js/jquery.js"></script>
 <script>
 $(document).ready(function(e) {
-// geolocalization
-	$.getJSON('http://freegeoip.net/json/', function(location) {
-		$('#city').attr('value',location.city);
-		$('#country').attr('value',location.country_name);
-		setTimeout(function() {
-			$('#location').attr('value',miubicacion[0]+','+miubicacion[1]);
-		}, 5000);
-	});
+	// geolocalization
+	WhereIP();
 	// Copy Title to Populars' tags and split to insert into DB
 	$('#title').on('change',function() {
     	$('#populars').val($(this).val().split(' ').join(', '));

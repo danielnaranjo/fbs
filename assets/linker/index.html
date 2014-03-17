@@ -14,7 +14,7 @@
 
 	<script>
 		$(document).ready(function(e) {
-
+//
 var arr = ['sandu','chef','Vendo','carro','Tata','Indica','GLS','Registro','dominios','hospedaje','web','undefined','Vendo','iPhone','4S','16GB','Movistar','Vendo','iPhone','4S','16GB','Movistar','Vendo','Nintendo','Wii','Blanco','Fit','Vendo','Camara','Lumix','Fs42','Rosada','Dispositivo','3g','Internet','Movil','Movistar','Servicios','informaticos','Dublin'];
 
 count = {};
@@ -25,7 +25,7 @@ for(a in arr){
 
 $("div").append(count);
 
-console.log(count);
+// console.log(count);
 
 /*
 			$.getJSON( "http://localhost:1337/post", function( data ) {
@@ -57,7 +57,17 @@ console.log(count);
 
 			});
 */
+		$.getJSON( "http://localhost:1337/post", function( data ) {
+				var locacion=[], marcador=[];	
+			  $.each( data, function(key, val ) {
+			  	
+			  	var locacion = val.location;
+				var marcador = locacion.split(",");
+				console.log(val.title+">"+val.location); 
+			  	});
 		});
+//
+});
 	</script>
 </body>
 </html>

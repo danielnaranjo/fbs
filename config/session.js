@@ -32,6 +32,7 @@ module.exports.session = {
   // db: 0,
   // pass: <redis auth password>
   // prefix: 'sess:'
+  // url: 'redis://redistogo:c44fe9163887e912932b439be5c8565c@albacore.redistogo.com:10281/',
 
 
   // Uncomment the following lines to use your Mongo adapter as a session store
@@ -46,7 +47,7 @@ module.exports.session = {
   //
   // # Note: url will override other connection settings
   // url: 'mongodb://user:pass@host:port/database/collection',
-  url: "mongodb://findbyco:DN14093487v@ds053168.mongolab.com:53168/post"
+  url: 'mongodb://findbyco:DN14093487v@ds053168.mongolab.com:53168/post'
   //
   // username: '',
   // password: '',

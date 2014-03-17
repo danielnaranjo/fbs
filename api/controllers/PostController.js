@@ -141,7 +141,7 @@ module.exports = {
 
     Post.find({ title: { contains: id } }).done(function relatedPost(err, post){
       if ( err ) return next(err);
-      //else return res.json(201, post);
+      if (req.wantsJSON) return res.json(post);
       else return res.view({ post: post});
     });
 
