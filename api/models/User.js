@@ -30,6 +30,10 @@ module.exports = {
 		dip: {
 			type: 'ip'
 		},
+		admin : {
+			type : 'boolean',
+			defaultsTo: false
+		},
 		profiles: {
 			type: 'array',
 			defaultsTo: []

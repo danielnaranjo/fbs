@@ -37,8 +37,11 @@ npm-debug.log
 .netbeans
 nbproject
 .idea
-*.styl
 
+# Stylus CSS
+assets/linker/styles/estilos.styl
+# TODO's
+RoadMap.md
 
 ########################
 # local config
