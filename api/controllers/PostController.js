@@ -127,7 +127,7 @@ module.exports = {
     var id = req.param('id');
     if( !id ) return res.notFound();
 
-    Post.find({ "patron_id": id }).limit(4).done(function relatedPost(err, post){
+    Post.find({ "patron_id": id }).done(function relatedPost(err, post){
       if ( err ) return next(err);
 
       if (req.wantsJSON) return res.json(post);
