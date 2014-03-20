@@ -126,19 +126,16 @@ module.exports = {
   related: function(req, res) {
     var id = req.param('id');
     if( !id ) return res.notFound();
-
     Post.find({ "patron_id": id }).done(function relatedPost(err, post){
       if ( err ) return next(err);
-
       if (req.wantsJSON) return res.json(post);
-      else return res.view({ post: post, layout: null });
+      else return res.view({ post: post});
     });
 
   },
   tags: function(req, res) {
     var id = req.param('id');
     if( !id ) return res.notFound();
-
     Post.find({ title: { contains: id } }).done(function relatedPost(err, post){
       if ( err ) return next(err);
       if (req.wantsJSON) return res.json(post);
@@ -149,10 +146,8 @@ module.exports = {
   nearby: function(req, res) {
     var id = req.param('id');
     if( !id ) return res.notFound();
-
     Post.find({"location":{"$near":[10.96,-63.851],"$maxDistance":1000}}).done(function relatedPost(err, post){
       if ( err ) return next(err);
-      
       if (req.wantsJSON) return res.json(post);
       else return res.view({ post: post});
     });

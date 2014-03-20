@@ -1,9 +1,9 @@
-	/* Variables globales */
-	var miubicacion=[],
-		ciudad="",
-		pais="",
-		Lat="",
-		Lon="";
+/* Variables globales */
+var miubicacion = [],
+	ciudad = "",
+	pais = "",
+	Lat = "",
+	Lon = "";
 
 	// Carga la GEO de HTML5
 	function showPosition(position) {
@@ -28,7 +28,7 @@
 			}, 2000);
 		}
 	}
-	// Mensajes de Errores de GEO
+// Mensajes de Errores de GEO
 	function onError() {
 		$('#nogeo').css('display', 'inline');
 		$('#nogeo').html('');
@@ -38,7 +38,6 @@
 			$("#nogeo").removeClass().addClass("bounceInLeft");
 			setTimeout(function() {
 				$('#nogeo').removeClass().addClass("bounceOutLeft");
-				//WhereAmI();
 			}, 7000);
 		} else {
 			$('#nogeo').append("Error: Your browser doesn't support geolocation. Are you in Siberia?<br/>Erreur: Votre navigateur ne supporte pas la géolocalisation. Etes-vous en Sibérie?<br/>Error: Su navegador no soporta geolocalización. ¿Está usted en Siberia?<br/>Fehler: Ihr Browser unterstützt leider keine Geolocation. Sind Sie in Sibirien?");
@@ -47,9 +46,10 @@
 			$("#nogeo").removeClass().addClass("bounceInLeft");
 			setTimeout(function() { 
 				$('#nogeo').removeClass().addClass("bounceOutLeft");
-				//WhereAmI();
 			}, 7000);
 		}
+		miubicacion[0]=Lat;
+		miubicacion[1]=Lon;
 	}
 	// Cargar todos los avisos
 	var avisos = function() {
@@ -138,34 +138,33 @@
           $.each( data, function( key, val ) {
           	$('#showList').append("<div>");
             $('#showList').append("<a href='/post/" + val.id + "' target=\"_blank\">" + val.title + "</a> ");
-            $('#showList').append("<a href='/post/edit/"+val.id+"'><i class='glyphicon glyphicon-pencil text-success'></i></a> ");
-            $('#showList').append("<a href='/post/destroy/"+val.id+"' OnClick='confirmDelete();'><i class='glyphicon glyphicon-remove text-danger'></i></a> ");
+            $('#showList').append("<a href=\"javascript:editPost('"+val.id+"');\"><i class=\"glyphicon glyphicon-pencil text-success\"></i></a> ");
+            $('#showList').append("<a href=\"javascript:deletePost('"+val.id+"');\"><i class=\"glyphicon glyphicon-remove text-danger\"></i></a> ");
             $('#showList').append("</div>");
           });
         });
 	}
+	/* Relacionados en /post/ */
 	var related = function() {
 		$('#showRelated').html('<h3>Loading..</h3>');
 		$('#showRelated').html('');
 		var pathname = window.location.pathname; 
-		var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
-        $.getJSON( "/post/related/"+last, function(data) {
-//	        if(data.length==0) {
-//	        	$('#vermas').hide();
-//	        }
-          var items = [];
-          $.each( data, function( key, val ) {
-          	$('#showRelated').append('<div class="box col-xs-6 col-sm-4">');
-            $('#showRelated').append('<h4><a href="/post/'+val.id+'">'+val.title+'</a></h4>');
-            $('#showRelated').append('<p>'+val.summary+'</p>');
-            $('#showRelated').append('<p>'+val.populars+'</p>');
-            $('#showRelated').append('</div>');
-          });
-        });
+		var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);console.log(last);
+		$.getJSON( "/post/related/"+last, function(data) {
+			if(data.length==0){$('#vermas').hide();}
+			$.each( data, function( key, val ) {
+				$('#showRelated').append('<div class="box col-xs-6 col-sm-4">');
+				$('#showRelated').append('<h4><a href="/post/'+val.id+'">'+val.title+'</a></h4>');
+				$('#showRelated').append('<p>'+val.summary+'</p>');
+				$('#showRelated').append('<p>'+val.populars+'</p>');
+				$('#showRelated').append('</div>');console.log('OK! '+val.title); 
+			});
+		});
 	}
 	/* Confirmo eliminar TODO */
 	var confirmDelete = function() {
-		return confirm('Are you sure you want to delete?');
+		var confirmed = confirm('Are you sure you want to delete?');
+		if(confirmed==true) { console.log('Bye Bye'); }
 	}
 
 	// Muestra Geo segun IP
@@ -179,14 +178,20 @@
 			dip=location.ip;
 		});
 	}
-	// Llenar formularios
+	/*Llenar formularios */ 
 	var WhereIP = function() {
 		setTimeout(function() {
 			$('#city').attr('value',ciudad);
 			$('#country').attr('value',pais);
+			$('#location').attr('value',Lat+','+Lon);
 			$('#location').attr('value',miubicacion[0]+','+miubicacion[1]);
-		},3000);
+		},5000);
 	}
+
+	var editUser = function(x){ window.location.href="/user/edit/"+x; }
+	var editPost = function(x){ window.location.href="/post/edit/"+x; }
+	var deletePost = function(x){ window.location.href="/post/destroy/"+x; }
+
 
 $(document).ready(function(e) {
 //	
@@ -229,6 +234,46 @@ $(document).ready(function(e) {
 	$(".showHide-option").rlSmooth('showHide',{ y: 1100 });
 	$(".showUp-option").rlSmooth('showUp',{ y: 1300 });
 	$(".showOut-option").rlSmooth('showOut',{ y: 1500 });
+	/* Validar formularios */
+	$("#signupform").validate({
+		debug: false,
+		rules: {
+			username: { required:true, minlength:5, maxlength:20 },
+			password: { required:true, minlength:5, maxlength:20 },
+			email: { required:true, email: true	},
+		},
+		messages: {
+			username: { required: '(Please enter your username (at least 5 characters))' },
+			email: { required: '(Please enter a valid email)' },
+			password: { required: '(Please enter your password (at least 5 characters)' }
+		}		
+	});
+	$("#loginfrom").validate({
+		debug: false,
+		rules: {
+			username: { required:true, minlength:5, maxlength:20 },
+			password: { required:true, minlength:5, maxlength:20 }
+		},
+		messages: {
+			username: { required: '(Please enter your username (at least 5 characters))' },
+			password: { required: '(Please enter your password (at least 5 characters)' }
+		}		
+	});
+	$("#postform").validate({
+		debug: false,
+		rules: {
+			title: { required:true, minlength:5, maxlength:20 },
+			text: { required:true, minlength:5, maxlength:20 },
+			city: { required:true },
+			country: { required:true }
+		},
+		messages: {
+			title: { required: '(Please enter the title of your product or service)' },
+			text: { required: '(Please enter the large description' },
+			city: { required: '(Please enter your current city)' },
+			country: { required: '(Please enter your country)' }
+		}		
+	});
 //
 });
 

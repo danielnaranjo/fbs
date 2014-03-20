@@ -24,23 +24,29 @@ module.exports = {
 		},
 		title: {
 			type: 'string',
-			required: true
+			required: true,
+			maxLength: 140,
+			minLength: 5
 		},
 		summary: {
 			type: 'string',
 		},
 		text: {
 			type: 'string',
-			required: true
+			required: true,
+			maxLength: 500,
+			minLength: 5
 		},
 		populars: {
 			type: 'string'
 		},
 		city: {
-			type: 'string'
+			type: 'string',
+			required: true
 		},
 		country: {
-			type: 'string'
+			type: 'string',
+			required: true
 		},
 		chat: {
 			type: 'integer'

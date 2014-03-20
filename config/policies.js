@@ -17,9 +17,10 @@ module.exports.policies = {
 	// Default policy for all controllers and actions
 	// (`true` allows public access) 
 	'*': true,
+	//'*': 'flash',
 	UserController: {
-		'*': ['isAuthenticated', 'canAdminUser'],
-		find: 'isAuthenticated',
+		'*': ['isAuthenticated', 'canAdminUser', 'flash'],
+		// find: 'isAuthenticated',
 		update: 'isAuthenticated',
 		logout: 'isAuthenticated',
 		create: true,

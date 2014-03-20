@@ -12,7 +12,9 @@ module.exports = {
 		username: {
 			type: 'string',
 			required: true,
-			unique: true
+			unique: true,
+			maxLength: 20,
+			minLength: 5
 		},
 		email: {
 			type: 'string',
@@ -22,7 +24,9 @@ module.exports = {
 		},
 		password: {
 			type: 'string',
-			required: true
+			required: true,
+			maxLength: 20,
+			minLength: 5
 		},
 		country: {
 			type: 'string'

@@ -1,20 +1,20 @@
 <section>
 	<div id="contenido" class="container">
-		<form role="form" action="/user/create" method="POST" class="form-center" id="sign-up-form">
+		<form role="form" action="/user/create" method="POST" class="form-center" id="signupform">
 			<input type="hidden" name="country" id="country">
 			<input type="hidden" name="dip" id="dip" value="<%= req.ip %>"/>
 			<h2 class="form-signin-heading"><%= __('Create user') %></h2>
 			<div class="form-group">
 				<label for="username"><%= __('Username') %></label>
-				<input type="text" class="form-control" placeholder="<%= __('Username') %>" name="username" id="username" required<% if( session.tempUser && session.tempUser.username ) { %> value="<%= session.tempUser.username %>"<% } %>/>
+				<input type="text" class="form-control" placeholder="<%= __('Username') %>" name="username" id="username" <% if( session.tempUser && session.tempUser.username ) { %> value="<%= session.tempUser.username %>"<% } %> required minlength="5" maxlenght="20" />
 			</div>
 			<div class="form-group">
 				<label for="email"><%= __('Email') %></label>
-				<input type="email" class="form-control" placeholder="<%= __('someone@somewhere.com') %>" name="email" id="email" required<% if( session.tempUser && session.tempUser.email) { %> value="<%= session.tempUser.email %>"<% } %>/>
+				<input type="email" class="form-control" placeholder="<%= __('someone@somewhere.com') %>" name="email" id="email" <% if( session.tempUser && session.tempUser.email) { %> value="<%= session.tempUser.email %>"<% } %> required />
 			</div>
 			<div class="form-group">
 				<label for="password"><%= __('Password') %></label>
-				<input type="password" class="form-control" placeholder="<%= __('Password') %>" name="password" id="password" required minlength="6" />
+				<input type="password" class="form-control" placeholder="<%= __('Password') %>" name="password" id="password" minlength="5" maxlenght="20" required/>
 			</div>
 			<p>
 				<input type="submit" class="btn btn-primary btn-block" value="<%= __('Create user') %>" />
@@ -27,6 +27,7 @@
 		</div>
 	</div>
 </section>
+
 <script>
 $(document).ready(function(e) {
 	// geolocalization

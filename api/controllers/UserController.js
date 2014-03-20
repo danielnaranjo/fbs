@@ -24,7 +24,7 @@ module.exports = {
 		var id = req.param('id');
 		// If id is a shortcut we don't have to find.
 		if ( isShortcut(id) ) return next();
-
+		// Comprueba si Esta logeado
 		req.session.canAdminUser = canAdminUser(id, req.user);
 
 		// If we get an id we will retun one unique user.
@@ -37,7 +37,6 @@ module.exports = {
 				if (req.wantsJSON) return res.json(user);
 				// Else response view with results 
 				else return res.view({ user: user });
-				// else return res.json(user);
 			});
 		}
 		// Otherwise, we will retun an user array.
@@ -56,6 +55,7 @@ module.exports = {
 			};
 			// Find users according with filters
 			User.find(filters).done(function foundUsers(err, users){
+			/*	
 				if ( err ) return next(err);
 				// Response JSON if needed.
 				if (req.wantsJSON) {
@@ -68,6 +68,13 @@ module.exports = {
 					return res.view({ users: users });
 					// return res.json(users);
 				}
+			*/
+				if ( err ) return next(err);
+				if ( !user ) return res.notFound();
+				// Response JSON if needed.
+				if (req.wantsJSON) return res.json(user);
+				// Else response view with results 
+				else return res.view({ user: user });
 			});
 
 		}

@@ -57,13 +57,12 @@ $("div").append(count);
 
 			});
 */
-		$.getJSON( "http://localhost:1337/post", function( data ) {
-				var locacion=[], marcador=[];	
+		$.getJSON( "/user", function( data ) {
+				// var locacion=[], marcador=[];	
 			  $.each( data, function(key, val ) {
-			  	
-			  	var locacion = val.location;
-				var marcador = locacion.split(",");
-				console.log(val.title+">"+val.location); 
+			  	//var locacion = val.location;
+				//var marcador = locacion.split(",");
+				console.log(val.username); 
 			  	});
 		});
 //

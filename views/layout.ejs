@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>FindBY</title>
+    <title>FindBY - A Geolocation Classified Ads for products and services around the world</title>
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="description" content="A Geolocation Classified Ads for products and services around the world">
@@ -78,7 +78,7 @@
 
     <div id="opciones">
       <ul>
-        <% if( loggedUser ) { %><li><a href="/user/<%= loggedUser.id %>"><%= __('Profile') %></a></li><% } else { %>
+        <% if( loggedUser ) { %><li><a href="/user/<%= loggedUser.id %>"><%= __('My Profile') %></a></li><% } else { %>
         <li><a href="/user/new"><span class="glyphicon glyphicon-edit"></span> <%= __('Sign Up') %></a></li>
         <li><a href="/user/auth"><span class="glyphicon glyphicon-log-in"></span> <%= __('Log In') %></a></li>
       <% } %>        
@@ -110,6 +110,7 @@
     <script src="/linker/js/bootstrap-tagsinput.min.js"></script>
     <script src="/linker/js/ga.js"></script>
     <script src="/linker/js/jquery-ui.min.js"></script>
+    <script src="/linker/js/jquery.validate.min.js"></script>
     <script src="/linker/js/masonry.pkgd.min.js"></script>
     <script src="/linker/js/rlsmooth.js"></script>
     <!--SCRIPTS END-->

@@ -32,10 +32,10 @@ if ( typeof posts === 'undefined' ) {
         <% if ( session.canAdminUser ) { %><a href="/post/edit/<%= post.id %>"><i class="glyphicon glyphicon-pencil"></i></a><% } %> -->
       </h3>
       <p>
-        <% if ( post.summary=== 'undefined' ) { %>
+        <% if ( post.summary) { %>
         <em><%= post.summary %></em>.
         <% } %>
-        <%= __('Publisher by') %> <a href="/post/related/<%= post.publisher %>"><%= post.publisher %></a>
+        <%= __('Publisher by') %> <a href="/post/related/<%= post.patron_id %>"><%= post.publisher %></a>
       </p>
       <p>
         <i class="glyphicon glyphicon-heart"></i>   <span> 5 </span>
@@ -99,13 +99,13 @@ if ( typeof posts === 'undefined' ) {
     <div id="contactar">
       <div class="gris"><%= __('Make a question') %></div>
         <div class="glyph">
-          <a href="tel:<%= post.phoneNumber %>"><i class="fa-phone-square"></i></a> <%= __('Call') %>
+          <a href="tel:<%= post.phoneNumber %>"><i class="glyphicon glyphicon-phone-alt"></i></a> <%= __('Call') %>
         </div>
         <div class="glyph">
-          <a href="mailto:<%= post.contactMail %>"><i class="fa fa-envelope-o"></i></a> <%= __('Write') %>
+          <a href="mailto:<%= post.contactMail %>"><i class="glyphicon glyphicon-comment"></i></a> <%= __('Write') %>
         </div>
         <div class="glyph">
-          <a href="#"><i class="fa-twitter-square"></i></a> Twitter
+          <a href="#"><i class="fa fa-twitter-square"></i></a> Twitter
         </div>
         <div class="glyph">
           <a href="#"><i class="fa fa-facebook-square"></i></a> Facebook
@@ -129,9 +129,10 @@ if ( typeof posts === 'undefined' ) {
 
 <section class="vermas">
 	<div>
-		<%= __('More ads by') %> <a href="/post/related/<%= post.id %>" class="azul"><%= post.publisher %></a>
+		<%= __('More ads by') %> <a href="/post/related/<%= post.patron_id %>" class="azul"><%= post.publisher %></a>
 	</div>
-  <div id="showRelated">Loading..</div>    
+  <div id="showRelated">Loading..</div>
+  <!--<iframe src="/post/related/<%= post.patron_id %>?limit=4&sort=DESC" frameborder="0"></iframe>-->  
 </section>
 <!-- 
 <section class="js-masonry">
@@ -147,9 +148,9 @@ if ( typeof posts === 'undefined' ) {
 -->
 
 <script>
-setTimeout(function() { 
-  related();
-}, 3000);
+  setTimeout(function() { 
+    related();
+  }, 3000);
 </script>
 
 <%

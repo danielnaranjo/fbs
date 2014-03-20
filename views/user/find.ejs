@@ -11,15 +11,11 @@ if ( typeof users === 'undefined' ) {
 		<h2>
 			<%= __('Hello') %> <%= user.username %>
 		</h2> 
-		<a href="/user/logout">
-			<i class="glyphicon glyphicon-log-out"></i> 
-			<%= __('Sign Out')%>
-		</a>
-		
+		<a href="/user/logout"><i class="glyphicon glyphicon-log-out"></i> <%= __('Sign Out')%></a>
 		<% if ( session.canAdminUser ) { %>
 		<p>
 			<%= __('Registered with') %> <%= user.email %> 
-			<a href="/user/edit/<%= user.id %>"><i class="glyphicon glyphicon-pencil"></i> <%= __('Edit') %></a>
+			<a href="javascript:editUser('<%= user.id %>');"><i class="glyphicon glyphicon-pencil"></i></a>
 		</p>
 		<% } %>
 	</div>
@@ -99,19 +95,11 @@ if ( typeof users === 'undefined' ) {
 	});
 </script>
 	
-		<% } %>
+<% } %>
 	<%
 	} else {
 	// There are multiple one user.
 	%> 
-
-
-		<h2>Users</h2>
-		<div>
-		<% _.each(users, function(user){ %>
-			<p><a href="/user/<%= user.id %>"><%= user.username %></a></p>
-		<% }); %>
-		</div>
 
 
 <% } %>

@@ -1,6 +1,6 @@
 <section>
 	<div id="contenido">
-		<form role="form" action="/post/create" method="POST" class="form-left" id="sign-up-form">
+		<form role="form" action="/post/create" method="POST" class="form-left" id="postform">
 		<div class="col-md-6">
 			<h2 class="form-signin-heading"><%= __('New post') %></h2>
 			<div class="form-group">
@@ -28,7 +28,7 @@
 				<input type="text" class="form-control"name="country" id="country" placeholder="<%= __('Country') %>" />
 			</div>
 			<div class="form-group">
-				<label for="tags"><%= __('Location') %></label>
+				<label for="location"><%= __('Location') %></label>
 				<input type="text" class="form-control" placeholder="<%= __('Location') %>" name="location" id="location"/>
 			</div>
 		</div>
@@ -72,7 +72,7 @@
 			<input type="hidden" name="contactMail" id="contactMail" value="<%= loggedUser.email %>"/>
 			<input type="hidden" name="dip" id="dip" value="<%= req.ip %>"/>
 			<input type="hidden" name="_csrf" value="<%= _csrf %>">
-			<input type="submit" class="btn btn-primary btn-block" value="<%= __('Send') %>" />
+			<input type="submit" class="btn btn-primary btn-block" value="<%= __('Send') %>" id="checkFirst" />
 			<p>&nbsp;</p>
 		</div>
 		</form>
