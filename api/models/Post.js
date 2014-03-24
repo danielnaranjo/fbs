@@ -86,6 +86,8 @@ module.exports = {
 			var Bitly = new BitlyAPI({
 				client_id: "61025540de4b5eac50ec9df7065951f9dfd95e50",
 				client_secret:"9a2ef245dcc28b60ab1b764ac82d62dfdd9e63f8"
+				//client_id: process.env.BITLY_ID,
+				//client_secret: process.env.BITLY_SECRET
 			});
 			Bitly.setAccessToken("d167c2a4e35c0237a743f41548b78d41d58f0a50");
 			Bitly.shorten({ longUrl: 'http://findby.co/post/'+post.id }, function(err, results) {
