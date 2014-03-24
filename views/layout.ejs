@@ -42,8 +42,7 @@
           <div id="lacaja" class="col-md-6">
             <form action="/post/search/">
               <div>
-                <input id="w" type="type" name="w">
-                <p><%= __('SearchPlaceHolder') %></p>
+                <input id="w" type="type" name="w" placeholder="<%= __('Start your search here') %>" OnChange="makeTags();">
               </div>
             </form>
           </div>
@@ -70,7 +69,7 @@
 
       <footer id="footer" class="smooth-style slideOut-option navbar-fixed-bottom"><!--  -->
         <div class="container">
-          <div>2013 &copy  <a href="http://www.danielnaranjo.info">Daniel Naranjo</a></div>
+          <div>2013-2014 &copy  <a href="http://www.danielnaranjo.info">Daniel Naranjo</a></div>
           <div><a href="#">Privacy</a> | <a href="#">Legal</a></div>
         </div>
       </footer>
@@ -97,7 +96,7 @@
     <div id="nogeo"></div>
 
     <!--TEMPLATES-->
-    <script type="text/javascript" src="/jst.js"></script>
+    
     <!--TEMPLATES END-->
 
     <!--SCRIPTS-->
@@ -107,7 +106,6 @@
     <script src="/linker/js/jquery.min.js"></script>
     <script src="/linker/js/bootstrap.js"></script>
     <script src="/linker/js/init.js"></script>
-    <script src="/linker/js/api_key_include.js"></script>
     <script src="/linker/js/bootstrap-tagsinput.min.js"></script>
     <script src="/linker/js/ga.js"></script>
     <script src="/linker/js/jquery-ui.min.js"></script>
