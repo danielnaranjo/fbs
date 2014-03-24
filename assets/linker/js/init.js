@@ -52,10 +52,10 @@ function showPosition(position) {
 		$('#avisos').html('<ul></ul>');
 		$.getJSON( "/post?sort=DESC&limit=10", function(data) {
 		//$('#avisos').prepend('<h3>Active post: '+data.length+'</h3>');
-		  var items = [];
-		  $.each( data, function( key, val ) {
+		var items = [];
+		$.each( data, function( key, val ) {
 			$('#avisos ul').append("<li><a href='/post/" + val.id + "' target=\"_blank\">" + val.title + "</a></li>");
-		  });
+			});
 		});
 		console.log('Loading posts');
 	}
@@ -64,10 +64,10 @@ function showPosition(position) {
 		$('#usuarios').html('<ul></ul>');
 		$.getJSON( "/user?sort=DESC&limit=10", function(data) {
 		//$('#usuarios').prepend('<h3>Active users: '+data.length+'</h3>');
-		  var items = [];
-		  $.each( data, function( key, val ) {
+		var items = [];
+		$.each( data, function( key, val ){
 			$('#usuarios ul').append("<li><a href='/user/" + val.id + "' target=\"_blank\">" + val.username + "</a></li>");
-		  });
+			});
 		});
 		console.log('Loading users');
 	}
@@ -96,22 +96,18 @@ function showPosition(position) {
 			.addTo(map)
 			.bindPopup("<strong>You are here</strong>: "+ miubicacion[0]+","+ miubicacion[1])
 			.openPopup();
-
 		var LeafIcon = L.Icon.extend({ 
 			options: {
 				shadowUrl: '/img/marker-shadow.png'
-			} 
+			}
 		});
-		var Icon = new LeafIcon({
-			iconUrl: '/img/marker-yellow.png'
-		});
-
+		var Icon = new LeafIcon({ iconUrl: '/img/marker-yellow.png' });
 		$.getJSON( "/post", function(data) {
 		var locacion=[], marcador=[];
 		$.each( data, function( key, val ) {
 			var locacion = $.trim(val.location);
 			var marcador = locacion.split(",");
-			L.marker([parseInt(marcador[0]), parseInt(marcador[1])], {icon: Icon})
+			L.marker([parseInt(marcador[0]), parseInt(marcador[1])],{icon: Icon})
 				.addTo(map)
 				.bindPopup("<strong>"+val.title+"</strong>");
 			});
@@ -129,14 +125,14 @@ function showPosition(position) {
 		} else {
 			$('#showList').prepend('<br><h4>No post? Be may guest and create one!</h4>');
 		}
-		  var items = [];
-		  $.each( data, function( key, val ) {
+		var items = [];
+		$.each( data, function( key, val ) {
 			$('#showList').append("<div>");
 			$('#showList').append("<a href='/post/" + val.id + "' target=\"_blank\">" + val.title + "</a> ");
 			$('#showList').append("<a href=\"javascript:editPost('"+val.id+"');\"><i class=\"glyphicon glyphicon-pencil text-success\"></i></a> ");
 			$('#showList').append("<a href=\"javascript:deletePost('"+val.id+"');\"><i class=\"glyphicon glyphicon-remove text-danger\"></i></a> ");
 			$('#showList').append("</div>");
-		  });
+			});
 		});
 	}
 	/* Relacionados en /post/ */
@@ -196,7 +192,7 @@ function showPosition(position) {
 		window.location.href="/post/destroy/"+x;
 	}
 
-	function linkify(inputText) {
+	var linkify = function(inputText) {
 		var replacedText, replacePattern1, replacePattern2, replacePattern3;
 		//URLs starting with http://, https://, or ftp://
 		replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
@@ -209,15 +205,48 @@ function showPosition(position) {
 		replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>');
 		return replacedText;
 	}
-	function url2link(){
-		document.getElementById('ft').innerHTML=linkify(document.getElementById('ft').innerHTML); 
+
+	var url2link = function (){
+		document.getElementById('ft').innerHTML=linkify(document.getElementById('ft').innerHTML);
 	}
+
+	var showMenu = function(){
+		console.log('bounceInDown');
+		$('#buscador').toggle();// .removeClass().addClass("fadeInDown");
+		$("#buscador").on('mouseleave', function(){
+			setTimeout(function() {
+				$('#buscador').removeClass().addClass("fadeOutUp");
+			},10000);
+		});
+	};
+
+	var showLocation = function(){
+		$('#dondeestoy').html('');
+		$("#dondeestoy").append('<p>We locate you by '+ciudad +' '+pais+', right?</p>');
+		$('#dondeestoy').css('display','inline');
+		$("#dondeestoy").removeClass().addClass("fadeInDown");
+		setTimeout(function() {
+			$('#dondeestoy').removeClass().addClass("fadeOutDown");
+		},3000);
+	};
+
+	var makeTags = function(){
+		$('#w').on('keypress',function() {
+			setTimeout(function() {
+				$('#w').tagsinput('add', $("#w").val());
+				console.log('tag it');
+			},1000);
+		});
+		setTimeout(function(){
+			$( "#w" ).submit();
+		}, 5000);
+	};
 
 $(document).ready(function(e) {
 //	
 	console.log('OK!');
 	/* Need for IP, City, Country and Lat,Lon */
-	WhereAmI();
+	WhereAmI(); makeTags();
 
 	/* Geolocalization HTML5 */
 	if (navigator.geolocation) {
@@ -232,23 +261,14 @@ $(document).ready(function(e) {
 	//$("#relacionado").masonry({ itemSelector: 'li' });
 
 	/* Cuadro de busqueda */
-	$('#busqueda').on('click', function() {
-		console.log('bounceInDown');
-		$('#buscador').toggle().removeClass().addClass("bounceInDown");
-		$("#buscador").on('mouseleave', function(){
-			setTimeout(function() {
-				$('#buscador').removeClass().addClass("bounceOutUp");
-				console.log('bounceOutUp');
-			},3000);
-		});
-	});
+	$('#busqueda').on('click', function() { showMenu(); });
 
 	/* Contador de anuncios */
 	$(".timer").append('10K');
 
 	/* Menu y derivado */
-	$("#elmenu").on('click', function() { $('#opciones').toggle().removeClass().addClass("fadeInRight");});
-	$("#opciones").on('mouseleave', function(){ setTimeout(function() { $('#opciones').hide(); },3000);});
+	$("#elmenu").on('click', function() { $('#opciones').toggle().removeClass().addClass("fadeInRight"); });
+	$("#opciones").on('mouseleave', function(){ setTimeout(function() { $('#opciones').hide(); },3000); });
 
 	/* Tooltip */
 	// $('.fs1').qtip({ style: { classes: 'qtip-light qtip-shadow' } });
@@ -262,15 +282,7 @@ $(document).ready(function(e) {
 		window.location = "/user/auth"; 
 	});
 	/* Show me my location with or with geolocation */
-	$("#ubicacion").on('click', function() {
-		$('#dondeestoy').html('');
-		$("#dondeestoy").append('<p>We locate you by '+ciudad +' '+pais+', right?</p>');
-		$('#dondeestoy').css('display','inline');
-		$("#dondeestoy").removeClass().addClass("fadeInDown");
-		setTimeout(function() { 
-			$('#dondeestoy').removeClass().addClass("fadeOutDown");
-		},3000);
-	});
+	$("#ubicacion").on('click', function() { showLocation(); });
 
 	/* Parallax Effects */
 	$(".slide-option").rlSmooth();
@@ -323,6 +335,7 @@ $(document).ready(function(e) {
 			country: { required: '(Please enter your country)' }
 		}		
 	});
+
 //
 });
 

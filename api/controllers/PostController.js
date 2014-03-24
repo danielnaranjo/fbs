@@ -138,8 +138,8 @@ module.exports = {
     });
   },
   nearby: function(req, res) {
-    var id = req.param('id');
-    if( !id ) return res.notFound();
+    //var id = req.param('id');
+    //if( !id ) return res.notFound();
     Post.find({"location":{"$near":[10.96,-63.851],"$maxDistance":1000}}).done(function nearbyPost(err, post){
       if ( err ) return next(err);
       if (req.wantsJSON) return res.json(post);
@@ -147,13 +147,13 @@ module.exports = {
     });
   },
   search: function(req, res) {
-    var id = req.param('id');
+    var id = req.param('w');
+    console.log('Enviado: '+id);
     if( !id ) return res.notFound();
     Post.find({ title: { contains: id } }).done(function searchPost(err, post){
       if ( err ) return next(err);
       if (req.wantsJSON) return res.json(post);
-      //else return res.view({ post: post});
-      else return res.redirect('/post/search/' + post.id);
+      else return res.view({ post: post});
     });
   },
 
