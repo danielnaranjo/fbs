@@ -32,8 +32,6 @@ module.exports = {
         if (req.wantsJSON) return res.json(post);
         // Else response view with results 
         else return res.view({ post: post });
-        // Si cambias a AngularJS para mostrar JSON
-        // else return res.json(post);
       });
     }
     // Otherwise, we will retun an user array.
@@ -63,13 +61,11 @@ module.exports = {
         // Otherwise, response view with results 
         } else {
           return res.view({ posts: posts });
-          // Si cambias a AngularJS para mostrar JSON
-          // return res.json(posts);
         }
       });
     }
     function isShortcut(id){
-      return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' || id=== 'related' || id=== 'tags' || id=== 'nearby');
+      return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' || id=== 'related' || id=== 'tags' || id=== 'nearby' || id=== 'search');
     }
   },
   create: function(req, res, next) {
@@ -112,9 +108,8 @@ module.exports = {
       // If user is not found, return error 404.
       if ( !post ) return res.notFound();
       // Delete the post.
-      Post.destroy(post.id).done(function userDestroyed(err){
+      Post.destroy(post.id).done(function postDestroyed(err){
         if ( err ) return next();
-        req.logout();
         // Response JSON if needed.
         if (req.wantsJSON) return res.json(200);
         // Redirect to the users page.
@@ -136,22 +131,30 @@ module.exports = {
   tags: function(req, res) {
     var id = req.param('id');
     if( !id ) return res.notFound();
-    Post.find({ title: { contains: id } }).done(function relatedPost(err, post){
+    Post.find({ title: { contains: id } }).done(function tagsPost(err, post){
       if ( err ) return next(err);
       if (req.wantsJSON) return res.json(post);
       else return res.view({ post: post});
     });
-
   },
   nearby: function(req, res) {
     var id = req.param('id');
     if( !id ) return res.notFound();
-    Post.find({"location":{"$near":[10.96,-63.851],"$maxDistance":1000}}).done(function relatedPost(err, post){
+    Post.find({"location":{"$near":[10.96,-63.851],"$maxDistance":1000}}).done(function nearbyPost(err, post){
       if ( err ) return next(err);
       if (req.wantsJSON) return res.json(post);
       else return res.view({ post: post});
     });
-
+  },
+  search: function(req, res) {
+    var id = req.param('id');
+    if( !id ) return res.notFound();
+    Post.find({ title: { contains: id } }).done(function searchPost(err, post){
+      if ( err ) return next(err);
+      if (req.wantsJSON) return res.json(post);
+      //else return res.view({ post: post});
+      else return res.redirect('/post/search/' + post.id);
+    });
   },
 
   /*

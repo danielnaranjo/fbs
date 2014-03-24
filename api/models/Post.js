@@ -5,6 +5,7 @@
  * @description :: A short summary of how this model works and what it represents.
  * @docs		:: http://sailsjs.org/#!documentation/models
  */
+var BitlyAPI = require("node-bitlyapi");
 
 module.exports = {
 
@@ -79,6 +80,22 @@ module.exports = {
 		values.populars = values.populars.replace(/\s+/g, '').toLowerCase();
 		// Keep Going!
 		next();
+	},
+	afterCreate: function (values, next) {
+		Post.findOne(values.id).done(function(err, post) {
+			var Bitly = new BitlyAPI({
+				client_id: "61025540de4b5eac50ec9df7065951f9dfd95e50",
+				client_secret:"9a2ef245dcc28b60ab1b764ac82d62dfdd9e63f8"
+			});
+			Bitly.setAccessToken("d167c2a4e35c0237a743f41548b78d41d58f0a50");
+			Bitly.shorten({ longUrl: 'http://findby.co/post/'+post.id }, function(err, results) {
+				console.log(' *** '+ results +' *** ');
+				Post.update({ id: post.id }, { url: results }).done(function(err, post) {
+					if (err) return next(err);
+					else return next();
+				});
+			});
+		});
 	}
-
+//
 };

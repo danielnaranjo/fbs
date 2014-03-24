@@ -1,33 +1,29 @@
 /* Variables globales */
-var miubicacion = [],
-	ciudad = "",
-	pais = "",
-	Lat = "",
-	Lon = "";
+var miubicacion = [], ciudad = "", pais = "", Lat = "", Lon = "";
 
-	// Carga la GEO de HTML5
-	function showPosition(position) {
-		var lat = position.coords.latitude;
-		var lng = position.coords.longitude;
-		miubicacion[0]=lat.toFixed(3);
-		miubicacion[1]=lng.toFixed(3);
-		// Compruebo que hay contenido?
-		if(!miubicacion) {
+// Carga la GEO de HTML5
+function showPosition(position) {
+    var lat = position.coords.latitude;
+	var lng = position.coords.longitude;
+	miubicacion[0] = lat.toFixed(3);
+	miubicacion[1] = lng.toFixed(3);
+	// Compruebo que hay contenido?
+	if(!miubicacion) {
+		setTimeout(function() {
+			$('#dondeestoy').html('');
+			$('#dondeestoy').css('display', 'inline');
+			$('#dondeestoy').css('background-color', 'transparent');
+			$('#dondeestoy').html('<img src="/img/486.GIF" height="20px" />');
 			setTimeout(function() {
-				$('#dondeestoy').html('');
-				$('#dondeestoy').css('display', 'inline');
-				$('#dondeestoy').css('background-color', 'transparent');
-				$('#dondeestoy').html('<img src="/img/486.GIF" height="20px" />');
-				setTimeout(function() {
-					$('#dondeestoy').html('We\'re ready!  :) ');
-					$('#dondeestoy').removeClass().addClass("fadeOut");
-					// console.log(miubicacion[0]+','+miubicacion[1]);
-				}, 3000);
-				// Mostrar datos en la caja de busqueda
-				//$("#w").val('Estas cerca de '+miubicacion[0]+','+miubicacion[1]);
-			}, 2000);
-		}
+				$('#dondeestoy').html('We\'re ready!  :) ');
+				$('#dondeestoy').removeClass().addClass("fadeOut");
+				// console.log(miubicacion[0]+','+miubicacion[1]);
+			}, 3000);
+			// Mostrar datos en la caja de busqueda
+			//$("#w").val('Estas cerca de '+miubicacion[0]+','+miubicacion[1]);
+		}, 2000);
 	}
+}
 // Mensajes de Errores de GEO
 	function onError() {
 		$('#nogeo').css('display', 'inline');
@@ -54,36 +50,36 @@ var miubicacion = [],
 	// Cargar todos los avisos
 	var avisos = function() {
 		$('#avisos').html('<ul></ul>');
-        $.getJSON( "/post?sort=DESC&limit=10", function(data) {
-        //$('#avisos').prepend('<h3>Active post: '+data.length+'</h3>');
-          var items = [];
-          $.each( data, function( key, val ) {
-            $('#avisos ul').append("<li><a href='/post/" + val.id + "' target=\"_blank\">" + val.title + "</a></li>");
-          });
-        });
-        console.log('Loading posts');
-    }
-    // Cargar usuarios
+		$.getJSON( "/post?sort=DESC&limit=10", function(data) {
+		//$('#avisos').prepend('<h3>Active post: '+data.length+'</h3>');
+		  var items = [];
+		  $.each( data, function( key, val ) {
+			$('#avisos ul').append("<li><a href='/post/" + val.id + "' target=\"_blank\">" + val.title + "</a></li>");
+		  });
+		});
+		console.log('Loading posts');
+	}
+	// Cargar usuarios
 	var usuarios = function() {
 		$('#usuarios').html('<ul></ul>');
-        $.getJSON( "/user?sort=DESC&limit=10", function(data) {
-        //$('#usuarios').prepend('<h3>Active users: '+data.length+'</h3>');
-          var items = [];
-          $.each( data, function( key, val ) {
-            $('#usuarios ul').append("<li><a href='/user/" + val.id + "' target=\"_blank\">" + val.username + "</a></li>");
-          });
-        });
-        console.log('Loading users');
-    }
-    // Total posts
-    var totalPosts = function() {
+		$.getJSON( "/user?sort=DESC&limit=10", function(data) {
+		//$('#usuarios').prepend('<h3>Active users: '+data.length+'</h3>');
+		  var items = [];
+		  $.each( data, function( key, val ) {
+			$('#usuarios ul').append("<li><a href='/user/" + val.id + "' target=\"_blank\">" + val.username + "</a></li>");
+		  });
+		});
+		console.log('Loading users');
+	}
+	// Total posts
+	var totalPosts = function() {
 		$.getJSON( "/post", function(data) {
 			$('#avisos').prepend('<h3>Active: '+data.length+' posts</h3>');
 		});
 		console.log('Counting posts');
 	}
 	// Total usuarios
-    var totalUsers = function() {
+	var totalUsers = function() {
 		$.getJSON( "/user", function(data) {
 			$('#usuarios').prepend('<h3>Active: '+data.length+' users</h3>');
 		});
@@ -113,8 +109,7 @@ var miubicacion = [],
 		$.getJSON( "/post", function(data) {
 		var locacion=[], marcador=[];
 		$.each( data, function( key, val ) {
-			console.log(val.title+">"+val.location); 
-			var locacion = val.location;
+			var locacion = $.trim(val.location);
 			var marcador = locacion.split(",");
 			L.marker([parseInt(marcador[0]), parseInt(marcador[1])], {icon: Icon})
 				.addTo(map)
@@ -128,21 +123,21 @@ var miubicacion = [],
 		$('#showList').html('');
 		var pathname = window.location.pathname; 
 		var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
-        $.getJSON( "/post/related/"+last+"/?sort=DESC&limit=4", function(data) {
-        if(data.length) {
-        	$('#showList').prepend('<br><h4>Active post: '+data.length+'</h4>');
-        } else {
-        	$('#showList').prepend('<br><h4>No post? Be may guest and create one!</h4>');
-        }
-          var items = [];
-          $.each( data, function( key, val ) {
-          	$('#showList').append("<div>");
-            $('#showList').append("<a href='/post/" + val.id + "' target=\"_blank\">" + val.title + "</a> ");
-            $('#showList').append("<a href=\"javascript:editPost('"+val.id+"');\"><i class=\"glyphicon glyphicon-pencil text-success\"></i></a> ");
-            $('#showList').append("<a href=\"javascript:deletePost('"+val.id+"');\"><i class=\"glyphicon glyphicon-remove text-danger\"></i></a> ");
-            $('#showList').append("</div>");
-          });
-        });
+		$.getJSON( "/post/related/"+last+"/?sort=DESC&limit=4", function(data) {
+		if(data.length) {
+			$('#showList').prepend('<br><h4>Active post: '+data.length+'</h4>');
+		} else {
+			$('#showList').prepend('<br><h4>No post? Be may guest and create one!</h4>');
+		}
+		  var items = [];
+		  $.each( data, function( key, val ) {
+			$('#showList').append("<div>");
+			$('#showList').append("<a href='/post/" + val.id + "' target=\"_blank\">" + val.title + "</a> ");
+			$('#showList').append("<a href=\"javascript:editPost('"+val.id+"');\"><i class=\"glyphicon glyphicon-pencil text-success\"></i></a> ");
+			$('#showList').append("<a href=\"javascript:deletePost('"+val.id+"');\"><i class=\"glyphicon glyphicon-remove text-danger\"></i></a> ");
+			$('#showList').append("</div>");
+		  });
+		});
 	}
 	/* Relacionados en /post/ */
 	var related = function() {
@@ -183,47 +178,100 @@ var miubicacion = [],
 		setTimeout(function() {
 			$('#city').attr('value',ciudad);
 			$('#country').attr('value',pais);
-			$('#location').attr('value',Lat+','+Lon);
-			$('#location').attr('value',miubicacion[0]+','+miubicacion[1]);
+			if(miubicacion[0] || miubicacion[1]) {
+				$('#location').attr('value',miubicacion[0]+','+miubicacion[1]);
+			} else {
+				$('#location').attr('value',Lat+','+Lon);
+			}
 		},5000);
 	}
 
-	var editUser = function(x){ window.location.href="/user/edit/"+x; }
-	var editPost = function(x){ window.location.href="/post/edit/"+x; }
-	var deletePost = function(x){ window.location.href="/post/destroy/"+x; }
+	var editUser = function(x){
+		window.location.href="/user/edit/"+x;
+	}
+	var editPost = function(x){
+		window.location.href="/post/edit/"+x;
+	}
+	var deletePost = function(x){
+		window.location.href="/post/destroy/"+x;
+	}
 
+	function linkify(inputText) {
+		var replacedText, replacePattern1, replacePattern2, replacePattern3;
+		//URLs starting with http://, https://, or ftp://
+		replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+		replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');
+		//URLs starting with "www." (without // before it, or it'd re-link the ones done above).
+		replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+		replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank">$2</a>');
+		//Change email addresses to mailto:: links.
+		replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
+		replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>');
+		return replacedText;
+	}
+	function url2link(){
+		document.getElementById('ft').innerHTML=linkify(document.getElementById('ft').innerHTML); 
+	}
 
 $(document).ready(function(e) {
 //	
 	console.log('OK!');
+	/* Need for IP, City, Country and Lat,Lon */
 	WhereAmI();
+
 	/* Geolocalization HTML5 */
-	if (navigator.geolocation) { navigator.geolocation.getCurrentPosition(showPosition, onError); } else { onError();}
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(showPosition, onError);
+	} else {
+		onError();
+	}
+
 	/* masonry */
 	$("#contenido").masonry({itemSelector:'.box'});
 	//$("#contenido2").masonry({ itemSelector: 'li' });
 	//$("#relacionado").masonry({ itemSelector: 'li' });
+
 	/* Cuadro de busqueda */
-	$('#busqueda').on('click', function() { $('#buscador').toggle().removeClass().addClass("fadeInDown"); });
+	$('#busqueda').on('click', function() {
+		console.log('bounceInDown');
+		$('#buscador').toggle().removeClass().addClass("bounceInDown");
+		$("#buscador").on('mouseleave', function(){
+			setTimeout(function() {
+				$('#buscador').removeClass().addClass("bounceOutUp");
+				console.log('bounceOutUp');
+			},3000);
+		});
+	});
+
 	/* Contador de anuncios */
-    $(".timer").append('10K');
+	$(".timer").append('10K');
+
 	/* Menu y derivado */
 	$("#elmenu").on('click', function() { $('#opciones').toggle().removeClass().addClass("fadeInRight");});
 	$("#opciones").on('mouseleave', function(){ setTimeout(function() { $('#opciones').hide(); },3000);});
-    /* Tooltip */
-    // $('.fs1').qtip({ style: { classes: 'qtip-light qtip-shadow' } });
-    // $('header div').qtip({ style: { classes: 'qtip-light qtip-shadow' } });
+
+	/* Tooltip */
+	// $('.fs1').qtip({ style: { classes: 'qtip-light qtip-shadow' } });
+	// $('header div').qtip({ style: { classes: 'qtip-light qtip-shadow' } });
+
 	/* ET Go Home! */
 	$("#logo").on('click', function(){ window.location = "/"; });
+
 	/* Login desde Menu */
-	$("#quiensoy").on('click', function(){ window.location = "/user/auth"; });
+	$("#quiensoy").on('click', function(){ 
+		window.location = "/user/auth"; 
+	});
+	/* Show me my location with or with geolocation */
 	$("#ubicacion").on('click', function() {
 		$('#dondeestoy').html('');
-		$("#dondeestoy").append('<p>Maybe you\'re nearby '+ciudad +' '+pais+'</p>');
+		$("#dondeestoy").append('<p>We locate you by '+ciudad +' '+pais+', right?</p>');
 		$('#dondeestoy').css('display','inline');
 		$("#dondeestoy").removeClass().addClass("fadeInDown");
-		setTimeout(function() { $('#dondeestoy').removeClass().addClass("fadeOutDown");},3000);
+		setTimeout(function() { 
+			$('#dondeestoy').removeClass().addClass("fadeOutDown");
+		},3000);
 	});
+
 	/* Parallax Effects */
 	$(".slide-option").rlSmooth();
 	$(".slideOut-option").rlSmooth('slideOut',{ y: 500, on: 550, off: 800 });
@@ -234,6 +282,7 @@ $(document).ready(function(e) {
 	$(".showHide-option").rlSmooth('showHide',{ y: 1100 });
 	$(".showUp-option").rlSmooth('showUp',{ y: 1300 });
 	$(".showOut-option").rlSmooth('showOut',{ y: 1500 });
+
 	/* Validar formularios */
 	$("#signupform").validate({
 		debug: false,
@@ -262,8 +311,8 @@ $(document).ready(function(e) {
 	$("#postform").validate({
 		debug: false,
 		rules: {
-			title: { required:true, minlength:5, maxlength:20 },
-			text: { required:true, minlength:5, maxlength:20 },
+			title: { required:true, minlength:5, maxlength:140 },
+			text: { required:true, minlength:5 },
 			city: { required:true },
 			country: { required:true }
 		},

@@ -43,7 +43,7 @@ if ( typeof posts === 'undefined' ) {
         <i class="glyphicon glyphicon-star"></i>    <span> 2 </span>
         <i class="glyphicon glyphicon-flag"></i>    <span> 20 </span>
       </p>
-      <p><%= post.text %></p>          
+      <p id="ft"><%= post.text %></p>          
       <p class="text-right">
           <p>
               <i class="icon-tags"></i> <%= __('Tags') %>: 
@@ -58,9 +58,9 @@ if ( typeof posts === 'undefined' ) {
       </p>
       <p>
       	<%= __('Reference') %>: <%= post.id %>.  
-      <!--
-      	<%= __('Permanent link') %>: <a href="http://bit.ly/XXXXX">http://bit.ly/XXXXX</a>
-      -->
+        <% if ( post.summary) { %>
+      	<%= __('Permanent link') %>: <a href="<%= post.url %>" target="_blank"><%= post.url %></a>
+        <% } %>
       </p>
     </div>
     <!--discuss-->
@@ -150,6 +150,7 @@ if ( typeof posts === 'undefined' ) {
 <script>
   setTimeout(function() { 
     related();
+    url2link();
   }, 3000);
 </script>
 
