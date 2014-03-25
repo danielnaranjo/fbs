@@ -59,7 +59,8 @@ if ( typeof posts === 'undefined' ) {
       <p>
       	<%= __('Reference') %>: <%= post.id %>.  
         <% if ( post.summary) { %>
-      	<%= __('Permanent link') %>: <a href="<%= post.url %>" target="_blank"><%= post.url %></a>
+      	<%= __('Permanent link') %>: <a href="<%= post.url %>" target="_blank">
+        <% var pm = post.url.replace('"', '').replace(/\\/g,""); %><%= pm %></a>
         <% } %>
       </p>
     </div>

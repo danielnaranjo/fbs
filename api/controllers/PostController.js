@@ -147,7 +147,7 @@ module.exports = {
     });
   },
   search: function(req, res) {
-    var id = req.param('w');
+    var id = req.param('term');
     console.log('Enviado: '+id);
     if( !id ) return res.notFound();
     Post.find({ title: { contains: id } }).done(function searchPost(err, post){

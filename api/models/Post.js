@@ -91,8 +91,13 @@ module.exports = {
 			});
 			Bitly.setAccessToken("d167c2a4e35c0237a743f41548b78d41d58f0a50");
 			Bitly.shorten({ longUrl: 'http://findby.co/post/'+post.id }, function(err, results) {
-				console.log(' *** '+ results +' *** ');
-				Post.update({ id: post.id }, { url: results }).done(function(err, post) {
+				// Not a nice solution ;)
+				var data = results.replace(':', '').split(",");
+				var dirtyUrl = data[3].split(":");
+				var cleanUrl = dirtyUrl[2].replace('"', '');
+				// Show me the permanent link: 
+				console.log(' *** '+ cleanUrl +' *** ');
+				Post.update({ id: post.id }, { url: "http:"+cleanUrl }).done(function(err, post) {
 					if (err) return next(err);
 					else return next();
 				});
