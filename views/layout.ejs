@@ -39,11 +39,18 @@
           </div>
         </header>
         <div id="buscador" class="row">
+          
           <div id="lacaja" class="col-md-6">
             <form action="/post/search/">
-              <div>
-                <input id="w" type="type" name="w" placeholder="<%= __('Start your search here') %>" OnChange="makeTags();">
-              </div>
+              <!-- <div>
+                <input  type="type"id="w" name="w" placeholder="<%= __('Start your search here') %>" data-role="tagsinput">
+              </div>-->
+    <div class="input-group">
+      <input type="text" class="form-control" id="term" name="term" placeholder="<%= __('Start your search here') %>">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div>        
             </form>
           </div>
           <div id="popular" class="col-md-6">
@@ -69,7 +76,7 @@
 
       <footer id="footer" class="smooth-style slideOut-option navbar-fixed-bottom"><!--  -->
         <div class="container">
-          <div>2013-2014 &copy  <a href="http://www.danielnaranjo.info">Daniel Naranjo</a></div>
+          <div>2013 &copy  <a href="http://www.danielnaranjo.info">Daniel Naranjo</a></div>
           <div><a href="#">Privacy</a> | <a href="#">Legal</a></div>
         </div>
       </footer>

@@ -211,13 +211,14 @@ function showPosition(position) {
 	}
 
 	var showMenu = function(){
-		console.log('bounceInDown');
 		$('#buscador').toggle();// .removeClass().addClass("fadeInDown");
+		/*
 		$("#buscador").on('mouseleave', function(){
 			setTimeout(function() {
 				$('#buscador').removeClass().addClass("fadeOutUp");
 			},10000);
 		});
+		*/
 	};
 
 	var showLocation = function(){
@@ -229,24 +230,21 @@ function showPosition(position) {
 			$('#dondeestoy').removeClass().addClass("fadeOutDown");
 		},3000);
 	};
-
+ 
 	var makeTags = function(){
-		$('#w').on('keypress',function() {
-			setTimeout(function() {
-				$('#w').tagsinput('add', $("#w").val());
-				console.log('tag it');
-			},1000);
-		});
-		setTimeout(function(){
-			$( "#w" ).submit();
-		}, 5000);
+		//setTimeout(function() {
+			 $('#w').tagsinput('add', $("#w").val());
+			//$('#w').tagsinput({ confirmKeys: [13, 32, 44]});
+			//$("#lacaja").trigger( "click" );
+		//},1000);
 	};
+
 
 $(document).ready(function(e) {
 //	
-	console.log('OK!');
+	//console.log('OK!');
 	/* Need for IP, City, Country and Lat,Lon */
-	WhereAmI(); makeTags();
+	WhereAmI();
 
 	/* Geolocalization HTML5 */
 	if (navigator.geolocation) {
