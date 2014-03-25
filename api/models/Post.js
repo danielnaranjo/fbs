@@ -82,6 +82,16 @@ module.exports = {
 		next();
 	},
 	afterCreate: function (values, next) {
+		/* Send to tags model */
+		var total = values.populars.split(',').length;
+		var array = values.populars.split(',');
+		for(i=0; i<total; i++) {
+			console.log(array[i].trim());
+			Tags.create({ tag: array[i].trim() }).done(function(err, user) {
+				if(err) return console.log(err);
+			});
+		}
+		/* Bit.ly shorter */
 		Post.findOne(values.id).done(function(err, post) {
 			var Bitly = new BitlyAPI({
 				client_id: "61025540de4b5eac50ec9df7065951f9dfd95e50",
@@ -96,7 +106,6 @@ module.exports = {
 				var dirtyUrl = data[3].split(":");
 				var cleanUrl = dirtyUrl[2].replace('"', '');
 				// Show me the permanent link: 
-				console.log(' *** '+ cleanUrl +' *** ');
 				Post.update({ id: post.id }, { url: "http:"+cleanUrl }).done(function(err, post) {
 					if (err) return next(err);
 					else return next();
