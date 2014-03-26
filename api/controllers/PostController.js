@@ -28,6 +28,13 @@ module.exports = {
         if ( err ) return next(err);
         if ( !post ) return res.notFound();
 
+      // Contador de visitas!!!
+        var visited = post.visit + 1; console.log(' *** '+post.visit+' '+visited+' *** ');
+        Post.update(id, { visit: visited }, function(err, post) {
+          if (err) return console.log(err);
+        });
+      // Contador de visitas!!!
+      
         // Response JSON if needed.
         if (req.wantsJSON) return res.json(post);
         // Else response view with results 

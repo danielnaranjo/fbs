@@ -67,6 +67,11 @@ module.exports = {
 		photos: {
 			type: 'array',
 			defaultsTo: []
+		},
+		visit: {
+			type: 'integer',
+			defaultsTo: 0,
+			number: true
 		}
 	},
 	beforeCreate: function (values, next) {
