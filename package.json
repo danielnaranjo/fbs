@@ -16,7 +16,8 @@
     "passport-facebook": "~1.0.2",
     "passport-twitter": "~1.0.2",
     "newrelic": "*",
-    "node-bitlyapi": "^0.4.0"
+    "node-bitlyapi": "^0.4.0",
+    "mailer": "^0.6.7"
   },
   "engines": {
     "node": ">=0.8.x"
