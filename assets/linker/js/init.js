@@ -169,7 +169,7 @@ function showPosition(position) {
 			dip=location.ip;
 		});
 	}
-	/*Llenar formularios */ 
+	/*Llenar formularios */
 	var WhereIP = function() {
 		setTimeout(function() {
 			$('#city').attr('value',ciudad);
@@ -181,7 +181,7 @@ function showPosition(position) {
 			}
 		},5000);
 	}
-
+	/* Masks */
 	var editUser = function(x){
 		window.location.href="/user/edit/"+x;
 	}
@@ -191,7 +191,7 @@ function showPosition(position) {
 	var deletePost = function(x){
 		window.location.href="/post/destroy/"+x;
 	}
-
+	/* Convert all URL to Link */
 	var linkify = function(inputText) {
 		var replacedText, replacePattern1, replacePattern2, replacePattern3;
 		//URLs starting with http://, https://, or ftp://
@@ -205,11 +205,11 @@ function showPosition(position) {
 		replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>');
 		return replacedText;
 	}
-
+	/* Read field and fire function */
 	var url2link = function (){
 		document.getElementById('ft').innerHTML=linkify(document.getElementById('ft').innerHTML);
 	}
-
+	/* Fire Menu */
 	var showMenu = function(){
 		$('#buscador').toggle();// .removeClass().addClass("fadeInDown");
 		/*
@@ -220,7 +220,7 @@ function showPosition(position) {
 		});
 		*/
 	};
-
+	/* Fire Location */
 	var showLocation = function(){
 		$('#dondeestoy').html('');
 		$("#dondeestoy").append('<p>We locate you by '+ciudad +' '+pais+', right?</p>');
@@ -230,18 +230,32 @@ function showPosition(position) {
 			$('#dondeestoy').removeClass().addClass("fadeOutDown");
 		},3000);
 	};
- 
+	/* Do tags in search field */
 	var makeTags = function(){
-		//setTimeout(function() {
-			 $('#w').tagsinput('add', $("#w").val());
-			//$('#w').tagsinput({ confirmKeys: [13, 32, 44]});
+		setTimeout(function() {
+			$('#term').tagsinput('add', $("#term").val(), {confirmKeys:[32]});
 			//$("#lacaja").trigger( "click" );
-		//},1000);
+		},1000);
+	};
+	/* Reveal Skype user */
+	var skype = function(){
+		$("#skype").click(function(){
+			$("#skype").html('<i class="glyphicon glyphicon-phone"></i><span> Skype: </span> <a href="skype:danielnaranjoserrano?call">danielnaranjoserrano</a>');
+		});
+	};
+	/* Inyect email to preven scrappy */
+	var envelope = function(){
+		$('#envelope').append('<a href="#"></a>');
+		$('#envelope a').append('hello@findby.co');
+	};
+	/* Fire Languages */
+	var language = function(){
+		var language = window.navigator.userLanguage || window.navigator.language;
+		$('#lang').attr('value', language);
 	};
 
-
 $(document).ready(function(e) {
-//	
+//
 	//console.log('OK!');
 	/* Need for IP, City, Country and Lat,Lon */
 	WhereAmI();
@@ -276,8 +290,8 @@ $(document).ready(function(e) {
 	$("#logo").on('click', function(){ window.location = "/"; });
 
 	/* Login desde Menu */
-	$("#quiensoy").on('click', function(){ 
-		window.location = "/user/auth"; 
+	$("#quiensoy").on('click', function(){
+		window.location = "/user/auth";
 	});
 	/* Show me my location with or with geolocation */
 	$("#ubicacion").on('click', function() { showLocation(); });
@@ -305,7 +319,7 @@ $(document).ready(function(e) {
 			username: { required: '(Please enter your username (at least 5 characters))' },
 			email: { required: '(Please enter a valid email)' },
 			password: { required: '(Please enter your password (at least 5 characters)' }
-		}		
+		}
 	});
 	$("#loginfrom").validate({
 		debug: false,
@@ -316,7 +330,7 @@ $(document).ready(function(e) {
 		messages: {
 			username: { required: '(Please enter your username (at least 5 characters))' },
 			password: { required: '(Please enter your password (at least 5 characters)' }
-		}		
+		}
 	});
 	$("#postform").validate({
 		debug: false,
@@ -331,7 +345,7 @@ $(document).ready(function(e) {
 			text: { required: '(Please enter the large description' },
 			city: { required: '(Please enter your current city)' },
 			country: { required: '(Please enter your country)' }
-		}		
+		}
 	});
 
 //
