@@ -40,7 +40,10 @@ footer a:hover{text-decoration:underline}
 @media screen and (max-width: 480px){#buscador{border:0;height:50px}
 }#lacaja{height:auto;margin:0 0 5px 0;vertical-align:top;}
 @media screen and (max-width: 480px){#lacaja{display:none}
-}#popular{height:90px;margin:0;vertical-align:top;}
+}#lacaja div{display:inline-block;vertical-align:top}
+#lacaja input[type="text"]{padding:0 10px;width:95%}
+#lacaja input[type="submit"]{padding:5px 10px}
+#popular{height:90px;margin:0;vertical-align:top;}
 @media screen and (max-width: 480px){#popular{display:none;visibility:hidden}
 }#popular ul{margin:0;padding:5px 10px;text-align:center}
 #popular li{margin:0;padding:0;list-style:none;display:inline;}
