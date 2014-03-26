@@ -58,7 +58,7 @@
 
   "Create user":"Crear usuario",
   "Username":"Usuario",
-  "Email":"Correo eléctronico",
+  "E-mail":"Correo eléctronico",
   "Already registered?":"Soy un usuario registrado, ",
 
   "Hello":"Hola",
@@ -79,6 +79,19 @@
   "Old password":"Contraseña actual",
   "New password":"Nueva contraseña",
   "Confirm password":"Confirmar contraseña",
-  "Update account":"Actualizar"
+  "Update account":"Actualizar",
+
+  "Contact us":"Contactenos",
+  "If you'd like to contact us, we will appreciate if you complete the following form and we will answer you as soon as possible.":"Si quiere contactanos, apreciariamos que completara el siguiente formulario y le responderemos a la brevedad posible.",
+  "Get in Touch":"Escribanos",
+  "Name":"Nombre",
+  "Message":"Comentarios",
+  "Submit":"Enviar",
+  "Mobile":"Movil",
+  "Telephone":"Telefono",
+  "Subscribe to our mailing list":"Boletin de novedades",
+  "Subscribe":"Registrarse",
+  "* According to your request, we will contact within a period Here 48 - 72 hours.":"* Según su requerimiento, lo contactaremos en un periodo de 48 - 72 horas.",
+  "* We usually will send one or two messages a month on the news, and you can unsubscribe at any time.":"* Normalmente enviamos uno o dos correos al mes con las últimas novedades, y puede darse de baja cuando lo desee."
 
 }

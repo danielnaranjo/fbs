@@ -1,12 +1,83 @@
 <section id="perfil">
+<div class="container introtitle">
     <div class="row">
-        <!--  Charts  -->
-        <div class="col-md-6">
-            <h3>Contact</h3>
+        <div class="col-md-8">
+            <h3><%= __('Contact us') %></h3>
+            <p>
+            <%= __('If you\'d like to contact us, we will appreciate if you complete the following form and we will answer you as soon as possible.') %>
+            </p>
         </div>
-        <!-- big chart -->
-        <div class="col-md-6" id="usuarios">
-            <h3>Office</h3>
-        </div>      
+        <div class="col-md-3">
+            <h3><%= __('Contact') %></h3>
+            <dl>
+                <dd id="skype" onclick="javascript:skype();"><i class="glyphicon glyphicon-phone"></i><span> Skype: </span> <a href="javascript:;">Click here</a></dd>
+                <dd><i class="glyphicon glyphicon-phone"></i><span> <%= __('Mobile') %>: </span>+58 (414) 796-2406</dd>
+                <dd><i class="glyphicon glyphicon-phone-alt"></i><span> <%= __('Telephone') %>: </span>+1 (562) 363-4635</dd>
+                <dd id="envelope"><i class="glyphicon glyphicon-envelope"></i> <%= __('E-mail') %>: </dd>
+                <dd><i class="fa fa-facebook-square"></i> Facebook <a href="http://www.facebook.com/findby" target="_blank">FindBY</a></dd>
+                <dd><i class="fa fa-twitter-square"></i> Twitter: <a href="http://www.twitter.com/findbytags" target="_blank">@findbytags</a></dd>
+            </dl>
+        </div>
     </div>
+
+    <div class="row">
+        <!-- begin contact form -->
+        <div class="col-md-8">  
+            <form role="form" action="/about/send" method="POST">
+                <input type="hidden" id="dip" name="dip" value="<%= req.ip %>"/>
+                <input type="hidden" id="city" name="city" />
+                <input type="hidden" id="country" name="country" />
+                <input type="hidden" id="lang" name="lang" />
+                <h3><%= __('Get in Touch') %></h3>
+              <div class="form-group">
+                <label><%= __('Name') %></label>
+                <input type="text" class="form-control" placeholder="<%= __('Name') %>" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label><%= __('E-mail') %></label>
+                <input type="email" class="form-control" placeholder="<%= __('E-mail') %>" id="email" name="email" required/>
+              </div>
+              <div class="form-group">
+                <label><%= __('Message') %></label>
+                <textarea class="form-control" rows="3" placeholder="<%= __('Message') %>" id="message" name="message" required ></textarea>
+              </div>
+              <p>
+                <button type="submit" class="btn btn-default"><%= __('Submit') %></button>
+                </p>
+                <p><%= __('* According to your request, we will contact within a period Here 48 - 72 hours.') %></p>
+            </form>
+            
+            <br/>
+
+            <!-- Begin MailChimp Signup Form -->
+            <form action="http://findby.us4.list-manage.com/subscribe/post?u=e78e696337bb57c9111406900&amp;id=4f6b46dbdb" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <h3><%= __('Subscribe to our mailing list') %></h3>
+                <input type="email" value="" name="EMAIL" class="email form-control" id="mce-EMAIL" placeholder="<%= __('E-mail') %>" required>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;"><input type="text" name="b_e78e696337bb57c9111406900_4f6b46dbdb" value="" class="form-control"></div>
+                <p><br/>
+                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-default">
+                </p>
+                <p><%= __('* We usually will send one or two messages a month on the news, and you can unsubscribe at any time.') %></p>
+            </form>
+            <!--End mc_embed_signup-->
+        </div>
+        <!--end contact form -->
+
+        <!--begin contacts -->
+        <div class="col-md-4">
+            <a class="twitter-timeline" href="https://twitter.com/findbytags" data-widget-id="448856426790678528">Tweets por @findbytags</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+        </div>
+        <!--end contacts -->
+    </div>
+</div>
 </section>
+
+<script>
+$(document).ready(function(e) {
+    WhereIP(); envelope(); language();
+});
+</script>

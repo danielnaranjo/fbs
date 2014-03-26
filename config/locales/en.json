@@ -58,7 +58,7 @@
 
   "Create user":"Create user",
   "Username":"Username",
-  "Email":"E-mail",
+  "E-mail":"E-mail",
   "Already registered?":"Already registered?",
 
   "Hello":"Hello",
@@ -79,6 +79,19 @@
   "Old password":"Old password",
   "New password":"New password",
   "Confirm password":"Confirm password",
-  "Update account":"Update account"
+  "Update account":"Update account",
+
+  "Contact us":"Contact us",
+  "If you'd like to contact us, we will appreciate if you complete the following form and we will answer you as soon as possible.":"If you'd like to contact us, we will appreciate if you complete the following form and we will answer you as soon as possible.",
+  "Get in Touch":"Get in Touch",
+  "Name":"Name",
+  "Message":"Message",
+  "Submit":"Submit",
+  "Mobile":"Mobile",
+  "Telephone":"Telephone",
+  "Subscribe to our mailing list":"Subscribe to our mailing list",
+  "Subscribe":"Subscribe",
+  "* According to your request, we will contact within a period Here 48 - 72 hours.":"* According to your request, we will contact within a period Here 48 - 72 hours.",
+  "* We usually will send one or two messages a month on the news, and you can unsubscribe at any time.":"* We usually will send one or two messages a month on the news, and you can unsubscribe at any time."
 
 }
