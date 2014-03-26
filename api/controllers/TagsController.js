@@ -16,17 +16,9 @@
  */
 
 module.exports = {
+//
+};
 
-index: function(req, res, next) {
-
-    var id = req.param('id');
-    if( !id ) return res.notFound();
-    
-    Tags.find({}).done(function tagsPost(err, tags){
-      if ( err ) return next(err);
-      if (req.wantsJSON) return res.json(tags);
-      // else return res.view({ tags: tags});
-    });
-
-  }
+module.exports.blueprints = {
+	rest: true,
 };

@@ -1,5 +1,5 @@
 /* Variables globales */
-var miubicacion = [], ciudad = "", pais = "", Lat = "", Lon = "";
+var miubicacion = [], ciudad = "", pais = "", Lat = "", Lon = "", OneTime = 0;
 
 // Carga la GEO de HTML5
 function showPosition(position) {
@@ -26,26 +26,31 @@ function showPosition(position) {
 }
 // Mensajes de Errores de GEO
 	function onError() {
-		$('#nogeo').css('display', 'inline');
-		$('#nogeo').html('');
-		if (navigator.geolocation){
-			$('#nogeo').append("Error: The Geolocation service failed.<br/>Erreur: Le service de géolocalisation a échoué.<br/>Error: El servicio de Geolocalización falló.<br/>Fehler: Der Geolocation-Dienst konnte."); 
-			console.log("Error: The Geolocation service failed.");
-			$("#nogeo").removeClass().addClass("bounceInLeft");
-			setTimeout(function() {
-				$('#nogeo').removeClass().addClass("bounceOutLeft");
-			}, 7000);
-		} else {
-			$('#nogeo').append("Error: Your browser doesn't support geolocation. Are you in Siberia?<br/>Erreur: Votre navigateur ne supporte pas la géolocalisation. Etes-vous en Sibérie?<br/>Error: Su navegador no soporta geolocalización. ¿Está usted en Siberia?<br/>Fehler: Ihr Browser unterstützt leider keine Geolocation. Sind Sie in Sibirien?");
-			console.log("Error: Your browser doesn't support geolocation");
+		// Check if message was show then..
+		if(OneTime==0){
 			$('#nogeo').css('display', 'inline');
-			$("#nogeo").removeClass().addClass("bounceInLeft");
-			setTimeout(function() { 
-				$('#nogeo').removeClass().addClass("bounceOutLeft");
-			}, 7000);
+			$('#nogeo').html('');
+			if (navigator.geolocation){
+				$('#nogeo').append("Error: The Geolocation service failed.<br/>Erreur: Le service de géolocalisation a échoué.<br/>Error: El servicio de Geolocalización falló.<br/>Fehler: Der Geolocation-Dienst konnte."); 
+				console.log("Error: The Geolocation service failed.");
+				$("#nogeo").removeClass().addClass("bounceInLeft");
+				setTimeout(function() {
+					$('#nogeo').removeClass().addClass("bounceOutLeft");
+				}, 7000);
+			} else {
+				$('#nogeo').append("Error: Your browser doesn't support geolocation. Are you in Siberia?<br/>Erreur: Votre navigateur ne supporte pas la géolocalisation. Etes-vous en Sibérie?<br/>Error: Su navegador no soporta geolocalización. ¿Está usted en Siberia?<br/>Fehler: Ihr Browser unterstützt leider keine Geolocation. Sind Sie in Sibirien?");
+				console.log("Error: Your browser doesn't support geolocation");
+				$('#nogeo').css('display', 'inline');
+				$("#nogeo").removeClass().addClass("bounceInLeft");
+				setTimeout(function() { 
+					$('#nogeo').removeClass().addClass("bounceOutLeft");
+				}, 7000);
+			}
 		}
 		miubicacion[0]=Lat;
 		miubicacion[1]=Lon;
+		OneTime=1;
+		console.log(miubicacion+" "+OneTime);
 	}
 	// Cargar todos los avisos
 	var avisos = function() {
@@ -88,7 +93,7 @@ function showPosition(position) {
 	// Mapa total
 	var mapa = function(){
 		$('#mapa').html('');
-		var map = L.map('mapa').setView([miubicacion[0], miubicacion[1]], 5);
+		var map = L.map('mapa').setView([miubicacion[0], miubicacion[1]], 5); console.log(miubicacion[0]+','+ miubicacion[1]);
 		L.tileLayer('http://{s}.tile.cloudmade.com/2aa8946815814d3ea0bb70bd8e8a8ea5/997/256/{z}/{x}/{y}.png', {
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'}).addTo(map);
 		var popup = L.popup();
@@ -253,12 +258,28 @@ function showPosition(position) {
 		var language = window.navigator.userLanguage || window.navigator.language;
 		$('#lang').attr('value', language);
 	};
+	var populars = function(){
+		var list=[];
+		$('#popular ul').html('');
+		$.getJSON("/tags?limit=10&sort=DESC", function( data ) {
+			$.each( data, function(key,val){
+				list.push(val.tag);
+			});
+			var counts = {};
+			for(var i=0;i< list.length;i++){
+				var key = list[i]; counts[key] = (counts[key])? counts[key] + 1 : 1 ;
+			}
+			$.each( counts, function(k, j ) {
+				$('#popular ul').append('<li class="tag'+j+'"><a href="/post/tags/'+k+'">'+k+'</a></li>');
+			});
+		});
+	};
 
 $(document).ready(function(e) {
 //
 	//console.log('OK!');
 	/* Need for IP, City, Country and Lat,Lon */
-	WhereAmI();
+	WhereAmI(); populars();
 
 	/* Geolocalization HTML5 */
 	if (navigator.geolocation) {
