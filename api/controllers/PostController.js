@@ -125,7 +125,7 @@ module.exports = {
     });
   },
   // Solo via iframe
-  related: function(req, res) {
+  related: function(req, res, next) {
     var id = req.param('id');
     if( !id ) return res.notFound();
     Post.find({ "patron_id": id }).done(function relatedPost(err, post){
@@ -135,16 +135,17 @@ module.exports = {
     });
 
   },
-  tags: function(req, res) {
+  tags: function(req, res, next) {
     var id = req.param('id');
     if( !id ) return res.notFound();
     Post.find({ title: { contains: id } }).done(function tagsPost(err, post){
+    // Post.find({ "$or" : [ {"title": { contains: id } }, {"tags":  { contains: id } } ] }).done(function tagsPost(err, post){
       if ( err ) return next(err);
       if (req.wantsJSON) return res.json(post);
       else return res.view({ post: post});
     });
   },
-  nearby: function(req, res) {
+  nearby: function(req, res, next) {
     //var id = req.param('id');
     //if( !id ) return res.notFound();
     Post.find({"location":{"$near":[10.96,-63.851],"$maxDistance":1000}}).done(function nearbyPost(err, post){
@@ -153,7 +154,7 @@ module.exports = {
       else return res.view({ post: post});
     });
   },
-  search: function(req, res) {
+  search: function(req, res, next) {
     var id = req.param('term');
     console.log('Enviado: '+id);
     if( !id ) return res.notFound();

@@ -38,15 +38,15 @@ footer a:hover{text-decoration:underline}
 #buscador div{display:inline-block;vertical-align:top}
 #buscador p{color:#bdbdbd;font-size:.8em;margin:-15px 0;padding:0;text-align:right}
 @media screen and (max-width: 480px){#buscador{border:0;height:50px}
-}#lacaja{height:auto;margin:0 0 5px 0;vertical-align:top;}
+}#lacaja{backgroung-color:#f90;height:auto;margin:0 0 5px 0;vertical-align:top;}
 @media screen and (max-width: 480px){#lacaja{display:none}
 }#lacaja div{display:inline-block;vertical-align:top}
 #lacaja input[type="text"]{padding:0 10px;width:95%}
 #lacaja input[type="submit"]{padding:5px 10px}
-#popular{height:90px;margin:0;vertical-align:top;}
+#popular{backgroung-color:#ccc;height:90px;margin:0;vertical-align:top;}
 @media screen and (max-width: 480px){#popular{display:none;visibility:hidden}
-}#popular ul{margin:0;padding:5px 10px;text-align:center}
-#popular li{margin:0;padding:0;list-style:none;display:inline;}
+}#popular ul{height:auto;margin:0;padding:5px 10px;text-align:center;width:auto}
+#popular li{margin:0;padding:0;list-style:none;display:inline-block;width:auto;}
 @media screen and (max-width: 480px){#popular li{display:none}
 }#popular li a{text-decoration:none;color:#3caee1;padding:0 2px}
 #popular li a:hover{color:#2f8fbb}

@@ -261,7 +261,7 @@ function showPosition(position) {
 	var populars = function(){
 		var list=[];
 		$('#popular ul').html('');
-		$.getJSON("/tags?limit=10&sort=DESC", function( data ) {
+		$.getJSON("/tags", function( data ) {
 			$.each( data, function(key,val){
 				list.push(val.tag);
 			});
@@ -270,7 +270,9 @@ function showPosition(position) {
 				var key = list[i]; counts[key] = (counts[key])? counts[key] + 1 : 1 ;
 			}
 			$.each( counts, function(k, j ) {
-				$('#popular ul').append('<li class="tag'+j+'"><a href="/post/tags/'+k+'">'+k+'</a></li>');
+				if(j>1) {
+					$('#popular ul').append('<li class="tag'+j+'"><a href="/post/tags/'+k+'">'+k+'</a></li>');
+				}
 			});
 		});
 	};
