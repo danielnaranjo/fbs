@@ -79,7 +79,7 @@ module.exports = {
 
 		}
 		function isShortcut(id){
-			return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' );
+			return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' || id === 'show');
 		}
 		function canAdminUser(id, sessionUser){
 			// Check if there are an logged user
@@ -94,7 +94,7 @@ module.exports = {
 		User.create( params, function createdUser(err, user){
 			
 			//if (err) return next(err);
-			if (err) return res.redirect('/user/auth'); 
+			if (err) return res.redirect('/user/auth');
 
 			req.login(user, function(err){
 				if (err) return res.redirect('/user/auth');
@@ -145,6 +145,18 @@ module.exports = {
 				else return res.redirect('/');
 			});
 		});
+	},
+	show: function(req, res, next) {
+		//var id = req.param('id');
+		User.find().done(function showUsers(err, users){
+			if ( err ) return next(err);
+			if (req.wantsJSON) {
+				if( users.length ) return res.json(users);
+				else return json(204);
+			} else {
+				return res.json(users);
+			}
+		});		
 	},
 	
 	/*

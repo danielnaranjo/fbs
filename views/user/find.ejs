@@ -5,9 +5,8 @@
 if ( typeof users === 'undefined' ) {
 // There are only one user.
 %>
-
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-6">
 		<h2>
 			<%= __('Hello') %> <%= user.username %>
 		</h2> 
@@ -21,88 +20,150 @@ if ( typeof users === 'undefined' ) {
 	</div>
 </div>
 
+<ul class="nav nav-tabs" id="myTab">
+	<li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
+	<% if ( user.admin ) { %>
+	<li><a href="#administrator" data-toggle="tab">Tasks</a></li>
+	<li><a href="#report" data-toggle="tab">Reports</a></li>
+	<% } %>
+	<li><a href="#settings" data-toggle="tab">Settings</a></li>
+</ul>
 
-	<% if ( session.canAdminUser ) {
+<div class="tab-content">
+  <div class="tab-pane" id="profile">
+  	<% if ( session.canAdminUser ) {
 	// There logged user and showed user is the same.
 	%>
 
 <div class="row" style="margin-top:30px">
 	<div class="col-md-6">
-		<div>
-			<h3><%= __('Show all posts or create a') %> <a href="/post/new"><%= __('New one') %></a></h3>
-		</div>
-		<div id="showList"></div>		
+		<h3><%= __('Show all posts or create a') %> <a href="/post/new"><%= __('New one') %></a>
+		</h3>
+		<div id="showList">
+			<h3>Loading..</h3>
+		</div>		
 	</div>
-	<div class="col-md-6">
-		<% if ( sails.config.providers ) { %>
-		<div>
-			<h3><%= __('Profiles') %></h3>
-			<p><%= __('Easy sign in with your social networks. For security you can link/unlink whenever you want.') %></p>
-		</div>
-			
-		<div>
-		<% _.each(sails.config.providers, function(provider, provider_id){ %>
-			<div class="row">
-				<% if( _.find(
-					user.profiles,
-					function(profile) {
-						return profile.provider == provider_id;
-					}
-				) ) { %>
-				
-				<form action="/user/logout/<%= provider_id %>" method="POST" class="col-xs-6">
-					<p>
-						<button type="submit" class="btn btn-social btn-<%= provider_id %> btn-block">
-							<i class="fa fa-<%= __(provider_id) %>"></i> <%= __('Unlink with') %> <%= __(provider_id) %>
-						</button>
-					</p>
-				</form>
+</div>
+<% } %>
 
-				<% } else { %>
-				
-				<form action="/user/login/<%= provider_id %>" method="POST" class="col-xs-6">
-					<p>
-						<button type="submit" class="btn btn-social btn-<%= provider_id %> btn-block">
-							<i class="fa fa-<%= __(provider_id) %>"></i> <%= __('Link with') %> <%= __(provider_id) %>
-						</button>
-					</p>
-				</form>
-
-				<% } %>
-	
+<%
+} else {
+// There are multiple one user.
+%> 
+Error: Esta operacion no esta permitida.
+<% } %>
+ <!-- main -->
+	</div>
+	<% if ( user.admin ) { %>
+	<div class="tab-pane" id="administrator">
+		<div class="row" style="margin-top:30px"></div>
+			<div class="col-md-6" id="avisos">
+			    <div id="gPost"></div>
+			    <h3>Loading posts..</h3>
 			</div>
-		<% }); %>
+			<!-- big chart -->
+			<div class="col-md-6" id="usuarios">
+			    <h3>Loading users..</h3>
+			</div>
+	</div>
+	<div class="tab-pane" id="report">
+		<div class="row" style="margin-top:30px">
+			<div class="col-md-6">
+				<h3>Loading stats</h3>
+				<div id="gUser"></div>
+			</div>
 		</div>
-		<% } %>
-
-		<div style="margin-top:100px">
-			<form action="/user/destroy/<%= user.id %>" method="POST">
-				<h3><%= __('Delete your account') %></h3>
-				<p><%= __('You can undo this action. Press the button if you are completely sure.') %></p>
-				<input type="hidden" name="_method" value="delete"/>
-				<p>
-					<button type="submit" class="btn btn-social btn-danger" OnClick="confirmDelete();">
-						<i class="glyphicon glyphicon-remove"></i> <%= __('Delete') %>
-					</button>
-				</p>
-			</form>
+	</div>
+	<% } %>
+	<div class="tab-pane" id="settings">
+		<div class="row" style="margin-top:30px">
+			<!-- settings -->
+			<div class="col-md-6">
+				<% if ( sails.config.providers ) { %>
+				<div>
+					<h3><%= __('Profiles') %></h3>
+					<p><%= __('Easy sign in with your social networks. For security you can link/unlink whenever you want.') %></p>
+				</div>
+					
+				<div>
+				<% _.each(sails.config.providers, function(provider, provider_id){ %>
+					<div class="row">
+						<% if( _.find(
+							user.profiles,
+							function(profile) {
+								return profile.provider == provider_id;
+							}
+						) ) { %>
+						<form action="/user/logout/<%= provider_id %>" method="POST" class="col-xs-6">
+							<p>
+								<button type="submit" class="btn btn-social btn-<%= provider_id %> btn-block">
+									<i class="fa fa-<%= __(provider_id) %>"></i> <%= __('Unlink with') %> <%= __(provider_id) %>
+								</button>
+							</p>
+						</form>
+						<% } else { %>					
+						<form action="/user/login/<%= provider_id %>" method="POST" class="col-xs-6">
+							<p>
+								<button type="submit" class="btn btn-social btn-<%= provider_id %> btn-block">
+									<i class="fa fa-<%= __(provider_id) %>"></i> <%= __('Link with') %> <%= __(provider_id) %>
+								</button>
+							</p>
+						</form>
+						<% } %>			
+					</div>
+				<% }); %>
+				</div>
+				<% } %>
+			</div>
+			<div class="col-md-6">
+				<form action="/user/destroy/<%= user.id %>" method="POST">
+					<h3><%= __('Delete your account') %></h3>
+					<p><%= __('You can undo this action. Press the button if you are completely sure.') %></p>
+					<input type="hidden" name="_method" value="delete"/>
+					<p>
+						<button type="submit" class="btn btn-social btn-danger" OnClick="confirmDelete();">
+							<i class="glyphicon glyphicon-remove"></i> <%= __('Delete') %>
+						</button>
+					</p>
+				</form>
+			</div>
+			<!-- settings -->
 		</div>
 	</div>
 </div>
+
 <script>
-	$(document).ready(function(e){
-		relacionados();
-	});
+  $(function () {
+//
+    $('#myTab a:first').tab('show');
+
+    setTimeout(function() { 
+    	relacionados();
+	    usuarios();
+	    avisos();
+	    totalPosts();
+	    totalUsers();
+
+		$("#gUser").sparkline([5,6,7,9,9,5,3,2,2,4,6,7], {
+		    type: 'line',
+		    width: '250',
+		    height: '200',
+		    lineWidth: 2,
+		    drawNormalOnTop: true
+		});
+		$("#gPost").sparkline([5,6,7,2,0,-4,-2,4], { 
+			type: 'bar'
+		});
+	}, 3000);
+//
+  })
 </script>
+
+<!-- admin -->
+
+
+
 	
-<% } %>
-	<%
-	} else {
-	// There are multiple one user.
-	%> 
-
-
-<% } %>
 </div>
 </section>
 

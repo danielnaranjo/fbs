@@ -67,7 +67,7 @@ function showPosition(position) {
 	// Cargar usuarios
 	var usuarios = function() {
 		$('#usuarios').html('<ul></ul>');
-		$.getJSON( "/user?sort=DESC&limit=10", function(data) {
+		$.getJSON( "/user/show?sort=DESC&limit=10", function(data) {
 		//$('#usuarios').prepend('<h3>Active users: '+data.length+'</h3>');
 		var items = [];
 		$.each( data, function( key, val ){
@@ -85,7 +85,7 @@ function showPosition(position) {
 	}
 	// Total usuarios
 	var totalUsers = function() {
-		$.getJSON( "/user", function(data) {
+		$.getJSON( "/user/show", function(data) {
 			$('#usuarios').prepend('<h3>Active: '+data.length+' users</h3>');
 		});
 		console.log('Counting users');
@@ -120,11 +120,11 @@ function showPosition(position) {
 	}
 	// Avisos relacionados
 	var relacionados = function() {
-		$('#showList').html('<h3>Loading..</h3>');
-		$('#showList').html('');
+		
 		var pathname = window.location.pathname; 
 		var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
 		$.getJSON( "/post/related/"+last+"/?sort=DESC&limit=4", function(data) {
+		$('#showList').html('');
 		if(data.length) {
 			$('#showList').prepend('<br><h4>Active post: '+data.length+'</h4>');
 		} else {
@@ -194,7 +194,15 @@ function showPosition(position) {
 		window.location.href="/post/edit/"+x;
 	}
 	var deletePost = function(x){
-		window.location.href="/post/destroy/"+x;
+		// window.location.href="/post/destroy/"+x;
+		$.ajax({
+			type: "POST",
+			url: "/post/destroy/"+x
+		})
+		.done(function( msg ) {
+			relacionados();
+			console.log('Ok, reload #showList');
+		});
 	}
 	/* Convert all URL to Link */
 	var linkify = function(inputText) {
