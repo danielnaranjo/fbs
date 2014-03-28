@@ -83,6 +83,13 @@
         <% if( loggedUser ) { %>
         <li>&nbsp;</li>
         <li><a href="/user/logout"><%= __('Sign Out')%> <span class="glyphicon glyphicon-log-out"></span></a></li><% } %>
+        <li>
+          <select name="locale">
+            <% locales.forEach(function(locale) { %>
+            <option value="<%=locale%>"><%=locale%></option>
+            <% }); %>
+          </select>
+        </li>
       </ul>
     </div>
 
