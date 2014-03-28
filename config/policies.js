@@ -20,13 +20,14 @@ module.exports.policies = {
 	//'*': 'flash',
 	UserController: {
 		'*': ['isAuthenticated', 'canAdminUser', 'flash'],
-		// find: 'isAuthenticated',
+		//find: 'isAuthenticated',
 		update: 'isAuthenticated',
 		logout: 'isAuthenticated',
 		create: true,
 		new: true,
 		auth: true,
-		login: true
+		login: true,
+		show: true
 	}
 
   /*

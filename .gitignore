@@ -42,6 +42,8 @@ nbproject
 assets/linker/styles/estilos.styl
 # TODO's
 RoadMap.md
+# Copias
+views/user/find2.ejs
 
 ########################
 # local config
