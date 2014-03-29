@@ -296,7 +296,7 @@ function showPosition(position) {
 		$.getJSON("/tags", function( data ) {
 			$.each( data, function(key,val){
 				list.push(val.tag);
-				console.log(val.tag);
+				//console.log(val.tag);
 			});
 			var counts = {};
 			for(var i=0;i< list.length;i++){
@@ -304,6 +304,22 @@ function showPosition(position) {
 			}
 			$.each( counts, function(k, j ) {
 				$('#populares ul').append('<li class="tag'+j+'"><a href="/post/tags/'+k+'">'+k+' ('+j+')</a></li>');
+			});
+		});
+	};
+	var paises = function(){
+		var list=[];
+		$('#paises ul').html('');
+		$.getJSON("/user/show", function( data ) {
+			$.each( data, function(key,val){
+				list.push(val.country);
+			});
+			var counts = {};
+			for(var i=0;i< list.length;i++){
+				var key = list[i]; counts[key] = (counts[key])? counts[key] + 1 : 1 ;
+			}
+			$.each( counts, function(k, j ) {
+				$('#paises ul').append('<li class="tag'+j+'"><a href="/post/tags/'+k+'">'+k+' ('+j+')</a></li>');
 			});
 		});
 	};

@@ -26,7 +26,8 @@ module.exports.policies = {
 		new: true,
 		auth: true,
 		login: true,
-		show: true
+		show: true,
+		countries: true
 	}
 
   /*

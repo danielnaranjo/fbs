@@ -156,7 +156,7 @@ module.exports = {
 			} else {
 				return res.json(users);
 			}
-		});		
+		});
 	},
 	
 	/*

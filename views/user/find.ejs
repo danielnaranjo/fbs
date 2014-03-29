@@ -57,17 +57,22 @@ Error: Esta operacion no esta permitida.
 	<% if ( user.admin ) { %>
 	<div class="tab-pane" id="administrator">
 		<div class="row" style="margin-top:30px"></div>
-			<div class="col-md-4" id="avisos">
-			    <h3>Loading posts..</h3>
+			<div class="col-md-3 lineSeparator" id="avisos">
+			    <h3>Loading last 10 posts..</h3>
 			</div>
-			<!-- big chart -->
-			<div class="col-md-4" id="usuarios">
-			    <h3>Loading users..</h3>
+			<div class="col-md-3 lineSeparator" id="usuarios">
+			    <h3>Loading last 10 users..</h3>
 			</div>
-			<div class="col-md-4" id="populares">
+			<div class="col-md-3 lineSeparator" id="populares">
 				<h3>Populars tags <i class="glyphicon glyphicon-refresh" onclick="javascript:populares();"></i></h3>
 			    <ul>
 			    	<li class="tag4'"><a href="#">Loading populars tags</a></li>
+			    </ul>
+			</div>
+			<div class="col-md-3" id="paises">
+			    <h3>Countries <i class="glyphicon glyphicon-refresh" onclick="javascript:paises();"></i></h3>
+			    <ul>
+			    	<li class="tag4'"><a href="#">Loading top countries</a></li>
 			    </ul>
 			</div>
 	</div>
@@ -148,6 +153,7 @@ Error: Esta operacion no esta permitida.
 	    totalPosts();
 	    totalUsers();
 	    populares();
+	    paises();
 
 		$("#gUser").sparkline([5,6,7,9,9,5,3,2,2,4,6,7], {
 		    type: 'line',
