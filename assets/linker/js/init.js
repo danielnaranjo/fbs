@@ -123,7 +123,7 @@ function showPosition(position) {
 		
 		var pathname = window.location.pathname; 
 		var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
-		$.getJSON( "/post/related/"+last+"/?sort=DESC&limit=4", function(data) {
+		$.getJSON( "/post/related/"+last, function(data) {
 		$('#showList').html('');
 		if(data.length) {
 			$('#showList').prepend('<br><h4>Active post: '+data.length+'</h4>');

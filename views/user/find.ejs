@@ -57,13 +57,18 @@ Error: Esta operacion no esta permitida.
 	<% if ( user.admin ) { %>
 	<div class="tab-pane" id="administrator">
 		<div class="row" style="margin-top:30px"></div>
-			<div class="col-md-6" id="avisos">
+			<div class="col-md-4" id="avisos">
 			    <div id="gPost"></div>
 			    <h3>Loading posts..</h3>
 			</div>
 			<!-- big chart -->
-			<div class="col-md-6" id="usuarios">
+			<div class="col-md-4" id="usuarios">
 			    <h3>Loading users..</h3>
+			</div>
+			<div class="col-md-4" id="popular">
+			    <ul>
+			    	<li class="tag4'"><a href="#">Loading populars tags</a></li>
+			    </ul>
 			</div>
 	</div>
 	<div class="tab-pane" id="report">
