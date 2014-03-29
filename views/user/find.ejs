@@ -30,7 +30,7 @@ if ( typeof users === 'undefined' ) {
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane" id="profile">
+  <div class="tab-pane active" id="profile">
   	<% if ( session.canAdminUser ) {
 	// There logged user and showed user is the same.
 	%>
@@ -58,14 +58,14 @@ Error: Esta operacion no esta permitida.
 	<div class="tab-pane" id="administrator">
 		<div class="row" style="margin-top:30px"></div>
 			<div class="col-md-4" id="avisos">
-			    <div id="gPost"></div>
 			    <h3>Loading posts..</h3>
 			</div>
 			<!-- big chart -->
 			<div class="col-md-4" id="usuarios">
 			    <h3>Loading users..</h3>
 			</div>
-			<div class="col-md-4" id="popular">
+			<div class="col-md-4" id="populares">
+				<h3>Populars tags <i class="glyphicon glyphicon-refresh" onclick="javascript:populares();"></i></h3>
 			    <ul>
 			    	<li class="tag4'"><a href="#">Loading populars tags</a></li>
 			    </ul>
@@ -141,12 +141,13 @@ Error: Esta operacion no esta permitida.
   $(function () {
 //
     $('#myTab a:first').tab('show');
-    relacionados();
-    setTimeout(function() {	
+    setTimeout(function() {
+    	relacionados();	
 	    usuarios();
 	    avisos();
 	    totalPosts();
 	    totalUsers();
+	    populares();
 
 		$("#gUser").sparkline([5,6,7,9,9,5,3,2,2,4,6,7], {
 		    type: 'line',

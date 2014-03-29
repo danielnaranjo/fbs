@@ -54,24 +54,27 @@ function showPosition(position) {
 	}
 	// Cargar todos los avisos
 	var avisos = function() {
-		$('#avisos').html('<ul></ul>');
+		$('#avisos').html('');
 		$.getJSON( "/post?sort=DESC&limit=10", function(data) {
-		//$('#avisos').prepend('<h3>Active post: '+data.length+'</h3>');
 		var items = [];
 		$.each( data, function( key, val ) {
-			$('#avisos ul').append("<li><a href='/post/" + val.id + "' target=\"_blank\">" + val.title + "</a></li>");
+			$('#avisos').append("<div>");
+			$('#avisos').append("<a href='/post/" + val.id + "' target=\"_blank\">" + val.title + "</a> ");
+			$('#avisos').append("<a href=\"javascript:deletePost('"+val.id+"');\"><i class=\"glyphicon glyphicon-remove text-danger\"></i></a> ");
+			$('#avisos').append("</div>");
 			});
 		});
 		console.log('Loading posts');
 	}
 	// Cargar usuarios
 	var usuarios = function() {
-		$('#usuarios').html('<ul></ul>');
+		$('#usuarios').html('');
 		$.getJSON( "/user/show?sort=DESC&limit=10", function(data) {
-		//$('#usuarios').prepend('<h3>Active users: '+data.length+'</h3>');
 		var items = [];
 		$.each( data, function( key, val ){
-			$('#usuarios ul').append("<li><a href='/user/" + val.id + "' target=\"_blank\">" + val.username + "</a></li>");
+			$('#usuarios').append("<div>");
+			$('#usuarios').append("<a href='/user/" + val.id + "' target=\"_blank\">" + val.username + "</a> ");
+			$('#usuarios').append("</div>");
 			});
 		});
 		console.log('Loading users');
@@ -80,6 +83,7 @@ function showPosition(position) {
 	var totalPosts = function() {
 		$.getJSON( "/post", function(data) {
 			$('#avisos').prepend('<h3>Active: '+data.length+' posts</h3>');
+			$('#avisos h3').append(' <i class="glyphicon glyphicon-refresh" onclick="javascript:avisos();totalPosts();"></i>');
 		});
 		console.log('Counting posts');
 	}
@@ -87,6 +91,7 @@ function showPosition(position) {
 	var totalUsers = function() {
 		$.getJSON( "/user/show", function(data) {
 			$('#usuarios').prepend('<h3>Active: '+data.length+' users</h3>');
+			$('#usuarios h3').append(' <i class="glyphicon glyphicon-refresh" onclick="javascript:usuarios();totalUsers();"></i>');
 		});
 		console.log('Counting users');
 	}
@@ -120,7 +125,6 @@ function showPosition(position) {
 	}
 	// Avisos relacionados
 	var relacionados = function() {
-		
 		var pathname = window.location.pathname; 
 		var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
 		$.getJSON( "/post/related/"+last, function(data) {
@@ -147,7 +151,9 @@ function showPosition(position) {
 		var pathname = window.location.pathname; 
 		var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);console.log(last);
 		$.getJSON( "/post/related/"+last, function(data) {
-			if(data.length==0){$('#vermas').hide();}
+			if(data.length==0){
+				$('#vermas').hide();
+			}
 			$.each( data, function( key, val ) {
 				$('#showRelated').append('<div class="box col-xs-6 col-sm-4">');
 				$('#showRelated').append('<h4><a href="/post/'+val.id+'">'+val.title+'</a></h4>');
@@ -281,6 +287,23 @@ function showPosition(position) {
 				if(j>1) {
 					$('#popular ul').append('<li class="tag'+j+'"><a href="/post/tags/'+k+'">'+k+'</a></li>');
 				}
+			});
+		});
+	};
+	var populares = function(){
+		var list=[];
+		$('#populares ul').html('');
+		$.getJSON("/tags", function( data ) {
+			$.each( data, function(key,val){
+				list.push(val.tag);
+				console.log(val.tag);
+			});
+			var counts = {};
+			for(var i=0;i< list.length;i++){
+				var key = list[i]; counts[key] = (counts[key])? counts[key] + 1 : 1 ;
+			}
+			$.each( counts, function(k, j ) {
+				$('#populares ul').append('<li class="tag'+j+'"><a href="/post/tags/'+k+'">'+k+' ('+j+')</a></li>');
 			});
 		});
 	};
