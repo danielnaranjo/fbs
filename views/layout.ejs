@@ -62,8 +62,8 @@
 
       <footer id="footer" class="smooth-style slideOut-option navbar-fixed-bottom">
         <div class="container">
-          <div>2013 &copy  <a href="http://www.danielnaranjo.info">Daniel Naranjo</a></div>
-          <div><a href="#">Privacy</a> | <a href="#">Legal</a></div>
+          <div>2013-2014 &copy  <a href="http://www.danielnaranjo.info">Daniel Naranjo</a></div>
+          <div>Follow us in <a href="http://facebook.com/findby" target="_blank">Facebook</a> or <a href="http://twitter.com/findbytags" target="_blank">Twitter</a>  |  <a href="/about/contact"><%= __('Contact')%></a></div>
         </div>
       </footer>
     </div>
@@ -83,13 +83,6 @@
         <% if( loggedUser ) { %>
         <li>&nbsp;</li>
         <li><a href="/user/logout"><%= __('Sign Out')%> <span class="glyphicon glyphicon-log-out"></span></a></li><% } %>
-        <li>
-          <select name="locale">
-            <% locales.forEach(function(locale) { %>
-            <option value="<%=locale%>"><%=locale%></option>
-            <% }); %>
-          </select>
-        </li>
       </ul>
     </div>
 
