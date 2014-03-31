@@ -1,5 +1,5 @@
 /* Variables globales */
-var miubicacion = [], ciudad = "", pais = "", Lat = "", Lon = "", OneTime = 0;
+var miubicacion = [], ciudad = "", pais = "", Lat = "", Lon = "", OneTime = 0, locales="";
 
 // Carga la GEO de HTML5
 function showPosition(position) {
@@ -322,6 +322,14 @@ function showPosition(position) {
 				$('#paises ul').append('<li class="tag'+j+'"><a href="/post/tags/'+k+'">'+k+' ('+j+')</a></li>');
 			});
 		});
+	};
+	var makeLang = function() {
+		$("#opciones ul").append('<li id="languages"><select name="locale"></select></li>');
+		var locales = "<%=sails.config.i18n.locales%>";
+		var idiomas = locales.split(",");
+		for(i=0; i < idiomas.length; i++) {
+			$("#languages select").append('<option value="'+idiomas[i]+'">'+idiomas[i]+'</option>');
+		}
 	};
 
 $(document).ready(function(e) {
