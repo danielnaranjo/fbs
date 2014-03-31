@@ -215,10 +215,10 @@ a.tagsbypost{color:#37a6d7;text-decoration:underline important}
 #relacionado h1,#relacionado h3{margin:0;padding:0}
 #relacionado img{height:auto;width:280px;}
 @media screen and (max-width: 480px){#relacionado img{display:none}
-}.vermas{height:auto;padding:10px 0 10px 0;text-align:center;width:100%}
-.similar{height:auto;padding:10px 0 10px 0;text-align:center;width:100%;}
-@media screen and (max-width: 480px){.similar{display:none}
-}.wrapcaption{position:absolute;font-size:30px;background:transparent;width:100%;margin:0 auto;display:table-cell;vertical-align:middle;top:55%}
+}#vermas,#similar{height:auto;margin:0 0 70px 5px;padding:10px 0 10px 0;text-align:center;width:100%;}
+@media screen and (max-width: 480px){#vermas,#similar{display:none}
+}.vermas,.similar{padding:10px}
+.wrapcaption{position:absolute;font-size:30px;background:transparent;width:100%;margin:0 auto;display:table-cell;vertical-align:middle;top:55%}
 .captionicons{font-size:20px;padding:10px;background:#f66;margin-right:0;border-radius:1px;color:#fff;position:relative;text-align:center;top:55%;vertical-align:middle;margin-top:0;margin:0 auto}
 .captionicons:hover{opacity:.5}
 .roll{position:absolute;font-size:30px;width:90%;margin:0 auto;height:100%;top:-87px;display:table-cell;vertical-align:middle;background:#ddd;z-index:13;zoom:1}
@@ -238,7 +238,7 @@ html,body{height:100%}
 .realStats,.bigChart{background-color:#fff;border:1px solid #e3e3e3;border-radius:3px;display:inline-block;height:auto;margin:0 5px 5px 0;padding:10px;vertical-align:top;width:49%}
 #showList,#avisos,#usuarios{margin:0 0 50px 0;}
 #showList div,#avisos div,#usuarios div{padding:5px 0 5px 0}
-#showRelated{height:auto;text-align:left;width:99%}
+#showRelated,#showSimilar{height:auto;text-align:left;width:99%}
 .introtitle{color:#818181;height:auto;margin:0;width:100%;top:0}
 #usuarios i,#avisos i,#populares i{cursor:pointer}
 .lineSeparator{border-right:1px dotted #ccc;height:100%}

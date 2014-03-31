@@ -1,14 +1,12 @@
 /* Variables globales */
-var miubicacion = [], ciudad = "", pais = "", Lat = "", Lon = "", OneTime = 0, locales="";
+var miubicacion = [], ciudad = "", pais = "", Lat = "", Lon = "", OneTime = 0, locales = "";
 
 // Carga la GEO de HTML5
 function showPosition(position) {
-    var lat = position.coords.latitude;
-	var lng = position.coords.longitude;
-	miubicacion[0] = lat.toFixed(3);
-	miubicacion[1] = lng.toFixed(3);
+	miubicacion[0] = position.coords.latitude.toFixed(3);
+	miubicacion[1] = position.coords.longitude.toFixed(3);
 	// Compruebo que hay contenido?
-	if(!miubicacion) {
+	if (!miubicacion) {
 		setTimeout(function() {
 			$('#dondeestoy').html('');
 			$('#dondeestoy').css('display', 'inline');
@@ -128,38 +126,49 @@ function showPosition(position) {
 		var pathname = window.location.pathname; 
 		var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
 		$.getJSON( "/post/related/"+last, function(data) {
-		$('#showList').html('');
-		if(data.length) {
-			$('#showList').prepend('<br><h4>Active post: '+data.length+'</h4>');
-		} else {
-			$('#showList').prepend('<br><h4>No post? Be may guest and create one!</h4>');
-		}
-		var items = [];
-		$.each( data, function( key, val ) {
-			$('#showList').append("<div>");
-			$('#showList').append("<a href='/post/" + val.id + "' target=\"_blank\">" + val.title + "</a> ");
-			$('#showList').append("<a href=\"javascript:editPost('"+val.id+"');\"><i class=\"glyphicon glyphicon-pencil text-success\"></i></a> ");
-			$('#showList').append("<a href=\"javascript:deletePost('"+val.id+"');\"><i class=\"glyphicon glyphicon-remove text-danger\"></i></a> ");
-			$('#showList').append("</div>");
+			$('#showList').html('');
+			if(data.length) {
+				$('#showList').prepend('<br><h4>Active post: '+data.length+'</h4>');
+			} else {
+				$('#showList').prepend('<br><h4>No post? Be may guest and create one!</h4>');
+			}
+			$.each( data, function( key, val ) {
+				$('#showList').append("<div>");
+				$('#showList').append("<a href='/post/" + val.id + "' target=\"_blank\">" + val.title + "</a> ");
+				$('#showList').append("<a href=\"javascript:editPost('"+val.id+"');\"><i class=\"glyphicon glyphicon-pencil text-success\"></i></a> ");
+				$('#showList').append("<a href=\"javascript:deletePost('"+val.id+"');\"><i class=\"glyphicon glyphicon-remove text-danger\"></i></a> ");
+				$('#showList').append("</div>");
 			});
 		});
 	}
 	/* Relacionados en /post/ */
-	var related = function() {
-		$('#showRelated').html('<h3>Loading..</h3>');
-		$('#showRelated').html('');
-		var pathname = window.location.pathname; 
-		var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);console.log(last);
-		$.getJSON( "/post/related/"+last, function(data) {
+	var related = function(x) {
+		//var pathname = window.location.pathname; 
+		//var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
+		$.getJSON( "/post/related/"+x, function(data) {
+			$('#showRelated').html('');
+			console.log(data.length);
 			if(data.length==0){
 				$('#vermas').hide();
+				console.log('No more post by user!');
 			}
 			$.each( data, function( key, val ) {
-				$('#showRelated').append('<div class="box col-xs-6 col-sm-4">');
-				$('#showRelated').append('<h4><a href="/post/'+val.id+'">'+val.title+'</a></h4>');
-				$('#showRelated').append('<p>'+val.summary+'</p>');
-				$('#showRelated').append('<p>'+val.populars+'</p>');
-				$('#showRelated').append('</div>');console.log('OK! '+val.title); 
+				$('#showRelated').append('<div class="box col-xs-6 col-sm-4"><h4><a href="/post/'+val.id+'">'+val.title+'</a></h4><p>'+val.summary+'</p><p>'+val.populars+'</p></div>');
+			});
+		});
+	}
+	var similar = function() {
+		$.getJSON( "/post/related/"+Lat+','+Lon, function(data) {
+			console.log(data);
+			$('#nearby').append('<a class="azul">'+ pais +'</a>');
+			$('#showSimilar').html('');
+			console.log(data.length);
+			if(data.length==0){
+				$('section.similar').hide();
+				console.log('No more post by user!');
+			}
+			$.each( data, function( key, val ) {
+				$('#showSimilar').append('<div class="box col-xs-6 col-sm-4"><h4><a href="/post/'+val.id+'">'+val.title+'</a></h4><p>'+val.summary+'</p><p>'+val.populars+'</p></div>'); 
 			});
 		});
 	}

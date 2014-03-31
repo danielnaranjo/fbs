@@ -128,30 +128,25 @@ if ( typeof posts === 'undefined' ) {
 </div>
 </section>
 
-<section class="vermas">
-	<div>
-		<%= __('More ads by') %> <a href="/post/related/<%= post.patron_id %>" class="azul"><%= post.publisher %></a>
+<section id="vermas">
+	<div class="vermas"><%= __('More ads by') %> <a href="/post/related/<%= post.patron_id %>" class="azul"><%= post.publisher %></a>
 	</div>
-  <div id="showRelated">Loading..</div>
-  <!--<iframe src="/post/related/<%= post.patron_id %>?limit=4&sort=DESC" frameborder="0"></iframe>-->  
-</section>
-<!-- 
-<section class="js-masonry">
-	<div>Loading content, please hold on..</div>
+  <div id="showRelated">
+    <h4>Loading more posts</h4>
+  </div>
 </section>
 
-<section class="similar">
-	<div>Posts nearby of <a href="/nearby/undefined" class="azul">miubicacion</a></div>
-</section>
-<section class="js-masonry">
-	<div id="contenido2"></div>
+<!--
+<section id="similar">
+	<div class="similar" id="nearby">Posts nearby of </div>
+	<div id="showSimilar"><h4>Loading more posts</h4></div>
 </section>
 -->
 
 <script>
   setTimeout(function() { 
-    related();
-    url2link();
+    related('<%= post.patron_id %>');
+    url2link(); 
   }, 3000);
 </script>
 

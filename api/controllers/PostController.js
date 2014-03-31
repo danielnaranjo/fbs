@@ -127,11 +127,15 @@ module.exports = {
   // Solo via iframe
   related: function(req, res, next) {
     var id = req.param('id');
-    if( !id ) return res.notFound();
-    Post.find({ "patron_id": id }).done(function relatedPost(err, post){
+    //if( !id ) return res.notFound();
+    Post.find({ "patron_id": id }).limit(4).done(function relatedPost(err, post){
       if ( err ) return next(err);
-      if (req.wantsJSON) return res.json(post);
-      else return res.view({ post: post});
+      if (req.wantsJSON) {
+        if( post.length ) return res.json(post);
+        else return json(204);
+      } else {
+        return res.json(post);
+      }
     });
 
   },
@@ -163,6 +167,81 @@ module.exports = {
       if (req.wantsJSON) return res.json(post);
       else return res.view({ post: post});
     });
+  },
+  upload: function(req, res) {
+    //
+    var Transform =  Stream.Transform; //stream for the incoming file data
+    var client = knox.createClient({
+            key: 'KEY',
+            secret: 'SECRET',
+            bucket: 'BUCKET',
+            region : 'eu-west-1' //don't forget the region (My bucket is in Europe)
+          });
+
+
+    function InputStream(options){
+            if(!(this instanceof InputStream)) {
+              return new InputStream(options);
+            }
+            Transform.call(this,options);
+            return;
+    };
+
+    util.inherits(InputStream, Transform);
+    var inputDataStream = new InputStream;
+    var form = new formidable.IncomingForm();
+
+    form.parse(req, function(err, fields, files){
+      if(err){
+          return res.send(err);
+      }else{
+          return;
+      }
+    });
+
+    form.onPart = function(part){
+        if (!part.filename){
+            form.handlePart(part);
+            return;
+        }
+        //we put the data chunk in stream1 to convert it
+        part.on('data', function (chunk){
+           if(!inputDataStream.write(chunk));
+            form.pause()
+            inputDataStream.once('drain', function(){form.resume()});
+        });
+
+        part.on('end', function (chunk){
+          inputDataStream.end(chunk);
+        });
+    }
+
+    InputStream.prototype._transform = function (chunk, enc, cb){
+      this.push(chunk);
+      cb();
+    }
+
+    var proc = new ffmpeg({ source : inputDataStream})
+      .withAudioBitrate('64k')
+      .withAudioCodec('libmp3lame')
+      .toFormat('mp3')
+      .saveToFile('file.mp3',  function (retcode, error){
+        console.log('file has been converted successfully');
+        res.send('ok');
+          var upload = new MultiPartUpload({
+            client : client,
+            objectName: 'file.mp3',
+            file: 'file.mp3'
+          }, function(err,body){
+            if(err) {
+              console.log(err);
+              return;
+            }
+            console.log(body);
+            return;
+          });
+      });
+    //
   },
 
   /*
