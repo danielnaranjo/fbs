@@ -127,7 +127,6 @@ module.exports = {
   // Solo via iframe
   related: function(req, res, next) {
     var id = req.param('id');
-    //if( !id ) return res.notFound();
     Post.find({ "patron_id": id }).limit(4).done(function relatedPost(err, post){
       if ( err ) return next(err);
       if (req.wantsJSON) {
