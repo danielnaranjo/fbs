@@ -33,8 +33,7 @@ footer a:hover{text-decoration:underline}
 #contenido{color:#818181;display:inline-block;font-size:.9em;margin:105px 0 60px 5px;vertical-align:top;width:99%;}
 #contenido a{color:#3caee1}
 #contenido h1,#contenido h3{margin:0;padding:0}
-@media screen and (max-width: 480px){#contenido div:first-child{display:none}
-}#buscador{background-color:#fff;border-bottom:1px solid #e7e7e7;box-shadow:5px 5px 5px #ccc;display:none;height:100px;margin:0;padding:5px 0 10px 5px;vertical-align:top;width:100%;z-index:102;}
+#buscador{background-color:#fff;border-bottom:1px solid #e7e7e7;box-shadow:5px 5px 5px #ccc;display:none;height:100px;margin:0;padding:5px 0 10px 5px;vertical-align:top;width:100%;z-index:102;}
 #buscador div{display:inline-block;vertical-align:top}
 #buscador p{color:#bdbdbd;font-size:.8em;margin:-15px 0;padding:0;text-align:right}
 @media screen and (max-width: 480px){#buscador{border:0;height:50px}
@@ -217,7 +216,10 @@ a.tagsbypost{color:#37a6d7;text-decoration:underline important}
 @media screen and (max-width: 480px){#relacionado img{display:none}
 }#vermas,#similar{height:auto;margin:0 0 70px 5px;padding:10px 0 10px 0;text-align:center;width:100%;}
 @media screen and (max-width: 480px){#vermas,#similar{display:none}
-}.vermas,.similar{padding:10px}
+}#showList,#avisos,#usuarios{margin:0 0 100px 0;}
+#showList div,#avisos div,#usuarios div{padding:5px 0 5px 0}
+#showRelated,#showSimilar{height:auto;text-align:left;width:99%}
+.vermas,.similar{padding:10px}
 .wrapcaption{position:absolute;font-size:30px;background:transparent;width:100%;margin:0 auto;display:table-cell;vertical-align:middle;top:55%}
 .captionicons{font-size:20px;padding:10px;background:#f66;margin-right:0;border-radius:1px;color:#fff;position:relative;text-align:center;top:55%;vertical-align:middle;margin-top:0;margin:0 auto}
 .captionicons:hover{opacity:.5}
@@ -236,9 +238,6 @@ html,body{height:100%}
 .container .text-muted{margin:20px 0}
 .form-center{max-width:330px;margin:0 auto}
 .realStats,.bigChart{background-color:#fff;border:1px solid #e3e3e3;border-radius:3px;display:inline-block;height:auto;margin:0 5px 5px 0;padding:10px;vertical-align:top;width:49%}
-#showList,#avisos,#usuarios{margin:0 0 50px 0;}
-#showList div,#avisos div,#usuarios div{padding:5px 0 5px 0}
-#showRelated,#showSimilar{height:auto;text-align:left;width:99%}
 .introtitle{color:#818181;height:auto;margin:0;width:100%;top:0}
 #usuarios i,#avisos i,#populares i{cursor:pointer}
 .lineSeparator{border-right:1px dotted #ccc;height:100%}

@@ -115,38 +115,49 @@ if ( typeof posts === 'undefined' ) {
 
     <div id="compartir">
       <div class="gris"><%= __('Share') %></div>
-      <div class="addthis_toolbox addthis_default_style addthis_32x32_style"><a class="addthis_button_preferred_1"></a><a class="addthis_button_preferred_2"></a><a class="addthis_button_preferred_3"></a><a class="addthis_button_preferred_4"></a><a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a></div>
-      <script>
-        <var>addthis_config = {"data_track_addressbar":true};</var>
-      </script>
-      <script src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51fbdcf40ea81860"></script>
+      <div style="vertical-align:top;">
+        <!-- facebook --><iframe src="//www.facebook.com/plugins/like.php?href=http://www.findby.co/post/<%= post.id %>&amp;layout=box_count&amp;show_faces=true&amp;width=200&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:65px;" allowTransparency="true"></iframe><!-- facebook -->
+        <!--linkedin --><script src="http://platform.linkedin.com/in.js" type="text/javascript"></script>
+        <script type="IN/Share" data-url="http://www.findby.co/post/<%= post.id %>" data-counter="top"></script><!--linkedin -->
+        <!-- twitter --><a href="https://twitter.com/share" class="twitter-share-button" data-text="<%= post.title %> - FindBY.co " data-url="http://www.findby.co/post/<%= post.id %>" data-via="findbytags" data-related="naranjodaniel,loultimoenlaweb" data-count="vertical">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script><!-- twitter -->
+      </div>
     </div>
     <div id="compartir" class="text-center">
-      <iframe src="http://rcm-na.amazon-adsystem.com/e/cm?t=loultimoenlaw-20&o=1&p=12&l=ur1&category=amazonhomepage&f=ifr" width="300" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- findby-responsive -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3074485176185204"
+           data-ad-slot="7849882013"
+           data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
   </div>
 </div>
 </section>
 
-<section id="vermas">
+<section id="vermas" style="padding-bottom:100px;">
 	<div class="vermas"><%= __('More ads by') %> <a href="/post/related/<%= post.patron_id %>" class="azul"><%= post.publisher %></a>
 	</div>
   <div id="showRelated">
-    <h4>Loading more posts</h4>
+    <br/><img src="/img/load3.gif" alt="Loading" />
   </div>
 </section>
-
 <!--
 <section id="similar">
 	<div class="similar" id="nearby">Posts nearby of </div>
-	<div id="showSimilar"><h4>Loading more posts</h4></div>
+	<div id="showSimilar">
+    <br/><img src="/img/load3.gif" alt="Loading" />
+  </div>
 </section>
 -->
-
 <script>
   setTimeout(function() { 
     related('<%= post.patron_id %>');
-    url2link(); 
+    url2link();
   }, 3000);
 </script>
 

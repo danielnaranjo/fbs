@@ -20,23 +20,10 @@ module.exports = {
   
   /**
    * Action blueprints:
-   *    `/map/all`
+   *    `/map/`
    */
-   all: function (req, res) {
+   index: function (req, res) {
     return res.view();
-  },
-
-
-  /**
-   * Action blueprints:
-   *    `/map/nearby`
-   */
-   nearby: function (req, res) {
-    
-    // Send a JSON response
-    return res.json({
-      hello: 'world'
-    });
   }
 
   

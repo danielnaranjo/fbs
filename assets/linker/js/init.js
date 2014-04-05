@@ -1,10 +1,10 @@
 /* Variables globales */
-var miubicacion = [], ciudad = "", pais = "", Lat = "", Lon = "", OneTime = 0, locales = "";
+var miubicacion = [], ciudad = "", pais = "", Lat = "", Lon = "", OneTime = 0, locales = "", idioma = "";
 
 // Carga la GEO de HTML5
 function showPosition(position) {
-	miubicacion[0] = position.coords.latitude.toFixed(3);
-	miubicacion[1] = position.coords.longitude.toFixed(3);
+	miubicacion[0] = position.coords.latitude; //.toFixed(3);
+	miubicacion[1] = position.coords.longitude; //.toFixed(3);
 	// Compruebo que hay contenido?
 	if (!miubicacion) {
 		setTimeout(function() {
@@ -25,8 +25,8 @@ function showPosition(position) {
 // Mensajes de Errores de GEO
 	function onError() {
 		// Check if message was show then..
-		if(OneTime==0){
-			$('#nogeo').css('display', 'inline');
+		if(OneTime){
+			$('#nogeo').css('display','inline');
 			$('#nogeo').html('');
 			if (navigator.geolocation){
 				$('#nogeo').append("Error: The Geolocation service failed.<br/>Erreur: Le service de géolocalisation a échoué.<br/>Error: El servicio de Geolocalización falló.<br/>Fehler: Der Geolocation-Dienst konnte."); 
@@ -45,6 +45,7 @@ function showPosition(position) {
 				}, 7000);
 			}
 		}
+		// Set Latitute and Longitute by IP
 		miubicacion[0]=Lat;
 		miubicacion[1]=Lon;
 		OneTime=1;
@@ -142,12 +143,12 @@ function showPosition(position) {
 		});
 	}
 	/* Relacionados en /post/ */
-	var related = function(x) {
+	var related = function(x,y) {
 		//var pathname = window.location.pathname; 
 		//var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
-		$.getJSON( "/post/related/"+x, function(data) {
+		$.getJSON( "/post/related/"+x+"?l=4", function(data) {
 			$('#showRelated').html('');
-			console.log(data.length);
+			// console.log(data.length);
 			if(data.length==0){
 				$('#vermas').hide();
 				console.log('No more post by user!');
@@ -157,21 +158,22 @@ function showPosition(position) {
 			});
 		});
 	}
-	var similar = function() {
-		$.getJSON( "/post/related/"+Lat+','+Lon, function(data) {
-			console.log(data);
-			$('#nearby').append('<a class="azul">'+ pais +'</a>');
+/* Muestro avisos relacionado al termino empleado
+   //similar('<%= post.populars %>'.replace(/,/g,"+"),4);
+	var similar = function(x,y) {
+		$.getJSON( "/post/search/?term=" + x + "?l="+y, function(data) {
+			$('#nearby').append('<a class="azul" href="/post/search/?term='+ pais +'">'+ pais +'</a>');
 			$('#showSimilar').html('');
-			console.log(data.length);
+			// console.log(data.length);
 			if(data.length==0){
-				$('section.similar').hide();
-				console.log('No more post by user!');
+				$('#similar').hide();
 			}
 			$.each( data, function( key, val ) {
 				$('#showSimilar').append('<div class="box col-xs-6 col-sm-4"><h4><a href="/post/'+val.id+'">'+val.title+'</a></h4><p>'+val.summary+'</p><p>'+val.populars+'</p></div>'); 
 			});
 		});
 	}
+*/
 	/* Confirmo eliminar TODO */
 	var confirmDelete = function() {
 		var confirmed = confirm('Are you sure you want to delete?');
@@ -280,6 +282,7 @@ function showPosition(position) {
 	var language = function(){
 		var language = window.navigator.userLanguage || window.navigator.language;
 		$('#lang').attr('value', language);
+		idioma = language;
 	};
 	var populars = function(){
 		var list=[];
@@ -434,7 +437,6 @@ $(document).ready(function(e) {
 			country: { required: '(Please enter your country)' }
 		}
 	});
-
 //
 });
 

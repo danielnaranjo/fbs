@@ -191,10 +191,6 @@ footer
 		margin: 0
 		padding: 0
 
-	@media screen and (max-width: 480px)
-		div:first-child
-			display: none
-
 #buscador
 	background-color: #FFF
 	border-bottom: 1px solid #e7e7e7
@@ -1050,6 +1046,7 @@ a.tagsbypost
 
 		@media screen and (max-width: 480px)
 			display: none
+			
 #vermas, #similar
 	height: auto
 	margin: 0 0 70px 5px
@@ -1059,6 +1056,17 @@ a.tagsbypost
 
 	@media screen and (max-width: 480px)
 		display: none
+
+#showList, #avisos, #usuarios
+	margin 0 0 100px 0
+
+	div
+		padding 5px 0 5px 0;
+
+#showRelated, #showSimilar
+	height: auto
+	text-align: left
+	width: 99%
 
 .vermas, .similar
 	padding: 10px
@@ -1177,17 +1185,6 @@ html, body
 	padding: 10px
 	vertical-align top
 	width 49%
-
-#showList, #avisos, #usuarios
-	margin 0 0 50px 0
-
-	div
-		padding 5px 0 5px 0;
-
-#showRelated, #showSimilar
-	height: auto
-	text-align: left
-	width: 99%
 
 .introtitle
 	color: #818181

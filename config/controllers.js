@@ -65,7 +65,7 @@ module.exports.controllers = {
     actions: true,
 
 
-    
+
     /**
      * `rest`
      *

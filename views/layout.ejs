@@ -41,7 +41,7 @@
           <div id="lacaja" class="col-md-6">
             <form action="/post/search/">
               <div>
-                <input type="type" id="term" name="term" placeholder="<%= __('Start your search here') %>" data-role="tagsinput" onchange="makeTags"/>
+                <input type="type" id="term" name="term" placeholder="<%= __('Start your search here') %>" />
               </div>
               <div>  
                 <input type="submit" value="Go" class="btn btn-default">
@@ -75,7 +75,7 @@
         <li><a href="/user/auth"><span class="glyphicon glyphicon-log-in"></span> <%= __('Log In') %></a></li>
       <% } %>        
         <% if( loggedUser ) { %><li><a href="/post/new"><%= __('Create a new post') %></a></li><% } else { %><li><a href="/post"><%= __('All Posts') %></a></li><% } %>
-        <li><a href="/map/all"><%= __('Explorer')%></a></li>
+        <li><a href="/map"><%= __('Explorer')%></a></li>
         <li><a href="#"><%= __('About')%></a></li>
         <li><a href="#"><%= __('Faq')%></a></li>
         <li><a href="#"><%= __('Privacy')%></a></li>
@@ -89,7 +89,7 @@
     <div id="nogeo"></div>
 
     <!--TEMPLATES-->
-    
+    <script type="text/javascript" src="/jst.js"></script>
     <!--TEMPLATES END-->
 
     <!--SCRIPTS-->
