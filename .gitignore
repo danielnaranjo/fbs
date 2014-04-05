@@ -46,6 +46,7 @@ RoadMap.md
 # Copias
 views/user/find2.ejs
 dump/
+*.json
 
 ########################
 # local config
