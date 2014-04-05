@@ -124,18 +124,16 @@ module.exports = {
       });
     });
   },
-  // Solo via iframe
   related: function(req, res, next) {
     var id = req.param('id');
-    var l = req.param('l');
-    Post.find({ "patron_id": id }).limit(l).done(function relatedPost(err, post){
+    //var l = req.param('l');
+    Post.find({ "patron_id": id }).done(function relatedPost(err, post){
       if ( err ) return next(err);
       if (req.wantsJSON) {
         if( post.length ) return res.json(post);
         else return json(204);
       } else {
-        // return res.json(post);
-        return res.view({ post: post});
+        return res.json(post);
       }
     });
 

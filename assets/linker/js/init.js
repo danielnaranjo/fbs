@@ -131,6 +131,7 @@ function showPosition(position) {
 			if(data.length) {
 				$('#showList').prepend('<br><h4>Active post: '+data.length+'</h4>');
 			} else {
+				$('#showList').html('');
 				$('#showList').prepend('<br><h4>No post? Be may guest and create one!</h4>');
 			}
 			$.each( data, function( key, val ) {
