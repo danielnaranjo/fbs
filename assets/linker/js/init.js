@@ -54,11 +54,11 @@ function showPosition(position) {
 	// Cargar todos los avisos
 	var avisos = function() {
 		$('#avisos').html('');
-		$.getJSON( "/post?sort=DESC&limit=10", function(data) {
+		$.getJSON( "/post?limit=10", function(data) {
 		var items = [];
 		$.each( data, function( key, val ) {
 			$('#avisos').append("<div>");
-			$('#avisos').append("<a href='/post/" + val.id + "' target=\"_blank\">" + val.title + "</a> ");
+			$('#avisos').append("<a href='/post/" + val.id + "' target=\"_blank\">" + val.title + " (" + val.publisher + ")</a> ");
 			$('#avisos').append("<a href=\"javascript:deletePost('"+val.id+"');\"><i class=\"glyphicon glyphicon-remove text-danger\"></i></a> ");
 			$('#avisos').append("</div>");
 			});
@@ -73,6 +73,7 @@ function showPosition(position) {
 		$.each( data, function( key, val ){
 			$('#usuarios').append("<div>");
 			$('#usuarios').append("<a href='/user/" + val.id + "' target=\"_blank\">" + val.username + "</a> ");
+			$('#usuarios').append("<a href=\"javascript:deleteUser('"+val.id+"');\"><i class=\"glyphicon glyphicon-remove text-danger\"></i></a> ");
 			$('#usuarios').append("</div>");
 			});
 		});
@@ -221,6 +222,10 @@ function showPosition(position) {
 			relacionados();
 			console.log('Ok, reload #showList');
 		});
+	}
+	var deleteUser = function(x){
+		$.ajax({ type: "POST", url: "/user/destroy/"+x })
+		.done(function( msg ) { usuarios(); });
 	}
 	/* Convert all URL to Link */
 	var linkify = function(inputText) {
