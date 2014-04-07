@@ -35,7 +35,6 @@ module.exports = {
 		text: {
 			type: 'string',
 			required: true,
-			maxLength: 500,
 			minLength: 5
 		},
 		populars: {
