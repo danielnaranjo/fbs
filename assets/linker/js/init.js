@@ -312,11 +312,13 @@ function showPosition(position) {
 				//console.log(val.tag);
 			});
 			var counts = {};
-			for(var i=0;i< list.length;i++){
+			for(var i=0;i<list.length;i++){
 				var key = list[i]; counts[key] = (counts[key])? counts[key] + 1 : 1 ;
 			}
 			$.each( counts, function(k, j ) {
-				$('#populares ul').append('<li class="tag'+j+'"><a href="/post/tags/'+k+'">'+k+' ('+j+')</a></li>');
+				if(j>1) {
+					$('#populares ul').append('<li class="tag'+j+'"><a href="/post/tags/'+k+'">'+k+' ('+j+')</a></li>');
+				}
 			});
 		});
 	};
