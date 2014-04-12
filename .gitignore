@@ -46,8 +46,9 @@ RoadMap.md
 # Copias
 views/user/find2.ejs
 dump/
-*.json
-
+post.json
+tags.json
+user.json
 ########################
 # local config
 ########################
