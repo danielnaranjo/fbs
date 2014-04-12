@@ -42,7 +42,7 @@ footer a:hover{text-decoration:underline}
 }#lacaja div{display:inline-block;vertical-align:top}
 #lacaja input[type="text"]{padding:0 10px;width:95%}
 #lacaja input[type="submit"]{padding:5px 10px}
-#popular,#populares,#paises{backgroung-color:#ccc;height:90px;margin:0;vertical-align:top;}
+#popular,#populares,#paises{backgroung-color:#ccc;height:90px;margin:0;overflow:hidden;vertical-align:top;}
 @media screen and (max-width: 480px){#popular,#populares,#paises{display:none;visibility:hidden}
 }#popular ul,#populares ul,#paises ul{height:auto;margin:0;padding:5px 10px;text-align:center;width:auto}
 #popular li,#populares li,#paises li{margin:0;padding:0;list-style:none;display:inline-block;width:auto;}
@@ -103,7 +103,7 @@ footer a:hover{text-decoration:underline}
 #opciones li:hover{opacity:.9}
 #opciones:hover{background-color:#36a2d4;}
 @media screen and (max-width: 480px){#opciones:hover{width:100%}
-}#mapa{height:auto;margin:105px 0 60px 5px;min-height:565px;padding:0;width:100%;}
+}#mapa{height:auto;margin:100px 0 0 0;min-height:600px;padding:0;width:100%;}
 #mapa h3{color:#3caee1;padding:10px;margin:50px auto}
 #map-canvas{background-color:#eaeaea;height:100%;margin:0;padding:0;width:100%}
 #login,#newone{color:#818181;height:auto;margin:0 auto;padding:10px;width:auto;}
@@ -241,3 +241,5 @@ html,body{height:100%}
 .introtitle{color:#818181;height:auto;margin:0;width:100%;top:0}
 #usuarios i,#avisos i,#populares i{cursor:pointer}
 .lineSeparator{border-right:1px dotted #ccc;height:100%}
+#mapPerfil{height:300px;width:99%}
+.myTags{background-color:#e3e3e3;padding:5px;margin:2px}

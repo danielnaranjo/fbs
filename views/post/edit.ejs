@@ -69,9 +69,9 @@
 			</div>
 		</div>
 		<div class="col-md-6">
-			<input type="hidden" name="patron_id" id="patron_id" value="<%= loggedUser.id %>"/>
-			<input type="hidden" name="publisher" id="publisher" value="<%= loggedUser.username %>"/>
-			<input type="hidden" name="contactMail" id="contactMail" value="<%= loggedUser.email %>"/>
+			<input type="hidden" name="patron_id" id="patron_id" value="<%= post.patron_id %>"/>
+			<input type="hidden" name="publisher" id="publisher" value="<%= post.publisher %>"/>
+			<input type="hidden" name="contactMail" id="contactMail" value="<%= post.contactMail %>"/>
 			<input type="hidden" name="dip" id="dip" value="<%= req.ip %>"/>
 			<input type="hidden" name="_csrf" value="<%= _csrf %>">
 			<input type="submit" class="btn btn-primary btn-block" value="<%= __('Update post') %>" />

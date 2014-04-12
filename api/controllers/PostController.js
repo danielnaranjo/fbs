@@ -15,13 +15,27 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
+// Needed to request city and country. Force to non-geolocation params
+var request = require('request');
+var info = "", youare = "";
+
+
 module.exports = {
-    
+
   find: function(req, res, next) {
+
+  // Load Location via IP  
+  request('http://freegeoip.net/json/', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      info = JSON.parse(body);
+      youare = info.country_name;
+      // console.log(youare);
+    }
+ });
+
     var id = req.param('id');
     // If id is a shortcut we don't have to find.
     if ( isShortcut(id) ) return next();
-
     // If we get an id we will retun one unique user.
     if (id) {
       Post.findOne(id).done(function foundUser(err, post){
@@ -29,7 +43,8 @@ module.exports = {
         if ( !post ) return res.notFound();
 
       // Contador de visitas!!!
-        var visited = post.visit + 1; console.log(' *** '+post.visit+' '+visited+' *** ');
+        var visited = post.visit + 1; 
+        // console.log(' *** '+post.visit+' '+visited+' *** ');
         Post.update(id, { visit: visited }, function(err, post) {
           if (err) return console.log(err);
         });
@@ -43,13 +58,15 @@ module.exports = {
     }
     // Otherwise, we will retun an user array.
     else {
-      
       // If we have a where param we will pase it as JSON.
       var where = req.param('where');
+      //var where = { "country": youare };
+      console.log(where);
       if( _.isString(where)) {
         where = JSON.parse(where);
       }
-      // Setting options from params.
+
+       // Setting options from params.
       var filters = {
         limit: req.param('limit') || undefined,
         skip: req.param('skip')  || undefined,
@@ -72,7 +89,7 @@ module.exports = {
       });
     }
     function isShortcut(id){
-      return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' || id=== 'related' || id=== 'tags' || id=== 'nearby' || id=== 'search');
+      return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' || id=== 'related' || id=== 'tags' || id=== 'nearby' || id=== 'search' || id === 'reject');
     }
   },
   create: function(req, res, next) {
@@ -167,7 +184,20 @@ module.exports = {
   upload: function(req, res) {
     //
   },
-
+  reject: function(req, res, next) {
+    var id = req.param('id');
+    if( !id ) return res.notFound();
+    Post.findOne(id).done(function foundPost(err, post){
+      if ( err ) return next(err);
+      if ( !post ) return res.notFound();
+      Post.destroy(post.id).done(function postDestroyed(err){
+        if ( err ) return next();
+        // if (req.wantsJSON) return res.json(200);
+        // else return res.redirect('/');
+        console.log('Banned post!');
+      });
+    });
+  },
   /*
    * Actions to render a view.
   */
