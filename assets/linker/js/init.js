@@ -59,7 +59,8 @@ function showPosition(position) {
 		$.each( data, function( key, val ) {
 			$('#avisos').append("<div>");
 			$('#avisos').append("<a href='/post/" + val.id + "' target=\"_blank\">" + val.title + " (" + val.publisher + ")</a> ");
-			$('#avisos').append("<a href=\"javascript:deletePost('"+val.id+"');\"><i class=\"glyphicon glyphicon-remove text-danger\"></i></a> ");
+			$('#avisos').append("<a href=\"javascript:editPost('"+val.id+"');\"><i class=\"glyphicon glyphicon-pencil text-success\"></i></a> ");
+			$('#avisos').append("<a href=\"javascript:rejectPost('"+val.id+"');\"><i class=\"glyphicon glyphicon-remove text-danger\"></i></a> ");
 			$('#avisos').append("</div>");
 			});
 		});
@@ -73,7 +74,7 @@ function showPosition(position) {
 		$.each( data, function( key, val ){
 			$('#usuarios').append("<div>");
 			$('#usuarios').append("<a href='/user/" + val.id + "' target=\"_blank\">" + val.username + "</a> ");
-			$('#usuarios').append("<a href=\"javascript:deleteUser('"+val.id+"');\"><i class=\"glyphicon glyphicon-remove text-danger\"></i></a> ");
+			$('#usuarios').append("<a href=\"javascript:rejectUser('"+val.id+"');\"><i class=\"glyphicon glyphicon-remove text-danger\"></i></a> ");
 			$('#usuarios').append("</div>");
 			});
 		});
@@ -98,7 +99,8 @@ function showPosition(position) {
 	// Mapa total
 	var mapa = function(){
 		$('#mapa').html('');
-		var map = L.map('mapa').setView([miubicacion[0], miubicacion[1]], 5); console.log(miubicacion[0]+','+ miubicacion[1]);
+		var map = L.map('mapa').setView([miubicacion[0], miubicacion[1]], 13); 
+		//console.log(miubicacion[0]+','+ miubicacion[1]);
 		L.tileLayer('http://{s}.tile.cloudmade.com/2aa8946815814d3ea0bb70bd8e8a8ea5/997/256/{z}/{x}/{y}.png', {
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'}).addTo(map);
 		var popup = L.popup();
@@ -119,7 +121,7 @@ function showPosition(position) {
 			var marcador = locacion.split(",");
 			L.marker([parseInt(marcador[0]), parseInt(marcador[1])],{icon: Icon})
 				.addTo(map)
-				.bindPopup("<strong>"+val.title+"</strong>");
+				.bindPopup("<h4><a href='/post/"+val.id+"'>"+val.title+"</a></h4>"+val.summary+"<br/><a href='/post/?where={\"city\":\""+val.city+"\"}'>"+val.city+"</a> <a href='/post/?where={\"country\":\""+val.country+"\"}'>"+val.country+"</a>");
 			});
 		});
 	}
@@ -156,7 +158,7 @@ function showPosition(position) {
 				console.log('No more post by user!');
 			}
 			$.each( data, function( key, val ) {
-				$('#showRelated').append('<div class="box col-xs-6 col-sm-4"><h4><a href="/post/'+val.id+'">'+val.title+'</a></h4><p>'+val.summary+'</p><p>'+val.populars+'</p></div>');
+				$('#showRelated').append('<div class="box col-xs-6 col-sm-4"><h4><a href="/post/'+val.id+'">'+val.title+'</a></h4><p>'+val.summary+'</p></div>');//<p>'+val.populars+'</p>
 			});
 		});
 	}
@@ -214,18 +216,19 @@ function showPosition(position) {
 	}
 	var deletePost = function(x){
 		// window.location.href="/post/destroy/"+x;
-		$.ajax({
-			type: "POST",
-			url: "/post/destroy/"+x
-		})
-		.done(function( msg ) {
-			relacionados();
-			console.log('Ok, reload #showList');
-		});
+		$.ajax({ type: "POST", url: "/post/destroy/"+x })
+		.done(function( msg ) { console.log('Ok deletePost'); });
+		relacionados();
 	}
-	var deleteUser = function(x){
-		$.ajax({ type: "POST", url: "/user/destroy/"+x })
-		.done(function( msg ) { usuarios(); });
+	var rejectUser = function(x){
+		$.ajax({ type: "POST", url: "/user/reject/"+x })
+		.done(function( msg ) { console.log('Ok rejectUser'); }); 
+		usuarios(); 
+	}
+	var rejectPost = function(x){
+		$.ajax({ type: "POST", url: "/post/reject/"+x })
+		.done(function( msg ) { console.log('Ok rejectPost'); }); 
+		relacionados();
 	}
 	/* Convert all URL to Link */
 	var linkify = function(inputText) {
@@ -349,6 +352,13 @@ function showPosition(position) {
 		var idiomas = locales.split(",");
 		for(i=0; i < idiomas.length; i++) {
 			$("#languages select").append('<option value="'+idiomas[i]+'">'+idiomas[i]+'</option>');
+		}
+	};
+	// hazTags("vendo,camara,lumix,fs42,rosada","mapPerfil");
+	var hazTags = function(str,tag){
+		var arr = str.replace(/,/g," ").split(' ');
+		for(var i=0;i<arr.length;i++) {
+			$('#'+tag).append('<a href="/post/'+arr[i]+'">'+arr[i]+'</a> ');
 		}
 	};
 

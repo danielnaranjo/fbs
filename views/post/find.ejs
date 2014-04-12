@@ -2,6 +2,8 @@
 if ( typeof posts === 'undefined' ) {
 // There are only one user.
 %>
+<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
 <!-- perfil-->
 <section id="perfil">
 <div class="row">
@@ -46,14 +48,16 @@ if ( typeof posts === 'undefined' ) {
       <p id="ft"><%= post.text %></p>          
       <p class="text-right">
           <p>
-              <i class="icon-tags"></i> <%= __('Tags') %>: 
-              <%
-              if(post.populars) { var str = post.populars; } else { var str = post.title; }
-              var arr = str.replace(/,/g," ").split(' ');
-              for(var i=0;i<arr.length;i++) { 
-              %>
-              <a class="tagsbypost" href="/post/tags/<%= arr[i] %>"><%= arr[i] %></a>
-              <% } %>
+              <i class="icon-tags"></i> <%= __('Tags') %>: <%
+        if(post.populars) { var str = post.populars; } else { var str = post.title; }
+        var arr = str.replace(/,/g," ").split(' ');
+        for(var i=0;i<arr.length;i++) { 
+        %><a class="tagsbypost" href="/post/tags/<%= arr[i] %>" target="_parent"><%= arr[i] %></a> <% } %>
+              
+              <script>
+              /*<div id="hazTags"></div>
+              <% if(post.populars) { %>var str = "<%=post.populars%>";<% } else { %>var str = "<%=post.title%>";<% } %>hazTags(str,"hazTags");*/
+              </script>
           </p>
       </p>
       <p>
@@ -97,22 +101,6 @@ if ( typeof posts === 'undefined' ) {
   </div>
 
   <div class="col-md-4">
-    <div id="contactar">
-      <div class="gris"><%= __('Make a question') %></div>
-        <div class="glyph">
-          <a href="tel:<%= post.phoneNumber %>"><i class="glyphicon glyphicon-phone-alt"></i></a> <%= __('Call') %>
-        </div>
-        <div class="glyph">
-          <a href="mailto:<%= post.contactMail %>"><i class="glyphicon glyphicon-comment"></i></a> <%= __('Write') %>
-        </div>
-        <div class="glyph">
-          <a href="#"><i class="fa fa-twitter-square"></i></a> Twitter
-        </div>
-        <div class="glyph">
-          <a href="#"><i class="fa fa-facebook-square"></i></a> Facebook
-        </div>
-    </div>
-
     <div id="compartir">
       <div class="gris"><%= __('Share') %></div>
       <div style="vertical-align:top;">
@@ -123,6 +111,11 @@ if ( typeof posts === 'undefined' ) {
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script><!-- twitter -->
       </div>
     </div>
+    
+    <div id="contactar">
+      <div id='mapPerfil'></div>
+    </div>
+
     <div id="compartir" class="text-center">
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <!-- findby-responsive -->
@@ -154,6 +147,34 @@ if ( typeof posts === 'undefined' ) {
   </div>
 </section>
 -->
+
+<script>
+var postLocation = "<%= post.location %>";
+var sep = postLocation.split(',');
+var map = L.mapbox.map('mapPerfil', 'danielnaranjo.hkk59gkh')
+    .setView([parseFloat(miubicacion[0]),parseFloat(miubicacion[1])], 6);
+
+L.mapbox.featureLayer({
+    // this feature is in the GeoJSON format: see geojson.org
+    // for the full specification
+    type: 'Feature',
+    geometry: {
+        type: 'Point',
+        // coordinates here are in longitude, latitude order because
+        // x, y is the standard for GeoJSON and many formats
+        coordinates: [parseFloat(sep[1]), parseFloat(sep[0])]
+    },
+    properties: {
+        title: '<%= post.title %>',
+        description: '<%= post.summary %>',
+        // one can customize markers by adding simplestyle properties
+        // http://mapbox.com/developers/simplestyle/
+        'marker-size': 'large',
+        'marker-color': '#f0a'
+    }
+}).addTo(map);
+</script>
+
 <script>
   setTimeout(function() { 
     related('<%= post.patron_id %>');

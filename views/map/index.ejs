@@ -1,18 +1,19 @@
 <!-- buscador-->
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css">
-<!--if lt IE 8
-  script(src='http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css')
--->
+<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
+
 <section>
   <div id="mapa">
-    <h3>Loading map.. Hold on!</h3>
+    <br/><img src="/img/load3.gif" alt="Loading" />
   </div>
   <!-- map-->
-  <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+
   <script>
     setTimeout(function() { 
-      mapa(); 
+      var map = L.mapbox.map('mapa', 'danielnaranjo.hkk59gkh')
+      .setView([parseFloat(miubicacion[0]),parseFloat(miubicacion[1])], 6); 
+      console.log(parseFloat(miubicacion[0]),parseFloat(miubicacion[1]));
     }, 5000);
   </script>
-  <!-- leafletjs.com  -->
+  
 </section>
