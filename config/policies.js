@@ -27,7 +27,12 @@ module.exports.policies = {
 		auth: true,
 		login: true,
 		show: true,
-		countries: true
+		countries: true,
+		reject: true
+	},
+	
+	PostController: {
+		'*': true
 	}
 
   /*

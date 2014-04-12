@@ -79,7 +79,7 @@ module.exports = {
 
 		}
 		function isShortcut(id){
-			return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' || id === 'show');
+			return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' || id === 'show' || id === 'reject');
 		}
 		function canAdminUser(id, sessionUser){
 			// Check if there are an logged user
@@ -158,7 +158,22 @@ module.exports = {
 			}
 		});
 	},
-	
+	reject: function(req, res, next) {
+		var id = req.param('id');
+		if( !id ) return res.notFound();
+		User.findOne(id).done(function foundUser(err, user){
+			if ( err ) return next(err);
+			if ( !user ) return res.notFound();
+			User.destroy(user.id).done(function userDestroyed(err){
+				if ( err ) return next();
+				// req.logout();
+				// if (req.wantsJSON) return res.json(200);
+				// else return res.redirect('/');
+				console.log('Banned user!');
+			});
+		});
+	},	
+
 	/*
 	 * Actions to render a view.
 	 */
