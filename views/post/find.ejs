@@ -156,7 +156,7 @@ if ( typeof posts === 'undefined' ) {
     var postLocation = x;
     var sep = postLocation.split(',');
     var map = L.mapbox.map('mapPerfil', 'danielnaranjo.hkk59gkh')
-    .setView([parseFloat(miubicacion[0]),parseFloat(miubicacion[1])], 13);
+    .setView([parseFloat(sep[0]),parseFloat(sep[1])], 13);
     L.mapbox.featureLayer({
       // this feature is in the GeoJSON format: see geojson.org
       // for the full specification
