@@ -361,6 +361,19 @@ function showPosition(position) {
 			$('#'+tag).append('<a href="/post/'+arr[i]+'">'+arr[i]+'</a> ');
 		}
 	};
+/*
+	var allPost = function() {
+		$('.allPost').html('');
+		$.getJSON( "/post", function(data) {
+		var items = [];
+		//$('.allPost').append("<div style=\"text-align:center\" class=\"box col-xs-6 col-sm-4\"><script>google_ad_client=\"ca-pub-3074485176185204\";google_ad_slot=\"5370019667\";google_ad_width=250;google_ad_height=250;</script><script src=\"http://pagead2.googlesyndication.com/pagead/show_ads.js\"></script></div>")
+		$.each( data, function( key, val ){
+			$('.allPost').append("<div class=\"box col-xs-6 col-sm-4\"><h4><a href='#" + val.id + "'>" + val.title + "</a></h4><p>" + val.summary + "</p></div>");
+			});
+		});
+	}
+*/
+
 
 $(document).ready(function(e) {
 //

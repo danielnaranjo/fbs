@@ -4,15 +4,49 @@
 
 <section>
   <div id="mapa">
-    <br/><img src="/img/load3.gif" alt="Loading" />
+    <br/> <img src="/img/load3.gif" alt="Loading" />
   </div>
   <!-- map-->
 
   <script>
     setTimeout(function() { 
-      var map = L.mapbox.map('mapa', 'danielnaranjo.hkk59gkh')
-      .setView([parseFloat(miubicacion[0]),parseFloat(miubicacion[1])], 6); 
-      console.log(parseFloat(miubicacion[0]),parseFloat(miubicacion[1]));
+      //console.log(miubicacion);
+      var map = L.mapbox.map('mapa', 'danielnaranjo.hkk59gkh').setView([parseFloat(miubicacion[0]),parseFloat(miubicacion[1])], 6);
+      var myLayer = L.mapbox.featureLayer().addTo(map);
+      var geoJson = [];
+
+      geoJson.push({type: 'Feature',geometry: {type: 'Point',coordinates: [parseFloat(miubicacion[1]),parseFloat(miubicacion[0])]},properties: {title: 'You are here! <br/>', description: pais+' ('+miubicacion[0].toFixed(3)+','+miubicacion[1].toFixed(3)+')','marker-color': '#3caee1'}});
+      myLayer.setGeoJSON(geoJson);
+
+      // Get from Server
+      $.getJSON( "/post", function(data) {
+          var locacion=[], marcador=[];
+          $.each( data, function( key, val ) {
+            var locacion = $.trim(val.location);
+            var marcador = locacion.split(",");
+            geoJson.push({type: 'Feature',geometry: {type: 'Point',coordinates: [parseFloat(marcador[1]),parseFloat(marcador[0])]},properties: {title: '<a href="/post/'+val.id+'">'+val.title+'</a>', description: val.summary+'<br/><%= __('Location') %>: <strong>'+val.city+'</strong>', 'marker-color': '#f00' }});
+            myLayer.setGeoJSON(geoJson);
+          });
+      });
+
+      // Listen for individual marker clicks
+      myLayer.on('click',function(e) {
+          // Force the popup closed.
+          e.layer.closePopup();
+
+          var feature = e.layer.feature;
+          var info = '<h4>' + feature.properties.title + '</h4>' +
+                     '<p>' + feature.properties.description + '</p>';
+          document.getElementById('info').innerHTML = info;
+      });
+
+      // Clear the tooltip when map is clicked
+      map.on('move',function(e){
+          document.getElementById('info').innerHTML = '<h4>Click a marker</h4>';
+      });
+
+      // Add info panel
+      $('section').append('<div id="info"><h4>Click a marker</h4></div>');
     }, 5000);
   </script>
   

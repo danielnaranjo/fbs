@@ -113,7 +113,9 @@ if ( typeof posts === 'undefined' ) {
     </div>
     
     <div id="contactar">
-      <div id='mapPerfil'></div>
+      <div id='mapPerfil'>
+        <br/><img src="/img/load3.gif" alt="Loading" />
+      </div>
     </div>
 
     <div id="compartir" class="text-center">
@@ -149,37 +151,41 @@ if ( typeof posts === 'undefined' ) {
 -->
 
 <script>
-var postLocation = "<%= post.location %>";
-var sep = postLocation.split(',');
-var map = L.mapbox.map('mapPerfil', 'danielnaranjo.hkk59gkh')
-    .setView([parseFloat(miubicacion[0]),parseFloat(miubicacion[1])], 6);
-
-L.mapbox.featureLayer({
-    // this feature is in the GeoJSON format: see geojson.org
-    // for the full specification
-    type: 'Feature',
-    geometry: {
+  var mapPerfil = function(x) {
+    $('#mapPerfil').html('');
+    var postLocation = x;
+    var sep = postLocation.split(',');
+    var map = L.mapbox.map('mapPerfil', 'danielnaranjo.hkk59gkh')
+    .setView([parseFloat(miubicacion[0]),parseFloat(miubicacion[1])], 13);
+    L.mapbox.featureLayer({
+      // this feature is in the GeoJSON format: see geojson.org
+      // for the full specification
+      type: 'Feature',
+      geometry: {
         type: 'Point',
         // coordinates here are in longitude, latitude order because
         // x, y is the standard for GeoJSON and many formats
         coordinates: [parseFloat(sep[1]), parseFloat(sep[0])]
-    },
-    properties: {
+      },
+      properties: {
         title: '<%= post.title %>',
         description: '<%= post.summary %>',
         // one can customize markers by adding simplestyle properties
         // http://mapbox.com/developers/simplestyle/
         'marker-size': 'large',
-        'marker-color': '#f0a'
-    }
-}).addTo(map);
-</script>
+        'marker-color': '#3caee1'
+      }
+    }).addTo(map);
+  }
 
-<script>
   setTimeout(function() { 
     related('<%= post.patron_id %>');
     url2link();
   }, 3000);
+
+  setTimeout(function() {
+    mapPerfil("<%= post.location %>");
+  },5000);
 </script>
 
 <%
