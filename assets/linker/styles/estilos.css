@@ -60,11 +60,11 @@ footer a:hover{text-decoration:underline}
 .glyph a{color:#bebebe}
 .glyph a:hover{color:#a8a8a8}
 .glyph:hover{color:#a4a4a4}
-.tag1{font-size:100%}
-.tag2{font-size:120%}
-.tag3{font-size:140%}
-.tag4{font-size:160%}
-.tag5{font-size:180%}
+.tag1{font-size:80%}
+.tag2{font-size:100%}
+.tag3{font-size:120%}
+.tag4{font-size:140%}
+.tag5{font-size:160%}
 #uno,#dos,#tres,#cuatro,#cinco{display:inline-block;vertical-align:top}
 #perfil{height:auto;margin:105px 0 60px 5px;width:auto;}
 #perfil #uno,#perfil #dos,#perfil #tres{border:1px solid #e3e3e3;border-radius:3px;color:#818181;height:auto;margin:0;padding:5px;width:400px}
