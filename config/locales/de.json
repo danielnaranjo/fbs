@@ -17,7 +17,9 @@
   "WhereAmI":"Fehler: Ihr Browser unterstützt keine Geolocation Sind Sie in Sibirien",
   "WeAreDone":"Wir sind bereit! ",
   "MaybeYouAre":"Vielleicht sind Sie in der Nähe",
-
+  "You are here!":"You are here!",
+  "Click a marker":"Click a marker",
+  
   "New post":"Neue Post",
   "Title of your product or service":"Titel der Ihr Produkt oder Service",
   "Brief description":"Kurzbeschreibung",
@@ -47,7 +49,9 @@
   "Write":"Schreiben",
   "Share":"Teilen",
   "More ads by":"Weitere Anzeigen nach",
-
+  "This post has been viewed":"Dieser Beitrag wurde bereits",
+  "times":"mal angesehen",
+  
   "Sign In":"Anmelden",
   "someone@somewhere.com":"someone@somewhere.com",
   "Password":"Passwort",

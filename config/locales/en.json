@@ -17,6 +17,8 @@
   "WhereAmI":"Error: Your browser doesn't support geolocation. Are you in Siberia?",
   "WeAreDone":"We're ready!",
   "MaybeYouAre":"Maybe you're nearby",
+  "You are here!":"You are here!",
+  "Click a marker":"Click a marker",
 
   "New post":"New post",
   "Title of your product or service":"Title of your product or service",
@@ -47,6 +49,8 @@
   "Write":"Write",
   "Share":"Share",
   "More ads by":"More ads by",
+  "This post has been viewed":"This post has been viewed",
+  "times":"times",
 
   "Sign In":"Sign In",
   "someone@somewhere.com":"someone@somewhere.com",

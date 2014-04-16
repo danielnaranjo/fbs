@@ -17,6 +17,8 @@
   "WhereAmI":"Error: Su navegador de Internet no soporte geolocalización. Estas cerca de Siberia?",
   "WeAreDone":"Listo! Comencemos!",
   "MaybeYouAre":"Quiza estas cerca de",
+  "You are here!":"Estas aqui!",
+  "Click a marker":"Haz clic en el punto",
 
   "New post":"Nuevo aviso",
   "Title of your product or service":"Titulo",
@@ -47,6 +49,8 @@
   "Write":"Escribir",
   "Share":"Compartir",
   "More ads by":"Mas avisos de",
+  "This post has been viewed":"Este post ha sido visto",
+  "times":"veces",
 
   "Sign In":"Acceder",
   "someone@somewhere.com":"sunombre@suempresa.com",

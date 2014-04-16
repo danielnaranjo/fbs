@@ -17,7 +17,9 @@
   "WhereAmI":"Erreur: . ? Votre navigateur ne supporte pas la géolocalisation Êtes-vous en Sibérie?",
   "WeAreDone":"Nous sommes prêts !",
   "MaybeYouAre":"Peut-être que vous êtes à proximité",
-
+  "You are here!":"You are here!",
+  "Click a marker":"Click a marker",
+  
   "New post":"Nouveau message",
   "Title of your product or service":"Titre de votre produit ou service",
   "Brief description":"Brève description",
@@ -47,6 +49,8 @@
   "Write":"Ecrire",
   "Share":"Partager",
   "More ads by":"Plus d'annonces par",
+  "This post has been viewed":"Ce message a été lu",
+  "times":"fois",
 
   "Sign In":"Connexion",
   "someone@somewhere.com":"someone@somewhere.com",
