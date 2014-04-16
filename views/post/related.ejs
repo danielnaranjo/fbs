@@ -1,3 +1,4 @@
+<script>var makeTags = function(x,y) {var arr = y.split(',');$('#'+x).html('');for(var j=0; j<arr.length; j++) {var replacedText = arr[j].replace(arr[j], '<a href="/post/tags/'+arr[j]+'" class="tagged"><i class="icon-tags"></i> '+arr[j]+'</a> ');$('#'+x).append(replacedText);}}</script>
 <section class="js-masonry">
 	<div id="contenido">
     <div style="text-align:center" class="box col-xs-6 col-sm-4">
@@ -17,19 +18,16 @@
         <% } %>
         <h4><a href="/post/<%= post.id %>"><%= post.title %></a></h4>
         <p><%= post.summary %></p>
+        <!--
         <p>
             <i class="glyphicon glyphicon-heart"></i> <span>5</span>
             <i class="glyphicon glyphicon-search"></i> <span>7</span>
             <i class="glyphicon glyphicon-star"></i> <span>2</span>
             <i class="glyphicon glyphicon-flag"></i> <span>20</span>
         </p>
+        -->
         <p>
-          <i class="icon-tags"></i> Tags:
-          <%
-          if(post.populars) { var str = post.populars; } else { var str = post.title; }
-          var arr = str.replace(/,/g," ").split(' ');
-          for(var i=0;i<arr.length;i++) { 
-          %><a class="tagsbypost" href="/post/tags/<%= arr[i] %>" target="_parent"><%= arr[i] %></a> <% } %>
+          <p id="<%= post.id %>">Loading..</p><script>makeTags('<%= post.id %>','<%= post.populars %>')</script>
         </p>
       </div>
       <% }); %>
