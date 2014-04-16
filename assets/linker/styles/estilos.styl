@@ -160,6 +160,10 @@ footer
 	padding: 10px
 	vertical-align top
 
+	h4 
+		a
+			color: #3caee1
+
 	@media screen and (max-width: 480px)
 		width: 98%
 
@@ -169,8 +173,9 @@ footer
 	@media screen and (min-width: 981px)
 		width 24.5%
 
-.box:hover
-	box-shadow: 5px 5px 5px #ccc
+@media screen and (min-width: 981px)
+	.box:hover
+		box-shadow: 5px 5px 5px #ccc
 
 .pic
 	height auto
@@ -183,9 +188,6 @@ footer
 	margin: 105px 0 60px 5px
 	vertical-align: top
 	width: 99%
-
-	a
-		color: #3caee1
 
 	h1, h3
 		margin: 0
@@ -1012,7 +1014,7 @@ a.tagsbypost
 	text-decoration underline important
 
 .box i, #descripcion i
-	color #37a6d7
+	color #FFF
 
 #relacionado
 	color: #818181
@@ -1221,3 +1223,21 @@ html, body
 	right: 20px
 	padding: 10px
 	border-radius: 3px
+
+#t
+	display: none
+
+a.tagged
+	background-color: #3caee1
+	border-radius: 3px
+	color: #FFF
+	display: inline-block
+	margin: 1px
+	padding: 7px
+	text-decoration: none
+
+a.tagged:hover
+	box-shadow: 1px 1px 1px #2a83ab
+
+.box i:hover, #descripcion i:hover
+	color #2a83ab

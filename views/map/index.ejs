@@ -24,7 +24,16 @@
           $.each( data, function( key, val ) {
             var locacion = $.trim(val.location);
             var marcador = locacion.split(",");
-            geoJson.push({type: 'Feature',geometry: {type: 'Point',coordinates: [parseFloat(marcador[1]),parseFloat(marcador[0])]},properties: {title: '<a href="/post/'+val.id+'">'+val.title+'</a>', description: val.summary+'<br/><%= __('Location') %>: <strong>'+val.city+'</strong>', 'marker-color': '#f00' }});
+            geoJson.push({
+              type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [parseFloat(marcador[1]),parseFloat(marcador[0])]},
+                properties: {
+                  title: '<a href="/post/'+val.id+'">'+val.title+'</a>', 
+                  description: val.summary+'<br/><%= __('Location') %>: <a href="/post/?where&#61;&#123;&#34;city&#34;&#58;&#34;'+val.city+'&#34;&#125;">'+val.city+'</a> <a href="/post/?where&#61;&#123;&#34;country&#34;&#58;&#34;'+val.country+'&#34;&#125;">'+val.country+'</a>', 'marker-color': '#f00' 
+                }
+              });
             myLayer.setGeoJSON(geoJson);
           });
       });

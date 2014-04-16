@@ -96,6 +96,7 @@ function showPosition(position) {
 		});
 		console.log('Counting users');
 	}
+/*
 	// Mapa total
 	var mapa = function(){
 		$('#mapa').html('');
@@ -125,6 +126,7 @@ function showPosition(position) {
 			});
 		});
 	}
+*/
 	// Avisos relacionados
 	var relacionados = function() {
 		var pathname = window.location.pathname; 
@@ -150,15 +152,16 @@ function showPosition(position) {
 	var related = function(x,y) {
 		//var pathname = window.location.pathname; 
 		//var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
-		$.getJSON( "/post/related/"+x+"?l=4", function(data) {
+		$.getJSON( "/post/related/"+x+"?l=4", function(data){
 			$('#showRelated').html('');
-			// console.log(data.length);
+			//console.log(data.length);
 			if(data.length==0){
 				$('#vermas').hide();
-				console.log('No more post by user!');
+				//console.log('No more post by user!');
 			}
 			$.each( data, function( key, val ) {
-				$('#showRelated').append('<div class="box col-xs-6 col-sm-4"><h4><a href="/post/'+val.id+'">'+val.title+'</a></h4><p>'+val.summary+'</p></div>');//<p>'+val.populars+'</p>
+				$('#showRelated').append('<div class="box col-xs-6 col-sm-4"><h4><a href="/post/'+val.id+'">'+val.title+'</a></h4><p>'+val.summary+'</p></div>');
+				// <p id="'+val.id+'">Loading..</p>'+makeTags(''+val.id+'',''+val.populars+'')+'
 			});
 		});
 	}
@@ -354,12 +357,18 @@ function showPosition(position) {
 			$("#languages select").append('<option value="'+idiomas[i]+'">'+idiomas[i]+'</option>');
 		}
 	};
-	// hazTags("vendo,camara,lumix,fs42,rosada","mapPerfil");
-	var hazTags = function(str,tag){
-		var arr = str.replace(/,/g," ").split(' ');
-		for(var i=0;i<arr.length;i++) {
-			$('#'+tag).append('<a href="/post/'+arr[i]+'">'+arr[i]+'</a> ');
+	// <div id="t">todos,los,perros,piden,perdon,perro,cagon,gon</div>
+	var makeTags = function(x) {
+		var replacedText ="";
+		var arr = x.split(',');
+		for(var i=0; i<arr.length; i++) {
+			replacedText += arr[i].replace(arr[i],'<a href="/post/tags/'+arr[i]+'" class="tagged">'+arr[i]+'</a> ');
 		}
+		return replacedText;
+	};
+	var magicTags = function(){
+		$('#t').css('display','inline-block');
+		document.getElementById('t').innerHTML=makeTags(document.getElementById('t').innerHTML);
 	};
 /*
 	var allPost = function() {
@@ -389,7 +398,10 @@ $(document).ready(function(e) {
 	}
 
 	/* masonry */
-	$("#contenido").masonry({itemSelector:'.box'});
+	//$("#contenido").masonry({itemSelector:'.box'});
+	var $container = $('#contenido').masonry({itemSelector:'.box'});
+	// layout Masonry again after all images have loaded
+	$container.imagesLoaded( function(){ $container.masonry();});
 	//$("#contenido2").masonry({ itemSelector: 'li' });
 	//$("#relacionado").masonry({ itemSelector: 'li' });
 
