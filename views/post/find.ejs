@@ -40,14 +40,6 @@ if ( typeof posts === 'undefined' ) {
         <% } %>
         <%= __('Publisher by') %> <a href="/post/related/<%= post.patron_id %>"><%= post.publisher %></a>
       </p>
-      <!--
-      <p>
-        <i class="glyphicon glyphicon-heart"></i>   <span> 5 </span>
-        <i class="glyphicon glyphicon-eye-open"></i>  <span> <%= post.visit %> </span>
-        <i class="glyphicon glyphicon-star"></i>    <span> 2 </span>
-        <i class="glyphicon glyphicon-flag"></i>    <span> 20 </span>
-      </p>
-      -->
       <p id="ft"><%= post.text %></p>          
       <p class="text-right">
         <p id="<%= post.id %>">Loading..</p><script>makeTags('<%= post.id %>','<%= post.populars %>')</script>
@@ -207,14 +199,6 @@ if ( typeof posts === 'undefined' ) {
       <% } %>
       <h4><a href="/post/<%= post.id %>"><%= post.title %></a></h4>
       <p><%= post.summary %></p>
-      <!--
-      <p>
-          <i class="glyphicon glyphicon-heart"></i> <span>5</span>
-          <i class="glyphicon glyphicon-eye-open"></i> <span><%= post.visit %></span>
-          <i class="glyphicon glyphicon-star"></i> <span>2</span>
-          <i class="glyphicon glyphicon-flag"></i> <span>20</span>
-      </p>
-      -->
       <p id="<%= post.id %>">Loading..</p><script>makeTags('<%= post.id %>','<%= post.populars %>')</script>
     </div>
     <% }); %>
