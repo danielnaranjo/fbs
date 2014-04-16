@@ -1,8 +1,7 @@
 <!-- buscador-->
 <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
-
-<section>
+<section id="perfil" style="margin:0;">
   <div id="mapa">
     <br/> <img src="/img/load3.gif" alt="Loading" />
   </div>
@@ -10,6 +9,7 @@
 
   <script>
     setTimeout(function() { 
+      $('#mapa').css('height',$( window ).height()-100);
       //console.log(miubicacion);
       var map = L.mapbox.map('mapa', 'danielnaranjo.hkk59gkh')
                 .setView([parseFloat(miubicacion[0]),parseFloat(miubicacion[1])], 
