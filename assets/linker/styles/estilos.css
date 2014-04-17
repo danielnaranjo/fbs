@@ -249,3 +249,8 @@ html,body{height:100%}
 a.tagged{background-color:#3caee1;border-radius:3px;color:#fff;display:inline-block;margin:1px;padding:7px;text-decoration:none}
 a.tagged:hover{box-shadow:1px 1px 1px #2a83ab}
 .box i:hover,#descripcion i:hover{color:#2a83ab}
+#aboutmap{background-image:url("/img/map.png");background-position:top left;background-repeat:no-repeat;border-bottom:1px solid #ddd;height:200px;margin:-5px 0 0 0;overflow:hidden;padding:0;widht:100%;}
+#aboutmap div{heigth:200px}
+@media screen and (max-width: 1000px){#aboutmap{margin:-25px 0 0 0}
+}.WhatsFB{color:#444;}
+.WhatsFB h1,.WhatsFB h3{color:#3caee1}

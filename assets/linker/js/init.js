@@ -289,6 +289,8 @@ function showPosition(position) {
 	var envelope = function(){
 		$('#envelope').append('<a href="#"></a>');
 		$('#envelope a').append('hello@findby.co');
+		$('.envelope').append('<a href="#"></a>');
+		$('.envelope a').append('hello@findby.co');		
 	};
 	/* Fire Languages */
 	var language = function(){
@@ -370,6 +372,34 @@ function showPosition(position) {
 		$('#t').css('display','inline-block');
 		document.getElementById('t').innerHTML=makeTags(document.getElementById('t').innerHTML);
 	};
+	/* Requerido por aboutmap in /about/index */
+	function random(min, max) {
+		return Math.floor((Math.random() * max) + min);
+	}
+	/* Animacion aboutmap in /about/index */
+	var aboutmap = function() {
+        // http://eledwin.com/blog/como-crear-lluvia-de-colores-en-un-sitio-web-con-jquery-42
+        var startPos = -50;
+        var speed = 30000;
+        var cantidad = 500;
+        setInterval(function () {
+            var w = window.innerWidth;
+            var h = window.innerHeight;
+            var e = document.createElement("div");
+            $(e).css("display", "inline-block");
+            $(e).css("width", "35px");
+            $(e).css("height", "45px");
+            $(e).css("background-image", "url('/img/pin.png')");
+            $(e).css("position", "absolute");
+            $(e).css("top", startPos + "px");
+            $(e).css("left", random(0, w) + "px");
+            $(e).css("z-index", "1000");
+            $(e).animate({ top: h + "px" }, speed, "linear", function () {
+                this.remove();
+            });
+            $("#aboutmap").append(e);
+        }, cantidad);
+    }
 /*
 	var allPost = function() {
 		$('.allPost').html('');

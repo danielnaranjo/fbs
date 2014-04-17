@@ -19,6 +19,9 @@ var mailer = require("mailer");
 
 module.exports = {
     
+  index: function (req, res) {
+    return res.view();
+  },
   privacy: function (req, res) {
     return res.view();
   },
@@ -26,9 +29,6 @@ module.exports = {
     return res.view();
   },
   contact: function (req, res) {
-    return res.view();
-  },
-  partner: function (req, res) {
     return res.view();
   },
   send: function(req, res, next) {
@@ -50,8 +50,8 @@ module.exports = {
     bodyMessage += 'Name: '+ name + '\n';
     bodyMessage += 'Email: '+ email + '\n';
     bodyMessage += 'Comments: '+ message + '\n\n\n';
-    bodyMessage += 'Sent time: '+ now + '\n';
     bodyMessage += '----------------------------------\n';
+    bodyMessage += 'Sent time: '+ now + '\n';
     bodyMessage += 'IP: '+ dip + '\n';
     bodyMessage += 'Language: '+ lang + '\n';
     bodyMessage += 'Location: '+ country + '\n';
