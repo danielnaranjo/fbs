@@ -17,7 +17,7 @@
 
 // Needed to request city and country. Force to non-geolocation params
 var request = require('request');
-var info = "", youare = "";
+var info = "", youare = "", yourcity, yourdip, hoy = new Date();
 
 
 module.exports = {
@@ -29,6 +29,8 @@ module.exports = {
     if (!error && response.statusCode == 200) {
       info = JSON.parse(body);
       youare = info.country_name;
+      yourcity = info.city;
+      yourdip = info.ip;
       // console.log(youare);
     }
  });
@@ -49,7 +51,17 @@ module.exports = {
           if (err) return console.log(err);
         });
       // Contador de visitas!!!
-      
+
+      // analytics
+        Post.update(id, { lastvisit: [yourcity,youare,yourdip,hoy] }, function(err, post) {
+          if (err) return console.log('** analytics **'+err);
+        });
+//          Post.lastvisit.push(yourcity,youare,yourdip,hoy);
+//          Post.save(function(err){
+//            if (err) return console.log(err);
+//          });
+      // analytics
+
         // Response JSON if needed.
         if (req.wantsJSON) return res.json(post);
         // Else response view with results 
