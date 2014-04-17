@@ -5,9 +5,9 @@ a:hover{text-decoration:underline}
 #wrap{height:auto;margin:0;padding:0;width:100%}
 header{background-color:#3caee1;color:#fff;height:100px;margin:0;width:100%;top:0;}
 header div{display:inline-block;vertical-align:top}
-#logo{background-image:url("/img/logo.png");background-position:top left;background-repeat:no-repeat;background-size:166px 73px;cursor:pointer;font-size:.8em;height:73px;margin:18px 0 0 30px;padding:60px 0 0 100px;width:166px;}
-@media screen and (max-width: 480px){#logo{background-size:120px 53px;height:53px;margin:15px 0 0 20px;padding:45px 0 0 60px;width:120px}
-}#ubicacion{background-color:#37a6d7;border-radius:3px;cursor:pointer;height:auto;padding:10px;position:absolute;right:60px;top:20px;width:auto}
+#logo{height:73px;margin:18px 0 0 30px;padding:0;width:166px;}
+#logo img{height:73px;width:166px}
+#ubicacion{background-color:#37a6d7;border-radius:3px;cursor:pointer;height:auto;padding:10px;position:absolute;right:60px;top:20px;width:auto}
 #ubicacion:hover{background-color:#2a83ab}
 #elmenu{background-color:#37a6d7;border-radius:3px;cursor:pointer;height:auto;padding:10px;position:absolute;right:20px;top:20px;width:auto}
 #elmenu:hover{background-color:#2a83ab}
