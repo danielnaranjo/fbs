@@ -54,7 +54,7 @@
 				<input type="file" name="photos4" id="photos4" disabled/>
 				<input type="file" name="photos5" id="photos5" disabled/>
 				<p class="help-block">
-					<a href="#"><%= __('Need more pictures?') %>?</a>
+					<a href="javascript:;"><%= __('Need more pictures?') %>?</a>
 				</p>
 			</div>
 			<div class="form-group" id="paid">
@@ -75,6 +75,7 @@
 			<input type="hidden" name="dip" id="dip" value="<%= req.ip %>"/>
 			<input type="hidden" name="_csrf" value="<%= _csrf %>">
 			<input type="submit" class="btn btn-primary btn-block" value="<%= __('Update post') %>" />
+			<input type="reset" class="btn btn-warning btn-block" onclick="javascript:history.back();" />
 			<p>&nbsp;</p>
 		</div>
 		</form>
