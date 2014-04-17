@@ -80,7 +80,7 @@ module.exports = {
 		if (!values.text) {
 			return next({err: ["Error: Must have a large description!"]});
 		}
-		// ALL to lower case! 
+		// ALL to lower case!
 		values.populars = values.populars.replace(/\s+/g, '').toLowerCase();
 		// Keep Going!
 		next();
@@ -109,7 +109,7 @@ module.exports = {
 				var data = results.replace(':', '').split(",");
 				var dirtyUrl = data[3].split(":");
 				var cleanUrl = dirtyUrl[2].replace('"', '');
-				// Show me the permanent link: 
+				// Show me the permanent link:
 				Post.update({ id: post.id }, { url: "http:"+cleanUrl }).done(function(err, post) {
 					if (err) return next(err);
 					else return next();
