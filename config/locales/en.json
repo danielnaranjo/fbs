@@ -61,6 +61,7 @@
   "new account":"new account",
 
   "Create user":"Create user",
+  "Name":"Name",
   "Username":"Username",
   "E-mail":"E-mail",
   "Already registered?":"Already registered?",
@@ -97,5 +98,4 @@
   "Subscribe":"Subscribe",
   "* According to your request, we will contact within a period Here 48 - 72 hours.":"* According to your request, we will contact within a period Here 48 - 72 hours.",
   "* We usually will send one or two messages a month on the news, and you can unsubscribe at any time.":"* We usually will send one or two messages a month on the news, and you can unsubscribe at any time."
-
 }

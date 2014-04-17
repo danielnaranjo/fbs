@@ -9,6 +9,13 @@
 module.exports = {
 
 	attributes: {
+		name: {
+			type: 'string',
+			required: true,
+			unique: true,
+			maxLength: 20,
+			minLength: 5
+		},
 		username: {
 			type: 'string',
 			required: true,
@@ -76,6 +83,7 @@ module.exports = {
 	// Lifecycle Callbacks.
 	beforeCreate: function(values, next) {
 		// ALL fields are required!
+		if (!values.name) return next({err: ["Error: Must have a Name!"]});
 		if (!values.username) return next({err: ["Error: Must have a username!"]});
 		if (!values.email) return next({err: ["Error: Must have a valid e-mail!"]});
 		if (!values.password) return next({err: ["Error: Must have a password!"]});

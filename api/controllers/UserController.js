@@ -172,7 +172,7 @@ module.exports = {
 				console.log('Banned user!');
 			});
 		});
-	},	
+	},
 
 	/*
 	 * Actions to render a view.

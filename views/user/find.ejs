@@ -8,7 +8,7 @@ if ( typeof users === 'undefined' ) {
 <div class="row">
 	<div class="col-md-6">
 		<h2>
-			<%= __('Hello') %> <%= user.username %>
+			<%= __('Hello') %> <%= user.name %>
 		</h2> 
 		<a href="/user/logout"><i class="glyphicon glyphicon-log-out"></i> <%= __('Sign Out')%></a>
 		<% if ( session.canAdminUser ) { %>
