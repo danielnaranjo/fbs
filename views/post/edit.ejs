@@ -46,7 +46,7 @@
 			</div>
 			<div class="form-group">
 				<label><%= __('Picture URL') %> (<%= __('Free') %>)</label>
-				<input type="text" name="photos1" id="photos1" class="form-control" placeholder="http://yourwebsite.com/imagesfolder/yourlogo.png" />
+				<input type="text" name="photos1" id="photos1" class="form-control" value="<%= post.photos[0] %>" />
 			</div>
 			<div class="form-group">
 				<input type="file" name="photos2" id="photos2" disabled/>
