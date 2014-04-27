@@ -7,7 +7,9 @@ header{background-color:#3caee1;color:#fff;height:100px;margin:0;width:100%;top:
 header div{display:inline-block;vertical-align:top}
 #logo{height:73px;margin:18px 0 0 30px;padding:0;width:166px;}
 #logo img{height:73px;width:166px}
-#ubicacion{background-color:#37a6d7;border-radius:3px;cursor:pointer;height:auto;padding:10px;position:absolute;right:60px;top:20px;width:auto}
+@media screen and (max-width: 480px){#logo{height:50px;margin:18px 0 0 30px;padding:0;width:114px}
+#logo img{height:50px;width:114px}
+}#ubicacion{background-color:#37a6d7;border-radius:3px;cursor:pointer;height:auto;padding:10px;position:absolute;right:60px;top:20px;width:auto}
 #ubicacion:hover{background-color:#2a83ab}
 #elmenu{background-color:#37a6d7;border-radius:3px;cursor:pointer;height:auto;padding:10px;position:absolute;right:20px;top:20px;width:auto}
 #elmenu:hover{background-color:#2a83ab}
