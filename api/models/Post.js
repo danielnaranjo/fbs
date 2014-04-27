@@ -104,7 +104,7 @@ module.exports = {
 				//client_secret: process.env.BITLY_SECRET
 			});
 			Bitly.setAccessToken("d167c2a4e35c0237a743f41548b78d41d58f0a50");
-			Bitly.shorten({ longUrl: 'http://findby.co/post/'+post.id }, function(err, results) {
+			Bitly.shorten({ longUrl: 'http://www.findby.co/post/'+post.id }, function(err, results) {
 				// Not a nice solution ;)
 				var data = results.replace(':', '').split(",");
 				var dirtyUrl = data[3].split(":");
