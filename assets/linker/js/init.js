@@ -73,7 +73,7 @@ function showPosition(position) {
 		var items = [];
 		$.each( data, function( key, val ){
 			$('#usuarios').append("<div>");
-			$('#usuarios').append("<a href='/user/" + val.id + "' target=\"_blank\">" + val.username + "</a> ");
+			$('#usuarios').append("<a href='/user/" + val.id + "' target=\"_blank\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Tooltip on right\">" + val.username + "</a> ");
 			$('#usuarios').append("<a href=\"javascript:rejectUser('"+val.id+"');\"><i class=\"glyphicon glyphicon-remove text-danger\"></i></a> ");
 			$('#usuarios').append("</div>");
 			});

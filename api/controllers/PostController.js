@@ -53,9 +53,9 @@ module.exports = {
       // Contador de visitas!!!
 
       // analytics
-        Post.update(id, { lastvisit: [yourcity,youare,yourdip,hoy] }, function(err, post) {
-          if (err) return console.log('** analytics **'+err);
-        });
+//        Post.update(id, { lastvisit: [yourcity,youare,yourdip,hoy] }, function(err, post) {
+//          if (err) return console.log('** analytics **'+err);
+//        });
 //          Post.lastvisit.push(yourcity,youare,yourdip,hoy);
 //          Post.save(function(err){
 //            if (err) return console.log(err);
