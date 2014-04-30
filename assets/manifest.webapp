@@ -1,0 +1,24 @@
+{
+  "version": "0.1",
+  "name": "FindBy",
+  "description": "A Geolocation Classified Ads for products and services around the world",
+  "launch_path": "http://www.findby.co/?ref=ffos",
+  "icons": {
+    "16": "/img/icon-16.png",
+    "48": "/img/icon-48.png",
+    "128": "/img/icon-128.png"
+  },
+  "developer": {
+    "name": "Daniel Naranjo",
+    "url": "http://www.danielnaranjo.info/?ref=ffos"
+  },
+  "locales": {
+    "es": {
+      "description": "Avisos clasificados geolocalizados",
+      "developer": {
+        "url": "http://www.danielnaranjo.info/?ref=ffos"
+      }
+    }
+  },
+  "default_locale": "en"
+}
