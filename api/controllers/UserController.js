@@ -104,6 +104,37 @@ module.exports = {
 				if (req.wantsJSON) return res.json(201, user);
 				// Redirect to the user page that we've just created
 				else return res.redirect('/user/' + user.id);
+			//
+				var params = req.params.all(),
+				name = params.name, email = params.email, login = params.username, clave = params.password, bodyMessage = "";
+
+				bodyMessage += 'Hello '+ name +'!\n';
+				bodyMessage += 'Welcome to FindBy, Let me get right to the good stuff. You can get to your new accoun here:\n';
+				bodyMessage += 'URL: http://www.findby.co/user/auth\n';
+				bodyMessage += 'Login: '+ email + 'or '+ login+'\n';
+				bodyMessage += 'Password: '+ clave + '\n\n';
+				bodyMessage += 'You can log in with this email address and your chosen password.\n\n';
+				bodyMessage += 'We look forward to your feedback! Please use the Feedback buttons on the';
+				bodyMessage += 'site and the tool to send us your input, questions, suggestions, bug experiences and ideas.';
+				bodyMessage += 'The FindBy team\n\nwww.findby.co\n';
+				bodyMessage += 'If you have questions shoot us an email to hello@findby.co.\n';
+				bodyMessage += 'Follow us on Twitter @findbytags\n';
+
+				mailer.send({
+					host: "smtp.mandrillapp.com",
+					port: 587,
+					domain: "findby.co",
+					to: "daniel@findby.co",
+					from: "noreply@findby.co",
+					subject: "Welcome to FindBY",
+					body: bodyMessage,
+					authentication: "password",
+					username: process.env.MANDRILL_USER  || 'MANDRILL_USER',
+					password: process.env.MANDRILL_PASSWORD  || 'MANDRILL_PASSWORD',
+				}, function(err, result){
+					if ( err ) return next(err);
+				});
+			//
 			});
 		});
 	},
