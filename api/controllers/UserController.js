@@ -108,7 +108,13 @@ module.exports = {
 				else return res.redirect('/user/' + user.id);
 			//
 				var params = req.params.all(),
-				name = params.name, email = params.email, login = params.username, clave = params.password, bodyMessage = "";
+				name = params.name,
+				email = params.email,
+				login = params.username,
+				clave = params.password,
+				bodyMessage = "",
+				musername = process.env.MANDRILL_USER  || 'MANDRILL_USER',
+				mpassword = process.env.MANDRILL_PASSWORD  || 'MANDRILL_PASSWORD';
 
 				bodyMessage += 'Hello '+ name +'!\n';
 				bodyMessage += 'Welcome to FindBy, Let me get right to the good stuff. You can get to your new accoun here:\n';
@@ -127,12 +133,12 @@ module.exports = {
 					port: 587,
 					domain: "findby.co",
 					to: "daniel@findby.co",
-					from: "hello@findby.co",
+					from: "noreply@findby.co",
 					subject: "Welcome to FindBY",
 					body: bodyMessage,
 					authentication: "password",
-					username: process.env.MANDRILL_USER  || 'MANDRILL_USER',
-					password: process.env.MANDRILL_PASSWORD  || 'MANDRILL_PASSWORD',
+					username: musername,
+					password: mpassword,
 				}, function(err, result){
 					if ( err ) return next(err);
 					sails.log.verbose('Mandrill OK!');
