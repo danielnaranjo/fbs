@@ -12,6 +12,7 @@ try {
 }
 catch (e) {
 	console.error('Error: Somethings is wrong..');
+	sails.log.verbose('Error: Somethings is wrong..');
 	return;
 }
 // Start server
