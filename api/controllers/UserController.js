@@ -108,13 +108,13 @@ module.exports = {
 				else return res.redirect('/user/' + user.id);
 			//
 				var params = req.params.all(),
+				musername = process.env.MANDRILL_USER  || 'MANDRILL_USER',
+				mpassword = process.env.MANDRILL_PASSWORD  || 'MANDRILL_PASSWORD',
 				name = params.name,
 				email = params.email,
 				login = params.username,
 				clave = params.password,
-				bodyMessage = "",
-				musername = process.env.MANDRILL_USER  || 'MANDRILL_USER',
-				mpassword = process.env.MANDRILL_PASSWORD  || 'MANDRILL_PASSWORD';
+				bodyMessage = "";
 
 				bodyMessage += 'Hello '+ name +'!\n';
 				bodyMessage += 'Welcome to FindBy, Let me get right to the good stuff. You can get to your new accoun here:\n';
@@ -133,7 +133,7 @@ module.exports = {
 					port: 587,
 					domain: "findby.co",
 					to: "daniel@findby.co",
-					from: "noreply@findby.co",
+					from: "hello@findby.co",
 					subject: "Welcome to FindBY",
 					body: bodyMessage,
 					authentication: "password",
