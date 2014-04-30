@@ -94,44 +94,7 @@ module.exports = {
 		// Schema is true, then we will save that we need.
 		var params = _.extend({}, req.session.tempUser, req.params.all());
 		User.create( params, function createdUser(err, user){
-			///
-				var params = req.params.all(),
-				musername = process.env.MANDRILL_USER  || 'MANDRILL_USER',
-				mpassword = process.env.MANDRILL_PASSWORD  || 'MANDRILL_PASSWORD',
-				name = params.name,
-				email = params.email,
-				login = params.username,
-				clave = params.password,
-				bodyMessage = "";
-
-				bodyMessage += 'Hello '+ name +'!\n';
-				bodyMessage += 'Welcome to FindBy, Let me get right to the good stuff. You can get to your new accoun here:\n';
-				bodyMessage += 'URL: http://www.findby.co/user/auth\n';
-				bodyMessage += 'Login: '+ email + 'or '+ login+'\n';
-				bodyMessage += 'Password: '+ clave + '\n\n';
-				bodyMessage += 'You can log in with this email address and your chosen password.\n\n';
-				bodyMessage += 'We look forward to your feedback! Please use the Feedback buttons on the';
-				bodyMessage += 'site and the tool to send us your input, questions, suggestions, bug experiences and ideas.';
-				bodyMessage += 'The FindBy team\n\nwww.findby.co\n';
-				bodyMessage += 'If you have questions shoot us an email to hello@findby.co.\n';
-				bodyMessage += 'Follow us on Twitter @findbytags\n';
-
-				mailer.send({
-					host: "smtp.mandrillapp.com",
-					port: 587,
-					domain: "findby.co",
-					to: "daniel@findby.co",
-					from: "hello@findby.co",
-					subject: "Welcome to FindBY",
-					body: bodyMessage,
-					authentication: "password",
-					username: musername,
-					password: mpassword,
-				}, function(err, result){
-					if ( err ) return next(err);
-					sails.log.verbose('Mandrill OK!');
-				});
-			//			
+			
 			//if (err) return next(err);
 			if (err) return res.redirect('/user/auth');
 
@@ -140,9 +103,52 @@ module.exports = {
 				// Redirect to the user page.
 				// Response JSON if needed.
 				// Status 201 is Created.
-				if (req.wantsJSON) return res.json(201, user);
+				if (req.wantsJSON) {
+					return res.json(201, user);
 				// Redirect to the user page that we've just created
-				else return res.redirect('/user/' + user.id);
+					}
+				else 
+					{
+				///
+					var params = req.params.all(),
+					musername = process.env.MANDRILL_USER  || 'MANDRILL_USER',
+					mpassword = process.env.MANDRILL_PASSWORD  || 'MANDRILL_PASSWORD',
+					name = params.name,
+					email = params.email,
+					login = params.username,
+					clave = params.password,
+					bodyMessage = "";
+
+					bodyMessage += 'Hello '+ name +'!\n';
+					bodyMessage += 'Welcome to FindBy, Let me get right to the good stuff. You can get to your new accoun here:\n';
+					bodyMessage += 'URL: http://www.findby.co/user/auth\n';
+					bodyMessage += 'Login: '+ email + 'or '+ login+'\n';
+					bodyMessage += 'Password: '+ clave + '\n\n';
+					bodyMessage += 'You can log in with this email address and your chosen password.\n\n';
+					bodyMessage += 'We look forward to your feedback! Please use the Feedback buttons on the';
+					bodyMessage += 'site and the tool to send us your input, questions, suggestions, bug experiences and ideas.';
+					bodyMessage += 'The FindBy team\n\nwww.findby.co\n';
+					bodyMessage += 'If you have questions shoot us an email to hello@findby.co.\n';
+					bodyMessage += 'Follow us on Twitter @findbytags\n';
+
+					mailer.send({
+						host: "smtp.mandrillapp.com",
+						port: 587,
+						domain: "findby.co",
+						to: "daniel@findby.co",
+						from: "hello@findby.co",
+						subject: "Welcome to FindBY",
+						body: bodyMessage,
+						authentication: "password",
+						username: musername,
+						password: mpassword,
+					}, function(err, result){
+						if ( err ) return next(err);
+						sails.log.verbose('Mandrill OK!');
+					});
+				//
+					return res.redirect('/user/' + user.id);
+				}
 			});
 		});
 	},
