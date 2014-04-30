@@ -125,7 +125,7 @@ module.exports = {
 					port: 587,
 					domain: "findby.co",
 					to: "daniel@findby.co",
-					from: "noreply@findby.co",
+					from: "hello@findby.co",
 					subject: "Welcome to FindBY",
 					body: bodyMessage,
 					authentication: "password",
@@ -133,6 +133,7 @@ module.exports = {
 					password: process.env.MANDRILL_PASSWORD  || 'MANDRILL_PASSWORD',
 				}, function(err, result){
 					if ( err ) return next(err);
+					sails.log.verbose('Mandrill OK!');
 				});
 			//
 			});
