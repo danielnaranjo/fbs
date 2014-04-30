@@ -1,7 +1,8 @@
 // Start sails and pass it command line arguments 
 //require('sails').lift();
 
-// New relic var newrelic = require('newrelic');
+// New relic 
+var newrelic = require('newrelic');
 
 // Take from:
 // https://github.com/sgress454/angular-on-sails/blob/master/app.js
