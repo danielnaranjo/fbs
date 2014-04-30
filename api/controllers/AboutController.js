@@ -34,14 +34,14 @@ module.exports = {
   send: function(req, res, next) {
 
     var params = req.params.all(),
-      username = "daniel@loultimoenlaweb.com",
-      password = "NNnsEtXx1OCptBjBu2RBtg",
+      username = process.env.MANDRILL_USER  || 'MANDRILL_USER',
+      password = process.env.MANDRILL_PASSWORD  || 'MANDRILL_PASSWORD',
       name = params.name,
       email = params.email,
       message = params.message,
       now = new Date(),
       lang = params.lang,
-      country = params.city + params.country,
+      country = params.city +' '+ params.country,
       dip = params.dip,
       bodyMessage = "";
 
@@ -61,8 +61,8 @@ module.exports = {
       host: "smtp.mandrillapp.com",
       port: 587,
       domain: "findby.co",
-      to: "dnaranjo@gmail.com",
-      from: "daniel@loultimoenlaweb.com",
+      to: "daniel@findby.co",
+      from: "noreply@findby.co",
       subject: "[FindBY] Contact request. Sent "+ now,
       body: bodyMessage,
       authentication: "password",
