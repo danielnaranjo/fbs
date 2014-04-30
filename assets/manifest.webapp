@@ -3,7 +3,9 @@
   "description": "A Geolocation Classified Ads for products and services around the world",
   "launch_path": "/post/",
   "icons": {
-    "128": "/img/icon-128.png"
+    "128": "/img/icon-48x48.png",
+    "128": "/img/icon-60x60.png",
+    "128": "/img/icon-128x128.png"
   },
   "developer": {
     "name": "Daniel Naranjo",
