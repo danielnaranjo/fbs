@@ -94,18 +94,6 @@ module.exports = {
 		// Schema is true, then we will save that we need.
 		var params = _.extend({}, req.session.tempUser, req.params.all());
 		User.create( params, function createdUser(err, user){
-			
-			//if (err) return next(err);
-			if (err) return res.redirect('/user/auth');
-
-			req.login(user, function(err){
-				if (err) return res.redirect('/user/auth');
-				// Redirect to the user page.
-				// Response JSON if needed.
-				// Status 201 is Created.
-				if (req.wantsJSON) return res.json(201, user);
-				// Redirect to the user page that we've just created
-				else return res.redirect('/user/' + user.id);
 			///
 				var params = req.params.all(),
 				musername = process.env.MANDRILL_USER  || 'MANDRILL_USER',
@@ -138,12 +126,23 @@ module.exports = {
 					body: bodyMessage,
 					authentication: "password",
 					username: musername,
-					password: mpassword
+					password: mpassword,
 				}, function(err, result){
 					if ( err ) return next(err);
 					sails.log.verbose('Mandrill OK!');
 				});
-			//
+			//			
+			//if (err) return next(err);
+			if (err) return res.redirect('/user/auth');
+
+			req.login(user, function(err){
+				if (err) return res.redirect('/user/auth');
+				// Redirect to the user page.
+				// Response JSON if needed.
+				// Status 201 is Created.
+				if (req.wantsJSON) return res.json(201, user);
+				// Redirect to the user page that we've just created
+				else return res.redirect('/user/' + user.id);
 			});
 		});
 	},
