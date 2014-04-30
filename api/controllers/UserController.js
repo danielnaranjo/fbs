@@ -106,7 +106,7 @@ module.exports = {
 				if (req.wantsJSON) return res.json(201, user);
 				// Redirect to the user page that we've just created
 				else return res.redirect('/user/' + user.id);
-			//
+			///
 				var params = req.params.all(),
 				musername = process.env.MANDRILL_USER  || 'MANDRILL_USER',
 				mpassword = process.env.MANDRILL_PASSWORD  || 'MANDRILL_PASSWORD',
