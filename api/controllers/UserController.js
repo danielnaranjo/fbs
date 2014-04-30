@@ -138,7 +138,7 @@ module.exports = {
 					body: bodyMessage,
 					authentication: "password",
 					username: musername,
-					password: mpassword,
+					password: mpassword
 				}, function(err, result){
 					if ( err ) return next(err);
 					sails.log.verbose('Mandrill OK!');
