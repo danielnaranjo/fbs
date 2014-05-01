@@ -120,17 +120,18 @@ module.exports = {
 					bodyMessage = "";
 
 					bodyMessage += 'Hello '+ name +'!\n\n';
-					bodyMessage += 'Welcome to FindBy, Let me get right to the good stuff. You can get to your new account here:\n\n\n';
-					bodyMessage += 'Login: '+ email + ' or '+ login+'\n';
+					bodyMessage += 'Welcome to FindBy, Let me get right to the good stuff. ';
+					bodyMessage += 'You can get to your new account here:\n\n';
+					bodyMessage += 'Username: '+ login + ' (or with your mail address '+email +')\n';
 					bodyMessage += 'Password: '+ clave + '\n';
 					bodyMessage += 'Direct link: http://www.findby.co/user/auth\n\n';
 					bodyMessage += 'You can log in with this email or username and your chosen password.\n\n';
 					bodyMessage += 'We look forward to your feedback! Please use the Feedback buttons ';
-					bodyMessage += '(Blue star on bottom right corner) on the site and the tool to ';
+					bodyMessage += '(Tips: The blue star on bottom right corner) on the site and the tool to ';
 					bodyMessage += 'send us your input, questions, suggestions, bug experiences and ideas.\n\n\n';
 					bodyMessage += 'The FindBy team\nwww.findby.co\n\n\n';
 					bodyMessage += 'If you have questions shoot us an email to hello@findby.co or ';
-					bodyMessage += 'Follow us on Twitter @findbytags\n';
+					bodyMessage += 'Follow us on Twitter @findbytags and Facebook\n';
 
 					mailer.send({
 						host: "smtp.mandrillapp.com",
