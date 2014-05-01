@@ -5,6 +5,7 @@
   "icons": {
     "60": "/img/icon-60x60.png",
     "90": "/img/icon-90x90.png",
+    "120": "/img/icon-120x120.png",
     "128": "/img/icon-128x128.png"
   },
   "developer": {
