@@ -119,16 +119,17 @@ module.exports = {
 					clave = params.password,
 					bodyMessage = "";
 
-					bodyMessage += 'Hello '+ name +'!\n';
-					bodyMessage += 'Welcome to FindBy, Let me get right to the good stuff. You can get to your new accoun here:\n';
-					bodyMessage += 'URL: http://www.findby.co/user/auth\n';
-					bodyMessage += 'Login: '+ email + 'or '+ login+'\n';
-					bodyMessage += 'Password: '+ clave + '\n\n';
-					bodyMessage += 'You can log in with this email address and your chosen password.\n\n';
-					bodyMessage += 'We look forward to your feedback! Please use the Feedback buttons on the';
-					bodyMessage += 'site and the tool to send us your input, questions, suggestions, bug experiences and ideas.';
-					bodyMessage += 'The FindBy team\n\nwww.findby.co\n';
-					bodyMessage += 'If you have questions shoot us an email to hello@findby.co.\n';
+					bodyMessage += 'Hello '+ name +'!\n\n';
+					bodyMessage += 'Welcome to FindBy, Let me get right to the good stuff. You can get to your new account here:\n\n\n';
+					bodyMessage += 'Login: '+ email + ' or '+ login+'\n';
+					bodyMessage += 'Password: '+ clave + '\n';
+					bodyMessage += 'Direct link: http://www.findby.co/user/auth\n\n';
+					bodyMessage += 'You can log in with this email or username and your chosen password.\n\n';
+					bodyMessage += 'We look forward to your feedback! Please use the Feedback buttons ';
+					bodyMessage += '(Blue star on bottom right corner) on the site and the tool to ';
+					bodyMessage += 'send us your input, questions, suggestions, bug experiences and ideas.\n\n\n';
+					bodyMessage += 'The FindBy team\nwww.findby.co\n\n\n';
+					bodyMessage += 'If you have questions shoot us an email to hello@findby.co or ';
 					bodyMessage += 'Follow us on Twitter @findbytags\n';
 
 					mailer.send({
