@@ -21,7 +21,7 @@ if ( typeof users === 'undefined' ) {
 </div>
 
 <ul class="nav nav-tabs" id="myTab">
-	<li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
+	<li class="active"><a href="#profile" data-toggle="tab"><%= __('My Profile') %></a></li>
 	<% if ( user.admin ) { %>
 	<li><a href="#administrator" data-toggle="tab">Tasks</a></li>
 	<li><a href="#report" data-toggle="tab">Reports</a></li>
@@ -182,7 +182,10 @@ Error: Esta operacion no esta permitida.
 		<% } %>
 	}, 3000);
 //
-  })
+  
+  });
+  // Force "<title>" to change for post's title
+  $('title').text('<%= user.name %>');
 </script>
 
 <!-- admin -->

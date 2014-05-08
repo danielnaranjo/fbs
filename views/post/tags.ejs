@@ -44,5 +44,10 @@
       </div>
 	</div>
 </section>
-
+<script>
+  // Force "<title>" to change for post's title
+  var pathname = window.location.pathname; 
+  var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
+  $('title').text('Tag: '+last+' | findby.co');
+</script>
 
