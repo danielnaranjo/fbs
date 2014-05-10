@@ -109,7 +109,7 @@ module.exports = {
 					}
 				else 
 					{
-				///
+					//
 					var params = req.params.all(),
 					musername = process.env.MANDRILL_USER  || 'MANDRILL_USER',
 					mpassword = process.env.MANDRILL_PASSWORD  || 'MANDRILL_PASSWORD',
@@ -122,7 +122,7 @@ module.exports = {
 					bodyMessage += 'Hello '+ name +'!\n\n';
 					bodyMessage += 'Welcome to FindBy, Let me get right to the good stuff. ';
 					bodyMessage += 'You can get to your new account here:\n\n';
-					bodyMessage += 'Username: '+ login + ' (or with your mail address '+email +')\n';
+					bodyMessage += 'Username: '+ login + ' (or with your mail address)\n';
 					bodyMessage += 'Password: '+ clave + '\n';
 					bodyMessage += 'Direct link: http://www.findby.co/user/auth\n\n';
 					bodyMessage += 'You can log in with this email or username and your chosen password.\n\n';
@@ -137,7 +137,7 @@ module.exports = {
 						host: "smtp.mandrillapp.com",
 						port: 587,
 						domain: "findby.co",
-						to: "daniel@findby.co",
+						to: email,
 						from: "hello@findby.co",
 						subject: "Welcome to FindBY",
 						body: bodyMessage,

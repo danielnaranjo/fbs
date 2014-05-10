@@ -15,25 +15,9 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
-// Needed to request city and country. Force to non-geolocation params
-var request = require('request');
-var info = "", youare = "", yourcity, yourdip, hoy = new Date();
-
-
 module.exports = {
 
   find: function(req, res, next) {
-
-  // Load Location via IP  
-  request('http://freegeoip.net/json/', function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      info = JSON.parse(body);
-      youare = info.country_name;
-      yourcity = info.city;
-      yourdip = info.ip;
-      // console.log(youare);
-    }
- });
 
     var id = req.param('id');
     // If id is a shortcut we don't have to find.
@@ -51,16 +35,6 @@ module.exports = {
           if (err) return console.log(err);
         });
       // Contador de visitas!!!
-
-      // analytics
-//        Post.update(id, { lastvisit: [yourcity,youare,yourdip,hoy] }, function(err, post) {
-//          if (err) return console.log('** analytics **'+err);
-//        });
-//          Post.lastvisit.push(yourcity,youare,yourdip,hoy);
-//          Post.save(function(err){
-//            if (err) return console.log(err);
-//          });
-      // analytics
 
         // Response JSON if needed.
         if (req.wantsJSON) return res.json(post);
