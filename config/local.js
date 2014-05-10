@@ -52,8 +52,9 @@ module.exports = {
 	// By default, Sails sets its environment using the `NODE_ENV` environment variable.
 	// If NODE_ENV is not set, Sails will run in the 'development' environment.
 
-	environment: process.env.NODE_ENV || 'development',
-/*
+	//environment: process.env.NODE_ENV || 'development',
+	environment: process.env.NODE_ENV || 'production',
+
 	adapters: {
 		'default': 'mongo',
 		mongo: {
@@ -65,11 +66,11 @@ module.exports = {
 			//database: 'building-realtime-webapp',
 			//schema: true
 			// Config by connection URI.
-			//url: 'mongodb://findbyco:DN14093487v@ds053168.mongolab.com:53168/post'
-			url: DB_URL
+			url: 'mongodb://findbyco:DN14093487v@ds053168.mongolab.com:53168/post'
+			//url: DB_URL
 		}
 	},
-*/
+
 	providers: {
 		'facebook': {
 			clientID: process.env.FACEBOOK_CLIENT_ID || 'FACEBOOK_CLIENT_ID',
