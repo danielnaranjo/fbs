@@ -40,16 +40,13 @@ nbproject
 
 ########################
 # Stylus CSS
-assets/linker/styles/estilos.styl
+*.styl
+
 # TODO's
 RoadMap.md
-# Copias
-views/user/find2.ejs
-dump/
-post.json
-tags.json
-user.json
+
 ########################
 # local config
 ########################
-#config/local.js
+config/
+
