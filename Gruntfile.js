@@ -29,7 +29,6 @@ module.exports = function (grunt) {
    */
 
   var cssFilesToInject = [
-    'linker/styles/normalize.css',
     'linker/styles/bootstrap.css',
     'linker/styles/bootstrap-theme.css',
     'linker/**/*.css'
@@ -60,7 +59,6 @@ module.exports = function (grunt) {
     'linker/js/app.js',
 
     // *->    put other dependencies here   <-*
-    'linker/js/jquery.min.js',
     'linker/js/bootstrap.js',
     'linker/js/init.js',
 
