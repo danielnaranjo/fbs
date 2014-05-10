@@ -59,6 +59,7 @@ module.exports = function (grunt) {
     'linker/js/app.js',
 
     // *->    put other dependencies here   <-*
+    'linker/js/jquery.min.js',
     'linker/js/bootstrap.js',
     'linker/js/init.js',
 
