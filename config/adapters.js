@@ -19,8 +19,7 @@ module.exports.adapters = {
 	mongo: {
 		module: 'sails-mongo',
 		schema: true,
-		url: "mongodb://findbyco:DN14093487v@ds053168.mongolab.com:53168/post"
-		//url: DB_URL
+		url: process.env.DB_URL  || 'DB_URL',
 	}
 
 };
