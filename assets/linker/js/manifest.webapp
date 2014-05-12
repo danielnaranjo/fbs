@@ -20,5 +20,10 @@
       }
     }
   },
-  "default_locale": "en"
+  "default_locale": "en",
+  "permissions": {
+    "geolocation": {
+      "description": "We use your location to display nearby results."
+      }
+    }
 }
