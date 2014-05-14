@@ -38,7 +38,7 @@ module.exports.routes = {
 	},
 
 	// Call results from Post into INDEX
-//	'/':'PostController.find',
+	'/':'PostController.find',
 
 
 	// Default by Passport
