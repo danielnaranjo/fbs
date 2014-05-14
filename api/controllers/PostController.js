@@ -29,7 +29,7 @@ module.exports = {
         if ( !post ) return res.notFound();
 
       // Contador de visitas!!!
-        var visited = post.visit + 1; 
+        var visited = post.visit + 1;
         // console.log(' *** '+post.visit+' '+visited+' *** ');
         Post.update(id, { visit: visited }, function(err, post) {
           if (err) return console.log(err);

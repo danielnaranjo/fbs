@@ -51,13 +51,23 @@
               <img src="/img/logo.png" alt="logo">
             </a>
           </div>
-          <div id="busqueda"><i class="icon-search"></i></div>
-          <div id="ubicacion"><i class="icon-location"></i></div>
-          <div id="elmenu"><i class="icon-profile"></i></div>
-          <div id="dondeestoy"></div>
-          <div id="quiensoy">
-            <i class="icon-user"></i> <% if( loggedUser ) { %><a href="/user/<%= loggedUser.id %>"><%= loggedUser.username %></a><% } else { %><a href="/user/new"><%= __('Sign Up') %> / <%= __('Log In') %></a><% }%>
-          </div>
+          <a href="javascript:showMenu();" id="busqueda">
+            <div><i class="icon-search"></i></div>
+          </a>
+          <a href="javascript:showLocation();" id="ubicacion">
+            <div><i class="icon-location"></i></div>
+          </a>
+          <a href="javascript:menu();" id="elmenu">
+            <div><i class="icon-profile"></i></div>
+          </a>
+          <a href="#" id="dondeestoy">
+            <div></div>
+          </a>
+          <a href="<% if( loggedUser ) { %>/user/<%= loggedUser.id %><% } else { %>javascript:login();<% }%>">
+            <div id="quiensoy">
+              <i class="icon-user"></i> <% if( loggedUser ) { %><%= loggedUser.username %><% } else { %><%= __('Sign Up') %> / <%= __('Log In') %><% }%>
+            </div>
+          </a>
         </header>
         <div id="buscador" class="row">
           <div id="lacaja" class="col-md-6">

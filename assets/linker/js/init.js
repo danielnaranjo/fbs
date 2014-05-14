@@ -362,7 +362,17 @@ function showPosition(position) {
             });
             $("#aboutmap").append(e);
         }, cantidad);
-    }
+    };
+	/* Menu y derivado */
+	var menu = function() {
+		$('#opciones').toggle().removeClass().addClass("fadeInRight");
+		$("#opciones").on('mouseleave', function(){
+			setTimeout(function() { $('#opciones').hide(); },3000);
+		});
+	};
+	var login = function() {
+		window.location = "/user/auth";
+	};
 
 $(document).ready(function(e) {
 //
@@ -383,23 +393,6 @@ $(document).ready(function(e) {
 	var $container = $('#contenido').masonry({itemSelector:'.box'});
 	// layout Masonry again after all images have loaded
 	$container.imagesLoaded( function(){ $container.masonry();});
-
-	/* Cuadro de busqueda */
-	$('#busqueda').on('click', function() { showMenu(); });
-
-	/* Contador de anuncios */
-	$(".timer").append('10K');
-
-	/* Menu y derivado */
-	$("#elmenu").on('click', function() { $('#opciones').toggle().removeClass().addClass("fadeInRight"); });
-	$("#opciones").on('mouseleave', function(){ setTimeout(function() { $('#opciones').hide(); },3000); });
-
-	/* Login desde Menu */
-	$("#quiensoy").on('click', function(){
-		window.location = "/user/auth";
-	});
-	/* Show me my location with or with geolocation */
-	$("#ubicacion").on('click', function() { showLocation(); });
 
 	/* Parallax Effects */
 	$(".slide-option").rlSmooth();
