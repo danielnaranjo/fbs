@@ -368,7 +368,8 @@ $(document).ready(function(e) {
 //
 	//console.log('OK!');
 	/* Need for IP, City, Country and Lat,Lon */
-	WhereAmI(); populars();
+	//WhereAmI(); 
+	populars();
 
 	/* Geolocalization HTML5 */
 	if (navigator.geolocation) {
