@@ -56,7 +56,7 @@
           <div id="elmenu"><i class="icon-profile"></i></div>
           <div id="dondeestoy"></div>
           <div id="quiensoy">
-            <i class="icon-user"></i> <% if( loggedUser ) { %><a href="/user/<%= loggedUser.id %>"><%= loggedUser.username %></a><% } %>
+            <i class="icon-user"></i> <% if( loggedUser ) { %><a href="/user/<%= loggedUser.id %>"><%= loggedUser.username %></a><% } else { %><a href="/user/new"><%= __('Sign Up') %> / <%= __('Log In') %></a><% }%>
           </div>
         </header>
         <div id="buscador" class="row">
