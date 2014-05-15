@@ -260,3 +260,9 @@ a.tagged:hover{box-shadow:1px 1px 1px #2a83ab}
 @media screen and (max-width: 1000px){#aboutmap{margin:-25px 0 0 0}
 }.WhatsFB{color:#444;}
 .WhatsFB h1,.WhatsFB h3{color:#3caee1}
+#why-findby{margin:0 auto;padding:0 0 50px 50px;width:100%;}
+#why-findby ul{margin:0;padding:0;}
+#why-findby ul li{list-style:none;margin:20px 0;padding:20px auto}
+#why-findby i{color:#3caee1;font-size:2em;margin:10px 20px 0 0}
+@media screen and (max-width: 480px){#why-findby{display:none}
+}

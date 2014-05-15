@@ -1,6 +1,33 @@
 <section>
 	<div id="contenido" class="container">
-		<div class="row">
+		<div class="col-md-6">
+			<div id="why-findby">
+				<ul>
+					<li>
+						<h4><i class="glyphicon glyphicon-ok"></i>Place your ads (Product, services, things)</h4>
+					</li>
+					<li>
+						<h4><i class="glyphicon glyphicon-time"></i>It's quick and easy</h4>
+					</li>
+					<li>
+						<h4><i class="glyphicon glyphicon-tags"></i>No categories, just Tags</h4>
+					</li>
+					<li>
+						<h4><i class="glyphicon glyphicon-map-marker"></i>All post nearby you!</h4>
+					</li>
+					<li>
+						<h4><i class="glyphicon glyphicon-camera"></i>Upload unlimited photos</h4>
+					</li>
+					<li>
+						<h4><i class="glyphicon glyphicon-eye-open"></i>Reach trusted buyers</h4>
+					</li>
+					<li>
+						<h4><i class="glyphicon glyphicon-usd"></i>No fee, Only premium features</h4>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-6">
 		<form role="form" action="/user/login" method="POST" class="form-center" id="loginfrom">
 			<h2 class="form-signin-heading"><%= __('Sign In') %></h2>
 			<div class="form-group">
@@ -35,5 +62,7 @@
 			<%= __('or Create a') %> <a href="/user/new"><%= __('new account') %></a>
 		</p>
 		</div>
+		</div>
+	</div>
 	</div>
 </section>

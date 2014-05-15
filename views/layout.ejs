@@ -65,7 +65,7 @@
           </a>
           <a href="<% if( loggedUser ) { %>/user/<%= loggedUser.id %><% } else { %>javascript:login();<% }%>">
             <div id="quiensoy">
-              <i class="icon-user"></i> <% if( loggedUser ) { %><%= loggedUser.username %><% } else { %><%= __('Sign Up') %> / <%= __('Log In') %><% }%>
+              <i class="icon-user"></i> <% if( loggedUser ) { %><%= loggedUser.username %><% } else { %><%= __('Place your ad for free') %><% }%>
             </div>
           </a>
         </header>
