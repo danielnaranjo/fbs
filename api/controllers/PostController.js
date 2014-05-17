@@ -46,8 +46,6 @@ module.exports = {
     else {
       // If we have a where param we will pase it as JSON.
       var where = req.param('where');
-      //var where = { "country": youare };
-      console.log(where);
       if( _.isString(where)) {
         where = JSON.parse(where);
       }

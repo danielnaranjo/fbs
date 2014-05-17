@@ -26,17 +26,19 @@
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="description" content="A Geolocation Classified Ads for products and services around the world">
+    <meta http-equiv="Cache-Control" content="max-age=604800">
     <meta name="author" content="Daniel Naranjo">
-    <link rel="icon" href="/favicon.ico">    
+    <link rel="icon" href="/favicon.ico">
     <!--STYLES-->
-    <link rel="stylesheet" href="/linker/styles/bootstrap.css">
-    <link rel="stylesheet" href="/linker/styles/bootstrap-theme.css">
-    <link rel="stylesheet" href="/linker/styles/animate-custom.css">
-    <link rel="stylesheet" href="/linker/styles/bootstrap-social.css">
-    <link rel="stylesheet" href="/linker/styles/estilos.css">
+    <link rel="stylesheet" href="/min/production.css">
     <!--STYLES END-->
+    <!-- CDN -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.2.1/bootstrap-social.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <!-- CDN -->
+    
   </head>
 
   <body>
@@ -48,7 +50,7 @@
         <header>
           <div id="logo">
             <a href="/">
-              <img src="/img/logo.png" alt="logo">
+              <img src="/img/logo.png" alt="logo" width="166" height="73">
             </a>
           </div>
           <a href="javascript:showMenu();" id="busqueda">
@@ -95,7 +97,8 @@
       <footer id="footer" class="smooth-style slideOut-option navbar-fixed-bottom">
         <div class="container">
           <div>2013-2014 &copy  <a href="http://www.danielnaranjo.info">Daniel Naranjo</a></div>
-          <div>Follow us in <a href="http://facebook.com/findby" target="_blank">Facebook</a> or <a href="http://twitter.com/findbytags" target="_blank">Twitter</a>  |  <a href="/about/contact"><%= __('Contact')%></a></div>
+          <div>Follow us in <a href="http://facebook.com/findby" target="_blank">Facebook</a> or <a href="http://twitter.com/findbytags" target="_blank">Twitter</a>  |  <a href="/about/contact"><%= __('Contact')%></a> - <a href="/about/privacy"><%= __('Privacy')%></a> - <a href="/about/legal"><%= __('Legal')%></a>
+          </div>
         </div>
       </footer>
     </div>
@@ -125,26 +128,19 @@
     <!--TEMPLATES END-->
 
 
-    </script>
+    <!-- CDN -->
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.js"></script>
+    <!-- CDN -->
+
     <!--SCRIPTS-->
-    <script src="/linker/js/socket.io.js"></script>
-    <script src="/linker/js/sails.io.js"></script>
-    <script src="/linker/js/app.js"></script>
-    <script src="/linker/js/jquery.min.js"></script>
-    <script src="/linker/js/bootstrap.js"></script>
-    <script src="/linker/js/init.js"></script>
-    <script src="/linker/js/bootstrap-tagsinput.min.js"></script>
-    <script src="/linker/js/ga.js"></script>
-    <script src="/linker/js/imagesloaded.pkgd.min.js"></script>
-    <script src="/linker/js/jquery-ui.min.js"></script>
-    <script src="/linker/js/jquery.sparkline.min.js"></script>
-    <script src="/linker/js/jquery.validate.min.js"></script>
-    <script src="/linker/js/masonry.pkgd.min.js"></script>
-    <script src="/linker/js/rlsmooth.js"></script>
-    <script src="/linker/js/uservoice.js"></script>
+    <script src="/min/production.js"></script>
     <!--SCRIPTS END-->
+
     <script>
-    socket.on("connect", function(){ console.log("Client Connected"); });
+      socket.on("connect", function(){ console.log("Client Connected"); });
     </script>
    
   </body>
