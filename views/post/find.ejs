@@ -5,6 +5,7 @@ if ( typeof posts === 'undefined' ) {
 %>
 <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
+<script src="http://momentjs.com/downloads/moment.min.js"></script>
 <!-- perfil-->
 <section id="perfil">
 <div class="row">
@@ -35,6 +36,12 @@ if ( typeof posts === 'undefined' ) {
         <% if ( session.canAdminUser ) { %><a href="/post/edit/<%= post.id %>"><i class="glyphicon glyphicon-pencil"></i></a><% } %> -->
       </h3>
       <p>
+        <i class="glyphicon glyphicon-heart"></i>   <span> 0 </span>
+        <i class="glyphicon glyphicon-search"></i>  <span> <%= post.visit %> </span>
+        <i class="glyphicon glyphicon-star"></i>    <span> 0 </span>
+        <i class="glyphicon glyphicon-flag"></i>    <span> 0 </span>
+      </p>
+      <p>
         <% if ( post.summary) { %>
         <em><%= post.summary %></em>.
         <% } %>
@@ -51,7 +58,16 @@ if ( typeof posts === 'undefined' ) {
         <% var pm = post.url.replace('"', '').replace(/\\/g,""); %><%= pm %></a>
         <% } %>
       </p>
-      <p><%= __('This post has been viewed') %>: <%= post.visit %> <%= __('times') %></p>
+      <p><%= __('This post has been viewed') %> <%= post.visit %> <%= __('times') %> since <span id="whenposted"></span>
+        <script>
+        var date1 = '<%= post.createdAt %>', fecha =  new Date(date1);
+        $('#whenposted').append(moment(fecha).fromNow());
+        $('#whenposted').on('click', function() {
+          $('#whenposted').html('');
+          $('#whenposted').append(moment(fecha).format("DD/MM/YYYY, h:mm"));
+        });
+        </script>
+      </p>
     </div>
     <!--discuss-->
     <div id="discuss">
@@ -198,6 +214,12 @@ if ( typeof posts === 'undefined' ) {
       <a href="/post/<%= post.id %>"><img src="<%= post.photos[0] %>" alt="<%= post.title %>" class="img-responsive"></a>
       <% } %>
       <h4><a href="/post/<%= post.id %>"><%= post.title %></a></h4>
+      <p>
+        <i class="glyphicon glyphicon-heart"></i>   <span> 0 </span>
+        <i class="glyphicon glyphicon-search"></i>  <span> <%= post.visit %> </span>
+        <i class="glyphicon glyphicon-star"></i>    <span> 0 </span>
+        <i class="glyphicon glyphicon-flag"></i>    <span> 0 </span>
+      </p>
       <p><%= post.summary %></p>
       <p id="<%= post.id %>">Loading..</p><script>makeTags('<%= post.id %>','<%= post.populars %>')</script>
     </div>
