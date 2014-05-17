@@ -158,29 +158,6 @@ function showPosition(position) {
 		if(confirmed==true) { console.log('Bye Bye'); }
 	}
 
-	// Muestra Geo segun IP
-	function WhereAmI() {
-		$.getJSON('http://freegeoip.net/json/', function(location) {
-			// window.location.replace("/?city="+location.city+"&country="+location.country_name);
-			Lat=location.latitude;
-			Lon=location.longitude;
-			ciudad=location.city;
-			pais=location.country_name;
-			dip=location.ip;
-		});
-	}
-	/*Llenar formularios */
-	var WhereIP = function() {
-		setTimeout(function() {
-			$('#city').attr('value',ciudad);
-			$('#country').attr('value',pais);
-			if(miubicacion[0] || miubicacion[1]) {
-				$('#location').attr('value',miubicacion[0]+','+miubicacion[1]);
-			} else {
-				$('#location').attr('value',Lat+','+Lon);
-			}
-		},5000);
-	}
 	/* Masks */
 	var editUser = function(x){
 		window.location.href="/user/edit/"+x;
@@ -383,11 +360,65 @@ function showPosition(position) {
 	ga('create', 'UA-35993973-9', 'findby.co');
 	ga('send', 'pageview');
 
+	/* Muestra Geo segun IP */
+	function WhereAmI() {
+		$.getJSON('http://freegeoip.net/json/190.202.17.29', function(location) {
+			// window.location.replace("/?city="+location.city+"&country="+location.country_name);
+			Lat=location.latitude;
+			Lon=location.longitude;
+			ciudad=location.city;
+			pais=location.country_name;
+			dip=location.ip;
+			console.log('OK '+pais);
+		});
+	}
+	/*Llenar formularios */
+	var WhereIP = function() {
+		setTimeout(function() {
+			$('#city').attr('value',ciudad);
+			$('#country').attr('value',pais);
+			if(miubicacion[0] || miubicacion[1]) {
+				$('#location').attr('value',miubicacion[0]+','+miubicacion[1]);
+			} else {
+				$('#location').attr('value',Lat+','+Lon);
+			}
+		},5000);
+	}
+	/* Cookies for Location */
+	function setCookie(cname,cvalue,exdays) {
+		var d = new Date();
+		d.setTime(d.getTime()+(exdays*24*60*60*1000));
+		var expires = "expires="+d.toGMTString();
+		document.cookie = cname + "=" + cvalue + "; " + expires;
+	}
+	function getCookie(cname) {
+		var name = cname + "=";
+		var ca = document.cookie.split(';');
+		for(var i=0; i<ca.length; i++) {
+			var c = ca[i].trim();
+			if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+		}
+		return "";
+	}
+	function checkCookie() {
+		var ciudad=getCookie("ciudad");
+		if(ciudad!=""){
+			console.log("Hello " + ciudad);
+		} else {
+			/* Need for IP, City, Country and Lat,Lon */
+			WhereAmI();
+			if (ciudad!="" && ciudad!=null){
+				setCookie("ciudad",ciudad,365);
+				setCookie("pais",pais,365);
+				setCookie("Lat",Lat,365);
+				setCookie("Lon",Lon,365);
+				console.log(document.cookie);
+			}
+		}
+	}
+
 $(document).ready(function(e) {
 //
-	//console.log('OK!');
-	/* Need for IP, City, Country and Lat,Lon */
-	//WhereAmI(); 
 	populars();
 
 	/* Geolocalization HTML5 */
