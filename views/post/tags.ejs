@@ -18,14 +18,12 @@
         <% } %>
         <h4><a href="/post/<%= post.id %>"><%= post.title %></a></h4>
         <p><%= post.summary %></p>
-        <!--
         <p>
-            <i class="glyphicon glyphicon-heart"></i> <span>5</span>
-            <i class="glyphicon glyphicon-search"></i> <span>7</span>
-            <i class="glyphicon glyphicon-star"></i> <span>2</span>
-            <i class="glyphicon glyphicon-flag"></i> <span>20</span>
+          <i class="glyphicon glyphicon-heart azul"></i>   <span> 0 </span>
+          <i class="glyphicon glyphicon-search azul"></i>  <span> <%= post.visit %> </span>
+          <i class="glyphicon glyphicon-star azul"></i>    <span> 0 </span>
+          <i class="glyphicon glyphicon-flag azul"></i>    <span> 0 </span>
         </p>
-        -->
         <p>
           <p id="<%= post.id %>">Loading..</p>
       <script>makeTags('<%= post.id %>','<%= post.populars %>')</script>

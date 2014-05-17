@@ -36,10 +36,10 @@ if ( typeof posts === 'undefined' ) {
         <% if ( session.canAdminUser ) { %><a href="/post/edit/<%= post.id %>"><i class="glyphicon glyphicon-pencil"></i></a><% } %> -->
       </h3>
       <p>
-        <i class="glyphicon glyphicon-heart"></i>   <span> 0 </span>
-        <i class="glyphicon glyphicon-search"></i>  <span> <%= post.visit %> </span>
-        <i class="glyphicon glyphicon-star"></i>    <span> 0 </span>
-        <i class="glyphicon glyphicon-flag"></i>    <span> 0 </span>
+        <i class="glyphicon glyphicon-heart azul"></i>   <span> 0 </span>
+        <i class="glyphicon glyphicon-search azul"></i>  <span> <%= post.visit %> </span>
+        <i class="glyphicon glyphicon-star azul"></i>    <span> 0 </span>
+        <i class="glyphicon glyphicon-flag azul"></i>    <span> 0 </span>
       </p>
       <p>
         <% if ( post.summary) { %>
@@ -215,10 +215,10 @@ if ( typeof posts === 'undefined' ) {
       <% } %>
       <h4><a href="/post/<%= post.id %>"><%= post.title %></a></h4>
       <p>
-        <i class="glyphicon glyphicon-heart"></i>   <span> 0 </span>
-        <i class="glyphicon glyphicon-search"></i>  <span> <%= post.visit %> </span>
-        <i class="glyphicon glyphicon-star"></i>    <span> 0 </span>
-        <i class="glyphicon glyphicon-flag"></i>    <span> 0 </span>
+        <i class="glyphicon glyphicon-heart azul"></i>   <span> 0 </span>
+        <i class="glyphicon glyphicon-search azul"></i>  <span> <%= post.visit %> </span>
+        <i class="glyphicon glyphicon-star azul"></i>    <span> 0 </span>
+        <i class="glyphicon glyphicon-flag azul"></i>    <span> 0 </span>
       </p>
       <p><%= post.summary %></p>
       <p id="<%= post.id %>">Loading..</p><script>makeTags('<%= post.id %>','<%= post.populars %>')</script>
