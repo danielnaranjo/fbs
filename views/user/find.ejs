@@ -161,7 +161,7 @@ Error: Esta operacion no esta permitida.
 //
     $('#myTab a:first').tab('show');
     setTimeout(function() {
-    	relacionados();<% if ( user.admin ) { %>
+    	relacionados('<%= user.username %>');<% if ( user.admin ) { %>
 	    usuarios();
 	    avisos();
 	    totalPosts();

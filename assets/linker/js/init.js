@@ -98,10 +98,11 @@ function showPosition(position) {
 	}
 
 	// Avisos relacionados
-	var relacionados = function() {
-		var pathname = window.location.pathname; 
-		var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
-		$.getJSON( "/post/related/"+last, function(data) {
+	var relacionados = function(x) {
+		//var pathname = window.location.pathname; 
+		//var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
+		//$.getJSON( "/post/related/"+last, function(data) {
+		$.getJSON( "/post/related/"+x, function(data) {
 			$('#showList').html('');
 			if(data.length) {
 				$('#showList').prepend('<br><h4>Active post: '+data.length+'</h4>');

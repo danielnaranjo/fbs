@@ -45,7 +45,7 @@ if ( typeof posts === 'undefined' ) {
         <% if ( post.summary) { %>
         <em><%= post.summary %></em>.
         <% } %>
-        <%= __('Publisher by') %> <a href="/post/related/<%= post.patron_id %>"><%= post.publisher %></a>
+        <%= __('Publisher by') %> <a href="/post/related/<%= post.publisher %>"><%= post.publisher %></a>
       </p>
       <p id="ft"><%= post.text %></p>          
       <p class="text-right">
@@ -136,7 +136,7 @@ if ( typeof posts === 'undefined' ) {
 </section>
 
 <section id="vermas" style="padding-bottom:100px;">
-	<div class="vermas"><%= __('More ads by') %> <a href="/post/related/<%= post.patron_id %>" class="azul"><%= post.publisher %></a>
+	<div class="vermas"><%= __('More ads by') %> <a href="/post/related/<%= post.publisher %>" class="azul"><%= post.publisher %></a>
 	</div>
   <div id="showRelated">
     <br/><img src="/img/load3.gif" alt="Loading" />
@@ -180,7 +180,7 @@ if ( typeof posts === 'undefined' ) {
   }
 
   setTimeout(function() { 
-    related('<%= post.patron_id %>');
+    related('<%= post.publisher %>');
     url2link();
   }, 3000);
 

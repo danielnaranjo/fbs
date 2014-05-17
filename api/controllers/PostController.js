@@ -130,7 +130,7 @@ module.exports = {
   related: function(req, res, next) {
     var id = req.param('id');
     var l = req.param('l');
-    Post.find({ "patron_id": id }).limit(l).done(function relatedPost(err, post){
+    Post.find({ "publisher": id }).limit(l).done(function relatedPost(err, post){
       if ( err ) return next(err);
       if (req.wantsJSON) return res.json(post);
       else return res.view({ post: post});
