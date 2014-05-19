@@ -67,6 +67,13 @@ if ( typeof posts === 'undefined' ) {
         });
         </script>
       </p>
+      <!-- 
+      <p>
+        <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal">Flag as SPAM or Fraud</a> 
+        <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal">Send a friend</a> 
+        <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal">Favorited!</a>
+      </p>
+       -->
     </div>
     <!--discuss-->
     <div id="discuss">
@@ -128,6 +135,25 @@ if ( typeof posts === 'undefined' ) {
     </div>
   </div>
 </div>
+<!-- Modal 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+modal -->
 </section>
 <section id="vermas" style="padding-bottom:100px;">
 	<div class="vermas"><%= __('More ads by') %> <a href="/post/related/<%= post.publisher %>" class="azul"><%= post.publisher %></a>
