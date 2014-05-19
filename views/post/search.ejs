@@ -1,4 +1,4 @@
-<script>var makeTags = function(x,y) {var arr = y.split(',');$('#'+x).html('');for(var j=0; j<arr.length; j++) {var replacedText = arr[j].replace(arr[j], '<a href="/post/tags/'+arr[j]+'" class="tagged"><i class="icon-tags"></i> '+arr[j]+'</a> ');$('#'+x).append(replacedText);}}</script>
+<script>var noresult=0, makeTags = function(x,y) {var arr = y.split(',');$('#'+x).html('');for(var j=0; j<arr.length; j++) {var replacedText = arr[j].replace(arr[j], '<a href="/post/tags/'+arr[j]+'" class="tagged"><i class="icon-tags"></i> '+arr[j]+'</a> ');$('#'+x).append(replacedText);}}</script>
 <section class="js-masonry">
 	<div id="contenido">
     <div style="text-align:center" class="box col-xs-6 col-sm-4">
@@ -11,7 +11,7 @@
       <script src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
     </div>
 
-	   <% _.each(post, function(post){ %>
+	  <% _.each(post, function(post){ %>
       <div class="box col-xs-6 col-sm-4">
         <% if ( post.photos[0]) { %>
         <a href="/post/<%= post.id %>"><img src="<%= post.photos[0] %>" alt="<%= post.title %>" class="img-responsive"></a>
@@ -25,11 +25,11 @@
           <i class="glyphicon glyphicon-flag azul"></i>    <span> 0 </span>
         </p>
         <p>
-          <p id="<%= post.id %>">Loading..</p><script>makeTags('<%= post.id %>','<%= post.populars %>')</script>
+          <p id="<%= post.id %>">Loading..</p><script>makeTags('<%= post.id %>','<%= post.populars %>');noresult++;</script>
         </p>
       </div>
       <% }); %>
-
+    
 	    <div style="text-align:center" class="box col-xs-6 col-sm-4">
         <script>
               google_ad_client = "ca-pub-3074485176185204";
@@ -46,3 +46,10 @@
   // Force "<title>" to change for post's title
   $('title').text('Search by '+window.location.search.substring(6)+' | findby.co');
 </script>
+
+<script>
+  if(noresult==0) {
+    $('#contenido').append('<div class="box col-xs-6 col-sm-4"><h4>We\'re sorry!</h4><p>There is not any product, services or anything with this terms. <a href="javascript:login();">Place your ad for free</a></p><p><a href="/post/tags/Place" class="tagged"><i class="icon-tags"></i>Place</a> <a href="/post/tags/your" class="tagged"><i class="icon-tags"></i> your</a> <a href="/post/tags/product" class="tagged"><i class="icon-tags"></i> product</a> <a href="/post/tags/service" class="tagged"><i class="icon-tags"></i> service</a> <a href="/post/tags/or" class="tagged"><i class="icon-tags"></i> or</a><a href="/post/tags/stuff" class="tagged"><i class="icon-tags"></i> stuff</a> <a href="/post/tags/for" class="tagged"><i class="icon-tags"></i> for</a> <a href="/post/tags/free" class="tagged"><i class="icon-tags"></i> free</a></p><div>');
+  }
+</script>
+
