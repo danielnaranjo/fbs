@@ -106,8 +106,8 @@
     <div id="opciones">
       <ul>
         <% if( loggedUser ) { %><li><a href="/user/<%= loggedUser.id %>"><%= __('My Profile') %></a></li><% } else { %>
-        <li><a href="/user/new"><%= __('Sign Up') %></a></li>
-        <li><a href="/user/auth"><%= __('Log In') %></a></li>
+        <li><a href="javascript:newOne();"><%= __('Sign Up') %></a></li>
+        <li><a href="javascript:login();"><%= __('Log In') %></a></li>
       <% } %>        
         <% if( loggedUser ) { %><li><a href="/post/new"><%= __('Create a new post') %></a></li><% } else { %><li><a href="/post"><%= __('All Posts') %></a></li><% } %>
         <li><a href="/map"><%= __('Explorer')%></a></li>

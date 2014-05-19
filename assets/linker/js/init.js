@@ -351,6 +351,9 @@ function showPosition(position) {
 	var login = function() {
 		window.location = "/user/auth";
 	};
+	var newOne = function() {
+		window.location = "/user/new";
+	};
 
 	/* Google Analytics */
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -406,7 +409,7 @@ function showPosition(position) {
 			console.log("Hello " + ciudad);
 		} else {
 			/* Need for IP, City, Country and Lat,Lon */
-			WhereAmI();
+			//WhereAmI();
 			if (ciudad!="" && ciudad!=null){
 				setCookie("ciudad",ciudad,365);
 				setCookie("pais",pais,365);
