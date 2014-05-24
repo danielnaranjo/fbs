@@ -138,7 +138,7 @@ module.exports = {
   tags: function(req, res, next) {
     var id = req.param('id');
     if( !id ) return res.notFound();
-    Post.find({ title: { contains: id } }).done(function tagsPost(err, post){
+    Post.find({ populars: { contains: id } }).done(function tagsPost(err, post){
     //Post.find({"$or" : [ {"title": { contains: id } }, {"populars":  { contains: id } } ]}).done(function tagsPost(err, post){
       if ( err ) return next(err);
       if (req.wantsJSON) return res.json(post);
