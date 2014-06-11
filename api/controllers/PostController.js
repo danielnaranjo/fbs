@@ -58,7 +58,8 @@ module.exports = {
         where: where || undefined
       };
       // Find users according with filters
-      Post.find(filters).done(function foundUsers(err, posts){
+      //Post.find(filters).done(function foundUsers(err, posts){
+      Post.find(filters).limit(100).done(function foundUsers(err, posts){
         if ( err ) return next(err);
         // Response JSON if needed.
         if (req.wantsJSON) {
