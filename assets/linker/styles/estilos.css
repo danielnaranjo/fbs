@@ -11,18 +11,12 @@ header a:hover{color:#fff}
 #logo img{height:73px;width:166px}
 @media screen and (max-width: 480px){#logo{height:50px;margin:18px 0 0 30px;padding:0;width:114px}
 #logo img{height:50px;width:114px}
-}#ubicacion{background-color:#37a6d7;border-radius:3px;cursor:pointer;height:auto;padding:10px;position:absolute;right:60px;top:20px;width:auto;}
-#ubicacion div{heigh:100px}
-#ubicacion:hover{background-color:#2a83ab}
-#elmenu{background-color:#37a6d7;border-radius:3px;cursor:pointer;height:auto;padding:10px;position:absolute;right:20px;top:20px;width:auto}
-#elmenu:hover{background-color:#2a83ab}
-#busqueda{background-color:#37a6d7;border-radius:3px;cursor:pointer;height:auto;padding:10px;position:absolute;right:100px;top:20px;width:auto}
-#busqueda:hover{background-color:#2a83ab}
-#quiensoy{background-color:#37a6d7;border-radius:3px;cursor:pointer;height:auto;padding:10px;position:absolute;right:140px;top:20px;width:auto;}
-@media screen and (max-width: 480px){#quiensoy{display:none}
-}#quiensoy a{color:#fff}
-#quiensoy:hover{background-color:#2a83ab}
-footer{background-color:#3caee1;color:#fff;font-size:.8em;height:auto;margin:10px 0 0 0;width:100%;}
+}nav{position:absolute;top:20px;right:20px;width:auto;}
+nav ul{margin:0;padding:0;width:auto}
+nav li{background-color:#37a6d7;border-radius:3px;color:#fff;cursor:pointer;display:inline-block;list-style:none;padding:10px 15px;vertical-align:top;width:auto}
+nav li:hover{background-color:#2a83ab}
+@media screen and (max-width: 480px){nav .hidemobile{display:none}
+}footer{background-color:#3caee1;color:#fff;font-size:.8em;height:auto;margin:10px 0 0 0;width:100%;}
 footer div{display:inline-block;padding:10px;vertical-align:top}
 footer .timer{display:inline-block;margin:0 auto;text-align:left;vertical-align:top;width:auto}
 footer a{color:#fff;text-decoration:none}
@@ -30,6 +24,8 @@ footer a:hover{text-decoration:underline}
 @media screen and (max-width: 480px){#footer{display:none;visibility:hidden}
 }#principal{height:auto;margin:0 auto;padding:5px 0 0 20px;width:auto;}
 #principal div{display:inline-block;height:auto;margin:0 5px 5px 0;vertical-align:top;width:auto}
+.advertising{border:1px solid #999 !important}
+.famous{border:5px solid #339 !important}
 .box{background-color:#fff;border:1px solid #e3e3e3;border-radius:3px;display:inline-block;height:auto;margin:0 5px 5px 0;padding:10px;vertical-align:top;}
 .box h4 a{color:#3caee1}
 @media screen and (max-width: 480px){.box{width:98%}
@@ -37,9 +33,9 @@ footer a:hover{text-decoration:underline}
 }@media screen and (min-width: 981px){.box{width:24.5%}
 }@media screen and (min-width: 981px){.box:hover{box-shadow:5px 5px 5px #ccc}
 }.pic{height:auto;width:250px}
-#contenido{color:#818181;display:inline-block;font-size:.9em;margin:105px 0 60px 5px;vertical-align:top;width:99%;}
+#contenido{color:#818181;display:inline-block;font-size:.9em;margin:205px 0 60px 5px;vertical-align:top;width:99%;}
 #contenido h1,#contenido h3{margin:0;padding:0}
-#buscador{background-color:#fff;border-bottom:1px solid #e7e7e7;box-shadow:5px 5px 5px #ccc;display:none;height:100px;margin:0;padding:5px 0 10px 5px;vertical-align:top;width:100%;z-index:102;}
+#buscador{background-color:#fff;border-bottom:1px solid #e7e7e7;box-shadow:5px 5px 5px #ccc;height:100px;margin:0;padding:5px 0 10px 5px;vertical-align:top;width:100%;z-index:102;}
 #buscador div{display:inline-block;vertical-align:top}
 #buscador p{color:#bdbdbd;font-size:.8em;margin:-15px 0;padding:0;text-align:right}
 @media screen and (max-width: 480px){#buscador{border:0;height:50px}
@@ -72,7 +68,7 @@ footer a:hover{text-decoration:underline}
 .tag4{font-size:140%}
 .tag5{font-size:160%}
 #uno,#dos,#tres,#cuatro,#cinco{display:inline-block;vertical-align:top}
-#perfil{height:auto;margin:105px 0 60px 5px;width:auto;}
+#perfil{height:auto;margin:205px 0 60px 5px;width:auto;}
 #perfil #uno,#perfil #dos,#perfil #tres{border:1px solid #e3e3e3;border-radius:3px;color:#818181;height:auto;margin:0;padding:5px;width:400px}
 #perfil #uno h3,#perfil #dos h3,#perfil #tres h3,#perfil #uno p,#perfil #dos p,#perfil #tres p{margin:0;padding:0}
 #perfil #uno h3 span,#perfil #dos h3 span,#perfil #tres h3 span,#perfil #uno p span,#perfil #dos p span,#perfil #tres p span{color:#dbdbdb;margin:0 0 0 10px}

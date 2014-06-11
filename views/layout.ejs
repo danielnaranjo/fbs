@@ -52,23 +52,43 @@
               <img src="/img/logo.png" alt="logo" width="166" height="73">
             </a>
           </div>
-          <a href="javascript:showMenu();" id="busqueda">
-            <div><i class="icon-search"></i></div>
-          </a>
-          <a href="javascript:showLocation();" id="ubicacion">
-            <div><i class="icon-location"></i></div>
-          </a>
-          <a href="javascript:menu();" id="elmenu">
-            <div><i class="icon-profile"></i></div>
-          </a>
-          <a href="#" id="dondeestoy">
-            <div></div>
-          </a>
-          <a href="<% if( loggedUser ) { %>/user/<%= loggedUser.id %><% } else { %>javascript:login();<% }%>">
-            <div id="quiensoy">
-              <i class="icon-user"></i> <% if( loggedUser ) { %><%= loggedUser.username %><% } else { %><%= __('Place your ad for free') %><% }%>
-            </div>
-          </a>
+          <div>
+            <a href="#" id="dondeestoy">
+              <div></div>
+            </a>
+          </div>
+          <nav>
+            <ul>
+              <li>
+                <a href="/">
+                  <div><i class="glyphicon glyphicon-home"></i></div>
+                </a>
+              </li>
+              <li>
+                <a href="<% if( loggedUser ) { %>/user/<%= loggedUser.id %><% } else { %>javascript:login();<% }%>">
+                  <div id="quiensoy">
+                    <i class="icon-user"></i><span class="hidemobile showhover"> <% if( loggedUser ) { %><%= loggedUser.username %><% } else { %><%= __('Place your ad for free') %><% }%></span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:showLocation();" id="ubicacion">
+                  <div><i class="icon-location"></i></div>
+                </a>
+              </li>
+              <li class="hidemobile">
+                  <a href="javascript:showMenu();" id="busqueda">
+                    <div><i class="icon-search"></i></div>
+                  </a>
+              </li>
+              <li>
+                <a href="javascript:menu();" id="elmenu">
+                  <div><i class="icon-profile"></i></div>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          
         </header>
         <div id="buscador" class="row">
           <div id="lacaja" class="col-md-6">

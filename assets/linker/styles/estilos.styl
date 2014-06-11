@@ -55,70 +55,34 @@ header
 			height: 50px
 			width: 114px
 
-#ubicacion
-	background-color: #37a6d7
-	border-radius: 3px
-	cursor: pointer
-	height: auto
-	padding: 10px
+nav
 	position: absolute
-	right: 60px
 	top: 20px
-	width: auto
-
-	div
-		heigh: 100px
-
-#ubicacion:hover
-	background-color: #2a83ab
-
-#elmenu
-	background-color: #37a6d7
-	border-radius: 3px
-	cursor: pointer
-	height: auto
-	padding: 10px
-	position: absolute
 	right: 20px
-	top: 20px
 	width: auto
 
-#elmenu:hover
-	background-color: #2a83ab
+	ul
+		margin: 0
+		padding: 0
+		width: auto
 
-#busqueda
-	background-color: #37a6d7
-	border-radius: 3px
-	cursor: pointer
-	height: auto
-	padding: 10px
-	position: absolute
-	right: 100px
-	top: 20px
-	width: auto
+	li
+		background-color: #37a6d7
+		border-radius: 3px
+		color: #FFF
+		cursor: pointer
+		display: inline-block
+		list-style: none
+		padding: 10px 15px
+		vertical-align: top
+		width: auto
 
-#busqueda:hover
-	background-color: #2a83ab
-
-#quiensoy
-	background-color: #37a6d7
-	border-radius: 3px
-	cursor: pointer
-	height: auto
-	padding: 10px
-	position: absolute
-	right: 140px
-	top: 20px
-	width: auto
+	li:hover
+		background-color: #2a83ab
 
 	@media screen and (max-width: 480px)
-		display: none
-
-	a
-		color: #fff
-
-#quiensoy:hover
-	background-color: #2a83ab
+		.hidemobile
+			display: none
 
 footer
 	background-color: #3caee1
@@ -165,6 +129,12 @@ footer
 		vertical-align: top
 		width: auto
 
+.advertising
+	border: 1px solid #999 !important
+
+.famous
+	border: 5px solid #333399 !important
+
 .box
 	background-color: #fff
 	border: 1px solid #e3e3e3
@@ -200,7 +170,7 @@ footer
 	color: #818181
 	display: inline-block
 	font-size: 0.9em
-	margin: 105px 0 60px 5px
+	margin: 205px 0 60px 5px
 	vertical-align: top
 	width: 99%
 
@@ -212,7 +182,7 @@ footer
 	background-color: #FFF
 	border-bottom: 1px solid #e7e7e7
 	box-shadow: 5px 5px 5px #ccc
-	display: none
+	//display: none
 	height: 100px
 	margin: 0
 	padding: 5px 0 10px 5px
@@ -401,7 +371,7 @@ footer
 
 #perfil
 	height: auto
-	margin: 105px 0 60px 5px
+	margin: 205px 0 60px 5px
 	width: auto
 
 	#uno, #dos, #tres
