@@ -181,15 +181,22 @@ function showPosition(position) {
 		.done(function( msg ) { console.log('Ok rejectPost'); }); 
 		relacionados();
 	}
+	var reduceTitle = function(x) {
+		var miniTitle;
+		if(x.length > 25) {
+			miniTitle = x.substring(0,24)+"...";
+		}
+		return miniTitle;
+	}
 	/* Convert all URL to Link */
 	var linkify = function(inputText) {
 		var replacedText, replacePattern1, replacePattern2, replacePattern3;
 		//URLs starting with http://, https://, or ftp://
 		replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
-		replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');
+		replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">Link</a>');
 		//URLs starting with "www." (without // before it, or it'd re-link the ones done above).
 		replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
-		replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank">$2</a>');
+		replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank">Link</a>');
 		//Change email addresses to mailto:: links.
 		replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
 		replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>');
@@ -202,6 +209,10 @@ function showPosition(position) {
 	/* Fire Menu */
 	var showMenu = function(){
 		$('#buscador').toggle();// .removeClass().addClass("fadeInDown");
+		if($(this).height()>=205) {
+			$('#contenido').css('margin-top','105px');
+			//console.log('Nuevo '+$(this).height());
+		}
 	};
 	/* Fire Location */
 	var showLocation = function(){
@@ -251,7 +262,7 @@ function showPosition(position) {
 				var key = list[i]; counts[key] = (counts[key])? counts[key] + 1 : 1 ;
 			}
 			$.each( counts, function(k, j ) {
-				if(j>1) {
+				if(j>4) {
 					$('#popular ul').append('<li class="tag'+j+'"><a href="/post/tags/'+k+'">'+k+'</a></li>');
 				}
 			});
@@ -270,7 +281,7 @@ function showPosition(position) {
 				var key = list[i]; counts[key] = (counts[key])? counts[key] + 1 : 1 ;
 			}
 			$.each( counts, function(k, j ) {
-				if(j>1) {
+				if(j>4) {
 					$('#populares ul').append('<li class="tag'+j+'"><a href="/post/tags/'+k+'">'+k+' ('+j+')</a></li>');
 				}
 			});
