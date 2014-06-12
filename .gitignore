@@ -26,7 +26,6 @@ results
 node_modules
 
 npm-debug.log
-assets/linker *.html
 
 ########################
 # misc / editors
