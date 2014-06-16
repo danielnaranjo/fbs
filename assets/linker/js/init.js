@@ -253,7 +253,7 @@ function showPosition(position) {
 	var populars = function(){
 		var list=[];
 		$('#popular ul').html('');
-		$.getJSON("/tags", function( data ) {
+		$.getJSON("/tags?limit=1000", function( data ) {
 			$.each( data, function(key,val){
 				list.push(val.tag);
 			});
