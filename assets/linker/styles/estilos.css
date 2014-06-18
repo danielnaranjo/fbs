@@ -239,6 +239,14 @@ footer a:hover {
 #lacaja input[type="submit"] {
   padding: 5px 10px;
 }
+#searchbox {
+  width: 90%;
+}
+@media screen and (max-width: 480px) {
+  #searchbox {
+    width: 70%;
+  }
+}
 #popular {
   overflow: hidden;
 }
@@ -262,7 +270,7 @@ footer a:hover {
 #populares ul,
 #paises ul {
   height: auto;
-  margin: 0;
+  margin: -10px 0 0 0;
   padding: 5px 10px;
   text-align: center;
   width: auto;

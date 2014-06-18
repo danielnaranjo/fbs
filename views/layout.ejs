@@ -71,9 +71,9 @@
                   </div>
                 </a>
               </li>
-              <li>
-                <a href="javascript:showLocation();" id="ubicacion">
-                  <div><i class="icon-location"></i></div>
+              <li id="ocultar">
+                <a href="/map" id="ubicacion">
+                  <div><i class="glyphicon glyphicon-globe"></i></div>
                 </a>
               </li>
               <li class="hidemobile">
@@ -93,7 +93,7 @@
         <div id="buscador" class="row">
           <div id="lacaja" class="col-md-6">
             <form action="/post/search/">
-              <div>
+              <div id="searchbox">
                 <input type="type" id="term" name="term" placeholder="<%= __('Start your search here') %>" class="form-control" />
               </div>
               <div>  
