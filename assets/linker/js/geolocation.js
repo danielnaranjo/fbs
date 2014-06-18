@@ -19,37 +19,12 @@ function showPosition(position) {
 				$('#dondeestoy').removeClass().addClass("fadeOut");
 				// console.log(miubicacion[0]+','+miubicacion[1]);
 			}, 3000);
-			// Mostrar datos en la caja de busqueda
-			//$("#w").val('Estas cerca de '+miubicacion[0]+','+miubicacion[1]);
 		}, 2000);
 	}
 }
 // Mensajes de Errores de GEO
 function onError() {
-	// Check if message was show then..
-	/*
-	if(OneTime){
-		$('#nogeo').css('display','inline');
-		$('#nogeo').html('');
-		if (navigator.geolocation){
-			$('#nogeo').append("Error: The Geolocation service failed.<br/>Erreur: Le service de géolocalisation a échoué.<br/>Error: El servicio de Geolocalización falló.<br/>Fehler: Der Geolocation-Dienst konnte."); 
-			console.log("Error: The Geolocation service failed.");
-			$("#nogeo").removeClass().addClass("bounceInLeft");
-			setTimeout(function() {
-				$('#nogeo').removeClass().addClass("bounceOutLeft");
-			}, 7000);
-		} else {
-			$('#nogeo').append("Error: Your browser doesn't support geolocation. Are you in Siberia?<br/>Erreur: Votre navigateur ne supporte pas la géolocalisation. Etes-vous en Sibérie?<br/>Error: Su navegador no soporta geolocalización. ¿Está usted en Siberia?<br/>Fehler: Ihr Browser unterstützt leider keine Geolocation. Sind Sie in Sibirien?");
-			console.log("Error: Your browser doesn't support geolocation");
-			$('#nogeo').css('display', 'inline');
-			$("#nogeo").removeClass().addClass("bounceInLeft");
-			setTimeout(function() { 
-				$('#nogeo').removeClass().addClass("bounceOutLeft");
-			}, 7000);
-		}
-		OneTime=1;
-	}
-	*/
+	// Delay to..
 	setTimeout(function() {
 		// Set Latitute and Longitute by IP
 		miubicacion[0]=Lat;
@@ -66,7 +41,7 @@ function WhereAmI() {
 		// window.location.replace("/?city="+location.city+"&country="+location.country_name);
 		Lat=location.latitude;
 		Lon=location.longitude;
-		City=location.city;
+		ciudad=location.city;
 		pais=location.country_name;
 		dip=location.ip;
 		console.log('OK '+pais);
@@ -91,21 +66,20 @@ function getCookie(cname) {
 }
 
 function checkCookie() {
-	var pais=getCookie("pais");
-	if(pais!=""){
-		console.log("Hello " + Country);
+	var Country=getCookie('pais');
+	if(Country!=""){
+		console.log("Hello " + Country+"! Nice to see you again :) ");
+		console.log("We're not using geolocation API yet or not anymore, who's knows? :) ");
 	} else {
 		/* Need for IP, City, Country and Lat,Lon */
 		WhereAmI();
 		/* Fire geolocation API */
 		checkPosition();
-		//if (getCookie('pais')!="" && getCookie('pais')!=null){
 		setCookie('ciudad',ciudad,365);
 		setCookie('pais',pais,365);
 		setCookie('Lat',Lat,365);
 		setCookie('Lon',Lon,365);
 		console.log(document.cookie);
-		//}
 	}
 }
 /* Geolocalization HTML5 */

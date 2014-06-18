@@ -164,7 +164,7 @@
 	/* Fire Location */
 	var showLocation = function(){
 		$('#dondeestoy').html('');
-		$("#dondeestoy").append('<p>We locate you by '+ciudad +' '+pais+', right?</p>');
+		$("#dondeestoy").append('<p>We locate you by '+getCookie('ciudad') +' '+getCookie('pais')+', right?</p>');
 		$('#dondeestoy').css('display','inline');
 		$("#dondeestoy").removeClass().addClass("fadeInDown");
 		setTimeout(function() {

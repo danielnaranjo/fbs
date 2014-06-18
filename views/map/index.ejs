@@ -12,7 +12,7 @@
       $('#mapa').css('height',$( window ).height()-100);
       //console.log(miubicacion);
       var map = L.mapbox.map('mapa', 'danielnaranjo.hkk59gkh')
-                .setView([parseFloat(miubicacion[0]),parseFloat(miubicacion[1])], 
+                .setView([parseFloat(getCookie('Lat')),parseFloat(getCookie('Lon'))], 
                 6);
       var myLayer = L.mapbox.featureLayer().addTo(map);
       var geoJson = [];
@@ -21,9 +21,9 @@
         type: 'Feature',
         geometry: {
           type: 'Point',
-          coordinates: [parseFloat(miubicacion[1]),parseFloat(miubicacion[0])]},
+          coordinates: [parseFloat(getCookie('Lon')),parseFloat(getCookie('Lat'))]},
           properties: {title: '<%= __('You are here!') %> <br/>', 
-          description: pais+' ('+miubicacion[0].toFixed(3)+','+miubicacion[1].toFixed(3)+')',
+          description: pais+')',
           'marker-color': '#3caee1'
         }
       });
@@ -33,6 +33,8 @@
           var locacion=[], marcador=[];
           $.each( data, function( key, val ) {
             var locacion = $.trim(val.location);
+            // Omito los que NO tengan location
+            if(locacion){
             var marcador = locacion.split(",");
             geoJson.push({
               type: 'Feature',
@@ -46,6 +48,7 @@
                 }
               });
             myLayer.setGeoJSON(geoJson);
+            }
           });
       });
 
@@ -60,9 +63,9 @@
       });
 
       // Clear the tooltip when map is clicked
-      map.on('move',function(e){
-        document.getElementById('info').innerHTML = '<h4><%= __('Click a marker') %></h4>';
-      });
+      //map.on('move',function(e){
+      //document.getElementById('info').innerHTML = '<h4><%= __('Click a marker') %></h4>';
+      //});
       // zoom exactly to each double-clicked point
       map.on('dblclick', function(e) {
         map.setView(e.latlng, map.getZoom() + 1);
