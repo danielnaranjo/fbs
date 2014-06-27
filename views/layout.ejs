@@ -40,7 +40,7 @@
     <!-- CDN -->
   </head>
 
-  <body onload="checkCookie()">
+  <body>
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->    
@@ -91,7 +91,7 @@
           
         </header>
         <div id="buscador" class="row">
-          <div id="lacaja" class="col-md-6">
+          <div id="lacaja" class="col-xs-12 col-sm-6">
             <form action="/post/search/">
               <div id="searchbox">
                 <input type="type" id="term" name="term" placeholder="<%= __('Start your search here') %>" class="form-control" />
@@ -115,8 +115,8 @@
 
       <footer id="footer" class="smooth-style slideOut-option navbar-fixed-bottom">
         <div class="container">
-          <div>2013-2014 &copy  <a href="http://www.danielnaranjo.info">Daniel Naranjo</a></div>
-          <div>Follow us in <a href="http://facebook.com/findby" target="_blank">Facebook</a>, <a href="http://twitter.com/findbytags" target="_blank">Twitter</a>  and <a href="https://plus.google.com/115826745735747307118" rel="publisher">Google+</a> |  <a href="/about/contact"><%= __('Contact')%></a> - <a href="/about/privacy"><%= __('Privacy')%></a> - <a href="/about/legal"><%= __('Legal')%></a>
+          <div>2013-2014 &copy <a href="http://www.loultimoenlaweb.com" target="_blank">Lo Ultimo Group</a> & <a href="http://www.danielnaranjo.info" target="_blank">Daniel Naranjo</a></div>
+          <div>Follow us in <a href="http://linkedin.com/company/findby" target="_blank">Linkedin</a>, <a href="http://facebook.com/findby" target="_blank">Facebook</a>, <a href="http://twitter.com/findbyco" target="_blank">Twitter</a>  and <a href="https://plus.google.com/115826745735747307118" rel="publisher">Google+</a> |  <a href="/about/contact"><%= __('Contact')%></a> - <a href="/about/privacy"><%= __('Privacy')%></a> - <a href="/about/legal"><%= __('Legal')%></a>
           </div>
         </div>
       </footer>

@@ -9,6 +9,9 @@
 
   <script>
     setTimeout(function() { 
+      // Hide menu()
+      window.onload = showMenu();
+
       $('#mapa').css('height',$( window ).height()-100);
       //console.log(miubicacion);
       var map = L.mapbox.map('mapa', 'danielnaranjo.hkk59gkh')
@@ -22,35 +25,41 @@
         geometry: {
           type: 'Point',
           coordinates: [parseFloat(getCookie('Lon')),parseFloat(getCookie('Lat'))]},
-          properties: {title: '<%= __('You are here!') %> <br/>', 
-          description: pais+')',
-          'marker-color': '#3caee1'
+          properties: {
+            'title': '<%= __('You are here!') %> <br/>', 
+            'description': pais+')',
+            'marker-color': '#3caee1',
+            'marker-symbol': 'star'
         }
       });
-      myLayer.setGeoJSON(geoJson);
+      /* */
+      //myLayer.setGeoJSON(geoJson);
       // Get from Server
-      $.getJSON( "/post", function(data) {
+      $.getJSON( "/post?limit=500&sort={'location':-1}", function(data) {
           var locacion=[], marcador=[];
           $.each( data, function( key, val ) {
             var locacion = $.trim(val.location);
             // Omito los que NO tengan location
-            if(locacion){
-            var marcador = locacion.split(",");
-            geoJson.push({
-              type: 'Feature',
-              geometry: {
-                type: 'Point',
-                coordinates: [parseFloat(marcador[1]),parseFloat(marcador[0])]},
-                properties: {
-                  title: '<a href="/post/'+val.id+'">'+val.title+'</a>', 
-                  description: val.summary+'<br/><%= __('Location') %>: <a href="/post/?where&#61;&#123;&#34;city&#34;&#58;&#34;'+val.city+'&#34;&#125;">'+val.city+'</a> <a href="/post/?where&#61;&#123;&#34;country&#34;&#58;&#34;'+val.country+'&#34;&#125;">'+val.country+'</a>', 
-                  'marker-color': '#f00' 
-                }
-              });
-            myLayer.setGeoJSON(geoJson);
+            if(val.location !== "undefined,undefined"){
+              //console.log(val.title);
+              var marcador = locacion.split(",");
+              geoJson.push({
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [parseFloat(marcador[1]),parseFloat(marcador[0])]},
+                  properties: {
+                    title: '<a href="/post/'+val.id+'">'+val.title+'</a>', 
+                    description: val.summary+'<br/><%= __('Location') %>: <a href="/post/?where&#61;&#123;&#34;city&#34;&#58;&#34;'+val.city+'&#34;&#125;">'+val.city+'</a> <a href="/post/?where&#61;&#123;&#34;country&#34;&#58;&#34;'+val.country+'&#34;&#125;">'+val.country+'</a>', 
+                    'marker-color': '#f00' 
+                  }
+                });
+              myLayer.setGeoJSON(geoJson);
             }
           });
+          console.log(data.length);
       });
+
 
       // Listen for individual marker clicks
       myLayer.on('click',function(e) {
