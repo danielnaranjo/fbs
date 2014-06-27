@@ -333,9 +333,36 @@
 			}
 		},5000);
 	}
+	// byCountry(venezuela)
+	var byCountry = function(x) {
+		console.log('Ok filter by country'+ x);
+
+		setTimeout(function() {
+			$.getJSON( "/post/?where={%22country%22:%22"+x+"%22}&l=25", function(data){
+				$('#contenido .box').remove();
+				//console.log(data.length);
+				if(data.length==0){
+					//$('#vermas').hide();
+					console.log('Not found!');
+				}
+				$.each( data, function( key, val ) {
+					$('#contenido').append('<div class="box col-xs-6 col-sm-4"><h4><a href="/post/'+val.id+'">'+val.title+'</a></h4><p>'+val.summary+'</p></div>');
+					// <p id="'+val.id+'">Loading..</p>'+makeTags(''+val.id+'',''+val.populars+'')+'
+				});
+			});
+		},5000);
+	}
+
+	var referred = function() {
+		var url = window.location.search;
+		//window.location.href="/user/auth/login?r="+x;
+		url = url.replace("?", ''); // remove the ?
+		console.log(url); //alerts ProjectID=462 is your case
+	}
 
 $(document).ready(function(e) {
 //
+	referred();
 	/* masonry */
 	//$("#contenido").masonry({itemSelector:'.box'});
 	var $container = $('#contenido').masonry({itemSelector:'.box'});
@@ -387,7 +414,7 @@ $(document).ready(function(e) {
 		}
 	});
 	populars();
-	checkCookie();
+	//checkCookie();
 //
 });
 
