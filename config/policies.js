@@ -32,7 +32,8 @@ module.exports.policies = {
 	},
 	
 	PostController: {
-		'*': true
+		//'*': true
+		'*': ['isAuthenticated'],
 	}
 
   /*

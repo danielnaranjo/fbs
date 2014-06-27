@@ -35,10 +35,12 @@ module.exports.routes = {
 	'/': {
 		// view: 'home/index'
 		view: 'post/'
+		//view: 'user/'
 	},
 
 	// Call results from Post into INDEX
 	'/':'PostController.find',
+	//'user/':'UserController.auth',
 
 
 	// Default by Passport
