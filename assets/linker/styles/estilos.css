@@ -139,7 +139,8 @@ footer a:hover {
 .famous {
   border: 5px solid #339 !important;
 }
-.box {
+.box,
+.public {
   background-color: #fff;
   border: 1px solid #e3e3e3;
   border-radius: 3px;
@@ -149,21 +150,25 @@ footer a:hover {
   padding: 10px;
   vertical-align: top;
 }
-.box h4 a {
+.box h4 a,
+.public h4 a {
   color: #3caee1;
 }
 @media screen and (max-width: 480px) {
-  .box {
+  .box,
+  .public {
     width: 98%;
   }
 }
 @media screen and (min-width: 481px) and (max-width: 980px) {
-  .box {
+  .box,
+  .public {
     width: 49%;
   }
 }
 @media screen and (min-width: 981px) {
-  .box {
+  .box,
+  .public {
     width: 24.5%;
   }
 }
