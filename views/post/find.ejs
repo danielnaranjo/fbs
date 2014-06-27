@@ -215,7 +215,7 @@ modal -->
 %> 
 <section>
 	<div id="contenido">
-    <div style="text-align:center" class="advertising box col-xs-6 col-sm-4">
+    <div style="text-align:center" class="box public col-xs-6 col-sm-4">
       <script>
             google_ad_client = "ca-pub-3074485176185204";
             google_ad_slot = "5370019667"; 
@@ -235,10 +235,15 @@ modal -->
         <i class="glyphicon glyphicon-flag azul"></i>    <span> 0 </span>
       </p>
       <p><%= post.summary %></p>
-      <p id="<%= post.id %>">Loading..</p><script>makeTags('<%= post.id %>','<%= post.populars %>')</script>
+      <p id="<%= post.id %>">Loading..</p>
+      <script>
+      var popu = '<%= post.populars %>', nuevo ="";
+      nuevo = popu.replace("\'"," ").replace("-"," ").replace("-"," ").replace("("," ").replace(")"," ").replace("/",",");
+      makeTags("<%= post.id %>",nuevo);
+      </script>
     </div>
     <% }); %>
-    <div style="text-align:center" class="advertising box col-xs-6 col-sm-4">
+    <div style="text-align:center" class="box public col-xs-6 col-sm-4">
       <script>
             google_ad_client = "ca-pub-3074485176185204";
             google_ad_slot = "5370019667"; 
@@ -249,4 +254,10 @@ modal -->
     </div>
   </div>
 </section>
+<script>
+$(document).ready(function(e){
+  checkCookie();
+  //byCountry(getCookie('pais'));
+});
+</script>
 <%  } %>
