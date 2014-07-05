@@ -357,7 +357,7 @@
 		var url = window.location.search;
 		//window.location.href="/user/auth/login?r="+x;
 		url = url.replace("?", ''); // remove the ?
-		console.log(url); //alerts ProjectID=462 is your case
+		//console.log(url); //alerts ProjectID=462 is your case
 	}
 
 $(document).ready(function(e) {
