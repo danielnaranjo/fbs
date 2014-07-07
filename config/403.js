@@ -50,5 +50,5 @@ module.exports[403] = function badRequest(message, req, res) {
     res.render(viewFilePath);
   });
   */
-  res.redirect('/user/auth');
+  res.redirect('/user/new');
 };
