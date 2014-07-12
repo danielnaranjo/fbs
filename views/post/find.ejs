@@ -1,4 +1,7 @@
   <script>var makeTags = function(x,y) {var arr = y.split(',');$('#'+x).html('');for(var j=0; j<arr.length; j++) {var replacedText = arr[j].replace(arr[j], '<a href="/post/tags/'+arr[j]+'" class="tagged"><i class="icon-tags"></i> '+arr[j]+'</a> ');$('#'+x).append(replacedText);}}</script>
+  <!-- click tracking by indeed -->
+  <script type="text/javascript" src="http://gdc.indeed.com/ads/apiresults.js"></script>
+  <!-- click tracking by indeed -->                     
 <%
 if ( typeof posts === 'undefined' ) {
 // There are only one user.
