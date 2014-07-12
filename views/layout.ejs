@@ -83,7 +83,14 @@
               </div>
               <div>  
                 <input type="submit" value="Go" class="btn btn-default">
-              </div>     
+              </div> 
+              <!--latest-->
+              <div id="latest">
+                <div>
+                  Loading latest posts..
+                </div>
+              </div>
+              <!--latest-->
             </form>
           </div>
           <div id="popular" class="col-md-6">
@@ -97,15 +104,6 @@
       <!-- content -->
       <%- body %>
       <!-- content -->      
-
-      <footer id="footer" class="smooth-style slideOut-option navbar-fixed-bottom">
-        <div class="container">
-          <div>2013-2014 &copy <a href="http://www.loultimoenlaweb.com" target="_blank">Lo Ultimo Group</a> & <a href="http://www.danielnaranjo.info" target="_blank">Daniel Naranjo</a></div>
-          <div>We're in <a href="http://linkedin.com/company/findby" target="_blank">Linkedin</a>, <a href="http://facebook.com/findby" target="_blank">Facebook</a>, <a href="http://twitter.com/findbyco" target="_blank">Twitter</a>  and <a href="https://plus.google.com/115826745735747307118" rel="publisher">Google+</a> |  <a href="http://findby.tumblr.com/" target="_blank"><%= __('Blog')%></a> - <a href="/about/contact"><%= __('Contact')%></a> - <a href="/about/privacy"><%= __('Privacy')%></a> - <a href="/about/legal"><%= __('Legal')%></a>
-          </div>
-        </div>
-      </footer>
-    </div>
 
     <div id="opciones">
       <ul>
@@ -126,6 +124,52 @@
     </div>
 
     <div id="nogeo"></div>
+
+      <footer>
+        <div class="row">
+          <div class="col-xs-5 col-sm-3">
+            <h4><%= __('Faq')%></h4>
+            <ul>
+              <li><a href="#"><%= __('I\'ve forgotten my password')%></a></li>
+              <li><a href="#"><%= __('How do I report an ad or user?')%></a></li>
+              <li><a href="#"><%= __('Service ad fees')%></a></li>
+              <li><a href="#"><%= __('Sellers fees explained')%></a></li>
+              <li><a href="#"><%= __('Using Geolocation')%></a></li>
+            </ul>          
+          </div>
+          <div class="col-xs-5 col-sm-3">
+            <h4><%= __('How\'s TO')%></h4>
+            <ul>
+              <li><a href="javascript:newOne();"><%= __('Register') %></a></li>
+              <li><a href="#"><%= __('Find a product / service')%></a></li>
+              <li><a href="#"><%= __('Report an ad or user')%></a></li>
+              <li><a href="#"><%= __('Sending private messages')%></a></li>
+              <li><a href="#"><%= __('Removing / deactivating your ad')%></a></li>
+            </ul>          
+          </div>
+          <div class="col-xs-5 col-sm-3">
+            <h4><%= __('About')%></h4>
+            <ul>
+              <li><a href="/about"><%= __('About')%></a></li>
+              <li><a href="http://www.angel.co/findby" target="_blank"><%= __('Team')%></a></li>
+              <li><a href="/about/contact"><%= __('Contact')%></a></li>
+              <li><a href="http://www.github.com/findby" target="_blank"><%= __('Developers')%></a></li>
+              <li><a href="http://www.loultimoenlaweb.com" target="_blank"><%= __('Credits')%></a></li>
+            </ul>
+          </div>
+          <div class="col-xs-5 col-sm-3">
+            <h4><%= __('Social')%></h4>
+            <ul>
+              <li><a href="http://facebook.com/findby" target="_blank">Facebook</a></li>       
+              <li><a href="http://linkedin.com/company/findby" target="_blank">Linkedin</a></li>
+              <li><a href="https://plus.google.com/115826745735747307118" rel="publisher" target="_blank">Google+</a></li>
+              <li><a href="http://twitter.com/findbyco" target="_blank">Twitter</a></li>
+              <li><a href="http://findby.tumblr.com/" target="_blank">Blog</a></li>
+            </ul>          
+          </div>
+        </div>
+      </footer>
+    </div>
 
     <!--TEMPLATES-->
     

@@ -359,9 +359,23 @@
 		url = url.replace("?", ''); // remove the ?
 		//console.log(url); //alerts ProjectID=462 is your case
 	}
+/**/
+	var latest = function() {
+		// 
+		setTimeout(function() { 
+			$.getJSON( "/post?limit=10&sort=createdAt+desc", function(data) {
+				$('#latest').html('');
+				$.each( data, function( key, val ) {
+					$('#latest').append('<div class="text-item"><a href="/post/' + val.id + '"><strong>'+ val.title +'</strong> in <strong>'+ val.city +'</strong> '+ val.country +'</a></div>');
+					//console.log(val.title);
+				});
+			});
+		},4000);
+	}
 
 $(document).ready(function(e) {
 //
+	latest();
 	referred();
 	/* masonry */
 	//$("#contenido").masonry({itemSelector:'.box'});
@@ -369,10 +383,10 @@ $(document).ready(function(e) {
 	// layout Masonry again after all images have loaded
 	$container.imagesLoaded( function(){ $container.masonry();});
 
-	/* Parallax Effects */
+	/* Parallax Effects
 	$(".slide-option").rlSmooth();
 	$(".slideOut-option").rlSmooth('slideOut',{ y: 500, on: 550, off: 800 });
-
+ */
 	/* Validar formularios */
 	$("#signupform").validate({
 		debug: false,
@@ -415,6 +429,42 @@ $(document).ready(function(e) {
 	});
 	populars();
 	//checkCookie();
-//
+	$('#latest').rotaterator({fadeSpeed:1000, pauseSpeed:3000});
+	//
 });
 
+//
+(function($){
+	$.fn.extend({ 
+        //plugin name - rotaterator
+        rotaterator: function(options) {
+
+        	var defaults = {
+        		fadeSpeed: 600,
+        		pauseSpeed: 100,
+        		child:null
+        	};
+
+        	var options = $.extend(defaults, options);
+
+        	return this.each(function() {
+        		var o =options;
+        		var obj = $(this);                
+        		var items = $(obj.children(), obj);
+        		items.each(function() {$(this).hide();})
+        		if(!o.child){var next = $(obj).children(':first');
+        	}else{var next = o.child;
+        	}
+        	$(next).fadeIn(o.fadeSpeed, function() {
+        		$(next).delay(o.pauseSpeed).fadeOut(o.fadeSpeed, function() {
+        			var next = $(this).next();
+        			if (next.length == 0){
+        				next = $(obj).children(':first');
+        			}
+        			$(obj).rotaterator({child : next, fadeSpeed : o.fadeSpeed, pauseSpeed : o.pauseSpeed});
+        		})
+        	});
+        });
+        }
+    });
+})(jQuery);
