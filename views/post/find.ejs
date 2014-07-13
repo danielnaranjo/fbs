@@ -1,4 +1,13 @@
-  <script>var makeTags = function(x,y) {var arr = y.split(',');$('#'+x).html('');for(var j=0; j<arr.length; j++) {var replacedText = arr[j].replace(arr[j], '<a href="/post/tags/'+arr[j]+'" class="tagged"><i class="icon-tags"></i> '+arr[j]+'</a> ');$('#'+x).append(replacedText);}}</script>
+  <script> var makeTags = function(x,y) {
+  var arr = y.split(',');
+  $('#'+x).html('');
+  for(var j=0; j<arr.length; j++) {
+    var replacedText, patron;
+    patron = '<a href="/post/tags/'+arr[j]+'" class="tagged"><i class="icon-tags"></i> '+arr[j]+'</a> ';
+    replacedText = arr[j].replace(arr[j], patron);
+    $('#'+x).append(replacedText);
+  }
+ }</script>
   <!-- click tracking by indeed -->
   <script type="text/javascript" src="http://gdc.indeed.com/ads/apiresults.js"></script>
   <!-- click tracking by indeed -->                     
@@ -239,11 +248,7 @@ modal -->
       </p>
       <p><%= post.summary %></p>
       <p id="<%= post.id %>">Loading..</p>
-      <script>
-      var popu = '<%= post.populars %>', nuevo ="";
-      nuevo = popu.replace("\'"," ").replace("-"," ").replace("-"," ").replace("("," ").replace(")"," ").replace("/",",");
-      makeTags("<%= post.id %>",nuevo);
-      </script>
+      <script>makeTags('<%= post.id %>',"<%= post.populars %>")</script>
     </div>
     <% }); %>
     <div style="text-align:center" class="box public col-xs-6 col-sm-4">

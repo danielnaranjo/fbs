@@ -1,4 +1,13 @@
-<script>var noresult=0, makeTags = function(x,y) {var arr = y.split(',');$('#'+x).html('');for(var j=0; j<arr.length; j++) {var replacedText = arr[j].replace(arr[j], '<a href="/post/tags/'+arr[j]+'" class="tagged"><i class="icon-tags"></i> '+arr[j]+'</a> ');$('#'+x).append(replacedText);}}</script>
+<script>var noresult=0, makeTags = function(x,y) {
+  var arr = y.split(',');
+  $('#'+x).html('');
+  for(var j=0; j<arr.length; j++) {
+    var replacedText, patron;
+    patron = '<a href="/post/tags/'+arr[j]+'" class="tagged"><i class="icon-tags"></i> '+arr[j]+'</a> ';
+    replacedText = arr[j].replace(arr[j], patron);
+    $('#'+x).append(replacedText);
+  }
+ }</script>
 <section class="js-masonry">
 	<div id="contenido">
     <div style="text-align:center" class="box col-xs-6 col-sm-4">
@@ -25,7 +34,7 @@
           <i class="glyphicon glyphicon-flag azul"></i>    <span> 0 </span>
         </p>
         <p>
-          <p id="<%= post.id %>">Loading..</p><script>makeTags('<%= post.id %>','<%= post.populars %>');noresult++;</script>
+          <p id="<%= post.id %>">Loading..</p><script>makeTags('<%= post.id %>',"<%= post.populars %>");noresult++;</script>
         </p>
       </div>
       <% }); %>
