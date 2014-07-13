@@ -71,6 +71,7 @@ function checkCookie() {
 		console.log("Hello " + Country+"! Nice to see you again :) ");
 		console.log("We're not using geolocation API yet or not anymore, who's knows? :) ");
 		$('#opciones').append('<li>&nbsp;</li><li><a href="/post/country/'+Country+'">'+Country+'</a></li>');
+		window.location.href="/post/country/"+Country;
 	} else {
 		/* Need for IP, City, Country and Lat,Lon */
 		WhereAmI();
