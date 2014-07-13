@@ -18,7 +18,6 @@
 module.exports = {
 
   find: function(req, res, next) {
-
     var id = req.param('id');
     // If id is a shortcut we don't have to find.
     if ( isShortcut(id) ) return next();
@@ -52,14 +51,13 @@ module.exports = {
 
        // Setting options from params.
       var filters = {
-        limit: req.param('limit') || undefined,
-        skip: req.param('skip')  || undefined,
-        sort: req.param('sort') || 'createdAt DESC',
+        limit: req.param('limit') || '100',
+        skip: req.param('skip')  || '25',
+        sort: req.param('sort') || '_id DESC',
         where: where || undefined
       };
       // Find users according with filters
-      Post.find(filters).limit(250).done(function foundUsers(err, posts){
-      //Post.find(filters).done(function foundUsers(err, posts){
+      Post.find(filters).done(function foundUsers(err, posts){
         if ( err ) return next(err);
         // Response JSON if needed.
         if (req.wantsJSON) {
@@ -74,7 +72,7 @@ module.exports = {
       });
     }
     function isShortcut(id){
-      return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' || id=== 'related' || id=== 'tags' || id=== 'nearby' || id=== 'search' || id === 'reject');
+      return (id === 'find' || id === 'create' || id === 'update' || id === 'destroy' || id=== 'related' || id=== 'tags' || id=== 'nearby' || id=== 'search' || id === 'reject' || id === 'city' || id === 'country');
     }
   },
   create: function(req, res, next) {
@@ -161,6 +159,24 @@ module.exports = {
     // console.log('Enviado: '+id);
     if( !id ) return res.notFound();
     Post.find({ title: { contains: id } }).limit(l).done(function searchPost(err, post){
+      if ( err ) return next(err);
+      if (req.wantsJSON) return res.json(post);
+      else return res.view({ post: post});
+    });
+  },
+  city: function(req, res, next) {
+    var id = req.param('id');
+    if( !id ) return res.notFound();
+    Post.find({ city: { contains: id } }).done(function tagsPost(err, post){
+      if ( err ) return next(err);
+      if (req.wantsJSON) return res.json(post);
+      else return res.view({ post: post});
+    });
+  },
+  country: function(req, res, next) {
+    var id = req.param('id');
+    if( !id ) return res.notFound();
+    Post.find({ country: { contains: id } }).done(function tagsPost(err, post){
       if ( err ) return next(err);
       if (req.wantsJSON) return res.json(post);
       else return res.view({ post: post});
