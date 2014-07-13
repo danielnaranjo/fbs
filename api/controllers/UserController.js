@@ -131,7 +131,7 @@ module.exports = {
 					bodyMessage += 'send us your input, questions, suggestions, bug experiences and ideas.\n\n\n';
 					bodyMessage += 'The FindBy team\nwww.findby.co\n\n\n';
 					bodyMessage += 'If you have questions shoot us an email to hello@findby.co or ';
-					bodyMessage += 'Follow us on Twitter @findbytags and Facebook\n';
+					bodyMessage += 'Follow us on Twitter @findbyco and Facebook\n';
 
 					mailer.send({
 						host: "smtp.mandrillapp.com",

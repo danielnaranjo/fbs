@@ -1,0 +1,51 @@
+<script>var makeTags = function(x,y) {var arr = y.split(',');$('#'+x).html('');for(var j=0; j<arr.length; j++) {var replacedText = arr[j].replace(arr[j], '<a href="/post/tags/'+arr[j]+'" class="tagged"><i class="icon-tags"></i> '+arr[j]+'</a> ');$('#'+x).append(replacedText);}}</script>
+<section class="js-masonry">
+	<div id="contenido">
+    <div style="text-align:center" class="box col-xs-6 col-sm-4">
+      <script>
+        google_ad_client = "ca-pub-3074485176185204";
+        google_ad_slot = "5370019667"; 
+        google_ad_width = 250; 
+        google_ad_height = 250; 
+      </script>
+      <script src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+    </div>
+
+	   <% _.each(post, function(post){ %>
+      <div class="box col-xs-6 col-sm-4">
+        <% if ( post.photos[0]) { %>
+        <a href="/post/<%= post.id %>"><img src="<%= post.photos[0] %>" alt="<%= post.title %>" class="img-responsive"></a>
+        <% } %>
+        <h4><a href="/post/<%= post.id %>"><%= post.title %></a></h4>
+        <p><%= post.summary %></p>
+        <p>
+          <i class="glyphicon glyphicon-heart azul"></i>   <span> 0 </span>
+          <i class="glyphicon glyphicon-search azul"></i>  <span> <%= post.visit %> </span>
+          <i class="glyphicon glyphicon-star azul"></i>    <span> 0 </span>
+          <i class="glyphicon glyphicon-flag azul"></i>    <span> 0 </span>
+        </p>
+        <p>
+          <p id="<%= post.id %>">Loading..</p>
+      <script>makeTags('<%= post.id %>','<%= post.populars %>')</script>
+        </p>
+      </div>
+      <% }); %>
+
+	    <div style="text-align:center" class="box col-xs-6 col-sm-4">
+        <script>
+              google_ad_client = "ca-pub-3074485176185204";
+              google_ad_slot = "5370019667"; 
+              google_ad_width = 250; 
+              google_ad_height = 250; 
+        </script>
+        <script src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+      </div>
+	</div>
+</section>
+<script>
+  // Force "<title>" to change for post's title
+  var pathname = window.location.pathname; 
+  var last = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.length);
+  $('title').text(last);
+</script>
+
