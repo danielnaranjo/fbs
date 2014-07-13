@@ -25,48 +25,46 @@
 			</div>
 		</div>
 		<div class="col-md-6">
-		<form role="form" action="/user/login" method="POST" class="form-center" id="loginfrom">
-			<h2 class="form-signin-heading"><%= __('Welcome back') %></h2>
-			<div class="form-group">
-				<label for="username"><%= __('Username') %></label>
-				<input type="text" class="form-control" placeholder="<%= __('someone@somewhere.com') %>" name="username" id="username" required />
-			</div>
-			<div class="form-group">
-				<label for="password"><%= __('Password') %></label>
-				<input type="password" class="form-control" placeholder="<%= __('Password') %>" name="password" id="password" required minlength="6" />
-			</div>
-			<p><input type="submit" class="btn btn-primary btn-block" value="<%= __('Sign In') %>" /></p>
-		</form>
-		<% if ( sails.config.providers ) { %>
-		<div class="form-center">
-			<p class="text-center"><%= __('or Sign in with...') %><p>
-			<div class="row">
-				<% _.each(sails.config.providers, function(provider, provider_id){ %>
-			
-				<form role="form" action="/user/login/<%= provider_id %>" method="POST" class="form-center">
-					<p>
-						<button type="submit" class="btn btn-social btn-<%= provider_id %> btn-block">
-							<i class="fa fa-<%= __(provider_id) %>"></i> <%= __('Sign in with') %> <%= __(provider_id) %>
-						</button>
-					</p>
-				</form>
+			<form role="form" action="/user/login" method="POST" class="form-center" id="loginfrom">
+				<h2 class="form-signin-heading"><%= __('Welcome back') %></h2>
+				<div class="form-group">
+					<label for="username"><%= __('Username') %></label>
+					<input type="text" class="form-control" placeholder="<%= __('someone@somewhere.com') %>" name="username" id="username" required />
+				</div>
+				<div class="form-group">
+					<label for="password"><%= __('Password') %></label>
+					<input type="password" class="form-control" placeholder="<%= __('Password') %>" name="password" id="password" required minlength="6" />
+				</div>
+				<p><input type="submit" class="btn btn-primary btn-block" value="<%= __('Sign In') %>" /></p>
+			</form>
+			<% if ( sails.config.providers ) { %>
+			<div class="form-center">
+				<p class="text-center"><%= __('or Sign in with...') %><p>
+				<div class="row">
+					<% _.each(sails.config.providers, function(provider, provider_id){ %>
+				
+					<form role="form" action="/user/login/<%= provider_id %>" method="POST" class="form-center">
+						<p>
+							<button type="submit" class="btn btn-social btn-<%= provider_id %> btn-block">
+								<i class="fa fa-<%= __(provider_id) %>"></i> <%= __('Sign in with') %> <%= __(provider_id) %>
+							</button>
+						</p>
+					</form>
 
-				<% }) %>
+					<% }) %>
+				</div>
 			</div>
+			<% } %>
+			<p class="text-center">
+				<%= __('or Create a') %> <a href="javascript:newOne();"><%= __('new account') %></a>
+			</p>
 		</div>
-		<% } %>
-		<p class="text-center">
-			<%= __('or Create a') %> <a href="javascript:newOne();"><%= __('new account') %></a>
-		</p>
-		</div>
-		</div>
-	</div>
 	</div>
 </section>
 <script>
 $(document).ready(function(e) {
 	// geolocalization
 	WhereIP();
-	$('title').text('<%= __('<%= __('Log In') %>') %>');
+	$('title').text('<%= __('Log In') %>');
 });
 </script>
