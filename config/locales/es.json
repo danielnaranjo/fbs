@@ -110,5 +110,25 @@
   "No fee, Only premium features":"Sin cargos, solo caracteristicas premiums",
 
   "Sign up, It's free":"Registrese, es gratis.",
-  "Welcome back":"Bienvenido"
+  "Welcome back":"Bienvenido",
+  "Register":"Registrese",
+  "A Geolocation Classified Ads for products and services around the world":"Servicio de anuncios clasficados localizados alrededor del mundo",
+
+  "I've forgotten my password":"Olvide mi contraseña",
+  "How do I report an ad or user?":"Como reporto un anuncio o usuario?",
+  "Service ad fees":"Cargos por servicio",
+  "Sellers fees explained":"Como funciona",
+  "Using Geolocation":"Que es Geolocalización",
+
+  "How's TO":"Como usar",
+  "Register":"Registrese",
+  "Find a product / service":"Encontrar un producto / servicio",
+  "Report an ad or user":"Informar un anuncio o usuario",
+  "Sending private messages":"El envío de mensajes privados",
+  "Removing / deactivating your ad":"Quitar o desactivar un anuncio",
+
+  "Team":"Equipo",
+  "Developers":"Desarrolladores",
+  "Credits":"Creditos"
+
 }
