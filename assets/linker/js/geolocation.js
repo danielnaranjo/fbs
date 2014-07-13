@@ -70,8 +70,11 @@ function checkCookie() {
 	if(Country!=""){
 		console.log("Hello " + Country+"! Nice to see you again :) ");
 		console.log("We're not using geolocation API yet or not anymore, who's knows? :) ");
-		$('#opciones').append('<li>&nbsp;</li><li><a href="/post/country/'+Country+'">'+Country+'</a></li>');
+		$('#opciones ul').append('<li>&nbsp;</li><li><a href="/post/country/'+Country+'">'+Country+'</a></li>');
+		/* redirect to */
 		window.location.href="/post/country/"+Country;
+		/* Fire location message ! */
+		showLocation();
 	} else {
 		/* Need for IP, City, Country and Lat,Lon */
 		WhereAmI();
@@ -81,7 +84,9 @@ function checkCookie() {
 		setCookie('pais',pais,365);
 		setCookie('Lat',Lat,365);
 		setCookie('Lon',Lon,365);
-		console.log(document.cookie);
+		//console.log(document.cookie);
+		/* Fire location message ! */
+		showLocation();
 	}
 }
 /* Geolocalization HTML5 */
