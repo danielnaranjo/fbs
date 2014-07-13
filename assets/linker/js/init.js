@@ -199,8 +199,8 @@
 	};
 	var populars = function(){
 		var list=[];
-		$('#popular ul').html('');
 		$.getJSON("/tags?limit=1000", function( data ) {
+			$('#popular ul').html('');
 			$.each( data, function(key,val){
 				list.push(val.tag);
 			});
@@ -360,13 +360,13 @@
 		//console.log(url); //alerts ProjectID=462 is your case
 	}
 /**/
-	var latest = function() {
+	var latest = function(x) {
 		// 
 		setTimeout(function() { 
-			$.getJSON( "/post?limit=10&sort=createdAt+desc", function(data) {
+			$.getJSON( '/post/country/'+x+'?limit=10&sort=createdAt desc', function(data) {
 				$('#latest').html('');
 				$.each( data, function( key, val ) {
-					$('#latest').append('<div class="text-item"><a href="/post/' + val.id + '"><strong>'+ val.title +'</strong> in <strong>'+ val.city +'</strong> '+ val.country +'</a></div>');
+					$('#latest').append('<div class="text-item"><span class="glyphicon glyphicon-globe"></span> <a href="/post/' + val.id + '"><strong>'+ val.title +'</strong> in <strong>'+ val.city +'</strong> '+ val.country +'</a></div>');
 					//console.log(val.title);
 				});
 			});
@@ -375,7 +375,7 @@
 
 $(document).ready(function(e) {
 //
-	latest();
+	//latest(getCookie('pais'));
 	referred();
 	/* masonry */
 	//$("#contenido").masonry({itemSelector:'.box'});
