@@ -17,7 +17,7 @@ function showPosition(position) {
 			setTimeout(function() {
 				$('#dondeestoy').html('We\'re ready!  :) ');
 				$('#dondeestoy').removeClass().addClass("fadeOut");
-				// console.log(miubicacion[0]+','+miubicacion[1]);
+				console.log(miubicacion[0]+','+miubicacion[1]);
 			}, 3000);
 		}, 2000);
 	}
@@ -84,7 +84,7 @@ function checkCookie() {
 		setCookie('pais',pais,365);
 		setCookie('Lat',Lat,365);
 		setCookie('Lon',Lon,365);
-		//console.log(document.cookie);
+		console.log(document.cookie);
 		/* Fire location message ! */
 		showLocation();
 	}
