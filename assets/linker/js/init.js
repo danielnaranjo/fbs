@@ -359,7 +359,7 @@
 		url = url.replace("?", ''); // remove the ?
 		//console.log(url); //alerts ProjectID=462 is your case
 	}
-/**/
+	/* Mostrar los ultimos avisos */
 	var latest = function(x) {
 		// 
 		setTimeout(function() { 
@@ -372,6 +372,11 @@
 			});
 		},4000);
 	}
+	/* Zonas calientes */
+	setTimeout(function(){var a=document.createElement("script");
+	var b=document.getElementsByTagName("script")[0];
+	a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0019/6687.js?"+Math.floor(new Date().getTime()/3600000);
+	a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
 
 $(document).ready(function(e) {
 //
