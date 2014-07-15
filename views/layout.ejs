@@ -12,7 +12,10 @@
     <meta name="author" content="Daniel Naranjo">
     <link rel="icon" href="/favicon.ico">
     <!--STYLES-->
-    <link rel="stylesheet" href="/min/production.css">
+    <link rel="stylesheet" href="/linker/styles/bootstrap.css">
+    <link rel="stylesheet" href="/linker/styles/bootstrap-theme.css">
+    <link rel="stylesheet" href="/linker/styles/animate-custom.css">
+    <link rel="stylesheet" href="/linker/styles/estilos.css">
     <!--STYLES END-->
 
     <!-- CDN -->
@@ -47,6 +50,7 @@
           <div id="logo">
             <a href="/">
               <img src="/img/logo.png" alt="logo" width="166" height="73">
+              <div id="region"></div>
             </a>
           </div>
           <div>
@@ -57,7 +61,7 @@
           <nav>
             <ul>
               <li>
-                <a href="/">
+                <a href="/" id="home">
                   <div><i class="glyphicon glyphicon-home"></i></div>
                 </a>
               </li>
@@ -196,11 +200,18 @@
     <!-- CDN -->
 
     <!--SCRIPTS-->
-    <script src="/min/production.js"></script>
+    <script src="/linker/js/socket.io.js"></script>
+    <script src="/linker/js/sails.io.js"></script>
+    <script src="/linker/js/app.js"></script>
+    <script src="/linker/js/init.js"></script>
+    <script src="/linker/js/bootstrap-tagsinput.min.js"></script>
+    <script src="/linker/js/geolocation.js"></script>
+    <script src="/linker/js/rlsmooth.js"></script>
+    <script src="/linker/js/uservoice.js"></script>
     <!--SCRIPTS END-->
 
     <script>
-      socket.on("connect", function(){ console.log("Client Connected from "+getCookie('pais')); });
+      socket.on("connect", function(){ console.log("Client Connected"); });
       latest(getCookie('pais'));
       setTimeout(function(){var a=document.createElement("script");
       var b=document.getElementsByTagName("script")[0];

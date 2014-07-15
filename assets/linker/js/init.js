@@ -164,12 +164,12 @@
 	/* Fire Location */
 	var showLocation = function(){
 		$('#dondeestoy').html('');
-		$("#dondeestoy").append('<p>We locate you by '+getCookie('ciudad') +' '+getCookie('pais')+', right?</p>');
+		$("#dondeestoy").append('<p>We locate you by '+getCookie('ciudad') +' '+getCookie('pais')+'</p>');
 		$('#dondeestoy').css('display','inline');
 		$("#dondeestoy").removeClass().addClass("fadeInDown");
 		setTimeout(function() {
 			$('#dondeestoy').removeClass().addClass("fadeOutDown");
-		},3000);
+		},5000);
 	};
 	/* Do tags in search field */
 	var makeTags = function(){
@@ -333,25 +333,6 @@
 			}
 		},5000);
 	}
-	// byCountry(venezuela)
-	var byCountry = function(x) {
-		console.log('Ok filter by country'+ x);
-
-		setTimeout(function() {
-			$.getJSON( "/post/?where={%22country%22:%22"+x+"%22}&l=25", function(data){
-				$('#contenido .box').remove();
-				//console.log(data.length);
-				if(data.length==0){
-					//$('#vermas').hide();
-					console.log('Not found!');
-				}
-				$.each( data, function( key, val ) {
-					$('#contenido').append('<div class="box col-xs-6 col-sm-4"><h4><a href="/post/'+val.id+'">'+val.title+'</a></h4><p>'+val.summary+'</p></div>');
-					// <p id="'+val.id+'">Loading..</p>'+makeTags(''+val.id+'',''+val.populars+'')+'
-				});
-			});
-		},5000);
-	}
 
 	var referred = function() {
 		var url = window.location.search;
@@ -372,6 +353,37 @@
 			});
 		},4000);
 	}
+	var regional = function() {
+		var ciudad=getCookie('ciudad'),pais=getCookie('pais');
+		/* redirect to */
+		if(ciudad!="") {
+			/* redirect to ciudad */
+			window.location.href="/post/city/"+ciudad;
+			$('#logo a').attr("href","/post/city/"+ciudad);
+			$('#region').html(ciudad);
+			//$('#opciones ul').append('<li>&nbsp;</li><li><a href="/post/country/'+pais+'">'+pais+'</a></li>');
+
+		} else if(pais!="") {
+			/* redirect to pais */
+			window.location.href="/post/country/"+pais;
+			$('#logo a').attr("href","/post/country/"+pais);
+			$('#home').attr("href","/post/country/"+pais);
+			/* Mostrar menu personalizado */	
+			//$('#opciones ul').append('<li>&nbsp;</li><li><a href="/post/country/'+pais+'">'+pais+'</a></li>');
+			$('#region').html(pais);
+		} else {
+			/* Global site*/
+			$('#region').html('Global');
+		}
+		/* Fire location message ! */
+		showLocation();
+		//console.log(document.cookie);
+	}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 
 $(document).ready(function(e) {
 //
@@ -427,10 +439,12 @@ $(document).ready(function(e) {
 			country: { required: '(Please enter your country)' }
 		}
 	});
+	/* Load populars tags */
 	populars();
-	//checkCookie();
+	/* Fire latest posts */
 	$('#latest').rotaterator({fadeSpeed:1000, pauseSpeed:3000});
 	//
+	
 });
 
 //

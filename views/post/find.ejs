@@ -264,8 +264,7 @@ modal -->
 </section>
 <script>
 $(document).ready(function(e){
-  checkCookie();
-  //byCountry(getCookie('pais'));
+  checkCookie('<%= req.ip %>');
 });
 </script>
 <%  } %>

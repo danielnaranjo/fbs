@@ -7,6 +7,7 @@ function showPosition(position) {
 	// Si geolocalizacion esta activa, la guardo en cookie
 	setCookie('Lat',miubicacion[0],365);
 	setCookie('Lon',miubicacion[1],365);
+	console.log(miubicacion);
 	// Compruebo que hay contenido?
 	if (!miubicacion) {
 		setTimeout(function() {
@@ -37,14 +38,15 @@ function onError() {
 }
 /* Muestra Geo segun IP */
 function WhereAmI() {
-	$.getJSON('http://www.freegeoip.net/json/190.202.17.29', function(location) {
-		// window.location.replace("/?city="+location.city+"&country="+location.country_name);
-		Lat=location.latitude;
-		Lon=location.longitude;
+	$.getJSON('http://www.freegeoip.net/json/', function(location) {
+		//Lat=location.latitude;
+		//Lon=location.longitude;
 		ciudad=location.city;
 		pais=location.country_name;
 		dip=location.ip;
-		console.log('OK '+pais);
+		setCookie('ciudad',ciudad,365);
+		setCookie('pais',pais,365);
+		console.log('OK '+pais +' '+ ciudad);
 	});
 }
 /* Cookies for Location */
@@ -65,29 +67,25 @@ function getCookie(cname) {
 	return "";
 }
 
-function checkCookie() {
-	var Country=getCookie('pais');
-	if(Country!=""){
-		console.log("Hello " + Country+"! Nice to see you again :) ");
+function checkCookie(x) {
+	var pais=getCookie('pais');
+	if(pais!=""){
+		console.log("Hello " + pais+"! Nice to see you again :) ");
 		console.log("We're not using geolocation API yet or not anymore, who's knows? :) ");
-		$('#opciones ul').append('<li>&nbsp;</li><li><a href="/post/country/'+Country+'">'+Country+'</a></li>');
-		/* redirect to */
-		window.location.href="/post/country/"+Country;
-		/* Fire location message ! */
-		showLocation();
 	} else {
 		/* Need for IP, City, Country and Lat,Lon */
-		WhereAmI();
+		WhereAmI(x);
 		/* Fire geolocation API */
 		checkPosition();
 		setCookie('ciudad',ciudad,365);
 		setCookie('pais',pais,365);
 		setCookie('Lat',Lat,365);
 		setCookie('Lon',Lon,365);
-		console.log(document.cookie);
-		/* Fire location message ! */
-		showLocation();
+		console.log("Hello " + pais+"! Nice to meet you! :) ");
 	}
+
+	/* load regional/global site */
+	regional();
 }
 /* Geolocalization HTML5 */
 function checkPosition() {
