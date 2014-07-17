@@ -32,8 +32,9 @@ module.exports.policies = {
 	},
 	
 	PostController: {
-		'*': true
-		//'*': ['isAuthenticated'],
+		'*': true,
+		new: 'isAuthenticated',
+		update: ['isAuthenticated', 'canAdminUser']
 	}
 
   /*
