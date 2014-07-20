@@ -52,9 +52,8 @@ module.exports = {
        // Setting options from params.
       var filters = {
         limit: req.param('limit') || '100',
-        skip: req.param('skip')  || '25',
-        sort: req.param('sort') || '_id DESC',
-        where: where || undefined
+        skip: req.param('skip')  || undefined,
+        sort: req.param('sort') || '_id DESC'
       };
       // Find users according with filters
       Post.find(filters).done(function foundUsers(err, posts){
