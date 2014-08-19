@@ -56,5 +56,5 @@ RoadMap.md
 ########################
 # local config
 ########################
-#config/
+config/local.js
 
