@@ -4,7 +4,7 @@
   "description": "Webapp",
   "main": ".app.js",
   "dependencies": {
-    "bcrypt": "~0.7.7",
+    "bcrypt": "~5.0.0",
     "ejs": ">=0.8.4",
     "grunt": ">=0.4.1",
     "mailer": "^0.6.7",
